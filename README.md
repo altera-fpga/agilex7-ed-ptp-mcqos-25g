@@ -1,1 +1,1 @@
-"# agilex7-ed-ptp-mcqos-25g" 
+agilex7-ed-ptp-mcqos-25g
