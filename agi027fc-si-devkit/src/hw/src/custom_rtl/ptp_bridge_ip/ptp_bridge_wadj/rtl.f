@@ -1,0 +1,10 @@
+#egr_wadj_seg_split.sv
+ptp_bridge_axi_wdj_lg2sm.sv
+ptp_bridge_egr_wadj.sv
+ptp_bridge_rx_igr_wadj.sv
+ptp_bridge_tx_igr_wadj.sv
+igr_wadj_csr_intf.sv
+igr_wadj_10G_csr.v
+igr_wadj_csr.v
+egr_wadj_csr_intf.sv
+egr_wadj_csr.v

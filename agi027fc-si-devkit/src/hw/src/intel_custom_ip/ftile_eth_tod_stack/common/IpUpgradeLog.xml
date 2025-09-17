@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ip name="Ethernet IEEE 1588 TOD Synchronizer Intel FPGA IP">
+ <timestamp>2024-04-24T21:12:42.543383829</timestamp>
+ <file></file>
+ <old_version>20.0.4</old_version>
+ <new_version>20.0.5</new_version>
+ <changes>
+  <change>20.0.5</change>
+  <change>No parameter change</change>
+  <change>No port change</change>
+  <change>Updated Quartus CDC fileset</change>
+ </changes>
+</ip>
+
+<ip name="Nios V/m Microcontroller Intel FPGA IP">
+ <timestamp>2024-04-24T21:12:43.265006043</timestamp>
+ <file></file>
+ <old_version>23.1.0</old_version>
+ <new_version>23.2.0</new_version>
+ <changes>
+  <change>23.2.0</change>
+  <change>Parameter "Enable Error Detection and Status Reporting" has been added</change>
+  <change>When Error Detection and Status Reporting is enabled, a conduit interface with two output ports indicating ECC status and ECC source is added to the core</change>
+  <change>Instruction and data manager interfaces on the core have been updated to use AXI4Lite interface instead of AXI4 interface</change>
+  <change>Support added for Error Detection and Status Reporting for internal core memories</change>
+  <change>Options added to select between a pipeline or non-pipelined processor architecture. Atomics EXT support is disabled when the processor architecture is configured to be non-pipelined architecture</change>
+  <change>Bug case which resulted in incorrect values of registers when read in debug mode has been fixed</change>
+  <change>Performance/Area optimization- remove branch stalls</change>
+  <change>Performance/Area optimization- Instruction decoder, ALU, shifter</change>
+ </changes>
+</ip>
+
+<ip name="Ethernet IEEE 1588 TOD Synchronizer Intel FPGA IP">
+ <timestamp>2024-04-24T21:12:43.485701007</timestamp>
+ <file></file>
+ <old_version>20.0.4</old_version>
+ <new_version>20.0.5</new_version>
+ <changes>
+  <change>20.0.5</change>
+  <change>No parameter change</change>
+  <change>No port change</change>
+  <change>Updated Quartus CDC fileset</change>
+ </changes>
+</ip>
+
+<ip name="System ID Peripheral Intel FPGA IP">
+ <timestamp>2024-04-24T21:12:44.118860716</timestamp>
+ <file></file>
+ <old_version>19.1.5</old_version>
+ <new_version>19.1.6</new_version>
+</ip>
+
+<ip name="On-Chip Memory (RAM or ROM) Intel FPGA IP">
+ <timestamp>2024-04-24T21:12:44.378936997</timestamp>
+ <file></file>
+ <old_version>19.3.8</old_version>
+ <new_version>19.3.9</new_version>
+</ip>
+
+<ip name="External Memory Interfaces for HPS Intel FPGA IP">
+ <timestamp>2024-04-24T21:12:50.044941086</timestamp>
+ <file></file>
+ <old_version>2.7.3</old_version>
+ <new_version>2.7.4</new_version>
+ <changes>
+  <change>2.7.4</change>
+  <change>GUI Updates</change>
+ </changes>
+</ip>
+
+<ip name="External Memory Interfaces Intel Calibration IP">
+ <timestamp>2024-04-24T21:12:51.686052687</timestamp>
+ <file></file>
+ <old_version>2.7.3</old_version>
+ <new_version>2.7.4</new_version>
+</ip>
+
+<ip name="On-Chip Memory (RAM or ROM) Intel FPGA IP">
+ <timestamp>2024-04-24T21:12:52.135540295</timestamp>
+ <file></file>
+ <old_version>19.3.8</old_version>
+ <new_version>19.3.9</new_version>
+</ip>
+
+<ip name="Content-Addressable Memory Intel FPGA IP">
+ <timestamp>2024-04-24T21:12:52.531857583</timestamp>
+ <file></file>
+ <old_version>1.0.1</old_version>
+ <new_version>2.0.0</new_version>
+ <changes>
+  <change>2.0.0</change>
+  <change> DFH parameters </change>
+  <change> No port change </change>
+  <change> Default parameter values update </change>
+ </changes>
+</ip>
+
+<ip name="Ethernet Subsystem Intel FPGA IP">
+ <timestamp>2024-04-24T21:13:10.581470103</timestamp>
+ <file></file>
+ <old_version>22.6.0</old_version>
+ <new_version>25.0.0</new_version>
+ <changes>
+  <change>25.0.0</change>
+  <change>We have added a new Parameter EN_SYS_PLL (Enable System PLL for F-Tile).</change>
+  <change>We have enabled PTP_TX_CLASSIFIER_ENABLE(Enable Tx PTP Classifier) for MAC Segmented Variants in F Tile.</change>
+  <change>We have added a new Parameter PORTx_FLOW_CONTROL_EN (Enable SFC/PFC Queue Buffering).</change>
+  <change>We have added a new Parameter PORTx_PFC_NUM_QUEUES (Number Of Queues).</change>
+  <change>We have added a new Parameter PORTx_PFC_TX_QUEUEy_SIZE (TX Queue Size).</change>
+  <change>We have added a new Parameter PORTx_PFC_RX_QUEUEy_SIZE (RX Queue Size).</change>
+  <change>We have enabled ANLT support with Dynamic Reconfiguration for F Tile.</change>
+  <change>We have enabled Preamble Pass through support with Dynamic Reconfiguration for F Tile.(Except 40G and 50G)</change>
+  <change>New profiles added 100GAUI-4 and 50GLAUI-2</change>
+  <change>A new input port i_clk_sys will be added whenever user disables the parameter EN_SYS_PLL.</change>
+  <change>Added these new ports when PFC is enabled:- pX_tx_pfc_watermark,pX_rx_pfc_stall </change>
+  <change>We have enabled Dynamic Reconfiguration feature for F-Tile.</change>
+  <change>F Tile is provided as Early access.</change>
+  <change>SFC/PFC Queue Buffering feature is added for FTile.</change>
+  <change>F Tile is provided as Early access.</change>
+  <change>F Tile is provided as Early access.</change>
+  <change>NIOS2 is upgraded to NIOSV</change>
+ </changes>
+</ip>
+
+<ip name="Ethernet IEEE 1588 Time of Day Clock Altera FPGA IP">
+ <timestamp>2025-06-23T22:57:41.246709205</timestamp>
+ <file></file>
+ <old_version>20.1.2</old_version>
+ <new_version>21.1.3</new_version>
+ <changes>
+  <change>21.1.3</change>
+  <change>No parameter change</change>
+  <change>No parameter change</change>
+  <change>No port change</change>
+  <change>No port change</change>
+  <change>Altera Rebranding</change>
+  <change>Initial Changes for Advanced PPS</change>
+ </changes>
+</ip>
+
+<ip name="External Memory Interfaces Calibration IP">
+ <timestamp>2025-06-23T22:57:45.517253203</timestamp>
+ <file></file>
+ <old_version>2.7.7</old_version>
+ <new_version>2.7.8</new_version>
+</ip>
+
+<ip name="External Memory Interfaces for Agilex HPS IP">
+ <timestamp>2025-06-23T22:57:50.401351665</timestamp>
+ <file></file>
+ <old_version>2.7.7</old_version>
+ <new_version>2.7.8</new_version>
+ <changes>
+  <change>2.7.8</change>
+  <change>Intel to Altera rebranding</change>
+  <change>Example design simulation run time improvements</change>
+ </changes>
+</ip>
+
+<ip name="Ethernet IEEE 1588 TOD Synchronizer Altera FPGA IP">
+ <timestamp>2025-06-23T22:58:17.514215745</timestamp>
+ <file></file>
+ <old_version>20.0.6</old_version>
+ <new_version>20.0.7</new_version>
+ <changes>
+  <change>20.0.7</change>
+  <change>No parameter change</change>
+  <change>No port change</change>
+  <change>Altera Rebranding</change>
+ </changes>
+</ip>
+
+<ip name="Ethernet IEEE 1588 Time of Day Clock Altera FPGA IP">
+ <timestamp>2025-06-23T22:58:17.695483986</timestamp>
+ <file></file>
+ <old_version>20.1.2</old_version>
+ <new_version>21.1.3</new_version>
+ <changes>
+  <change>21.1.3</change>
+  <change>No parameter change</change>
+  <change>No parameter change</change>
+  <change>No port change</change>
+  <change>No port change</change>
+  <change>Altera Rebranding</change>
+  <change>Initial Changes for Advanced PPS</change>
+ </changes>
+</ip>
+
+<ip name="Ethernet IEEE 1588 TOD Synchronizer Altera FPGA IP">
+ <timestamp>2025-06-23T22:58:17.885885334</timestamp>
+ <file></file>
+ <old_version>20.0.6</old_version>
+ <new_version>20.0.7</new_version>
+ <changes>
+  <change>20.0.7</change>
+  <change>No parameter change</change>
+  <change>No port change</change>
+  <change>Altera Rebranding</change>
+ </changes>
+</ip>
+
+<ip name="Ethernet IEEE 1588 Time of Day Clock Altera FPGA IP">
+ <timestamp>2025-06-23T22:58:18.077876442</timestamp>
+ <file></file>
+ <old_version>20.1.2</old_version>
+ <new_version>21.1.3</new_version>
+ <changes>
+  <change>21.1.3</change>
+  <change>No parameter change</change>
+  <change>No parameter change</change>
+  <change>No port change</change>
+  <change>No port change</change>
+  <change>Altera Rebranding</change>
+  <change>Initial Changes for Advanced PPS</change>
+ </changes>
+</ip>
+
+<ip name="Content-Addressable Memory IP">
+ <timestamp>2025-06-23T22:58:18.439615029</timestamp>
+ <file></file>
+ <old_version>3.0.1</old_version>
+ <new_version>4.0.0</new_version>
+ <changes>
+  <change>4.0.0</change>
+  <change> TCAM result memory read access bug fix </change>
+ </changes>
+</ip>

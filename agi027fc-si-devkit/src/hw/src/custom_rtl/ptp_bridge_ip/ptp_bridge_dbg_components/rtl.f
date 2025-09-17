@@ -1,0 +1,9 @@
+tx_dbg_csr.v
+rx_dbg_csr.v
+ptp_bridge_dbg_cntr.sv
+ptp_bridge_tx_dbg_cntr_intf.sv
+ptp_bridge_rx_dbg_cntr_intf.sv
+ptp_bridge_tx_dbg.sv
+ptp_bridge_rx_dbg.sv
+ptp_bridge_rx_avmm_addr_chk.sv
+ptp_bridge_tx_avmm_addr_chk.sv

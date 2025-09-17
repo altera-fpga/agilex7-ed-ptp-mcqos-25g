@@ -1,0 +1,6045 @@
+# ######################################################################## 
+# Copyright (C) 2025 Altera Corporation.
+# SPDX-License-Identifier: MIT
+# ######################################################################## 
+
+package require -exact qsys 21.3
+
+# create the system "subsys_ftile_1588"
+proc do_create_subsys_ftile_1588 {} {
+	# create the system
+	create_system subsys_ftile_1588
+	set_project_property DEVICE {AGIB027R31B1E2V}
+	set_project_property DEVICE_FAMILY {Agilex}
+	set_project_property HIDE_FROM_IP_CATALOG {false}
+	set_use_testbench_naming_pattern 0 {}
+
+	# add HDL parameters
+
+	# add the components
+	add_instance ftile_rx_dma_ch1 subsys_ftile_rx_dma
+	add_instance ftile_tx_dma_ch1 subsys_ftile_tx_dma
+	add_component ftile_debug_status_pio_0 ip/subsys_ftile_1588/ftile_debug_status_pio_0.ip altera_avalon_pio altera_avalon_pio_inst 19.2.0
+	load_component ftile_debug_status_pio_0
+	set_component_parameter_value bitClearingEdgeCapReg {0}
+	set_component_parameter_value bitModifyingOutReg {0}
+	set_component_parameter_value captureEdge {1}
+	set_component_parameter_value direction {Input}
+	set_component_parameter_value edgeType {RISING}
+	set_component_parameter_value generateIRQ {1}
+	set_component_parameter_value irqType {LEVEL}
+	set_component_parameter_value resetValue {0.0}
+	set_component_parameter_value simDoTestBenchWiring {0}
+	set_component_parameter_value simDrivenValue {0.0}
+	set_component_parameter_value width {13}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation ftile_debug_status_pio_0
+	remove_instantiation_interfaces_and_ports
+	set_instantiation_assignment_value embeddedsw.CMacro.BIT_CLEARING_EDGE_REGISTER {0}
+	set_instantiation_assignment_value embeddedsw.CMacro.BIT_MODIFYING_OUTPUT_REGISTER {0}
+	set_instantiation_assignment_value embeddedsw.CMacro.CAPTURE {1}
+	set_instantiation_assignment_value embeddedsw.CMacro.DATA_WIDTH {13}
+	set_instantiation_assignment_value embeddedsw.CMacro.DO_TEST_BENCH_WIRING {0}
+	set_instantiation_assignment_value embeddedsw.CMacro.DRIVEN_SIM_VALUE {0}
+	set_instantiation_assignment_value embeddedsw.CMacro.EDGE_TYPE {RISING}
+	set_instantiation_assignment_value embeddedsw.CMacro.FREQ {100000000}
+	set_instantiation_assignment_value embeddedsw.CMacro.HAS_IN {1}
+	set_instantiation_assignment_value embeddedsw.CMacro.HAS_OUT {0}
+	set_instantiation_assignment_value embeddedsw.CMacro.HAS_TRI {0}
+	set_instantiation_assignment_value embeddedsw.CMacro.IRQ_TYPE {LEVEL}
+	set_instantiation_assignment_value embeddedsw.CMacro.RESET_VALUE {0}
+	set_instantiation_assignment_value embeddedsw.dts.compatible {altr,pio-1.0}
+	set_instantiation_assignment_value embeddedsw.dts.group {gpio}
+	set_instantiation_assignment_value embeddedsw.dts.name {pio}
+	set_instantiation_assignment_value embeddedsw.dts.params.altr,gpio-bank-width {13}
+	set_instantiation_assignment_value embeddedsw.dts.params.altr,interrupt-type {4}
+	set_instantiation_assignment_value embeddedsw.dts.params.altr,interrupt_type {4}
+	set_instantiation_assignment_value embeddedsw.dts.params.level_trigger {1}
+	set_instantiation_assignment_value embeddedsw.dts.params.resetvalue {0}
+	set_instantiation_assignment_value embeddedsw.dts.vendor {altr}
+	add_instantiation_interface clk clock INPUT
+	set_instantiation_interface_parameter_value clk clockRate {0}
+	set_instantiation_interface_parameter_value clk externallyDriven {false}
+	set_instantiation_interface_parameter_value clk ptfSchematicName {}
+	add_instantiation_interface_port clk clk clk 1 STD_LOGIC Input
+	add_instantiation_interface reset reset INPUT
+	set_instantiation_interface_parameter_value reset associatedClock {clk}
+	set_instantiation_interface_parameter_value reset synchronousEdges {DEASSERT}
+	add_instantiation_interface_port reset reset_n reset_n 1 STD_LOGIC Input
+	add_instantiation_interface s1 avalon INPUT
+	set_instantiation_interface_parameter_value s1 addressAlignment {NATIVE}
+	set_instantiation_interface_parameter_value s1 addressGroup {0}
+	set_instantiation_interface_parameter_value s1 addressSpan {4}
+	set_instantiation_interface_parameter_value s1 addressUnits {WORDS}
+	set_instantiation_interface_parameter_value s1 alwaysBurstMaxBurst {false}
+	set_instantiation_interface_parameter_value s1 associatedClock {clk}
+	set_instantiation_interface_parameter_value s1 associatedReset {reset}
+	set_instantiation_interface_parameter_value s1 bitsPerSymbol {8}
+	set_instantiation_interface_parameter_value s1 bridgedAddressOffset {0}
+	set_instantiation_interface_parameter_value s1 bridgesToMaster {}
+	set_instantiation_interface_parameter_value s1 burstOnBurstBoundariesOnly {false}
+	set_instantiation_interface_parameter_value s1 burstcountUnits {WORDS}
+	set_instantiation_interface_parameter_value s1 constantBurstBehavior {false}
+	set_instantiation_interface_parameter_value s1 explicitAddressSpan {0}
+	set_instantiation_interface_parameter_value s1 holdTime {0}
+	set_instantiation_interface_parameter_value s1 interleaveBursts {false}
+	set_instantiation_interface_parameter_value s1 isBigEndian {false}
+	set_instantiation_interface_parameter_value s1 isFlash {false}
+	set_instantiation_interface_parameter_value s1 isMemoryDevice {false}
+	set_instantiation_interface_parameter_value s1 isNonVolatileStorage {false}
+	set_instantiation_interface_parameter_value s1 linewrapBursts {false}
+	set_instantiation_interface_parameter_value s1 maximumPendingReadTransactions {0}
+	set_instantiation_interface_parameter_value s1 maximumPendingWriteTransactions {0}
+	set_instantiation_interface_parameter_value s1 minimumReadLatency {1}
+	set_instantiation_interface_parameter_value s1 minimumResponseLatency {1}
+	set_instantiation_interface_parameter_value s1 minimumUninterruptedRunLength {1}
+	set_instantiation_interface_parameter_value s1 prSafe {false}
+	set_instantiation_interface_parameter_value s1 printableDevice {false}
+	set_instantiation_interface_parameter_value s1 readLatency {0}
+	set_instantiation_interface_parameter_value s1 readWaitStates {1}
+	set_instantiation_interface_parameter_value s1 readWaitTime {1}
+	set_instantiation_interface_parameter_value s1 registerIncomingSignals {false}
+	set_instantiation_interface_parameter_value s1 registerOutgoingSignals {false}
+	set_instantiation_interface_parameter_value s1 setupTime {0}
+	set_instantiation_interface_parameter_value s1 timingUnits {Cycles}
+	set_instantiation_interface_parameter_value s1 transparentBridge {false}
+	set_instantiation_interface_parameter_value s1 waitrequestAllowance {0}
+	set_instantiation_interface_parameter_value s1 wellBehavedWaitrequest {false}
+	set_instantiation_interface_parameter_value s1 writeLatency {0}
+	set_instantiation_interface_parameter_value s1 writeWaitStates {0}
+	set_instantiation_interface_parameter_value s1 writeWaitTime {0}
+	set_instantiation_interface_assignment_value s1 embeddedsw.configuration.isFlash {0}
+	set_instantiation_interface_assignment_value s1 embeddedsw.configuration.isMemoryDevice {0}
+	set_instantiation_interface_assignment_value s1 embeddedsw.configuration.isNonVolatileStorage {0}
+	set_instantiation_interface_assignment_value s1 embeddedsw.configuration.isPrintableDevice {0}
+	set_instantiation_interface_sysinfo_parameter_value s1 address_map {<address-map><slave name='s1' start='0x0' end='0x10' datawidth='32' /></address-map>}
+	set_instantiation_interface_sysinfo_parameter_value s1 address_width {4}
+	set_instantiation_interface_sysinfo_parameter_value s1 max_slave_data_width {32}
+	add_instantiation_interface_port s1 address address 2 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port s1 write_n write_n 1 STD_LOGIC Input
+	add_instantiation_interface_port s1 writedata writedata 32 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port s1 chipselect chipselect 1 STD_LOGIC Input
+	add_instantiation_interface_port s1 readdata readdata 32 STD_LOGIC_VECTOR Output
+	add_instantiation_interface external_connection conduit INPUT
+	set_instantiation_interface_parameter_value external_connection associatedClock {}
+	set_instantiation_interface_parameter_value external_connection associatedReset {}
+	set_instantiation_interface_parameter_value external_connection prSafe {false}
+	add_instantiation_interface_port external_connection in_port export 13 STD_LOGIC_VECTOR Input
+	add_instantiation_interface irq interrupt INPUT
+	set_instantiation_interface_parameter_value irq associatedAddressablePoint {s1}
+	set_instantiation_interface_parameter_value irq associatedClock {clk}
+	set_instantiation_interface_parameter_value irq associatedReset {reset}
+	set_instantiation_interface_parameter_value irq bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value irq bridgesToReceiver {}
+	set_instantiation_interface_parameter_value irq irqScheme {NONE}
+	set_instantiation_interface_assignment_value irq embeddedsw.dts.irq.tx_type {ACTIVE_HIGH}
+	add_instantiation_interface_port irq irq irq 1 STD_LOGIC Output
+	save_instantiation
+	add_instance ftile_eth_hw_ip_top_0 altera_generic_component
+	load_instantiation ftile_eth_hw_ip_top_0
+	set_instantiation_property HDL_COMPILATION_LIBRARY {subsys_ftile_1588_ftile_eth_hw_ip_top_0}
+	set_instantiation_property HDL_ENTITY_NAME {ftile_eth_hw_ip_top}
+	set_instantiation_property IP_FILE {}
+	add_instantiation_hdl_file {intel_custom_ip/ftile_eth_hw_ip_top/ftile_eth_hw_ip_top.sv}
+	set_instantiation_hdl_file_property ftile_eth_hw_ip_top.sv CONTAINS_INLINE_CONFIGURATION {false}
+	set_instantiation_hdl_file_property ftile_eth_hw_ip_top.sv IS_CONFIGURATION_PACKAGE {false}
+	set_instantiation_hdl_file_property ftile_eth_hw_ip_top.sv IS_TOP_LEVEL {true}
+	set_instantiation_hdl_file_property ftile_eth_hw_ip_top.sv TYPE {SYSTEM_VERILOG}
+	set_instantiation_hdl_file_property ftile_eth_hw_ip_top.sv PATH {ftile_eth_hw_ip_top.sv}
+	add_instantiation_hdl_parameter CLIENT_IF_TYPE INTEGER {0} {}
+	add_instantiation_hdl_parameter LANE_NUM INTEGER {1} {}
+	add_instantiation_hdl_parameter WORDS INTEGER {8} {}
+	add_instantiation_hdl_parameter WIDTH INTEGER {64} {}
+	add_instantiation_hdl_parameter EMPTY_WIDTH INTEGER {6} {}
+	add_instantiation_hdl_parameter AVMM_ADDR_WIDTH INTEGER {24} {}
+	add_instantiation_hdl_parameter AVMM_ETH_START_ADDR STD_LOGIC_VECTOR {0} {}
+	set_instantiation_hdl_parameter_property AVMM_ETH_START_ADDR WIDTH 9
+	add_instantiation_hdl_parameter AVMM_XCVR_START_ADDR STD_LOGIC_VECTOR {8388608} {}
+	set_instantiation_hdl_parameter_property AVMM_XCVR_START_ADDR WIDTH 9
+	add_instantiation_hdl_parameter AVMM_STATUS_START_ADDR STD_LOGIC_VECTOR {1048576} {}
+	set_instantiation_hdl_parameter_property AVMM_STATUS_START_ADDR WIDTH 9
+	add_instantiation_hdl_parameter NUMPORTS INTEGER {1} {}
+	add_instantiation_hdl_parameter SIM_EMULATE INTEGER {0} {}
+	add_instantiation_hdl_parameter PKT_CYL INTEGER {1} {}
+	add_instantiation_hdl_parameter PTP_FP_WIDTH INTEGER {8} {}
+	add_instantiation_interface i_clk_sys clock INPUT
+	set_instantiation_interface_parameter_value i_clk_sys clockRate {0}
+	set_instantiation_interface_parameter_value i_clk_sys externallyDriven {false}
+	set_instantiation_interface_parameter_value i_clk_sys ptfSchematicName {}
+	add_instantiation_interface_port i_clk_sys i_clk_sys clk 1 STD_LOGIC Input
+	add_instantiation_interface i_clk_ref clock INPUT
+	set_instantiation_interface_parameter_value i_clk_ref clockRate {0}
+	set_instantiation_interface_parameter_value i_clk_ref externallyDriven {false}
+	set_instantiation_interface_parameter_value i_clk_ref ptfSchematicName {}
+	add_instantiation_interface_port i_clk_ref i_clk_ref clk 1 STD_LOGIC Input
+	add_instantiation_interface i_reconfig_clk clock INPUT
+	set_instantiation_interface_parameter_value i_reconfig_clk clockRate {0}
+	set_instantiation_interface_parameter_value i_reconfig_clk externallyDriven {false}
+	set_instantiation_interface_parameter_value i_reconfig_clk ptfSchematicName {}
+	add_instantiation_interface_port i_reconfig_clk i_reconfig_clk clk 1 STD_LOGIC Input
+	add_instantiation_interface i_reconfig_reset reset INPUT
+	set_instantiation_interface_parameter_value i_reconfig_reset associatedClock {}
+	set_instantiation_interface_parameter_value i_reconfig_reset synchronousEdges {NONE}
+	add_instantiation_interface_port i_reconfig_reset i_reconfig_reset reset 1 STD_LOGIC Input
+	add_instantiation_interface i_clk_tx_tod clock INPUT
+	set_instantiation_interface_parameter_value i_clk_tx_tod clockRate {0}
+	set_instantiation_interface_parameter_value i_clk_tx_tod externallyDriven {false}
+	set_instantiation_interface_parameter_value i_clk_tx_tod ptfSchematicName {}
+	add_instantiation_interface_port i_clk_tx_tod i_clk_tx_tod clk 1 STD_LOGIC Input
+	add_instantiation_interface i_clk_rx_tod clock INPUT
+	set_instantiation_interface_parameter_value i_clk_rx_tod clockRate {0}
+	set_instantiation_interface_parameter_value i_clk_rx_tod externallyDriven {false}
+	set_instantiation_interface_parameter_value i_clk_rx_tod ptfSchematicName {}
+	add_instantiation_interface_port i_clk_rx_tod i_clk_rx_tod clk 1 STD_LOGIC Input
+	add_instantiation_interface i_clk_ptp_sample clock INPUT
+	set_instantiation_interface_parameter_value i_clk_ptp_sample clockRate {0}
+	set_instantiation_interface_parameter_value i_clk_ptp_sample externallyDriven {false}
+	set_instantiation_interface_parameter_value i_clk_ptp_sample ptfSchematicName {}
+	add_instantiation_interface_port i_clk_ptp_sample i_clk_ptp_sample clk 1 STD_LOGIC Input
+	add_instantiation_interface i_clk_master_tod clock INPUT
+	set_instantiation_interface_parameter_value i_clk_master_tod clockRate {0}
+	set_instantiation_interface_parameter_value i_clk_master_tod externallyDriven {false}
+	set_instantiation_interface_parameter_value i_clk_master_tod ptfSchematicName {}
+	add_instantiation_interface_port i_clk_master_tod i_clk_master_tod clk 1 STD_LOGIC Input
+	add_instantiation_interface i_clk_todsync_sample clock INPUT
+	set_instantiation_interface_parameter_value i_clk_todsync_sample clockRate {0}
+	set_instantiation_interface_parameter_value i_clk_todsync_sample externallyDriven {false}
+	set_instantiation_interface_parameter_value i_clk_todsync_sample ptfSchematicName {}
+	add_instantiation_interface_port i_clk_todsync_sample i_clk_todsync_sample clk 1 STD_LOGIC Input
+	add_instantiation_interface i_clk_todsync_sample_locked conduit INPUT
+	set_instantiation_interface_parameter_value i_clk_todsync_sample_locked associatedClock {}
+	set_instantiation_interface_parameter_value i_clk_todsync_sample_locked associatedReset {}
+	set_instantiation_interface_parameter_value i_clk_todsync_sample_locked prSafe {false}
+	add_instantiation_interface_port i_clk_todsync_sample_locked i_clk_todsync_sample_locked export 1 STD_LOGIC Input
+	add_instantiation_interface i_clk_todsync_sample_10g clock INPUT
+	set_instantiation_interface_parameter_value i_clk_todsync_sample_10g clockRate {0}
+	set_instantiation_interface_parameter_value i_clk_todsync_sample_10g externallyDriven {false}
+	set_instantiation_interface_parameter_value i_clk_todsync_sample_10g ptfSchematicName {}
+	add_instantiation_interface_port i_clk_todsync_sample_10g i_clk_todsync_sample_10g clk 1 STD_LOGIC Input
+	add_instantiation_interface i_clk_todsync_sample_locked_10g conduit INPUT
+	set_instantiation_interface_parameter_value i_clk_todsync_sample_locked_10g associatedClock {}
+	set_instantiation_interface_parameter_value i_clk_todsync_sample_locked_10g associatedReset {}
+	set_instantiation_interface_parameter_value i_clk_todsync_sample_locked_10g prSafe {false}
+	add_instantiation_interface_port i_clk_todsync_sample_locked_10g i_clk_todsync_sample_locked_10g i_clk_todsync_sample_locked_10g 1 STD_LOGIC Input
+	add_instantiation_interface i_ptp_master_tod_rst_n reset INPUT
+	set_instantiation_interface_parameter_value i_ptp_master_tod_rst_n associatedClock {}
+	set_instantiation_interface_parameter_value i_ptp_master_tod_rst_n synchronousEdges {NONE}
+	add_instantiation_interface_port i_ptp_master_tod_rst_n i_ptp_master_tod_rst_n reset_n 1 STD_LOGIC Input
+	add_instantiation_interface i_clk_tx clock INPUT
+	set_instantiation_interface_parameter_value i_clk_tx clockRate {0}
+	set_instantiation_interface_parameter_value i_clk_tx externallyDriven {false}
+	set_instantiation_interface_parameter_value i_clk_tx ptfSchematicName {}
+	add_instantiation_interface_port i_clk_tx i_clk_tx clk 1 STD_LOGIC Input
+	add_instantiation_interface i_clk_rx clock INPUT
+	set_instantiation_interface_parameter_value i_clk_rx clockRate {0}
+	set_instantiation_interface_parameter_value i_clk_rx externallyDriven {false}
+	set_instantiation_interface_parameter_value i_clk_rx ptfSchematicName {}
+	add_instantiation_interface_port i_clk_rx i_clk_rx clk 1 STD_LOGIC Input
+	add_instantiation_interface o_clk_tx_div clock OUTPUT
+	set_instantiation_interface_parameter_value o_clk_tx_div associatedDirectClock {}
+	set_instantiation_interface_parameter_value o_clk_tx_div clockRate {0}
+	set_instantiation_interface_parameter_value o_clk_tx_div clockRateKnown {false}
+	set_instantiation_interface_parameter_value o_clk_tx_div externallyDriven {false}
+	set_instantiation_interface_parameter_value o_clk_tx_div ptfSchematicName {}
+	set_instantiation_interface_sysinfo_parameter_value o_clk_tx_div clock_rate {0}
+	add_instantiation_interface_port o_clk_tx_div o_clk_tx_div clk 1 STD_LOGIC Output
+	add_instantiation_interface o_clk_pll clock OUTPUT
+	set_instantiation_interface_parameter_value o_clk_pll associatedDirectClock {}
+	set_instantiation_interface_parameter_value o_clk_pll clockRate {0}
+	set_instantiation_interface_parameter_value o_clk_pll clockRateKnown {false}
+	set_instantiation_interface_parameter_value o_clk_pll externallyDriven {false}
+	set_instantiation_interface_parameter_value o_clk_pll ptfSchematicName {}
+	set_instantiation_interface_sysinfo_parameter_value o_clk_pll clock_rate {0}
+	add_instantiation_interface_port o_clk_pll o_clk_pll clk 1 STD_LOGIC Output
+	add_instantiation_interface o_clk_rec_div64 clock OUTPUT
+	set_instantiation_interface_parameter_value o_clk_rec_div64 associatedDirectClock {}
+	set_instantiation_interface_parameter_value o_clk_rec_div64 clockRate {0}
+	set_instantiation_interface_parameter_value o_clk_rec_div64 clockRateKnown {false}
+	set_instantiation_interface_parameter_value o_clk_rec_div64 externallyDriven {false}
+	set_instantiation_interface_parameter_value o_clk_rec_div64 ptfSchematicName {}
+	set_instantiation_interface_sysinfo_parameter_value o_clk_rec_div64 clock_rate {0}
+	add_instantiation_interface_port o_clk_rec_div64 o_clk_rec_div64 clk 1 STD_LOGIC Output
+	add_instantiation_interface o_clk_rec_div clock OUTPUT
+	set_instantiation_interface_parameter_value o_clk_rec_div associatedDirectClock {}
+	set_instantiation_interface_parameter_value o_clk_rec_div clockRate {0}
+	set_instantiation_interface_parameter_value o_clk_rec_div clockRateKnown {false}
+	set_instantiation_interface_parameter_value o_clk_rec_div externallyDriven {false}
+	set_instantiation_interface_parameter_value o_clk_rec_div ptfSchematicName {}
+	set_instantiation_interface_sysinfo_parameter_value o_clk_rec_div clock_rate {0}
+	add_instantiation_interface_port o_clk_rec_div o_clk_rec_div clk 1 STD_LOGIC Output
+	add_instantiation_interface serial conduit INPUT
+	set_instantiation_interface_parameter_value serial associatedClock {}
+	set_instantiation_interface_parameter_value serial associatedReset {}
+	set_instantiation_interface_parameter_value serial prSafe {false}
+	add_instantiation_interface_port serial i_rx_serial i_rx_serial 1 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port serial i_rx_serial_n i_rx_serial_n 1 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port serial o_tx_serial o_tx_serial 1 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port serial o_tx_serial_n o_tx_serial_n 1 STD_LOGIC_VECTOR Output
+	add_instantiation_interface ptp_ports conduit INPUT
+	set_instantiation_interface_parameter_value ptp_ports associatedClock {}
+	set_instantiation_interface_parameter_value ptp_ports associatedReset {}
+	set_instantiation_interface_parameter_value ptp_ports prSafe {false}
+	add_instantiation_interface_port ptp_ports ptp_link ptp_link 1 STD_LOGIC Input
+	add_instantiation_interface_port ptp_ports ptp_p2p ptp_p2p 1 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port ptp_ports ptp_asym ptp_asym 1 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port ptp_ports ptp_asym_sign ptp_asym_sign 1 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port ptp_ports ptp_asym_p2p_idx ptp_asym_p2p_idx 7 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port ptp_ports ptp_tx_tod_muxed ptp_tx_tod_muxed 96 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port ptp_ports ptp_tx_tod_valid_muxed ptp_tx_tod_valid_muxed 1 STD_LOGIC Output
+	add_instantiation_interface tx_mac_avst avalon_streaming INPUT
+	set_instantiation_interface_parameter_value tx_mac_avst associatedClock {i_clk_tx}
+	set_instantiation_interface_parameter_value tx_mac_avst associatedReset {i_tx_rst_n}
+	set_instantiation_interface_parameter_value tx_mac_avst beatsPerCycle {1}
+	set_instantiation_interface_parameter_value tx_mac_avst dataBitsPerSymbol {8}
+	set_instantiation_interface_parameter_value tx_mac_avst emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value tx_mac_avst errorDescriptor {}
+	set_instantiation_interface_parameter_value tx_mac_avst firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value tx_mac_avst highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value tx_mac_avst maxChannel {0}
+	set_instantiation_interface_parameter_value tx_mac_avst packetDescription {}
+	set_instantiation_interface_parameter_value tx_mac_avst prSafe {false}
+	set_instantiation_interface_parameter_value tx_mac_avst readyAllowance {0}
+	set_instantiation_interface_parameter_value tx_mac_avst readyLatency {0}
+	set_instantiation_interface_parameter_value tx_mac_avst symbolsPerBeat {1}
+	add_instantiation_interface_port tx_mac_avst o_tx_dmac_ready ready 1 STD_LOGIC Output
+	add_instantiation_interface_port tx_mac_avst i_tx_dmac_valid valid 1 STD_LOGIC Input
+	add_instantiation_interface_port tx_mac_avst i_tx_dmac_sop startofpacket 1 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port tx_mac_avst i_tx_dmac_eop endofpacket 1 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port tx_mac_avst i_tx_dmac_eop_empty empty 3 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port tx_mac_avst i_tx_dmac_data data 64 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port tx_mac_avst i_tx_dmac_error error 1 STD_LOGIC_VECTOR Input
+	add_instantiation_interface rx_mac_avst avalon_streaming OUTPUT
+	set_instantiation_interface_parameter_value rx_mac_avst associatedClock {i_clk_rx}
+	set_instantiation_interface_parameter_value rx_mac_avst associatedReset {i_rx_rst_n}
+	set_instantiation_interface_parameter_value rx_mac_avst beatsPerCycle {1}
+	set_instantiation_interface_parameter_value rx_mac_avst dataBitsPerSymbol {8}
+	set_instantiation_interface_parameter_value rx_mac_avst emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value rx_mac_avst errorDescriptor {}
+	set_instantiation_interface_parameter_value rx_mac_avst firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value rx_mac_avst highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value rx_mac_avst maxChannel {0}
+	set_instantiation_interface_parameter_value rx_mac_avst packetDescription {}
+	set_instantiation_interface_parameter_value rx_mac_avst prSafe {false}
+	set_instantiation_interface_parameter_value rx_mac_avst readyAllowance {0}
+	set_instantiation_interface_parameter_value rx_mac_avst readyLatency {0}
+	set_instantiation_interface_parameter_value rx_mac_avst symbolsPerBeat {1}
+	add_instantiation_interface_port rx_mac_avst o_rx_dmac_valid valid 1 STD_LOGIC Output
+	add_instantiation_interface_port rx_mac_avst o_rx_dmac_sop startofpacket 1 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port rx_mac_avst o_rx_dmac_eop endofpacket 1 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port rx_mac_avst o_rx_dmac_eop_empty empty 3 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port rx_mac_avst o_rx_dmac_data data 64 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port rx_mac_avst o_rx_dmac_error error 2 STD_LOGIC_VECTOR Output
+	add_instantiation_interface reconfig_eth_xcvr_slave avalon INPUT
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave addressAlignment {DYNAMIC}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave addressGroup {0}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave addressSpan {67108864}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave addressUnits {WORDS}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave alwaysBurstMaxBurst {false}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave associatedClock {i_reconfig_clk}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave associatedReset {i_reconfig_reset}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave bitsPerSymbol {8}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave bridgedAddressOffset {0}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave bridgesToMaster {}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave burstOnBurstBoundariesOnly {false}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave burstcountUnits {WORDS}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave constantBurstBehavior {false}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave explicitAddressSpan {0}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave holdTime {0}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave interleaveBursts {false}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave isBigEndian {false}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave isFlash {false}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave isMemoryDevice {false}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave isNonVolatileStorage {false}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave linewrapBursts {false}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave maximumPendingReadTransactions {1}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave maximumPendingWriteTransactions {0}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave minimumReadLatency {1}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave minimumResponseLatency {1}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave minimumUninterruptedRunLength {1}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave prSafe {false}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave printableDevice {false}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave readLatency {0}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave readWaitStates {1}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave readWaitTime {1}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave registerIncomingSignals {false}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave registerOutgoingSignals {false}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave setupTime {0}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave timingUnits {Cycles}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave transparentBridge {false}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave waitrequestAllowance {0}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave wellBehavedWaitrequest {false}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave writeLatency {0}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave writeWaitStates {0}
+	set_instantiation_interface_parameter_value reconfig_eth_xcvr_slave writeWaitTime {0}
+	set_instantiation_interface_assignment_value reconfig_eth_xcvr_slave embeddedsw.configuration.isFlash {0}
+	set_instantiation_interface_assignment_value reconfig_eth_xcvr_slave embeddedsw.configuration.isMemoryDevice {0}
+	set_instantiation_interface_assignment_value reconfig_eth_xcvr_slave embeddedsw.configuration.isNonVolatileStorage {0}
+	set_instantiation_interface_assignment_value reconfig_eth_xcvr_slave embeddedsw.configuration.isPrintableDevice {0}
+	set_instantiation_interface_sysinfo_parameter_value reconfig_eth_xcvr_slave address_map {<address-map><slave name='reconfig_eth_xcvr_slave' start='0x0' end='0x4000000' datawidth='32' /></address-map>}
+	set_instantiation_interface_sysinfo_parameter_value reconfig_eth_xcvr_slave address_width {26}
+	set_instantiation_interface_sysinfo_parameter_value reconfig_eth_xcvr_slave max_slave_data_width {32}
+	add_instantiation_interface_port reconfig_eth_xcvr_slave i_jtag_address address 24 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port reconfig_eth_xcvr_slave i_jtag_read read 1 STD_LOGIC Input
+	add_instantiation_interface_port reconfig_eth_xcvr_slave i_jtag_write write 1 STD_LOGIC Input
+	add_instantiation_interface_port reconfig_eth_xcvr_slave i_jtag_writedata writedata 32 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port reconfig_eth_xcvr_slave i_jtag_byteenable byteenable 4 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port reconfig_eth_xcvr_slave o_jtag_readdata readdata 32 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port reconfig_eth_xcvr_slave o_jtag_readdatavalid readdatavalid 1 STD_LOGIC Output
+	add_instantiation_interface_port reconfig_eth_xcvr_slave o_jtag_waitrequest waitrequest 1 STD_LOGIC Output
+	add_instantiation_interface reconfig_status_master avalon OUTPUT
+	set_instantiation_interface_parameter_value reconfig_status_master adaptsTo {}
+	set_instantiation_interface_parameter_value reconfig_status_master addressGroup {0}
+	set_instantiation_interface_parameter_value reconfig_status_master addressUnits {SYMBOLS}
+	set_instantiation_interface_parameter_value reconfig_status_master alwaysBurstMaxBurst {false}
+	set_instantiation_interface_parameter_value reconfig_status_master associatedClock {i_reconfig_clk}
+	set_instantiation_interface_parameter_value reconfig_status_master associatedReset {i_reconfig_reset}
+	set_instantiation_interface_parameter_value reconfig_status_master bitsPerSymbol {8}
+	set_instantiation_interface_parameter_value reconfig_status_master burstOnBurstBoundariesOnly {false}
+	set_instantiation_interface_parameter_value reconfig_status_master burstcountUnits {WORDS}
+	set_instantiation_interface_parameter_value reconfig_status_master constantBurstBehavior {false}
+	set_instantiation_interface_parameter_value reconfig_status_master dBSBigEndian {false}
+	set_instantiation_interface_parameter_value reconfig_status_master doStreamReads {false}
+	set_instantiation_interface_parameter_value reconfig_status_master doStreamWrites {false}
+	set_instantiation_interface_parameter_value reconfig_status_master holdTime {0}
+	set_instantiation_interface_parameter_value reconfig_status_master interleaveBursts {false}
+	set_instantiation_interface_parameter_value reconfig_status_master isAsynchronous {false}
+	set_instantiation_interface_parameter_value reconfig_status_master isBigEndian {false}
+	set_instantiation_interface_parameter_value reconfig_status_master isReadable {false}
+	set_instantiation_interface_parameter_value reconfig_status_master isWriteable {false}
+	set_instantiation_interface_parameter_value reconfig_status_master linewrapBursts {false}
+	set_instantiation_interface_parameter_value reconfig_status_master maxAddressWidth {32}
+	set_instantiation_interface_parameter_value reconfig_status_master maximumPendingReadTransactions {0}
+	set_instantiation_interface_parameter_value reconfig_status_master maximumPendingWriteTransactions {0}
+	set_instantiation_interface_parameter_value reconfig_status_master minimumReadLatency {1}
+	set_instantiation_interface_parameter_value reconfig_status_master minimumResponseLatency {1}
+	set_instantiation_interface_parameter_value reconfig_status_master prSafe {false}
+	set_instantiation_interface_parameter_value reconfig_status_master readLatency {0}
+	set_instantiation_interface_parameter_value reconfig_status_master readWaitTime {1}
+	set_instantiation_interface_parameter_value reconfig_status_master registerIncomingSignals {false}
+	set_instantiation_interface_parameter_value reconfig_status_master registerOutgoingSignals {false}
+	set_instantiation_interface_parameter_value reconfig_status_master setupTime {0}
+	set_instantiation_interface_parameter_value reconfig_status_master timingUnits {Cycles}
+	set_instantiation_interface_parameter_value reconfig_status_master waitrequestAllowance {0}
+	set_instantiation_interface_parameter_value reconfig_status_master writeWaitTime {0}
+	add_instantiation_interface_port reconfig_status_master o_status_addr address 23 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port reconfig_status_master o_status_read read 1 STD_LOGIC Output
+	add_instantiation_interface_port reconfig_status_master o_status_write write 1 STD_LOGIC Output
+	add_instantiation_interface_port reconfig_status_master o_status_writedata writedata 32 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port reconfig_status_master i_status_readdata readdata 32 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port reconfig_status_master i_status_readdata_valid readdatavalid 1 STD_LOGIC Input
+	add_instantiation_interface_port reconfig_status_master i_status_waitrequest waitrequest 1 STD_LOGIC Input
+	add_instantiation_interface_port reconfig_status_master i_status_byteenable byteenable_n 4 STD_LOGIC_VECTOR Output
+	add_instantiation_interface o_status_debug conduit INPUT
+	set_instantiation_interface_parameter_value o_status_debug associatedClock {}
+	set_instantiation_interface_parameter_value o_status_debug associatedReset {}
+	set_instantiation_interface_parameter_value o_status_debug prSafe {false}
+	add_instantiation_interface_port o_status_debug o_rst_ack_n export 1 STD_LOGIC Output
+	add_instantiation_interface_port o_status_debug o_tx_rst_ack_n export 1 STD_LOGIC Output
+	add_instantiation_interface_port o_status_debug o_rx_rst_ack_n export 1 STD_LOGIC Output
+	add_instantiation_interface_port o_status_debug o_rx_pcs_ready export 1 STD_LOGIC Output
+	add_instantiation_interface_port o_status_debug o_tx_lanes_stable export 1 STD_LOGIC Output
+	add_instantiation_interface_port o_status_debug o_cdr_lock export 1 STD_LOGIC Output
+	add_instantiation_interface_port o_status_debug o_tx_pll_locked export 1 STD_LOGIC Output
+	add_instantiation_interface_port o_status_debug o_rx_dmac_fcs_error export 1 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port o_status_debug o_rx_dmac_status export 3 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port o_status_debug o_debug_status_bits export 13 STD_LOGIC_VECTOR Output
+	add_instantiation_interface i_mtod_data conduit INPUT
+	set_instantiation_interface_parameter_value i_mtod_data associatedClock {}
+	set_instantiation_interface_parameter_value i_mtod_data associatedReset {}
+	set_instantiation_interface_parameter_value i_mtod_data prSafe {false}
+	add_instantiation_interface_port i_mtod_data i_ptp_master_tod data 96 STD_LOGIC_VECTOR Input
+	add_instantiation_interface i_mtod_valid conduit INPUT
+	set_instantiation_interface_parameter_value i_mtod_valid associatedClock {}
+	set_instantiation_interface_parameter_value i_mtod_valid associatedReset {}
+	set_instantiation_interface_parameter_value i_mtod_valid prSafe {false}
+	add_instantiation_interface_port i_mtod_valid i_ptp_master_tod_valid i_ptp_master_tod_valid 1 STD_LOGIC Input
+	add_instantiation_interface i_todsync_sel conduit INPUT
+	set_instantiation_interface_parameter_value i_todsync_sel associatedClock {}
+	set_instantiation_interface_parameter_value i_todsync_sel associatedReset {}
+	set_instantiation_interface_parameter_value i_todsync_sel prSafe {false}
+	add_instantiation_interface_port i_todsync_sel i_todsync_sel i_todsync_sel 1 STD_LOGIC Input
+	add_instantiation_interface timestamp_request conduit INPUT
+	set_instantiation_interface_parameter_value timestamp_request associatedClock {}
+	set_instantiation_interface_parameter_value timestamp_request associatedReset {}
+	set_instantiation_interface_parameter_value timestamp_request prSafe {false}
+	add_instantiation_interface_port timestamp_request ptp_ts_req valid 1 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port timestamp_request ptp_fp fingerprint 8 STD_LOGIC_VECTOR Input
+	add_instantiation_interface tx_timestamp conduit INPUT
+	set_instantiation_interface_parameter_value tx_timestamp associatedClock {}
+	set_instantiation_interface_parameter_value tx_timestamp associatedReset {}
+	set_instantiation_interface_parameter_value tx_timestamp prSafe {false}
+	add_instantiation_interface_port tx_timestamp ptp_ets_valid valid 1 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port tx_timestamp ptp_ets data 96 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port tx_timestamp ptp_ets_fp fingerprint 8 STD_LOGIC_VECTOR Output
+	add_instantiation_interface rx_timestamp conduit INPUT
+	set_instantiation_interface_parameter_value rx_timestamp associatedClock {}
+	set_instantiation_interface_parameter_value rx_timestamp associatedReset {}
+	set_instantiation_interface_parameter_value rx_timestamp prSafe {false}
+	add_instantiation_interface_port rx_timestamp ptp_rx_its data 96 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port rx_timestamp ptp_rx_its_valid valid 1 STD_LOGIC Output
+	add_instantiation_interface iopll_clk_avst_div2_locked conduit INPUT
+	set_instantiation_interface_parameter_value iopll_clk_avst_div2_locked associatedClock {}
+	set_instantiation_interface_parameter_value iopll_clk_avst_div2_locked associatedReset {}
+	set_instantiation_interface_parameter_value iopll_clk_avst_div2_locked prSafe {false}
+	add_instantiation_interface_port iopll_clk_avst_div2_locked iopll_clk_avst_div2_locked locked 1 STD_LOGIC Input
+	add_instantiation_interface tx_plldiv2_locked_reset_n reset OUTPUT
+	set_instantiation_interface_parameter_value tx_plldiv2_locked_reset_n associatedClock {o_clk_pll}
+	set_instantiation_interface_parameter_value tx_plldiv2_locked_reset_n associatedDirectReset {}
+	set_instantiation_interface_parameter_value tx_plldiv2_locked_reset_n associatedResetSinks {none}
+	set_instantiation_interface_parameter_value tx_plldiv2_locked_reset_n synchronousEdges {DEASSERT}
+	add_instantiation_interface_port tx_plldiv2_locked_reset_n tx_plldiv2_locked_reset_n reset_n 1 STD_LOGIC Output
+	add_instantiation_interface user_io conduit INPUT
+	set_instantiation_interface_parameter_value user_io associatedClock {}
+	set_instantiation_interface_parameter_value user_io associatedReset {}
+	set_instantiation_interface_parameter_value user_io prSafe {false}
+	add_instantiation_interface_port user_io user_io user_io 10 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port user_io user_led user_led 8 STD_LOGIC_VECTOR Output
+	add_instantiation_interface ptp_ports_wirelevel wirelevel INPUT
+	set_instantiation_interface_parameter_value ptp_ports_wirelevel originalType {conduit}
+	add_instantiation_interface_port ptp_ports_wirelevel ptp_ins_cf ptp_ins_cf 1 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port ptp_ports_wirelevel ptp_ins_cf_offset ptp_ins_cf_offset 16 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port ptp_ports_wirelevel ptp_ins_csum_offset ptp_ins_csum_offset 16 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port ptp_ports_wirelevel ptp_ins_ets ptp_ins_ets 1 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port ptp_ports_wirelevel ptp_ins_ts_offset ptp_ins_ts_offset 16 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port ptp_ports_wirelevel ptp_ins_update_eb ptp_ins_update_eb 1 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port ptp_ports_wirelevel ptp_ins_zero_csum ptp_ins_zero_csum 1 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port ptp_ports_wirelevel ptp_tx_its ptp_tx_its 96 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port ptp_ports_wirelevel i_tx_dmac_skip_crc i_tx_dmac_skip_crc 1 STD_LOGIC_VECTOR Input
+	add_instantiation_interface i_rx_rst_n reset INPUT
+	set_instantiation_interface_parameter_value i_rx_rst_n associatedClock {}
+	set_instantiation_interface_parameter_value i_rx_rst_n synchronousEdges {NONE}
+	add_instantiation_interface_port i_rx_rst_n i_rx_rst_n reset_n 1 STD_LOGIC Input
+	add_instantiation_interface i_rst_n reset INPUT
+	set_instantiation_interface_parameter_value i_rst_n associatedClock {}
+	set_instantiation_interface_parameter_value i_rst_n synchronousEdges {NONE}
+	add_instantiation_interface_port i_rst_n i_rst_n reset_n 1 STD_LOGIC Input
+	add_instantiation_interface i_tx_rst_n reset INPUT
+	set_instantiation_interface_parameter_value i_tx_rst_n associatedClock {}
+	set_instantiation_interface_parameter_value i_tx_rst_n synchronousEdges {NONE}
+	add_instantiation_interface_port i_tx_rst_n i_tx_rst_n reset_n 1 STD_LOGIC Input
+	add_instantiation_interface pause_ports conduit INPUT
+	set_instantiation_interface_parameter_value pause_ports associatedClock {}
+	set_instantiation_interface_parameter_value pause_ports associatedReset {}
+	set_instantiation_interface_parameter_value pause_ports prSafe {false}
+	add_instantiation_interface_port pause_ports i_tx_pause i_sl_tx_pause 1 STD_LOGIC Input
+	add_instantiation_interface_port pause_ports o_rx_pause o_sl_rx_pause 1 STD_LOGIC Output
+	save_instantiation
+	add_component ftile_master_tod ip/subsys_ftile_1588/ftile_master_tod.ip altera_eth_1588_tod altera_eth_1588_tod_inst 19.3.2
+	load_component ftile_master_tod
+	set_component_parameter_value DEFAULT_FNSEC_ADJPERIOD {0}
+	set_component_parameter_value DEFAULT_FNSEC_PERIOD {26214}
+	set_component_parameter_value DEFAULT_NSEC_ADJPERIOD {0}
+	set_component_parameter_value DEFAULT_NSEC_PERIOD {6}
+	set_component_parameter_value ENABLE_PPS {0}
+	set_component_parameter_value OFFSET_JITTER_WANDER_EN {0}
+	set_component_parameter_value PERIOD_CLOCK_FREQUENCY {1}
+	set_component_parameter_value PLL_SCAN_CLK_FREQ {100}
+	set_component_parameter_value PPS_ADVANCE {0}
+	set_component_parameter_value PPS_PULSE_ASSERT_CYCLE_MASTER {2}
+	set_component_parameter_value UNIT_PHASE_SHIFT {100}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation ftile_master_tod
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface csr_clock clock INPUT
+	set_instantiation_interface_parameter_value csr_clock clockRate {0}
+	set_instantiation_interface_parameter_value csr_clock externallyDriven {false}
+	set_instantiation_interface_parameter_value csr_clock ptfSchematicName {}
+	add_instantiation_interface_port csr_clock clk clk 1 STD_LOGIC Input
+	add_instantiation_interface csr_reset reset INPUT
+	set_instantiation_interface_parameter_value csr_reset associatedClock {csr_clock}
+	set_instantiation_interface_parameter_value csr_reset synchronousEdges {DEASSERT}
+	add_instantiation_interface_port csr_reset rst_n reset_n 1 STD_LOGIC Input
+	add_instantiation_interface period_clock clock INPUT
+	set_instantiation_interface_parameter_value period_clock clockRate {0}
+	set_instantiation_interface_parameter_value period_clock externallyDriven {false}
+	set_instantiation_interface_parameter_value period_clock ptfSchematicName {}
+	add_instantiation_interface_port period_clock period_clk clk 1 STD_LOGIC Input
+	add_instantiation_interface period_clock_reset reset INPUT
+	set_instantiation_interface_parameter_value period_clock_reset associatedClock {period_clock}
+	set_instantiation_interface_parameter_value period_clock_reset synchronousEdges {DEASSERT}
+	add_instantiation_interface_port period_clock_reset period_rst_n reset_n 1 STD_LOGIC Input
+	add_instantiation_interface csr avalon INPUT
+	set_instantiation_interface_parameter_value csr addressAlignment {DYNAMIC}
+	set_instantiation_interface_parameter_value csr addressGroup {0}
+	set_instantiation_interface_parameter_value csr addressSpan {64}
+	set_instantiation_interface_parameter_value csr addressUnits {WORDS}
+	set_instantiation_interface_parameter_value csr alwaysBurstMaxBurst {false}
+	set_instantiation_interface_parameter_value csr associatedClock {csr_clock}
+	set_instantiation_interface_parameter_value csr associatedReset {csr_reset}
+	set_instantiation_interface_parameter_value csr bitsPerSymbol {8}
+	set_instantiation_interface_parameter_value csr bridgedAddressOffset {0}
+	set_instantiation_interface_parameter_value csr bridgesToMaster {}
+	set_instantiation_interface_parameter_value csr burstOnBurstBoundariesOnly {false}
+	set_instantiation_interface_parameter_value csr burstcountUnits {WORDS}
+	set_instantiation_interface_parameter_value csr constantBurstBehavior {false}
+	set_instantiation_interface_parameter_value csr explicitAddressSpan {0}
+	set_instantiation_interface_parameter_value csr holdTime {0}
+	set_instantiation_interface_parameter_value csr interleaveBursts {false}
+	set_instantiation_interface_parameter_value csr isBigEndian {false}
+	set_instantiation_interface_parameter_value csr isFlash {false}
+	set_instantiation_interface_parameter_value csr isMemoryDevice {false}
+	set_instantiation_interface_parameter_value csr isNonVolatileStorage {false}
+	set_instantiation_interface_parameter_value csr linewrapBursts {false}
+	set_instantiation_interface_parameter_value csr maximumPendingReadTransactions {0}
+	set_instantiation_interface_parameter_value csr maximumPendingWriteTransactions {0}
+	set_instantiation_interface_parameter_value csr minimumReadLatency {1}
+	set_instantiation_interface_parameter_value csr minimumResponseLatency {1}
+	set_instantiation_interface_parameter_value csr minimumUninterruptedRunLength {1}
+	set_instantiation_interface_parameter_value csr prSafe {false}
+	set_instantiation_interface_parameter_value csr printableDevice {false}
+	set_instantiation_interface_parameter_value csr readLatency {1}
+	set_instantiation_interface_parameter_value csr readWaitStates {0}
+	set_instantiation_interface_parameter_value csr readWaitTime {0}
+	set_instantiation_interface_parameter_value csr registerIncomingSignals {false}
+	set_instantiation_interface_parameter_value csr registerOutgoingSignals {false}
+	set_instantiation_interface_parameter_value csr setupTime {0}
+	set_instantiation_interface_parameter_value csr timingUnits {Cycles}
+	set_instantiation_interface_parameter_value csr transparentBridge {false}
+	set_instantiation_interface_parameter_value csr waitrequestAllowance {0}
+	set_instantiation_interface_parameter_value csr wellBehavedWaitrequest {false}
+	set_instantiation_interface_parameter_value csr writeLatency {0}
+	set_instantiation_interface_parameter_value csr writeWaitStates {0}
+	set_instantiation_interface_parameter_value csr writeWaitTime {0}
+	set_instantiation_interface_assignment_value csr embeddedsw.configuration.isFlash {0}
+	set_instantiation_interface_assignment_value csr embeddedsw.configuration.isMemoryDevice {0}
+	set_instantiation_interface_assignment_value csr embeddedsw.configuration.isNonVolatileStorage {0}
+	set_instantiation_interface_assignment_value csr embeddedsw.configuration.isPrintableDevice {0}
+	set_instantiation_interface_sysinfo_parameter_value csr address_map {<address-map><slave name='csr' start='0x0' end='0x40' datawidth='32' /></address-map>}
+	set_instantiation_interface_sysinfo_parameter_value csr address_width {6}
+	set_instantiation_interface_sysinfo_parameter_value csr max_slave_data_width {32}
+	add_instantiation_interface_port csr csr_readdata readdata 32 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port csr csr_write write 1 STD_LOGIC Input
+	add_instantiation_interface_port csr csr_read read 1 STD_LOGIC Input
+	add_instantiation_interface_port csr csr_writedata writedata 32 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port csr csr_waitrequest waitrequest 1 STD_LOGIC Output
+	add_instantiation_interface_port csr csr_address address 4 STD_LOGIC_VECTOR Input
+	add_instantiation_interface time_of_day_96b conduit INPUT
+	set_instantiation_interface_parameter_value time_of_day_96b associatedClock {}
+	set_instantiation_interface_parameter_value time_of_day_96b associatedReset {}
+	set_instantiation_interface_parameter_value time_of_day_96b prSafe {false}
+	set_instantiation_interface_assignment_value time_of_day_96b ui.blockdiagram.direction {Output}
+	add_instantiation_interface_port time_of_day_96b time_of_day_96b data 96 STD_LOGIC_VECTOR Output
+	add_instantiation_interface time_of_day_64b conduit INPUT
+	set_instantiation_interface_parameter_value time_of_day_64b associatedClock {}
+	set_instantiation_interface_parameter_value time_of_day_64b associatedReset {}
+	set_instantiation_interface_parameter_value time_of_day_64b prSafe {false}
+	set_instantiation_interface_assignment_value time_of_day_64b ui.blockdiagram.direction {Output}
+	add_instantiation_interface_port time_of_day_64b time_of_day_64b data 64 STD_LOGIC_VECTOR Output
+	add_instantiation_interface time_of_day_96b_load conduit INPUT
+	set_instantiation_interface_parameter_value time_of_day_96b_load associatedClock {}
+	set_instantiation_interface_parameter_value time_of_day_96b_load associatedReset {}
+	set_instantiation_interface_parameter_value time_of_day_96b_load prSafe {false}
+	set_instantiation_interface_assignment_value time_of_day_96b_load ui.blockdiagram.direction {Input}
+	add_instantiation_interface_port time_of_day_96b_load time_of_day_96b_load_data data 96 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port time_of_day_96b_load time_of_day_96b_load_valid valid 1 STD_LOGIC Input
+	add_instantiation_interface time_of_day_64b_load conduit INPUT
+	set_instantiation_interface_parameter_value time_of_day_64b_load associatedClock {}
+	set_instantiation_interface_parameter_value time_of_day_64b_load associatedReset {}
+	set_instantiation_interface_parameter_value time_of_day_64b_load prSafe {false}
+	set_instantiation_interface_assignment_value time_of_day_64b_load ui.blockdiagram.direction {Input}
+	add_instantiation_interface_port time_of_day_64b_load time_of_day_64b_load_data data 64 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port time_of_day_64b_load time_of_day_64b_load_valid valid 1 STD_LOGIC Input
+	save_instantiation
+	add_component ftile_master_tod_load_off_64b ip/subsys_ftile_1588/ftile_master_tod_load_off_64b.ip eth_tod_load_off eth_tod_load_off_inst 1.0.0
+	load_component ftile_master_tod_load_off_64b
+	set_component_parameter_value CONDUIT_DATA_WIDTH {64}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation ftile_master_tod_load_off_64b
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface time_of_day_load conduit INPUT
+	set_instantiation_interface_parameter_value time_of_day_load associatedClock {}
+	set_instantiation_interface_parameter_value time_of_day_load associatedReset {}
+	set_instantiation_interface_parameter_value time_of_day_load prSafe {false}
+	add_instantiation_interface_port time_of_day_load time_of_day_load_data data 64 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port time_of_day_load time_of_day_load_valid valid 1 STD_LOGIC Output
+	save_instantiation
+	add_component ftile_master_tod_load_off_96b ip/subsys_ftile_1588/ftile_master_tod_load_off_96b.ip eth_tod_load_off eth_tod_load_off_inst 1.0.0
+	load_component ftile_master_tod_load_off_96b
+	set_component_parameter_value CONDUIT_DATA_WIDTH {96}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation ftile_master_tod_load_off_96b
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface time_of_day_load conduit INPUT
+	set_instantiation_interface_parameter_value time_of_day_load associatedClock {}
+	set_instantiation_interface_parameter_value time_of_day_load associatedReset {}
+	set_instantiation_interface_parameter_value time_of_day_load prSafe {false}
+	add_instantiation_interface_port time_of_day_load time_of_day_load_data data 96 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port time_of_day_load time_of_day_load_valid valid 1 STD_LOGIC Output
+	save_instantiation
+	add_component iopll_clk_avst_div2 ip/subsys_ftile_1588/iopll_clk_avst_div2.ip altera_iopll altera_iopll_inst 19.3.1
+	load_component iopll_clk_avst_div2
+	set_component_parameter_value gui_active_clk {0}
+	set_component_parameter_value gui_c_cnt_in_src0 {c_m_cnt_in_src_ph_mux_clk}
+	set_component_parameter_value gui_c_cnt_in_src1 {c_m_cnt_in_src_ph_mux_clk}
+	set_component_parameter_value gui_c_cnt_in_src2 {c_m_cnt_in_src_ph_mux_clk}
+	set_component_parameter_value gui_c_cnt_in_src3 {c_m_cnt_in_src_ph_mux_clk}
+	set_component_parameter_value gui_c_cnt_in_src4 {c_m_cnt_in_src_ph_mux_clk}
+	set_component_parameter_value gui_c_cnt_in_src5 {c_m_cnt_in_src_ph_mux_clk}
+	set_component_parameter_value gui_c_cnt_in_src6 {c_m_cnt_in_src_ph_mux_clk}
+	set_component_parameter_value gui_c_cnt_in_src7 {c_m_cnt_in_src_ph_mux_clk}
+	set_component_parameter_value gui_c_cnt_in_src8 {c_m_cnt_in_src_ph_mux_clk}
+	set_component_parameter_value gui_cal_code_hex_file {iossm.hex}
+	set_component_parameter_value gui_cal_converge {0}
+	set_component_parameter_value gui_cal_error {cal_clean}
+	set_component_parameter_value gui_cascade_counter0 {0}
+	set_component_parameter_value gui_cascade_counter1 {0}
+	set_component_parameter_value gui_cascade_counter10 {0}
+	set_component_parameter_value gui_cascade_counter11 {0}
+	set_component_parameter_value gui_cascade_counter12 {0}
+	set_component_parameter_value gui_cascade_counter13 {0}
+	set_component_parameter_value gui_cascade_counter14 {0}
+	set_component_parameter_value gui_cascade_counter15 {0}
+	set_component_parameter_value gui_cascade_counter16 {0}
+	set_component_parameter_value gui_cascade_counter17 {0}
+	set_component_parameter_value gui_cascade_counter2 {0}
+	set_component_parameter_value gui_cascade_counter3 {0}
+	set_component_parameter_value gui_cascade_counter4 {0}
+	set_component_parameter_value gui_cascade_counter5 {0}
+	set_component_parameter_value gui_cascade_counter6 {0}
+	set_component_parameter_value gui_cascade_counter7 {0}
+	set_component_parameter_value gui_cascade_counter8 {0}
+	set_component_parameter_value gui_cascade_counter9 {0}
+	set_component_parameter_value gui_cascade_outclk_index {0}
+	set_component_parameter_value gui_clk_bad {0}
+	set_component_parameter_value gui_clock_name_global {0}
+	set_component_parameter_value gui_clock_name_string0 {outclk0}
+	set_component_parameter_value gui_clock_name_string1 {outclk1}
+	set_component_parameter_value gui_clock_name_string10 {outclk10}
+	set_component_parameter_value gui_clock_name_string11 {outclk11}
+	set_component_parameter_value gui_clock_name_string12 {outclk12}
+	set_component_parameter_value gui_clock_name_string13 {outclk13}
+	set_component_parameter_value gui_clock_name_string14 {outclk14}
+	set_component_parameter_value gui_clock_name_string15 {outclk15}
+	set_component_parameter_value gui_clock_name_string16 {outclk16}
+	set_component_parameter_value gui_clock_name_string17 {outclk17}
+	set_component_parameter_value gui_clock_name_string2 {outclk2}
+	set_component_parameter_value gui_clock_name_string3 {outclk3}
+	set_component_parameter_value gui_clock_name_string4 {outclk4}
+	set_component_parameter_value gui_clock_name_string5 {outclk5}
+	set_component_parameter_value gui_clock_name_string6 {outclk6}
+	set_component_parameter_value gui_clock_name_string7 {outclk7}
+	set_component_parameter_value gui_clock_name_string8 {outclk8}
+	set_component_parameter_value gui_clock_name_string9 {outclk9}
+	set_component_parameter_value gui_clock_to_compensate {0}
+	set_component_parameter_value gui_debug_mode {0}
+	set_component_parameter_value gui_divide_factor_c0 {4}
+	set_component_parameter_value gui_divide_factor_c1 {6}
+	set_component_parameter_value gui_divide_factor_c10 {6}
+	set_component_parameter_value gui_divide_factor_c11 {6}
+	set_component_parameter_value gui_divide_factor_c12 {6}
+	set_component_parameter_value gui_divide_factor_c13 {6}
+	set_component_parameter_value gui_divide_factor_c14 {6}
+	set_component_parameter_value gui_divide_factor_c15 {6}
+	set_component_parameter_value gui_divide_factor_c16 {6}
+	set_component_parameter_value gui_divide_factor_c17 {6}
+	set_component_parameter_value gui_divide_factor_c2 {6}
+	set_component_parameter_value gui_divide_factor_c3 {6}
+	set_component_parameter_value gui_divide_factor_c4 {6}
+	set_component_parameter_value gui_divide_factor_c5 {6}
+	set_component_parameter_value gui_divide_factor_c6 {6}
+	set_component_parameter_value gui_divide_factor_c7 {6}
+	set_component_parameter_value gui_divide_factor_c8 {6}
+	set_component_parameter_value gui_divide_factor_c9 {6}
+	set_component_parameter_value gui_divide_factor_n {2}
+	set_component_parameter_value gui_dps_cntr {C0}
+	set_component_parameter_value gui_dps_dir {Positive}
+	set_component_parameter_value gui_dps_num {1}
+	set_component_parameter_value gui_dsm_out_sel {1st_order}
+	set_component_parameter_value gui_duty_cycle0 {50.0}
+	set_component_parameter_value gui_duty_cycle1 {50.0}
+	set_component_parameter_value gui_duty_cycle10 {50.0}
+	set_component_parameter_value gui_duty_cycle11 {50.0}
+	set_component_parameter_value gui_duty_cycle12 {50.0}
+	set_component_parameter_value gui_duty_cycle13 {50.0}
+	set_component_parameter_value gui_duty_cycle14 {50.0}
+	set_component_parameter_value gui_duty_cycle15 {50.0}
+	set_component_parameter_value gui_duty_cycle16 {50.0}
+	set_component_parameter_value gui_duty_cycle17 {50.0}
+	set_component_parameter_value gui_duty_cycle2 {50.0}
+	set_component_parameter_value gui_duty_cycle3 {50.0}
+	set_component_parameter_value gui_duty_cycle4 {50.0}
+	set_component_parameter_value gui_duty_cycle5 {50.0}
+	set_component_parameter_value gui_duty_cycle6 {50.0}
+	set_component_parameter_value gui_duty_cycle7 {50.0}
+	set_component_parameter_value gui_duty_cycle8 {50.0}
+	set_component_parameter_value gui_duty_cycle9 {50.0}
+	set_component_parameter_value gui_en_adv_params {1}
+	set_component_parameter_value gui_en_dps_ports {0}
+	set_component_parameter_value gui_en_extclkout_ports {0}
+	set_component_parameter_value gui_en_iossm_reconf {0}
+	set_component_parameter_value gui_en_lvds_ports {Disabled}
+	set_component_parameter_value gui_en_periphery_ports {0}
+	set_component_parameter_value gui_en_phout_ports {0}
+	set_component_parameter_value gui_en_reconf {0}
+	set_component_parameter_value gui_enable_cascade_in {0}
+	set_component_parameter_value gui_enable_cascade_out {0}
+	set_component_parameter_value gui_enable_mif_dps {0}
+	set_component_parameter_value gui_enable_output_counter_cascading {0}
+	set_component_parameter_value gui_enable_permit_cal {0}
+	set_component_parameter_value gui_enable_upstream_out_clk {0}
+	set_component_parameter_value gui_existing_mif_file_path {~/pll.mif}
+	set_component_parameter_value gui_extclkout_0_source {C0}
+	set_component_parameter_value gui_extclkout_1_source {C0}
+	set_component_parameter_value gui_feedback_clock {Global Clock}
+	set_component_parameter_value gui_fix_vco_frequency {0}
+	set_component_parameter_value gui_fixed_vco_frequency {600.0}
+	set_component_parameter_value gui_fixed_vco_frequency_ps {1667.0}
+	set_component_parameter_value gui_frac_multiply_factor {1.0}
+	set_component_parameter_value gui_fractional_cout {32}
+	set_component_parameter_value gui_include_iossm {0}
+	set_component_parameter_value gui_location_type {Fabric-Feeding}
+	set_component_parameter_value gui_lock_setting {Low Lock Time}
+	set_component_parameter_value gui_mif_config_name {unnamed}
+	set_component_parameter_value gui_mif_gen_options {Generate New MIF File}
+	set_component_parameter_value gui_multiply_factor {4}
+	set_component_parameter_value gui_new_mif_file_path {~/pll.mif}
+	set_component_parameter_value gui_number_of_clocks {1}
+	set_component_parameter_value gui_operation_mode {direct}
+	set_component_parameter_value gui_output_clock_frequency0 {100.0}
+	set_component_parameter_value gui_output_clock_frequency1 {100.0}
+	set_component_parameter_value gui_output_clock_frequency10 {100.0}
+	set_component_parameter_value gui_output_clock_frequency11 {100.0}
+	set_component_parameter_value gui_output_clock_frequency12 {100.0}
+	set_component_parameter_value gui_output_clock_frequency13 {100.0}
+	set_component_parameter_value gui_output_clock_frequency14 {100.0}
+	set_component_parameter_value gui_output_clock_frequency15 {100.0}
+	set_component_parameter_value gui_output_clock_frequency16 {100.0}
+	set_component_parameter_value gui_output_clock_frequency17 {100.0}
+	set_component_parameter_value gui_output_clock_frequency2 {100.0}
+	set_component_parameter_value gui_output_clock_frequency3 {100.0}
+	set_component_parameter_value gui_output_clock_frequency4 {100.0}
+	set_component_parameter_value gui_output_clock_frequency5 {100.0}
+	set_component_parameter_value gui_output_clock_frequency6 {100.0}
+	set_component_parameter_value gui_output_clock_frequency7 {100.0}
+	set_component_parameter_value gui_output_clock_frequency8 {100.0}
+	set_component_parameter_value gui_output_clock_frequency9 {100.0}
+	set_component_parameter_value gui_output_clock_frequency_ps0 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps1 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps10 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps11 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps12 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps13 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps14 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps15 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps16 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps17 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps2 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps3 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps4 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps5 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps6 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps7 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps8 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps9 {10000.0}
+	set_component_parameter_value gui_parameter_table_hex_file {seq_params_sim.hex}
+	set_component_parameter_value gui_phase_shift0 {0.0}
+	set_component_parameter_value gui_phase_shift1 {0.0}
+	set_component_parameter_value gui_phase_shift10 {0.0}
+	set_component_parameter_value gui_phase_shift11 {0.0}
+	set_component_parameter_value gui_phase_shift12 {0.0}
+	set_component_parameter_value gui_phase_shift13 {0.0}
+	set_component_parameter_value gui_phase_shift14 {0.0}
+	set_component_parameter_value gui_phase_shift15 {0.0}
+	set_component_parameter_value gui_phase_shift16 {0.0}
+	set_component_parameter_value gui_phase_shift17 {0.0}
+	set_component_parameter_value gui_phase_shift2 {0.0}
+	set_component_parameter_value gui_phase_shift3 {0.0}
+	set_component_parameter_value gui_phase_shift4 {0.0}
+	set_component_parameter_value gui_phase_shift5 {0.0}
+	set_component_parameter_value gui_phase_shift6 {0.0}
+	set_component_parameter_value gui_phase_shift7 {0.0}
+	set_component_parameter_value gui_phase_shift8 {0.0}
+	set_component_parameter_value gui_phase_shift9 {0.0}
+	set_component_parameter_value gui_phase_shift_deg0 {0.0}
+	set_component_parameter_value gui_phase_shift_deg1 {0.0}
+	set_component_parameter_value gui_phase_shift_deg10 {0.0}
+	set_component_parameter_value gui_phase_shift_deg11 {0.0}
+	set_component_parameter_value gui_phase_shift_deg12 {0.0}
+	set_component_parameter_value gui_phase_shift_deg13 {0.0}
+	set_component_parameter_value gui_phase_shift_deg14 {0.0}
+	set_component_parameter_value gui_phase_shift_deg15 {0.0}
+	set_component_parameter_value gui_phase_shift_deg16 {0.0}
+	set_component_parameter_value gui_phase_shift_deg17 {0.0}
+	set_component_parameter_value gui_phase_shift_deg2 {0.0}
+	set_component_parameter_value gui_phase_shift_deg3 {0.0}
+	set_component_parameter_value gui_phase_shift_deg4 {0.0}
+	set_component_parameter_value gui_phase_shift_deg5 {0.0}
+	set_component_parameter_value gui_phase_shift_deg6 {0.0}
+	set_component_parameter_value gui_phase_shift_deg7 {0.0}
+	set_component_parameter_value gui_phase_shift_deg8 {0.0}
+	set_component_parameter_value gui_phase_shift_deg9 {0.0}
+	set_component_parameter_value gui_phout_division {1}
+	set_component_parameter_value gui_pll_auto_reset {0}
+	set_component_parameter_value gui_pll_bandwidth_preset {Medium}
+	set_component_parameter_value gui_pll_cal_done {0}
+	set_component_parameter_value gui_pll_cascading_mode {adjpllin}
+	set_component_parameter_value gui_pll_freqcal_en {1}
+	set_component_parameter_value gui_pll_freqcal_req_flag {1}
+	set_component_parameter_value gui_pll_m_cnt_in_src {c_m_cnt_in_src_ph_mux_clk}
+	set_component_parameter_value gui_pll_mode {Integer-N PLL}
+	set_component_parameter_value gui_pll_tclk_mux_en {0}
+	set_component_parameter_value gui_pll_tclk_sel {pll_tclk_m_src}
+	set_component_parameter_value gui_pll_type {S10_Simple}
+	set_component_parameter_value gui_pll_vco_freq_band_0 {pll_freq_clk0_band18}
+	set_component_parameter_value gui_pll_vco_freq_band_1 {pll_freq_clk1_band18}
+	set_component_parameter_value gui_prot_mode {UNUSED}
+	set_component_parameter_value gui_ps_units0 {ps}
+	set_component_parameter_value gui_ps_units1 {ps}
+	set_component_parameter_value gui_ps_units10 {ps}
+	set_component_parameter_value gui_ps_units11 {ps}
+	set_component_parameter_value gui_ps_units12 {ps}
+	set_component_parameter_value gui_ps_units13 {ps}
+	set_component_parameter_value gui_ps_units14 {ps}
+	set_component_parameter_value gui_ps_units15 {ps}
+	set_component_parameter_value gui_ps_units16 {ps}
+	set_component_parameter_value gui_ps_units17 {ps}
+	set_component_parameter_value gui_ps_units2 {ps}
+	set_component_parameter_value gui_ps_units3 {ps}
+	set_component_parameter_value gui_ps_units4 {ps}
+	set_component_parameter_value gui_ps_units5 {ps}
+	set_component_parameter_value gui_ps_units6 {ps}
+	set_component_parameter_value gui_ps_units7 {ps}
+	set_component_parameter_value gui_ps_units8 {ps}
+	set_component_parameter_value gui_ps_units9 {ps}
+	set_component_parameter_value gui_refclk1_frequency {100.0}
+	set_component_parameter_value gui_refclk_might_change {0}
+	set_component_parameter_value gui_refclk_switch {0}
+	set_component_parameter_value gui_reference_clock_frequency {402.83203125}
+	set_component_parameter_value gui_reference_clock_frequency_ps {10000.0}
+	set_component_parameter_value gui_simulation_type {0}
+	set_component_parameter_value gui_skip_sdc_generation {0}
+	set_component_parameter_value gui_switchover_delay {0}
+	set_component_parameter_value gui_switchover_mode {Automatic Switchover}
+	set_component_parameter_value gui_use_NDFB_modes {0}
+	set_component_parameter_value gui_use_coreclk {1}
+	set_component_parameter_value gui_use_locked {1}
+	set_component_parameter_value gui_use_logical {0}
+	set_component_parameter_value gui_usr_device_speed_grade {1}
+	set_component_parameter_value gui_vco_frequency {600.0}
+	set_component_parameter_value hp_qsys_scripting_mode {1}
+	set_component_parameter_value system_info_device_iobank_rev {}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation iopll_clk_avst_div2
+	remove_instantiation_interfaces_and_ports
+	set_instantiation_assignment_value embeddedsw.dts.compatible {altr,pll}
+	set_instantiation_assignment_value embeddedsw.dts.group {clock}
+	set_instantiation_assignment_value embeddedsw.dts.vendor {altr}
+	add_instantiation_interface reset reset INPUT
+	set_instantiation_interface_parameter_value reset associatedClock {}
+	set_instantiation_interface_parameter_value reset synchronousEdges {NONE}
+	set_instantiation_interface_assignment_value reset ui.blockdiagram.direction {input}
+	add_instantiation_interface_port reset rst reset 1 STD_LOGIC Input
+	add_instantiation_interface refclk clock INPUT
+	set_instantiation_interface_parameter_value refclk clockRate {402832031}
+	set_instantiation_interface_parameter_value refclk externallyDriven {false}
+	set_instantiation_interface_parameter_value refclk ptfSchematicName {}
+	set_instantiation_interface_assignment_value refclk ui.blockdiagram.direction {input}
+	add_instantiation_interface_port refclk refclk clk 1 STD_LOGIC Input
+	add_instantiation_interface locked conduit INPUT
+	set_instantiation_interface_parameter_value locked associatedClock {}
+	set_instantiation_interface_parameter_value locked associatedReset {}
+	set_instantiation_interface_parameter_value locked prSafe {false}
+	set_instantiation_interface_assignment_value locked ui.blockdiagram.direction {output}
+	add_instantiation_interface_port locked locked export 1 STD_LOGIC Output
+	add_instantiation_interface outclk0 clock OUTPUT
+	set_instantiation_interface_parameter_value outclk0 associatedDirectClock {}
+	set_instantiation_interface_parameter_value outclk0 clockRate {201416016}
+	set_instantiation_interface_parameter_value outclk0 clockRateKnown {true}
+	set_instantiation_interface_parameter_value outclk0 externallyDriven {false}
+	set_instantiation_interface_parameter_value outclk0 ptfSchematicName {}
+	set_instantiation_interface_assignment_value outclk0 ui.blockdiagram.direction {output}
+	set_instantiation_interface_sysinfo_parameter_value outclk0 clock_rate {201416016}
+	add_instantiation_interface_port outclk0 outclk_0 clk 1 STD_LOGIC Output
+	save_instantiation
+	add_component iopll_ftile_ptp_sampling_clk ip/subsys_ftile_1588/iopll_ftile_ptp_sampling_clk.ip altera_iopll altera_iopll_inst 19.3.1
+	load_component iopll_ftile_ptp_sampling_clk
+	set_component_parameter_value gui_active_clk {0}
+	set_component_parameter_value gui_c_cnt_in_src0 {c_m_cnt_in_src_ph_mux_clk}
+	set_component_parameter_value gui_c_cnt_in_src1 {c_m_cnt_in_src_ph_mux_clk}
+	set_component_parameter_value gui_c_cnt_in_src2 {c_m_cnt_in_src_ph_mux_clk}
+	set_component_parameter_value gui_c_cnt_in_src3 {c_m_cnt_in_src_ph_mux_clk}
+	set_component_parameter_value gui_c_cnt_in_src4 {c_m_cnt_in_src_ph_mux_clk}
+	set_component_parameter_value gui_c_cnt_in_src5 {c_m_cnt_in_src_ph_mux_clk}
+	set_component_parameter_value gui_c_cnt_in_src6 {c_m_cnt_in_src_ph_mux_clk}
+	set_component_parameter_value gui_c_cnt_in_src7 {c_m_cnt_in_src_ph_mux_clk}
+	set_component_parameter_value gui_c_cnt_in_src8 {c_m_cnt_in_src_ph_mux_clk}
+	set_component_parameter_value gui_cal_code_hex_file {iossm.hex}
+	set_component_parameter_value gui_cal_converge {0}
+	set_component_parameter_value gui_cal_error {cal_clean}
+	set_component_parameter_value gui_cascade_counter0 {0}
+	set_component_parameter_value gui_cascade_counter1 {0}
+	set_component_parameter_value gui_cascade_counter10 {0}
+	set_component_parameter_value gui_cascade_counter11 {0}
+	set_component_parameter_value gui_cascade_counter12 {0}
+	set_component_parameter_value gui_cascade_counter13 {0}
+	set_component_parameter_value gui_cascade_counter14 {0}
+	set_component_parameter_value gui_cascade_counter15 {0}
+	set_component_parameter_value gui_cascade_counter16 {0}
+	set_component_parameter_value gui_cascade_counter17 {0}
+	set_component_parameter_value gui_cascade_counter2 {0}
+	set_component_parameter_value gui_cascade_counter3 {0}
+	set_component_parameter_value gui_cascade_counter4 {0}
+	set_component_parameter_value gui_cascade_counter5 {0}
+	set_component_parameter_value gui_cascade_counter6 {0}
+	set_component_parameter_value gui_cascade_counter7 {0}
+	set_component_parameter_value gui_cascade_counter8 {0}
+	set_component_parameter_value gui_cascade_counter9 {0}
+	set_component_parameter_value gui_cascade_outclk_index {0}
+	set_component_parameter_value gui_clk_bad {0}
+	set_component_parameter_value gui_clock_name_global {0}
+	set_component_parameter_value gui_clock_name_string0 {outclk0}
+	set_component_parameter_value gui_clock_name_string1 {outclk1}
+	set_component_parameter_value gui_clock_name_string10 {outclk10}
+	set_component_parameter_value gui_clock_name_string11 {outclk11}
+	set_component_parameter_value gui_clock_name_string12 {outclk12}
+	set_component_parameter_value gui_clock_name_string13 {outclk13}
+	set_component_parameter_value gui_clock_name_string14 {outclk14}
+	set_component_parameter_value gui_clock_name_string15 {outclk15}
+	set_component_parameter_value gui_clock_name_string16 {outclk16}
+	set_component_parameter_value gui_clock_name_string17 {outclk17}
+	set_component_parameter_value gui_clock_name_string2 {outclk2}
+	set_component_parameter_value gui_clock_name_string3 {outclk3}
+	set_component_parameter_value gui_clock_name_string4 {outclk4}
+	set_component_parameter_value gui_clock_name_string5 {outclk5}
+	set_component_parameter_value gui_clock_name_string6 {outclk6}
+	set_component_parameter_value gui_clock_name_string7 {outclk7}
+	set_component_parameter_value gui_clock_name_string8 {outclk8}
+	set_component_parameter_value gui_clock_name_string9 {outclk9}
+	set_component_parameter_value gui_clock_to_compensate {0}
+	set_component_parameter_value gui_debug_mode {0}
+	set_component_parameter_value gui_divide_factor_c0 {6}
+	set_component_parameter_value gui_divide_factor_c1 {6}
+	set_component_parameter_value gui_divide_factor_c10 {6}
+	set_component_parameter_value gui_divide_factor_c11 {6}
+	set_component_parameter_value gui_divide_factor_c12 {6}
+	set_component_parameter_value gui_divide_factor_c13 {6}
+	set_component_parameter_value gui_divide_factor_c14 {6}
+	set_component_parameter_value gui_divide_factor_c15 {6}
+	set_component_parameter_value gui_divide_factor_c16 {6}
+	set_component_parameter_value gui_divide_factor_c17 {6}
+	set_component_parameter_value gui_divide_factor_c2 {6}
+	set_component_parameter_value gui_divide_factor_c3 {6}
+	set_component_parameter_value gui_divide_factor_c4 {6}
+	set_component_parameter_value gui_divide_factor_c5 {6}
+	set_component_parameter_value gui_divide_factor_c6 {6}
+	set_component_parameter_value gui_divide_factor_c7 {6}
+	set_component_parameter_value gui_divide_factor_c8 {6}
+	set_component_parameter_value gui_divide_factor_c9 {6}
+	set_component_parameter_value gui_divide_factor_n {1}
+	set_component_parameter_value gui_dps_cntr {C0}
+	set_component_parameter_value gui_dps_dir {Positive}
+	set_component_parameter_value gui_dps_num {1}
+	set_component_parameter_value gui_dsm_out_sel {1st_order}
+	set_component_parameter_value gui_duty_cycle0 {50.0}
+	set_component_parameter_value gui_duty_cycle1 {50.0}
+	set_component_parameter_value gui_duty_cycle10 {50.0}
+	set_component_parameter_value gui_duty_cycle11 {50.0}
+	set_component_parameter_value gui_duty_cycle12 {50.0}
+	set_component_parameter_value gui_duty_cycle13 {50.0}
+	set_component_parameter_value gui_duty_cycle14 {50.0}
+	set_component_parameter_value gui_duty_cycle15 {50.0}
+	set_component_parameter_value gui_duty_cycle16 {50.0}
+	set_component_parameter_value gui_duty_cycle17 {50.0}
+	set_component_parameter_value gui_duty_cycle2 {50.0}
+	set_component_parameter_value gui_duty_cycle3 {50.0}
+	set_component_parameter_value gui_duty_cycle4 {50.0}
+	set_component_parameter_value gui_duty_cycle5 {50.0}
+	set_component_parameter_value gui_duty_cycle6 {50.0}
+	set_component_parameter_value gui_duty_cycle7 {50.0}
+	set_component_parameter_value gui_duty_cycle8 {50.0}
+	set_component_parameter_value gui_duty_cycle9 {50.0}
+	set_component_parameter_value gui_en_adv_params {0}
+	set_component_parameter_value gui_en_dps_ports {0}
+	set_component_parameter_value gui_en_extclkout_ports {0}
+	set_component_parameter_value gui_en_iossm_reconf {0}
+	set_component_parameter_value gui_en_lvds_ports {Disabled}
+	set_component_parameter_value gui_en_periphery_ports {0}
+	set_component_parameter_value gui_en_phout_ports {0}
+	set_component_parameter_value gui_en_reconf {0}
+	set_component_parameter_value gui_enable_cascade_in {0}
+	set_component_parameter_value gui_enable_cascade_out {0}
+	set_component_parameter_value gui_enable_mif_dps {0}
+	set_component_parameter_value gui_enable_output_counter_cascading {0}
+	set_component_parameter_value gui_enable_permit_cal {0}
+	set_component_parameter_value gui_enable_upstream_out_clk {0}
+	set_component_parameter_value gui_existing_mif_file_path {~/pll.mif}
+	set_component_parameter_value gui_extclkout_0_source {C0}
+	set_component_parameter_value gui_extclkout_1_source {C0}
+	set_component_parameter_value gui_feedback_clock {Global Clock}
+	set_component_parameter_value gui_fix_vco_frequency {0}
+	set_component_parameter_value gui_fixed_vco_frequency {600.0}
+	set_component_parameter_value gui_fixed_vco_frequency_ps {1667.0}
+	set_component_parameter_value gui_frac_multiply_factor {1.0}
+	set_component_parameter_value gui_fractional_cout {32}
+	set_component_parameter_value gui_include_iossm {0}
+	set_component_parameter_value gui_location_type {I/O Bank}
+	set_component_parameter_value gui_lock_setting {Low Lock Time}
+	set_component_parameter_value gui_mif_config_name {unnamed}
+	set_component_parameter_value gui_mif_gen_options {Generate New MIF File}
+	set_component_parameter_value gui_multiply_factor {6}
+	set_component_parameter_value gui_new_mif_file_path {~/pll.mif}
+	set_component_parameter_value gui_number_of_clocks {1}
+	set_component_parameter_value gui_operation_mode {direct}
+	set_component_parameter_value gui_output_clock_frequency0 {114.285714}
+	set_component_parameter_value gui_output_clock_frequency1 {100.0}
+	set_component_parameter_value gui_output_clock_frequency10 {100.0}
+	set_component_parameter_value gui_output_clock_frequency11 {100.0}
+	set_component_parameter_value gui_output_clock_frequency12 {100.0}
+	set_component_parameter_value gui_output_clock_frequency13 {100.0}
+	set_component_parameter_value gui_output_clock_frequency14 {100.0}
+	set_component_parameter_value gui_output_clock_frequency15 {100.0}
+	set_component_parameter_value gui_output_clock_frequency16 {100.0}
+	set_component_parameter_value gui_output_clock_frequency17 {100.0}
+	set_component_parameter_value gui_output_clock_frequency2 {100.0}
+	set_component_parameter_value gui_output_clock_frequency3 {100.0}
+	set_component_parameter_value gui_output_clock_frequency4 {100.0}
+	set_component_parameter_value gui_output_clock_frequency5 {100.0}
+	set_component_parameter_value gui_output_clock_frequency6 {100.0}
+	set_component_parameter_value gui_output_clock_frequency7 {100.0}
+	set_component_parameter_value gui_output_clock_frequency8 {100.0}
+	set_component_parameter_value gui_output_clock_frequency9 {100.0}
+	set_component_parameter_value gui_output_clock_frequency_ps0 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps1 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps10 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps11 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps12 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps13 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps14 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps15 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps16 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps17 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps2 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps3 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps4 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps5 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps6 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps7 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps8 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps9 {10000.0}
+	set_component_parameter_value gui_parameter_table_hex_file {seq_params_sim.hex}
+	set_component_parameter_value gui_phase_shift0 {0.0}
+	set_component_parameter_value gui_phase_shift1 {0.0}
+	set_component_parameter_value gui_phase_shift10 {0.0}
+	set_component_parameter_value gui_phase_shift11 {0.0}
+	set_component_parameter_value gui_phase_shift12 {0.0}
+	set_component_parameter_value gui_phase_shift13 {0.0}
+	set_component_parameter_value gui_phase_shift14 {0.0}
+	set_component_parameter_value gui_phase_shift15 {0.0}
+	set_component_parameter_value gui_phase_shift16 {0.0}
+	set_component_parameter_value gui_phase_shift17 {0.0}
+	set_component_parameter_value gui_phase_shift2 {0.0}
+	set_component_parameter_value gui_phase_shift3 {0.0}
+	set_component_parameter_value gui_phase_shift4 {0.0}
+	set_component_parameter_value gui_phase_shift5 {0.0}
+	set_component_parameter_value gui_phase_shift6 {0.0}
+	set_component_parameter_value gui_phase_shift7 {0.0}
+	set_component_parameter_value gui_phase_shift8 {0.0}
+	set_component_parameter_value gui_phase_shift9 {0.0}
+	set_component_parameter_value gui_phase_shift_deg0 {0.0}
+	set_component_parameter_value gui_phase_shift_deg1 {0.0}
+	set_component_parameter_value gui_phase_shift_deg10 {0.0}
+	set_component_parameter_value gui_phase_shift_deg11 {0.0}
+	set_component_parameter_value gui_phase_shift_deg12 {0.0}
+	set_component_parameter_value gui_phase_shift_deg13 {0.0}
+	set_component_parameter_value gui_phase_shift_deg14 {0.0}
+	set_component_parameter_value gui_phase_shift_deg15 {0.0}
+	set_component_parameter_value gui_phase_shift_deg16 {0.0}
+	set_component_parameter_value gui_phase_shift_deg17 {0.0}
+	set_component_parameter_value gui_phase_shift_deg2 {0.0}
+	set_component_parameter_value gui_phase_shift_deg3 {0.0}
+	set_component_parameter_value gui_phase_shift_deg4 {0.0}
+	set_component_parameter_value gui_phase_shift_deg5 {0.0}
+	set_component_parameter_value gui_phase_shift_deg6 {0.0}
+	set_component_parameter_value gui_phase_shift_deg7 {0.0}
+	set_component_parameter_value gui_phase_shift_deg8 {0.0}
+	set_component_parameter_value gui_phase_shift_deg9 {0.0}
+	set_component_parameter_value gui_phout_division {1}
+	set_component_parameter_value gui_pll_auto_reset {0}
+	set_component_parameter_value gui_pll_bandwidth_preset {Low}
+	set_component_parameter_value gui_pll_cal_done {0}
+	set_component_parameter_value gui_pll_cascading_mode {adjpllin}
+	set_component_parameter_value gui_pll_freqcal_en {1}
+	set_component_parameter_value gui_pll_freqcal_req_flag {1}
+	set_component_parameter_value gui_pll_m_cnt_in_src {c_m_cnt_in_src_ph_mux_clk}
+	set_component_parameter_value gui_pll_mode {Integer-N PLL}
+	set_component_parameter_value gui_pll_tclk_mux_en {0}
+	set_component_parameter_value gui_pll_tclk_sel {pll_tclk_m_src}
+	set_component_parameter_value gui_pll_type {S10_Simple}
+	set_component_parameter_value gui_pll_vco_freq_band_0 {pll_freq_clk0_band18}
+	set_component_parameter_value gui_pll_vco_freq_band_1 {pll_freq_clk1_band18}
+	set_component_parameter_value gui_prot_mode {UNUSED}
+	set_component_parameter_value gui_ps_units0 {ps}
+	set_component_parameter_value gui_ps_units1 {ps}
+	set_component_parameter_value gui_ps_units10 {ps}
+	set_component_parameter_value gui_ps_units11 {ps}
+	set_component_parameter_value gui_ps_units12 {ps}
+	set_component_parameter_value gui_ps_units13 {ps}
+	set_component_parameter_value gui_ps_units14 {ps}
+	set_component_parameter_value gui_ps_units15 {ps}
+	set_component_parameter_value gui_ps_units16 {ps}
+	set_component_parameter_value gui_ps_units17 {ps}
+	set_component_parameter_value gui_ps_units2 {ps}
+	set_component_parameter_value gui_ps_units3 {ps}
+	set_component_parameter_value gui_ps_units4 {ps}
+	set_component_parameter_value gui_ps_units5 {ps}
+	set_component_parameter_value gui_ps_units6 {ps}
+	set_component_parameter_value gui_ps_units7 {ps}
+	set_component_parameter_value gui_ps_units8 {ps}
+	set_component_parameter_value gui_ps_units9 {ps}
+	set_component_parameter_value gui_refclk1_frequency {100.0}
+	set_component_parameter_value gui_refclk_might_change {0}
+	set_component_parameter_value gui_refclk_switch {0}
+	set_component_parameter_value gui_reference_clock_frequency {100.0}
+	set_component_parameter_value gui_reference_clock_frequency_ps {10000.0}
+	set_component_parameter_value gui_simulation_type {0}
+	set_component_parameter_value gui_skip_sdc_generation {0}
+	set_component_parameter_value gui_switchover_delay {0}
+	set_component_parameter_value gui_switchover_mode {Automatic Switchover}
+	set_component_parameter_value gui_use_NDFB_modes {0}
+	set_component_parameter_value gui_use_coreclk {0}
+	set_component_parameter_value gui_use_locked {1}
+	set_component_parameter_value gui_use_logical {0}
+	set_component_parameter_value gui_usr_device_speed_grade {1}
+	set_component_parameter_value gui_vco_frequency {600.0}
+	set_component_parameter_value hp_qsys_scripting_mode {1}
+	set_component_parameter_value system_info_device_iobank_rev {}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation iopll_ftile_ptp_sampling_clk
+	remove_instantiation_interfaces_and_ports
+	set_instantiation_assignment_value embeddedsw.dts.compatible {altr,pll}
+	set_instantiation_assignment_value embeddedsw.dts.group {clock}
+	set_instantiation_assignment_value embeddedsw.dts.vendor {altr}
+	add_instantiation_interface reset reset INPUT
+	set_instantiation_interface_parameter_value reset associatedClock {}
+	set_instantiation_interface_parameter_value reset synchronousEdges {NONE}
+	set_instantiation_interface_assignment_value reset ui.blockdiagram.direction {input}
+	add_instantiation_interface_port reset rst reset 1 STD_LOGIC Input
+	add_instantiation_interface refclk clock INPUT
+	set_instantiation_interface_parameter_value refclk clockRate {100000000}
+	set_instantiation_interface_parameter_value refclk externallyDriven {false}
+	set_instantiation_interface_parameter_value refclk ptfSchematicName {}
+	set_instantiation_interface_assignment_value refclk ui.blockdiagram.direction {input}
+	add_instantiation_interface_port refclk refclk clk 1 STD_LOGIC Input
+	add_instantiation_interface locked conduit INPUT
+	set_instantiation_interface_parameter_value locked associatedClock {}
+	set_instantiation_interface_parameter_value locked associatedReset {}
+	set_instantiation_interface_parameter_value locked prSafe {false}
+	set_instantiation_interface_assignment_value locked ui.blockdiagram.direction {output}
+	add_instantiation_interface_port locked locked export 1 STD_LOGIC Output
+	add_instantiation_interface outclk0 clock OUTPUT
+	set_instantiation_interface_parameter_value outclk0 associatedDirectClock {}
+	set_instantiation_interface_parameter_value outclk0 clockRate {114285714}
+	set_instantiation_interface_parameter_value outclk0 clockRateKnown {true}
+	set_instantiation_interface_parameter_value outclk0 externallyDriven {false}
+	set_instantiation_interface_parameter_value outclk0 ptfSchematicName {}
+	set_instantiation_interface_assignment_value outclk0 ui.blockdiagram.direction {output}
+	set_instantiation_interface_sysinfo_parameter_value outclk0 clock_rate {114285714}
+	add_instantiation_interface_port outclk0 outclk_0 clk 1 STD_LOGIC Output
+	save_instantiation
+	add_component iopll_ftile_tod_sync_sampling_clk ip/subsys_ftile_1588/iopll_ftile_tod_sync_sampling_clk.ip altera_iopll altera_iopll_inst 19.3.1
+	load_component iopll_ftile_tod_sync_sampling_clk
+	set_component_parameter_value gui_active_clk {0}
+	set_component_parameter_value gui_c_cnt_in_src0 {c_m_cnt_in_src_ph_mux_clk}
+	set_component_parameter_value gui_c_cnt_in_src1 {c_m_cnt_in_src_ph_mux_clk}
+	set_component_parameter_value gui_c_cnt_in_src2 {c_m_cnt_in_src_ph_mux_clk}
+	set_component_parameter_value gui_c_cnt_in_src3 {c_m_cnt_in_src_ph_mux_clk}
+	set_component_parameter_value gui_c_cnt_in_src4 {c_m_cnt_in_src_ph_mux_clk}
+	set_component_parameter_value gui_c_cnt_in_src5 {c_m_cnt_in_src_ph_mux_clk}
+	set_component_parameter_value gui_c_cnt_in_src6 {c_m_cnt_in_src_ph_mux_clk}
+	set_component_parameter_value gui_c_cnt_in_src7 {c_m_cnt_in_src_ph_mux_clk}
+	set_component_parameter_value gui_c_cnt_in_src8 {c_m_cnt_in_src_ph_mux_clk}
+	set_component_parameter_value gui_cal_code_hex_file {iossm.hex}
+	set_component_parameter_value gui_cal_converge {0}
+	set_component_parameter_value gui_cal_error {cal_clean}
+	set_component_parameter_value gui_cascade_counter0 {0}
+	set_component_parameter_value gui_cascade_counter1 {0}
+	set_component_parameter_value gui_cascade_counter10 {0}
+	set_component_parameter_value gui_cascade_counter11 {0}
+	set_component_parameter_value gui_cascade_counter12 {0}
+	set_component_parameter_value gui_cascade_counter13 {0}
+	set_component_parameter_value gui_cascade_counter14 {0}
+	set_component_parameter_value gui_cascade_counter15 {0}
+	set_component_parameter_value gui_cascade_counter16 {0}
+	set_component_parameter_value gui_cascade_counter17 {0}
+	set_component_parameter_value gui_cascade_counter2 {0}
+	set_component_parameter_value gui_cascade_counter3 {0}
+	set_component_parameter_value gui_cascade_counter4 {0}
+	set_component_parameter_value gui_cascade_counter5 {0}
+	set_component_parameter_value gui_cascade_counter6 {0}
+	set_component_parameter_value gui_cascade_counter7 {0}
+	set_component_parameter_value gui_cascade_counter8 {0}
+	set_component_parameter_value gui_cascade_counter9 {0}
+	set_component_parameter_value gui_cascade_outclk_index {0}
+	set_component_parameter_value gui_clk_bad {0}
+	set_component_parameter_value gui_clock_name_global {0}
+	set_component_parameter_value gui_clock_name_string0 {outclk0}
+	set_component_parameter_value gui_clock_name_string1 {outclk1}
+	set_component_parameter_value gui_clock_name_string10 {outclk10}
+	set_component_parameter_value gui_clock_name_string11 {outclk11}
+	set_component_parameter_value gui_clock_name_string12 {outclk12}
+	set_component_parameter_value gui_clock_name_string13 {outclk13}
+	set_component_parameter_value gui_clock_name_string14 {outclk14}
+	set_component_parameter_value gui_clock_name_string15 {outclk15}
+	set_component_parameter_value gui_clock_name_string16 {outclk16}
+	set_component_parameter_value gui_clock_name_string17 {outclk17}
+	set_component_parameter_value gui_clock_name_string2 {outclk2}
+	set_component_parameter_value gui_clock_name_string3 {outclk3}
+	set_component_parameter_value gui_clock_name_string4 {outclk4}
+	set_component_parameter_value gui_clock_name_string5 {outclk5}
+	set_component_parameter_value gui_clock_name_string6 {outclk6}
+	set_component_parameter_value gui_clock_name_string7 {outclk7}
+	set_component_parameter_value gui_clock_name_string8 {outclk8}
+	set_component_parameter_value gui_clock_name_string9 {outclk9}
+	set_component_parameter_value gui_clock_to_compensate {0}
+	set_component_parameter_value gui_debug_mode {0}
+	set_component_parameter_value gui_divide_factor_c0 {6}
+	set_component_parameter_value gui_divide_factor_c1 {6}
+	set_component_parameter_value gui_divide_factor_c10 {6}
+	set_component_parameter_value gui_divide_factor_c11 {6}
+	set_component_parameter_value gui_divide_factor_c12 {6}
+	set_component_parameter_value gui_divide_factor_c13 {6}
+	set_component_parameter_value gui_divide_factor_c14 {6}
+	set_component_parameter_value gui_divide_factor_c15 {6}
+	set_component_parameter_value gui_divide_factor_c16 {6}
+	set_component_parameter_value gui_divide_factor_c17 {6}
+	set_component_parameter_value gui_divide_factor_c2 {6}
+	set_component_parameter_value gui_divide_factor_c3 {6}
+	set_component_parameter_value gui_divide_factor_c4 {6}
+	set_component_parameter_value gui_divide_factor_c5 {6}
+	set_component_parameter_value gui_divide_factor_c6 {6}
+	set_component_parameter_value gui_divide_factor_c7 {6}
+	set_component_parameter_value gui_divide_factor_c8 {6}
+	set_component_parameter_value gui_divide_factor_c9 {6}
+	set_component_parameter_value gui_divide_factor_n {11}
+	set_component_parameter_value gui_dps_cntr {C0}
+	set_component_parameter_value gui_dps_dir {Positive}
+	set_component_parameter_value gui_dps_num {1}
+	set_component_parameter_value gui_dsm_out_sel {1st_order}
+	set_component_parameter_value gui_duty_cycle0 {50.0}
+	set_component_parameter_value gui_duty_cycle1 {50.0}
+	set_component_parameter_value gui_duty_cycle10 {50.0}
+	set_component_parameter_value gui_duty_cycle11 {50.0}
+	set_component_parameter_value gui_duty_cycle12 {50.0}
+	set_component_parameter_value gui_duty_cycle13 {50.0}
+	set_component_parameter_value gui_duty_cycle14 {50.0}
+	set_component_parameter_value gui_duty_cycle15 {50.0}
+	set_component_parameter_value gui_duty_cycle16 {50.0}
+	set_component_parameter_value gui_duty_cycle17 {50.0}
+	set_component_parameter_value gui_duty_cycle2 {50.0}
+	set_component_parameter_value gui_duty_cycle3 {50.0}
+	set_component_parameter_value gui_duty_cycle4 {50.0}
+	set_component_parameter_value gui_duty_cycle5 {50.0}
+	set_component_parameter_value gui_duty_cycle6 {50.0}
+	set_component_parameter_value gui_duty_cycle7 {50.0}
+	set_component_parameter_value gui_duty_cycle8 {50.0}
+	set_component_parameter_value gui_duty_cycle9 {50.0}
+	set_component_parameter_value gui_en_adv_params {1}
+	set_component_parameter_value gui_en_dps_ports {0}
+	set_component_parameter_value gui_en_extclkout_ports {0}
+	set_component_parameter_value gui_en_iossm_reconf {0}
+	set_component_parameter_value gui_en_lvds_ports {Disabled}
+	set_component_parameter_value gui_en_periphery_ports {0}
+	set_component_parameter_value gui_en_phout_ports {0}
+	set_component_parameter_value gui_en_reconf {0}
+	set_component_parameter_value gui_enable_cascade_in {0}
+	set_component_parameter_value gui_enable_cascade_out {0}
+	set_component_parameter_value gui_enable_mif_dps {0}
+	set_component_parameter_value gui_enable_output_counter_cascading {0}
+	set_component_parameter_value gui_enable_permit_cal {0}
+	set_component_parameter_value gui_enable_upstream_out_clk {0}
+	set_component_parameter_value gui_existing_mif_file_path {~/pll.mif}
+	set_component_parameter_value gui_extclkout_0_source {C0}
+	set_component_parameter_value gui_extclkout_1_source {C0}
+	set_component_parameter_value gui_feedback_clock {Global Clock}
+	set_component_parameter_value gui_fix_vco_frequency {0}
+	set_component_parameter_value gui_fixed_vco_frequency {600.0}
+	set_component_parameter_value gui_fixed_vco_frequency_ps {1667.0}
+	set_component_parameter_value gui_frac_multiply_factor {1.0}
+	set_component_parameter_value gui_fractional_cout {32}
+	set_component_parameter_value gui_include_iossm {0}
+	set_component_parameter_value gui_location_type {I/O Bank}
+	set_component_parameter_value gui_lock_setting {Low Lock Time}
+	set_component_parameter_value gui_mif_config_name {unnamed}
+	set_component_parameter_value gui_mif_gen_options {Generate New MIF File}
+	set_component_parameter_value gui_multiply_factor {64}
+	set_component_parameter_value gui_new_mif_file_path {~/pll.mif}
+	set_component_parameter_value gui_number_of_clocks {1}
+	set_component_parameter_value gui_operation_mode {direct}
+	set_component_parameter_value gui_output_clock_frequency0 {100.0}
+	set_component_parameter_value gui_output_clock_frequency1 {100.0}
+	set_component_parameter_value gui_output_clock_frequency10 {100.0}
+	set_component_parameter_value gui_output_clock_frequency11 {100.0}
+	set_component_parameter_value gui_output_clock_frequency12 {100.0}
+	set_component_parameter_value gui_output_clock_frequency13 {100.0}
+	set_component_parameter_value gui_output_clock_frequency14 {100.0}
+	set_component_parameter_value gui_output_clock_frequency15 {100.0}
+	set_component_parameter_value gui_output_clock_frequency16 {100.0}
+	set_component_parameter_value gui_output_clock_frequency17 {100.0}
+	set_component_parameter_value gui_output_clock_frequency2 {100.0}
+	set_component_parameter_value gui_output_clock_frequency3 {100.0}
+	set_component_parameter_value gui_output_clock_frequency4 {100.0}
+	set_component_parameter_value gui_output_clock_frequency5 {100.0}
+	set_component_parameter_value gui_output_clock_frequency6 {100.0}
+	set_component_parameter_value gui_output_clock_frequency7 {100.0}
+	set_component_parameter_value gui_output_clock_frequency8 {100.0}
+	set_component_parameter_value gui_output_clock_frequency9 {100.0}
+	set_component_parameter_value gui_output_clock_frequency_ps0 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps1 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps10 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps11 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps12 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps13 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps14 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps15 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps16 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps17 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps2 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps3 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps4 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps5 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps6 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps7 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps8 {10000.0}
+	set_component_parameter_value gui_output_clock_frequency_ps9 {10000.0}
+	set_component_parameter_value gui_parameter_table_hex_file {seq_params_sim.hex}
+	set_component_parameter_value gui_phase_shift0 {0.0}
+	set_component_parameter_value gui_phase_shift1 {0.0}
+	set_component_parameter_value gui_phase_shift10 {0.0}
+	set_component_parameter_value gui_phase_shift11 {0.0}
+	set_component_parameter_value gui_phase_shift12 {0.0}
+	set_component_parameter_value gui_phase_shift13 {0.0}
+	set_component_parameter_value gui_phase_shift14 {0.0}
+	set_component_parameter_value gui_phase_shift15 {0.0}
+	set_component_parameter_value gui_phase_shift16 {0.0}
+	set_component_parameter_value gui_phase_shift17 {0.0}
+	set_component_parameter_value gui_phase_shift2 {0.0}
+	set_component_parameter_value gui_phase_shift3 {0.0}
+	set_component_parameter_value gui_phase_shift4 {0.0}
+	set_component_parameter_value gui_phase_shift5 {0.0}
+	set_component_parameter_value gui_phase_shift6 {0.0}
+	set_component_parameter_value gui_phase_shift7 {0.0}
+	set_component_parameter_value gui_phase_shift8 {0.0}
+	set_component_parameter_value gui_phase_shift9 {0.0}
+	set_component_parameter_value gui_phase_shift_deg0 {0.0}
+	set_component_parameter_value gui_phase_shift_deg1 {0.0}
+	set_component_parameter_value gui_phase_shift_deg10 {0.0}
+	set_component_parameter_value gui_phase_shift_deg11 {0.0}
+	set_component_parameter_value gui_phase_shift_deg12 {0.0}
+	set_component_parameter_value gui_phase_shift_deg13 {0.0}
+	set_component_parameter_value gui_phase_shift_deg14 {0.0}
+	set_component_parameter_value gui_phase_shift_deg15 {0.0}
+	set_component_parameter_value gui_phase_shift_deg16 {0.0}
+	set_component_parameter_value gui_phase_shift_deg17 {0.0}
+	set_component_parameter_value gui_phase_shift_deg2 {0.0}
+	set_component_parameter_value gui_phase_shift_deg3 {0.0}
+	set_component_parameter_value gui_phase_shift_deg4 {0.0}
+	set_component_parameter_value gui_phase_shift_deg5 {0.0}
+	set_component_parameter_value gui_phase_shift_deg6 {0.0}
+	set_component_parameter_value gui_phase_shift_deg7 {0.0}
+	set_component_parameter_value gui_phase_shift_deg8 {0.0}
+	set_component_parameter_value gui_phase_shift_deg9 {0.0}
+	set_component_parameter_value gui_phout_division {1}
+	set_component_parameter_value gui_pll_auto_reset {0}
+	set_component_parameter_value gui_pll_bandwidth_preset {Low}
+	set_component_parameter_value gui_pll_cal_done {0}
+	set_component_parameter_value gui_pll_cascading_mode {adjpllin}
+	set_component_parameter_value gui_pll_freqcal_en {1}
+	set_component_parameter_value gui_pll_freqcal_req_flag {1}
+	set_component_parameter_value gui_pll_m_cnt_in_src {c_m_cnt_in_src_ph_mux_clk}
+	set_component_parameter_value gui_pll_mode {Integer-N PLL}
+	set_component_parameter_value gui_pll_tclk_mux_en {0}
+	set_component_parameter_value gui_pll_tclk_sel {pll_tclk_m_src}
+	set_component_parameter_value gui_pll_type {S10_Simple}
+	set_component_parameter_value gui_pll_vco_freq_band_0 {pll_freq_clk0_band18}
+	set_component_parameter_value gui_pll_vco_freq_band_1 {pll_freq_clk1_band18}
+	set_component_parameter_value gui_prot_mode {UNUSED}
+	set_component_parameter_value gui_ps_units0 {ps}
+	set_component_parameter_value gui_ps_units1 {ps}
+	set_component_parameter_value gui_ps_units10 {ps}
+	set_component_parameter_value gui_ps_units11 {ps}
+	set_component_parameter_value gui_ps_units12 {ps}
+	set_component_parameter_value gui_ps_units13 {ps}
+	set_component_parameter_value gui_ps_units14 {ps}
+	set_component_parameter_value gui_ps_units15 {ps}
+	set_component_parameter_value gui_ps_units16 {ps}
+	set_component_parameter_value gui_ps_units17 {ps}
+	set_component_parameter_value gui_ps_units2 {ps}
+	set_component_parameter_value gui_ps_units3 {ps}
+	set_component_parameter_value gui_ps_units4 {ps}
+	set_component_parameter_value gui_ps_units5 {ps}
+	set_component_parameter_value gui_ps_units6 {ps}
+	set_component_parameter_value gui_ps_units7 {ps}
+	set_component_parameter_value gui_ps_units8 {ps}
+	set_component_parameter_value gui_ps_units9 {ps}
+	set_component_parameter_value gui_refclk1_frequency {100.0}
+	set_component_parameter_value gui_refclk_might_change {0}
+	set_component_parameter_value gui_refclk_switch {0}
+	set_component_parameter_value gui_reference_clock_frequency {156.25}
+	set_component_parameter_value gui_reference_clock_frequency_ps {10000.0}
+	set_component_parameter_value gui_simulation_type {0}
+	set_component_parameter_value gui_skip_sdc_generation {0}
+	set_component_parameter_value gui_switchover_delay {0}
+	set_component_parameter_value gui_switchover_mode {Automatic Switchover}
+	set_component_parameter_value gui_use_NDFB_modes {0}
+	set_component_parameter_value gui_use_coreclk {1}
+	set_component_parameter_value gui_use_locked {1}
+	set_component_parameter_value gui_use_logical {0}
+	set_component_parameter_value gui_usr_device_speed_grade {1}
+	set_component_parameter_value gui_vco_frequency {600.0}
+	set_component_parameter_value hp_qsys_scripting_mode {1}
+	set_component_parameter_value system_info_device_iobank_rev {}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation iopll_ftile_tod_sync_sampling_clk
+	remove_instantiation_interfaces_and_ports
+	set_instantiation_assignment_value embeddedsw.dts.compatible {altr,pll}
+	set_instantiation_assignment_value embeddedsw.dts.group {clock}
+	set_instantiation_assignment_value embeddedsw.dts.vendor {altr}
+	add_instantiation_interface reset reset INPUT
+	set_instantiation_interface_parameter_value reset associatedClock {}
+	set_instantiation_interface_parameter_value reset synchronousEdges {NONE}
+	set_instantiation_interface_assignment_value reset ui.blockdiagram.direction {input}
+	add_instantiation_interface_port reset rst reset 1 STD_LOGIC Input
+	add_instantiation_interface refclk clock INPUT
+	set_instantiation_interface_parameter_value refclk clockRate {156250000}
+	set_instantiation_interface_parameter_value refclk externallyDriven {false}
+	set_instantiation_interface_parameter_value refclk ptfSchematicName {}
+	set_instantiation_interface_assignment_value refclk ui.blockdiagram.direction {input}
+	add_instantiation_interface_port refclk refclk clk 1 STD_LOGIC Input
+	add_instantiation_interface locked conduit INPUT
+	set_instantiation_interface_parameter_value locked associatedClock {}
+	set_instantiation_interface_parameter_value locked associatedReset {}
+	set_instantiation_interface_parameter_value locked prSafe {false}
+	set_instantiation_interface_assignment_value locked ui.blockdiagram.direction {output}
+	add_instantiation_interface_port locked locked export 1 STD_LOGIC Output
+	add_instantiation_interface outclk0 clock OUTPUT
+	set_instantiation_interface_parameter_value outclk0 associatedDirectClock {}
+	set_instantiation_interface_parameter_value outclk0 clockRate {151515152}
+	set_instantiation_interface_parameter_value outclk0 clockRateKnown {true}
+	set_instantiation_interface_parameter_value outclk0 externallyDriven {false}
+	set_instantiation_interface_parameter_value outclk0 ptfSchematicName {}
+	set_instantiation_interface_assignment_value outclk0 ui.blockdiagram.direction {output}
+	set_instantiation_interface_sysinfo_parameter_value outclk0 clock_rate {151515152}
+	add_instantiation_interface_port outclk0 outclk_0 clk 1 STD_LOGIC Output
+	save_instantiation
+	add_component qsfpdd_status_pio ip/subsys_ftile_1588/qsfpdd_status_pio.ip altera_avalon_pio altera_avalon_pio_inst 19.2.0
+	load_component qsfpdd_status_pio
+	set_component_parameter_value bitClearingEdgeCapReg {0}
+	set_component_parameter_value bitModifyingOutReg {0}
+	set_component_parameter_value captureEdge {1}
+	set_component_parameter_value direction {Input}
+	set_component_parameter_value edgeType {RISING}
+	set_component_parameter_value generateIRQ {1}
+	set_component_parameter_value irqType {LEVEL}
+	set_component_parameter_value resetValue {0.0}
+	set_component_parameter_value simDoTestBenchWiring {0}
+	set_component_parameter_value simDrivenValue {0.0}
+	set_component_parameter_value width {2}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation qsfpdd_status_pio
+	remove_instantiation_interfaces_and_ports
+	set_instantiation_assignment_value embeddedsw.CMacro.BIT_CLEARING_EDGE_REGISTER {0}
+	set_instantiation_assignment_value embeddedsw.CMacro.BIT_MODIFYING_OUTPUT_REGISTER {0}
+	set_instantiation_assignment_value embeddedsw.CMacro.CAPTURE {1}
+	set_instantiation_assignment_value embeddedsw.CMacro.DATA_WIDTH {2}
+	set_instantiation_assignment_value embeddedsw.CMacro.DO_TEST_BENCH_WIRING {0}
+	set_instantiation_assignment_value embeddedsw.CMacro.DRIVEN_SIM_VALUE {0}
+	set_instantiation_assignment_value embeddedsw.CMacro.EDGE_TYPE {RISING}
+	set_instantiation_assignment_value embeddedsw.CMacro.FREQ {100000000}
+	set_instantiation_assignment_value embeddedsw.CMacro.HAS_IN {1}
+	set_instantiation_assignment_value embeddedsw.CMacro.HAS_OUT {0}
+	set_instantiation_assignment_value embeddedsw.CMacro.HAS_TRI {0}
+	set_instantiation_assignment_value embeddedsw.CMacro.IRQ_TYPE {LEVEL}
+	set_instantiation_assignment_value embeddedsw.CMacro.RESET_VALUE {0}
+	set_instantiation_assignment_value embeddedsw.dts.compatible {altr,pio-1.0}
+	set_instantiation_assignment_value embeddedsw.dts.group {gpio}
+	set_instantiation_assignment_value embeddedsw.dts.name {pio}
+	set_instantiation_assignment_value embeddedsw.dts.params.altr,gpio-bank-width {2}
+	set_instantiation_assignment_value embeddedsw.dts.params.altr,interrupt-type {4}
+	set_instantiation_assignment_value embeddedsw.dts.params.altr,interrupt_type {4}
+	set_instantiation_assignment_value embeddedsw.dts.params.level_trigger {1}
+	set_instantiation_assignment_value embeddedsw.dts.params.resetvalue {0}
+	set_instantiation_assignment_value embeddedsw.dts.vendor {altr}
+	add_instantiation_interface clk clock INPUT
+	set_instantiation_interface_parameter_value clk clockRate {0}
+	set_instantiation_interface_parameter_value clk externallyDriven {false}
+	set_instantiation_interface_parameter_value clk ptfSchematicName {}
+	add_instantiation_interface_port clk clk clk 1 STD_LOGIC Input
+	add_instantiation_interface reset reset INPUT
+	set_instantiation_interface_parameter_value reset associatedClock {clk}
+	set_instantiation_interface_parameter_value reset synchronousEdges {DEASSERT}
+	add_instantiation_interface_port reset reset_n reset_n 1 STD_LOGIC Input
+	add_instantiation_interface s1 avalon INPUT
+	set_instantiation_interface_parameter_value s1 addressAlignment {NATIVE}
+	set_instantiation_interface_parameter_value s1 addressGroup {0}
+	set_instantiation_interface_parameter_value s1 addressSpan {4}
+	set_instantiation_interface_parameter_value s1 addressUnits {WORDS}
+	set_instantiation_interface_parameter_value s1 alwaysBurstMaxBurst {false}
+	set_instantiation_interface_parameter_value s1 associatedClock {clk}
+	set_instantiation_interface_parameter_value s1 associatedReset {reset}
+	set_instantiation_interface_parameter_value s1 bitsPerSymbol {8}
+	set_instantiation_interface_parameter_value s1 bridgedAddressOffset {0}
+	set_instantiation_interface_parameter_value s1 bridgesToMaster {}
+	set_instantiation_interface_parameter_value s1 burstOnBurstBoundariesOnly {false}
+	set_instantiation_interface_parameter_value s1 burstcountUnits {WORDS}
+	set_instantiation_interface_parameter_value s1 constantBurstBehavior {false}
+	set_instantiation_interface_parameter_value s1 explicitAddressSpan {0}
+	set_instantiation_interface_parameter_value s1 holdTime {0}
+	set_instantiation_interface_parameter_value s1 interleaveBursts {false}
+	set_instantiation_interface_parameter_value s1 isBigEndian {false}
+	set_instantiation_interface_parameter_value s1 isFlash {false}
+	set_instantiation_interface_parameter_value s1 isMemoryDevice {false}
+	set_instantiation_interface_parameter_value s1 isNonVolatileStorage {false}
+	set_instantiation_interface_parameter_value s1 linewrapBursts {false}
+	set_instantiation_interface_parameter_value s1 maximumPendingReadTransactions {0}
+	set_instantiation_interface_parameter_value s1 maximumPendingWriteTransactions {0}
+	set_instantiation_interface_parameter_value s1 minimumReadLatency {1}
+	set_instantiation_interface_parameter_value s1 minimumResponseLatency {1}
+	set_instantiation_interface_parameter_value s1 minimumUninterruptedRunLength {1}
+	set_instantiation_interface_parameter_value s1 prSafe {false}
+	set_instantiation_interface_parameter_value s1 printableDevice {false}
+	set_instantiation_interface_parameter_value s1 readLatency {0}
+	set_instantiation_interface_parameter_value s1 readWaitStates {1}
+	set_instantiation_interface_parameter_value s1 readWaitTime {1}
+	set_instantiation_interface_parameter_value s1 registerIncomingSignals {false}
+	set_instantiation_interface_parameter_value s1 registerOutgoingSignals {false}
+	set_instantiation_interface_parameter_value s1 setupTime {0}
+	set_instantiation_interface_parameter_value s1 timingUnits {Cycles}
+	set_instantiation_interface_parameter_value s1 transparentBridge {false}
+	set_instantiation_interface_parameter_value s1 waitrequestAllowance {0}
+	set_instantiation_interface_parameter_value s1 wellBehavedWaitrequest {false}
+	set_instantiation_interface_parameter_value s1 writeLatency {0}
+	set_instantiation_interface_parameter_value s1 writeWaitStates {0}
+	set_instantiation_interface_parameter_value s1 writeWaitTime {0}
+	set_instantiation_interface_assignment_value s1 embeddedsw.configuration.isFlash {0}
+	set_instantiation_interface_assignment_value s1 embeddedsw.configuration.isMemoryDevice {0}
+	set_instantiation_interface_assignment_value s1 embeddedsw.configuration.isNonVolatileStorage {0}
+	set_instantiation_interface_assignment_value s1 embeddedsw.configuration.isPrintableDevice {0}
+	set_instantiation_interface_sysinfo_parameter_value s1 address_map {<address-map><slave name='s1' start='0x0' end='0x10' datawidth='32' /></address-map>}
+	set_instantiation_interface_sysinfo_parameter_value s1 address_width {4}
+	set_instantiation_interface_sysinfo_parameter_value s1 max_slave_data_width {32}
+	add_instantiation_interface_port s1 address address 2 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port s1 write_n write_n 1 STD_LOGIC Input
+	add_instantiation_interface_port s1 writedata writedata 32 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port s1 chipselect chipselect 1 STD_LOGIC Input
+	add_instantiation_interface_port s1 readdata readdata 32 STD_LOGIC_VECTOR Output
+	add_instantiation_interface external_connection conduit INPUT
+	set_instantiation_interface_parameter_value external_connection associatedClock {}
+	set_instantiation_interface_parameter_value external_connection associatedReset {}
+	set_instantiation_interface_parameter_value external_connection prSafe {false}
+	add_instantiation_interface_port external_connection in_port export 2 STD_LOGIC_VECTOR Input
+	add_instantiation_interface irq interrupt INPUT
+	set_instantiation_interface_parameter_value irq associatedAddressablePoint {s1}
+	set_instantiation_interface_parameter_value irq associatedClock {clk}
+	set_instantiation_interface_parameter_value irq associatedReset {reset}
+	set_instantiation_interface_parameter_value irq bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value irq bridgesToReceiver {}
+	set_instantiation_interface_parameter_value irq irqScheme {NONE}
+	set_instantiation_interface_assignment_value irq embeddedsw.dts.irq.tx_type {ACTIVE_HIGH}
+	add_instantiation_interface_port irq irq irq 1 STD_LOGIC Output
+	save_instantiation
+	add_component subsys_ftile_1588_csr ip/subsys_ftile_1588/subsys_ftile_1588_csr.ip altera_avalon_mm_bridge altera_avalon_mm_bridge_inst 20.0.1
+	load_component subsys_ftile_1588_csr
+	set_component_parameter_value ADDRESS_UNITS {SYMBOLS}
+	set_component_parameter_value ADDRESS_WIDTH {32}
+	set_component_parameter_value DATA_WIDTH {32}
+	set_component_parameter_value LINEWRAPBURSTS {0}
+	set_component_parameter_value MAX_BURST_SIZE {1}
+	set_component_parameter_value MAX_PENDING_RESPONSES {1}
+	set_component_parameter_value MAX_PENDING_WRITES {0}
+	set_component_parameter_value PIPELINE_COMMAND {1}
+	set_component_parameter_value PIPELINE_RESPONSE {1}
+	set_component_parameter_value SYMBOL_WIDTH {8}
+	set_component_parameter_value SYNC_RESET {0}
+	set_component_parameter_value USE_AUTO_ADDRESS_WIDTH {1}
+	set_component_parameter_value USE_RESPONSE {0}
+	set_component_parameter_value USE_WRITERESPONSE {0}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation subsys_ftile_1588_csr
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface clk clock INPUT
+	set_instantiation_interface_parameter_value clk clockRate {0}
+	set_instantiation_interface_parameter_value clk externallyDriven {false}
+	set_instantiation_interface_parameter_value clk ptfSchematicName {}
+	add_instantiation_interface_port clk clk clk 1 STD_LOGIC Input
+	add_instantiation_interface reset reset INPUT
+	set_instantiation_interface_parameter_value reset associatedClock {clk}
+	set_instantiation_interface_parameter_value reset synchronousEdges {DEASSERT}
+	add_instantiation_interface_port reset reset reset 1 STD_LOGIC Input
+	add_instantiation_interface s0 avalon INPUT
+	set_instantiation_interface_parameter_value s0 addressAlignment {DYNAMIC}
+	set_instantiation_interface_parameter_value s0 addressGroup {0}
+	set_instantiation_interface_parameter_value s0 addressSpan {134217728}
+	set_instantiation_interface_parameter_value s0 addressUnits {SYMBOLS}
+	set_instantiation_interface_parameter_value s0 alwaysBurstMaxBurst {false}
+	set_instantiation_interface_parameter_value s0 associatedClock {clk}
+	set_instantiation_interface_parameter_value s0 associatedReset {reset}
+	set_instantiation_interface_parameter_value s0 bitsPerSymbol {8}
+	set_instantiation_interface_parameter_value s0 bridgedAddressOffset {0}
+	set_instantiation_interface_parameter_value s0 bridgesToMaster {m0}
+	set_instantiation_interface_parameter_value s0 burstOnBurstBoundariesOnly {false}
+	set_instantiation_interface_parameter_value s0 burstcountUnits {WORDS}
+	set_instantiation_interface_parameter_value s0 constantBurstBehavior {false}
+	set_instantiation_interface_parameter_value s0 explicitAddressSpan {0}
+	set_instantiation_interface_parameter_value s0 holdTime {0}
+	set_instantiation_interface_parameter_value s0 interleaveBursts {false}
+	set_instantiation_interface_parameter_value s0 isBigEndian {false}
+	set_instantiation_interface_parameter_value s0 isFlash {false}
+	set_instantiation_interface_parameter_value s0 isMemoryDevice {false}
+	set_instantiation_interface_parameter_value s0 isNonVolatileStorage {false}
+	set_instantiation_interface_parameter_value s0 linewrapBursts {false}
+	set_instantiation_interface_parameter_value s0 maximumPendingReadTransactions {1}
+	set_instantiation_interface_parameter_value s0 maximumPendingWriteTransactions {0}
+	set_instantiation_interface_parameter_value s0 minimumReadLatency {1}
+	set_instantiation_interface_parameter_value s0 minimumResponseLatency {1}
+	set_instantiation_interface_parameter_value s0 minimumUninterruptedRunLength {1}
+	set_instantiation_interface_parameter_value s0 prSafe {false}
+	set_instantiation_interface_parameter_value s0 printableDevice {false}
+	set_instantiation_interface_parameter_value s0 readLatency {0}
+	set_instantiation_interface_parameter_value s0 readWaitStates {0}
+	set_instantiation_interface_parameter_value s0 readWaitTime {0}
+	set_instantiation_interface_parameter_value s0 registerIncomingSignals {false}
+	set_instantiation_interface_parameter_value s0 registerOutgoingSignals {false}
+	set_instantiation_interface_parameter_value s0 setupTime {0}
+	set_instantiation_interface_parameter_value s0 timingUnits {Cycles}
+	set_instantiation_interface_parameter_value s0 transparentBridge {false}
+	set_instantiation_interface_parameter_value s0 waitrequestAllowance {0}
+	set_instantiation_interface_parameter_value s0 wellBehavedWaitrequest {false}
+	set_instantiation_interface_parameter_value s0 writeLatency {0}
+	set_instantiation_interface_parameter_value s0 writeWaitStates {0}
+	set_instantiation_interface_parameter_value s0 writeWaitTime {0}
+	set_instantiation_interface_assignment_value s0 embeddedsw.configuration.isFlash {0}
+	set_instantiation_interface_assignment_value s0 embeddedsw.configuration.isMemoryDevice {0}
+	set_instantiation_interface_assignment_value s0 embeddedsw.configuration.isNonVolatileStorage {0}
+	set_instantiation_interface_assignment_value s0 embeddedsw.configuration.isPrintableDevice {0}
+	set_instantiation_interface_sysinfo_parameter_value s0 address_map {}
+	set_instantiation_interface_sysinfo_parameter_value s0 address_width {}
+	set_instantiation_interface_sysinfo_parameter_value s0 max_slave_data_width {}
+	add_instantiation_interface_port s0 s0_waitrequest waitrequest 1 STD_LOGIC Output
+	add_instantiation_interface_port s0 s0_readdata readdata 32 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port s0 s0_readdatavalid readdatavalid 1 STD_LOGIC Output
+	add_instantiation_interface_port s0 s0_burstcount burstcount 1 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port s0 s0_writedata writedata 32 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port s0 s0_address address 27 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port s0 s0_write write 1 STD_LOGIC Input
+	add_instantiation_interface_port s0 s0_read read 1 STD_LOGIC Input
+	add_instantiation_interface_port s0 s0_byteenable byteenable 4 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port s0 s0_debugaccess debugaccess 1 STD_LOGIC Input
+	add_instantiation_interface m0 avalon OUTPUT
+	set_instantiation_interface_parameter_value m0 adaptsTo {}
+	set_instantiation_interface_parameter_value m0 addressGroup {0}
+	set_instantiation_interface_parameter_value m0 addressUnits {SYMBOLS}
+	set_instantiation_interface_parameter_value m0 alwaysBurstMaxBurst {false}
+	set_instantiation_interface_parameter_value m0 associatedClock {clk}
+	set_instantiation_interface_parameter_value m0 associatedReset {reset}
+	set_instantiation_interface_parameter_value m0 bitsPerSymbol {8}
+	set_instantiation_interface_parameter_value m0 burstOnBurstBoundariesOnly {false}
+	set_instantiation_interface_parameter_value m0 burstcountUnits {WORDS}
+	set_instantiation_interface_parameter_value m0 constantBurstBehavior {false}
+	set_instantiation_interface_parameter_value m0 dBSBigEndian {false}
+	set_instantiation_interface_parameter_value m0 doStreamReads {false}
+	set_instantiation_interface_parameter_value m0 doStreamWrites {false}
+	set_instantiation_interface_parameter_value m0 holdTime {0}
+	set_instantiation_interface_parameter_value m0 interleaveBursts {false}
+	set_instantiation_interface_parameter_value m0 isAsynchronous {false}
+	set_instantiation_interface_parameter_value m0 isBigEndian {false}
+	set_instantiation_interface_parameter_value m0 isReadable {false}
+	set_instantiation_interface_parameter_value m0 isWriteable {false}
+	set_instantiation_interface_parameter_value m0 linewrapBursts {false}
+	set_instantiation_interface_parameter_value m0 maxAddressWidth {32}
+	set_instantiation_interface_parameter_value m0 maximumPendingReadTransactions {0}
+	set_instantiation_interface_parameter_value m0 maximumPendingWriteTransactions {0}
+	set_instantiation_interface_parameter_value m0 minimumReadLatency {1}
+	set_instantiation_interface_parameter_value m0 minimumResponseLatency {1}
+	set_instantiation_interface_parameter_value m0 prSafe {false}
+	set_instantiation_interface_parameter_value m0 readLatency {0}
+	set_instantiation_interface_parameter_value m0 readWaitTime {1}
+	set_instantiation_interface_parameter_value m0 registerIncomingSignals {false}
+	set_instantiation_interface_parameter_value m0 registerOutgoingSignals {false}
+	set_instantiation_interface_parameter_value m0 setupTime {0}
+	set_instantiation_interface_parameter_value m0 timingUnits {Cycles}
+	set_instantiation_interface_parameter_value m0 waitrequestAllowance {0}
+	set_instantiation_interface_parameter_value m0 writeWaitTime {0}
+	add_instantiation_interface_port m0 m0_waitrequest waitrequest 1 STD_LOGIC Input
+	add_instantiation_interface_port m0 m0_readdata readdata 32 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port m0 m0_readdatavalid readdatavalid 1 STD_LOGIC Input
+	add_instantiation_interface_port m0 m0_burstcount burstcount 1 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port m0 m0_writedata writedata 32 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port m0 m0_address address 27 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port m0 m0_write write 1 STD_LOGIC Output
+	add_instantiation_interface_port m0 m0_read read 1 STD_LOGIC Output
+	add_instantiation_interface_port m0 m0_byteenable byteenable 4 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port m0 m0_debugaccess debugaccess 1 STD_LOGIC Output
+	save_instantiation
+	add_component subsys_ftile_1588_csrclk ip/subsys_ftile_1588/subsys_ftile_1588_csrclk.ip altera_clock_bridge altera_clock_bridge_inst 19.2.0
+	load_component subsys_ftile_1588_csrclk
+	set_component_parameter_value EXPLICIT_CLOCK_RATE {100000000.0}
+	set_component_parameter_value NUM_CLOCK_OUTPUTS {1}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation subsys_ftile_1588_csrclk
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface in_clk clock INPUT
+	set_instantiation_interface_parameter_value in_clk clockRate {0}
+	set_instantiation_interface_parameter_value in_clk externallyDriven {false}
+	set_instantiation_interface_parameter_value in_clk ptfSchematicName {}
+	add_instantiation_interface_port in_clk in_clk clk 1 STD_LOGIC Input
+	add_instantiation_interface out_clk clock OUTPUT
+	set_instantiation_interface_parameter_value out_clk associatedDirectClock {in_clk}
+	set_instantiation_interface_parameter_value out_clk clockRate {100000000}
+	set_instantiation_interface_parameter_value out_clk clockRateKnown {true}
+	set_instantiation_interface_parameter_value out_clk externallyDriven {false}
+	set_instantiation_interface_parameter_value out_clk ptfSchematicName {}
+	set_instantiation_interface_sysinfo_parameter_value out_clk clock_rate {100000000}
+	add_instantiation_interface_port out_clk out_clk clk 1 STD_LOGIC Output
+	save_instantiation
+	add_component subsys_ftile_1588_dmaclkout ip/subsys_ftile_1588/subsys_ftile_1588_dmaclkout.ip altera_clock_bridge altera_clock_bridge_inst 19.2.0
+	load_component subsys_ftile_1588_dmaclkout
+	set_component_parameter_value EXPLICIT_CLOCK_RATE {0.0}
+	set_component_parameter_value NUM_CLOCK_OUTPUTS {1}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation subsys_ftile_1588_dmaclkout
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface in_clk clock INPUT
+	set_instantiation_interface_parameter_value in_clk clockRate {0}
+	set_instantiation_interface_parameter_value in_clk externallyDriven {false}
+	set_instantiation_interface_parameter_value in_clk ptfSchematicName {}
+	add_instantiation_interface_port in_clk in_clk clk 1 STD_LOGIC Input
+	add_instantiation_interface out_clk clock OUTPUT
+	set_instantiation_interface_parameter_value out_clk associatedDirectClock {in_clk}
+	set_instantiation_interface_parameter_value out_clk clockRate {201416016}
+	set_instantiation_interface_parameter_value out_clk clockRateKnown {true}
+	set_instantiation_interface_parameter_value out_clk externallyDriven {false}
+	set_instantiation_interface_parameter_value out_clk ptfSchematicName {}
+	set_instantiation_interface_sysinfo_parameter_value out_clk clock_rate {201416016}
+	add_instantiation_interface_port out_clk out_clk clk 1 STD_LOGIC Output
+	save_instantiation
+	add_component subsys_ftile_1588_dmaclkout_reset ip/subsys_ftile_1588/subsys_ftile_1588_dmaclkout_reset.ip altera_reset_bridge altera_reset_bridge_inst 19.2.0
+	load_component subsys_ftile_1588_dmaclkout_reset
+	set_component_parameter_value ACTIVE_LOW_RESET {1}
+	set_component_parameter_value NUM_RESET_OUTPUTS {1}
+	set_component_parameter_value SYNCHRONOUS_EDGES {deassert}
+	set_component_parameter_value SYNC_RESET {0}
+	set_component_parameter_value USE_RESET_REQUEST {0}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation subsys_ftile_1588_dmaclkout_reset
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface clk clock INPUT
+	set_instantiation_interface_parameter_value clk clockRate {0}
+	set_instantiation_interface_parameter_value clk externallyDriven {false}
+	set_instantiation_interface_parameter_value clk ptfSchematicName {}
+	add_instantiation_interface_port clk clk clk 1 STD_LOGIC Input
+	add_instantiation_interface in_reset reset INPUT
+	set_instantiation_interface_parameter_value in_reset associatedClock {clk}
+	set_instantiation_interface_parameter_value in_reset synchronousEdges {DEASSERT}
+	add_instantiation_interface_port in_reset in_reset_n reset_n 1 STD_LOGIC Input
+	add_instantiation_interface out_reset reset OUTPUT
+	set_instantiation_interface_parameter_value out_reset associatedClock {clk}
+	set_instantiation_interface_parameter_value out_reset associatedDirectReset {in_reset}
+	set_instantiation_interface_parameter_value out_reset associatedResetSinks {in_reset}
+	set_instantiation_interface_parameter_value out_reset synchronousEdges {DEASSERT}
+	add_instantiation_interface_port out_reset out_reset_n reset_n 1 STD_LOGIC Output
+	save_instantiation
+	add_component subsys_ftile_1588_master_todclk ip/subsys_ftile_1588/subsys_ftile_1588_master_todclk.ip altera_clock_bridge altera_clock_bridge_inst 19.2.0
+	load_component subsys_ftile_1588_master_todclk
+	set_component_parameter_value EXPLICIT_CLOCK_RATE {156250000.0}
+	set_component_parameter_value NUM_CLOCK_OUTPUTS {1}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation subsys_ftile_1588_master_todclk
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface in_clk clock INPUT
+	set_instantiation_interface_parameter_value in_clk clockRate {0}
+	set_instantiation_interface_parameter_value in_clk externallyDriven {false}
+	set_instantiation_interface_parameter_value in_clk ptfSchematicName {}
+	add_instantiation_interface_port in_clk in_clk clk 1 STD_LOGIC Input
+	add_instantiation_interface out_clk clock OUTPUT
+	set_instantiation_interface_parameter_value out_clk associatedDirectClock {in_clk}
+	set_instantiation_interface_parameter_value out_clk clockRate {156250000}
+	set_instantiation_interface_parameter_value out_clk clockRateKnown {true}
+	set_instantiation_interface_parameter_value out_clk externallyDriven {false}
+	set_instantiation_interface_parameter_value out_clk ptfSchematicName {}
+	set_instantiation_interface_sysinfo_parameter_value out_clk clock_rate {156250000}
+	add_instantiation_interface_port out_clk out_clk clk 1 STD_LOGIC Output
+	save_instantiation
+	add_component subsys_ftile_1588_ninitdone_reset ip/subsys_ftile_1588/subsys_ftile_1588_ninitdone_reset.ip altera_reset_bridge altera_reset_bridge_inst 19.2.0
+	load_component subsys_ftile_1588_ninitdone_reset
+	set_component_parameter_value ACTIVE_LOW_RESET {0}
+	set_component_parameter_value NUM_RESET_OUTPUTS {1}
+	set_component_parameter_value SYNCHRONOUS_EDGES {none}
+	set_component_parameter_value SYNC_RESET {0}
+	set_component_parameter_value USE_RESET_REQUEST {0}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation subsys_ftile_1588_ninitdone_reset
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface in_reset reset INPUT
+	set_instantiation_interface_parameter_value in_reset associatedClock {}
+	set_instantiation_interface_parameter_value in_reset synchronousEdges {NONE}
+	add_instantiation_interface_port in_reset in_reset reset 1 STD_LOGIC Input
+	add_instantiation_interface out_reset reset OUTPUT
+	set_instantiation_interface_parameter_value out_reset associatedClock {}
+	set_instantiation_interface_parameter_value out_reset associatedDirectReset {in_reset}
+	set_instantiation_interface_parameter_value out_reset associatedResetSinks {in_reset}
+	set_instantiation_interface_parameter_value out_reset synchronousEdges {NONE}
+	add_instantiation_interface_port out_reset out_reset reset 1 STD_LOGIC Output
+	save_instantiation
+	add_component subsys_ftile_1588_reset ip/subsys_ftile_1588/subsys_ftile_1588_reset.ip altera_reset_bridge altera_reset_bridge_inst 19.2.0
+	load_component subsys_ftile_1588_reset
+	set_component_parameter_value ACTIVE_LOW_RESET {1}
+	set_component_parameter_value NUM_RESET_OUTPUTS {1}
+	set_component_parameter_value SYNCHRONOUS_EDGES {both}
+	set_component_parameter_value SYNC_RESET {0}
+	set_component_parameter_value USE_RESET_REQUEST {0}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation subsys_ftile_1588_reset
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface clk clock INPUT
+	set_instantiation_interface_parameter_value clk clockRate {0}
+	set_instantiation_interface_parameter_value clk externallyDriven {false}
+	set_instantiation_interface_parameter_value clk ptfSchematicName {}
+	add_instantiation_interface_port clk clk clk 1 STD_LOGIC Input
+	add_instantiation_interface in_reset reset INPUT
+	set_instantiation_interface_parameter_value in_reset associatedClock {clk}
+	set_instantiation_interface_parameter_value in_reset synchronousEdges {BOTH}
+	add_instantiation_interface_port in_reset in_reset_n reset_n 1 STD_LOGIC Input
+	add_instantiation_interface out_reset reset OUTPUT
+	set_instantiation_interface_parameter_value out_reset associatedClock {clk}
+	set_instantiation_interface_parameter_value out_reset associatedDirectReset {in_reset}
+	set_instantiation_interface_parameter_value out_reset associatedResetSinks {in_reset}
+	set_instantiation_interface_parameter_value out_reset synchronousEdges {BOTH}
+	add_instantiation_interface_port out_reset out_reset_n reset_n 1 STD_LOGIC Output
+	save_instantiation
+
+	# add wirelevel expressions
+	set_wirelevel_expression {ftile_eth_hw_ip_top_0.i_tx_dmac_skip_crc[0]} {1'b0}
+	set_wirelevel_expression {ftile_eth_hw_ip_top_0.ptp_ins_cf[0]} {1'b0}
+	set_wirelevel_expression {ftile_eth_hw_ip_top_0.ptp_ins_cf_offset[15:0]} {16'd0}
+	set_wirelevel_expression {ftile_eth_hw_ip_top_0.ptp_ins_csum_offset[15:0]} {16'd0}
+	set_wirelevel_expression {ftile_eth_hw_ip_top_0.ptp_ins_ets[0]} {1'b0}
+	set_wirelevel_expression {ftile_eth_hw_ip_top_0.ptp_ins_ts_offset[15:0]} {16'd0}
+	set_wirelevel_expression {ftile_eth_hw_ip_top_0.ptp_ins_update_eb[0]} {1'b0}
+	set_wirelevel_expression {ftile_eth_hw_ip_top_0.ptp_ins_zero_csum[0]} {1'b0}
+	set_wirelevel_expression {ftile_eth_hw_ip_top_0.ptp_tx_its[95:0]} {96'd0}
+
+	# preserve ports for debug
+
+	# add the connections
+	add_connection ftile_rx_dma_ch1.pause_ctrl_ftile/ftile_eth_hw_ip_top_0.pause_ports
+	set_connection_parameter_value ftile_rx_dma_ch1.pause_ctrl_ftile/ftile_eth_hw_ip_top_0.pause_ports endPort {}
+	set_connection_parameter_value ftile_rx_dma_ch1.pause_ctrl_ftile/ftile_eth_hw_ip_top_0.pause_ports endPortLSB {0}
+	set_connection_parameter_value ftile_rx_dma_ch1.pause_ctrl_ftile/ftile_eth_hw_ip_top_0.pause_ports startPort {}
+	set_connection_parameter_value ftile_rx_dma_ch1.pause_ctrl_ftile/ftile_eth_hw_ip_top_0.pause_ports startPortLSB {0}
+	set_connection_parameter_value ftile_rx_dma_ch1.pause_ctrl_ftile/ftile_eth_hw_ip_top_0.pause_ports width {0}
+	add_connection ftile_rx_dma_ch1.timestamp/ftile_eth_hw_ip_top_0.rx_timestamp
+	set_connection_parameter_value ftile_rx_dma_ch1.timestamp/ftile_eth_hw_ip_top_0.rx_timestamp endPort {}
+	set_connection_parameter_value ftile_rx_dma_ch1.timestamp/ftile_eth_hw_ip_top_0.rx_timestamp endPortLSB {0}
+	set_connection_parameter_value ftile_rx_dma_ch1.timestamp/ftile_eth_hw_ip_top_0.rx_timestamp startPort {}
+	set_connection_parameter_value ftile_rx_dma_ch1.timestamp/ftile_eth_hw_ip_top_0.rx_timestamp startPortLSB {0}
+	set_connection_parameter_value ftile_rx_dma_ch1.timestamp/ftile_eth_hw_ip_top_0.rx_timestamp width {0}
+	add_connection ftile_tx_dma_ch1.pktout/ftile_eth_hw_ip_top_0.tx_mac_avst
+	set_connection_parameter_value ftile_tx_dma_ch1.pktout/ftile_eth_hw_ip_top_0.tx_mac_avst qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value ftile_tx_dma_ch1.pktout/ftile_eth_hw_ip_top_0.tx_mac_avst qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value ftile_tx_dma_ch1.pktout/ftile_eth_hw_ip_top_0.tx_mac_avst qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value ftile_tx_dma_ch1.pktout/ftile_eth_hw_ip_top_0.tx_mac_avst qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value ftile_tx_dma_ch1.pktout/ftile_eth_hw_ip_top_0.tx_mac_avst qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value ftile_tx_dma_ch1.pktout/ftile_eth_hw_ip_top_0.tx_mac_avst qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value ftile_tx_dma_ch1.pktout/ftile_eth_hw_ip_top_0.tx_mac_avst qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value ftile_tx_dma_ch1.pktout/ftile_eth_hw_ip_top_0.tx_mac_avst qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value ftile_tx_dma_ch1.pktout/ftile_eth_hw_ip_top_0.tx_mac_avst qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value ftile_tx_dma_ch1.pktout/ftile_eth_hw_ip_top_0.tx_mac_avst qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value ftile_tx_dma_ch1.pktout/ftile_eth_hw_ip_top_0.tx_mac_avst qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value ftile_tx_dma_ch1.pktout/ftile_eth_hw_ip_top_0.tx_mac_avst qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value ftile_tx_dma_ch1.pktout/ftile_eth_hw_ip_top_0.tx_mac_avst qsys_mm.syncResets {FALSE}
+	set_connection_parameter_value ftile_tx_dma_ch1.pktout/ftile_eth_hw_ip_top_0.tx_mac_avst qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	add_connection ftile_tx_dma_ch1.timestamp/ftile_eth_hw_ip_top_0.tx_timestamp
+	set_connection_parameter_value ftile_tx_dma_ch1.timestamp/ftile_eth_hw_ip_top_0.tx_timestamp endPort {}
+	set_connection_parameter_value ftile_tx_dma_ch1.timestamp/ftile_eth_hw_ip_top_0.tx_timestamp endPortLSB {0}
+	set_connection_parameter_value ftile_tx_dma_ch1.timestamp/ftile_eth_hw_ip_top_0.tx_timestamp startPort {}
+	set_connection_parameter_value ftile_tx_dma_ch1.timestamp/ftile_eth_hw_ip_top_0.tx_timestamp startPortLSB {0}
+	set_connection_parameter_value ftile_tx_dma_ch1.timestamp/ftile_eth_hw_ip_top_0.tx_timestamp width {0}
+	add_connection ftile_tx_dma_ch1.timestamp_req/ftile_eth_hw_ip_top_0.timestamp_request
+	set_connection_parameter_value ftile_tx_dma_ch1.timestamp_req/ftile_eth_hw_ip_top_0.timestamp_request endPort {}
+	set_connection_parameter_value ftile_tx_dma_ch1.timestamp_req/ftile_eth_hw_ip_top_0.timestamp_request endPortLSB {0}
+	set_connection_parameter_value ftile_tx_dma_ch1.timestamp_req/ftile_eth_hw_ip_top_0.timestamp_request startPort {}
+	set_connection_parameter_value ftile_tx_dma_ch1.timestamp_req/ftile_eth_hw_ip_top_0.timestamp_request startPortLSB {0}
+	set_connection_parameter_value ftile_tx_dma_ch1.timestamp_req/ftile_eth_hw_ip_top_0.timestamp_request width {0}
+	add_connection ftile_debug_status_pio_0.external_connection/ftile_eth_hw_ip_top_0.o_status_debug
+	set_connection_parameter_value ftile_debug_status_pio_0.external_connection/ftile_eth_hw_ip_top_0.o_status_debug endPort {}
+	set_connection_parameter_value ftile_debug_status_pio_0.external_connection/ftile_eth_hw_ip_top_0.o_status_debug endPortLSB {0}
+	set_connection_parameter_value ftile_debug_status_pio_0.external_connection/ftile_eth_hw_ip_top_0.o_status_debug startPort {}
+	set_connection_parameter_value ftile_debug_status_pio_0.external_connection/ftile_eth_hw_ip_top_0.o_status_debug startPortLSB {0}
+	set_connection_parameter_value ftile_debug_status_pio_0.external_connection/ftile_eth_hw_ip_top_0.o_status_debug width {0}
+	add_connection ftile_eth_hw_ip_top_0.o_clk_pll/ftile_rx_dma_ch1.ftile_clk
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.o_clk_pll/ftile_rx_dma_ch1.ftile_clk clockDomainSysInfo {1}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.o_clk_pll/ftile_rx_dma_ch1.ftile_clk clockRateSysInfo {}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.o_clk_pll/ftile_rx_dma_ch1.ftile_clk clockResetSysInfo {}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.o_clk_pll/ftile_rx_dma_ch1.ftile_clk resetDomainSysInfo {1}
+	add_connection ftile_eth_hw_ip_top_0.o_clk_pll/ftile_tx_dma_ch1.ftile_clk
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.o_clk_pll/ftile_tx_dma_ch1.ftile_clk clockDomainSysInfo {1}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.o_clk_pll/ftile_tx_dma_ch1.ftile_clk clockRateSysInfo {}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.o_clk_pll/ftile_tx_dma_ch1.ftile_clk clockResetSysInfo {}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.o_clk_pll/ftile_tx_dma_ch1.ftile_clk resetDomainSysInfo {1}
+	add_connection ftile_eth_hw_ip_top_0.o_clk_pll/ftile_eth_hw_ip_top_0.i_clk_rx
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.o_clk_pll/ftile_eth_hw_ip_top_0.i_clk_rx clockDomainSysInfo {1}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.o_clk_pll/ftile_eth_hw_ip_top_0.i_clk_rx clockRateSysInfo {}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.o_clk_pll/ftile_eth_hw_ip_top_0.i_clk_rx clockResetSysInfo {}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.o_clk_pll/ftile_eth_hw_ip_top_0.i_clk_rx resetDomainSysInfo {1}
+	add_connection ftile_eth_hw_ip_top_0.o_clk_pll/ftile_eth_hw_ip_top_0.i_clk_tx
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.o_clk_pll/ftile_eth_hw_ip_top_0.i_clk_tx clockDomainSysInfo {1}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.o_clk_pll/ftile_eth_hw_ip_top_0.i_clk_tx clockRateSysInfo {}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.o_clk_pll/ftile_eth_hw_ip_top_0.i_clk_tx clockResetSysInfo {}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.o_clk_pll/ftile_eth_hw_ip_top_0.i_clk_tx resetDomainSysInfo {1}
+	add_connection ftile_eth_hw_ip_top_0.o_clk_pll/iopll_clk_avst_div2.refclk
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.o_clk_pll/iopll_clk_avst_div2.refclk clockDomainSysInfo {1}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.o_clk_pll/iopll_clk_avst_div2.refclk clockRateSysInfo {}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.o_clk_pll/iopll_clk_avst_div2.refclk clockResetSysInfo {}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.o_clk_pll/iopll_clk_avst_div2.refclk resetDomainSysInfo {1}
+	add_connection ftile_eth_hw_ip_top_0.o_clk_rec_div/ftile_eth_hw_ip_top_0.i_clk_rx_tod
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.o_clk_rec_div/ftile_eth_hw_ip_top_0.i_clk_rx_tod clockDomainSysInfo {2}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.o_clk_rec_div/ftile_eth_hw_ip_top_0.i_clk_rx_tod clockRateSysInfo {}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.o_clk_rec_div/ftile_eth_hw_ip_top_0.i_clk_rx_tod clockResetSysInfo {}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.o_clk_rec_div/ftile_eth_hw_ip_top_0.i_clk_rx_tod resetDomainSysInfo {2}
+	add_connection ftile_eth_hw_ip_top_0.o_clk_tx_div/ftile_eth_hw_ip_top_0.i_clk_tx_tod
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.o_clk_tx_div/ftile_eth_hw_ip_top_0.i_clk_tx_tod clockDomainSysInfo {3}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.o_clk_tx_div/ftile_eth_hw_ip_top_0.i_clk_tx_tod clockRateSysInfo {}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.o_clk_tx_div/ftile_eth_hw_ip_top_0.i_clk_tx_tod clockResetSysInfo {}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.o_clk_tx_div/ftile_eth_hw_ip_top_0.i_clk_tx_tod resetDomainSysInfo {3}
+	add_connection ftile_eth_hw_ip_top_0.rx_mac_avst/ftile_rx_dma_ch1.pktin
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.rx_mac_avst/ftile_rx_dma_ch1.pktin qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.rx_mac_avst/ftile_rx_dma_ch1.pktin qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.rx_mac_avst/ftile_rx_dma_ch1.pktin qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.rx_mac_avst/ftile_rx_dma_ch1.pktin qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.rx_mac_avst/ftile_rx_dma_ch1.pktin qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.rx_mac_avst/ftile_rx_dma_ch1.pktin qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.rx_mac_avst/ftile_rx_dma_ch1.pktin qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.rx_mac_avst/ftile_rx_dma_ch1.pktin qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.rx_mac_avst/ftile_rx_dma_ch1.pktin qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.rx_mac_avst/ftile_rx_dma_ch1.pktin qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.rx_mac_avst/ftile_rx_dma_ch1.pktin qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.rx_mac_avst/ftile_rx_dma_ch1.pktin qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.rx_mac_avst/ftile_rx_dma_ch1.pktin qsys_mm.syncResets {FALSE}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.rx_mac_avst/ftile_rx_dma_ch1.pktin qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	add_connection ftile_eth_hw_ip_top_0.tx_plldiv2_locked_reset_n/subsys_ftile_1588_dmaclkout_reset.in_reset
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.tx_plldiv2_locked_reset_n/subsys_ftile_1588_dmaclkout_reset.in_reset clockDomainSysInfo {4}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.tx_plldiv2_locked_reset_n/subsys_ftile_1588_dmaclkout_reset.in_reset clockResetSysInfo {}
+	set_connection_parameter_value ftile_eth_hw_ip_top_0.tx_plldiv2_locked_reset_n/subsys_ftile_1588_dmaclkout_reset.in_reset resetDomainSysInfo {4}
+	add_connection ftile_master_tod.time_of_day_96b/ftile_eth_hw_ip_top_0.i_mtod_data
+	set_connection_parameter_value ftile_master_tod.time_of_day_96b/ftile_eth_hw_ip_top_0.i_mtod_data endPort {}
+	set_connection_parameter_value ftile_master_tod.time_of_day_96b/ftile_eth_hw_ip_top_0.i_mtod_data endPortLSB {0}
+	set_connection_parameter_value ftile_master_tod.time_of_day_96b/ftile_eth_hw_ip_top_0.i_mtod_data startPort {}
+	set_connection_parameter_value ftile_master_tod.time_of_day_96b/ftile_eth_hw_ip_top_0.i_mtod_data startPortLSB {0}
+	set_connection_parameter_value ftile_master_tod.time_of_day_96b/ftile_eth_hw_ip_top_0.i_mtod_data width {0}
+	add_connection ftile_master_tod_load_off_64b.time_of_day_load/ftile_master_tod.time_of_day_64b_load
+	set_connection_parameter_value ftile_master_tod_load_off_64b.time_of_day_load/ftile_master_tod.time_of_day_64b_load endPort {}
+	set_connection_parameter_value ftile_master_tod_load_off_64b.time_of_day_load/ftile_master_tod.time_of_day_64b_load endPortLSB {0}
+	set_connection_parameter_value ftile_master_tod_load_off_64b.time_of_day_load/ftile_master_tod.time_of_day_64b_load startPort {}
+	set_connection_parameter_value ftile_master_tod_load_off_64b.time_of_day_load/ftile_master_tod.time_of_day_64b_load startPortLSB {0}
+	set_connection_parameter_value ftile_master_tod_load_off_64b.time_of_day_load/ftile_master_tod.time_of_day_64b_load width {0}
+	add_connection ftile_master_tod_load_off_96b.time_of_day_load/ftile_master_tod.time_of_day_96b_load
+	set_connection_parameter_value ftile_master_tod_load_off_96b.time_of_day_load/ftile_master_tod.time_of_day_96b_load endPort {}
+	set_connection_parameter_value ftile_master_tod_load_off_96b.time_of_day_load/ftile_master_tod.time_of_day_96b_load endPortLSB {0}
+	set_connection_parameter_value ftile_master_tod_load_off_96b.time_of_day_load/ftile_master_tod.time_of_day_96b_load startPort {}
+	set_connection_parameter_value ftile_master_tod_load_off_96b.time_of_day_load/ftile_master_tod.time_of_day_96b_load startPortLSB {0}
+	set_connection_parameter_value ftile_master_tod_load_off_96b.time_of_day_load/ftile_master_tod.time_of_day_96b_load width {0}
+	add_connection iopll_clk_avst_div2.outclk0/ftile_rx_dma_ch1.dma_clk
+	set_connection_parameter_value iopll_clk_avst_div2.outclk0/ftile_rx_dma_ch1.dma_clk clockDomainSysInfo {5}
+	set_connection_parameter_value iopll_clk_avst_div2.outclk0/ftile_rx_dma_ch1.dma_clk clockRateSysInfo {201416016.0}
+	set_connection_parameter_value iopll_clk_avst_div2.outclk0/ftile_rx_dma_ch1.dma_clk clockResetSysInfo {}
+	set_connection_parameter_value iopll_clk_avst_div2.outclk0/ftile_rx_dma_ch1.dma_clk resetDomainSysInfo {5}
+	add_connection iopll_clk_avst_div2.outclk0/ftile_tx_dma_ch1.dma_clk
+	set_connection_parameter_value iopll_clk_avst_div2.outclk0/ftile_tx_dma_ch1.dma_clk clockDomainSysInfo {5}
+	set_connection_parameter_value iopll_clk_avst_div2.outclk0/ftile_tx_dma_ch1.dma_clk clockRateSysInfo {201416016.0}
+	set_connection_parameter_value iopll_clk_avst_div2.outclk0/ftile_tx_dma_ch1.dma_clk clockResetSysInfo {}
+	set_connection_parameter_value iopll_clk_avst_div2.outclk0/ftile_tx_dma_ch1.dma_clk resetDomainSysInfo {5}
+	add_connection iopll_clk_avst_div2.outclk0/subsys_ftile_1588_dmaclkout.in_clk
+	set_connection_parameter_value iopll_clk_avst_div2.outclk0/subsys_ftile_1588_dmaclkout.in_clk clockDomainSysInfo {5}
+	set_connection_parameter_value iopll_clk_avst_div2.outclk0/subsys_ftile_1588_dmaclkout.in_clk clockRateSysInfo {201416016.0}
+	set_connection_parameter_value iopll_clk_avst_div2.outclk0/subsys_ftile_1588_dmaclkout.in_clk clockResetSysInfo {}
+	set_connection_parameter_value iopll_clk_avst_div2.outclk0/subsys_ftile_1588_dmaclkout.in_clk resetDomainSysInfo {5}
+	add_connection iopll_clk_avst_div2.outclk0/subsys_ftile_1588_dmaclkout_reset.clk
+	set_connection_parameter_value iopll_clk_avst_div2.outclk0/subsys_ftile_1588_dmaclkout_reset.clk clockDomainSysInfo {5}
+	set_connection_parameter_value iopll_clk_avst_div2.outclk0/subsys_ftile_1588_dmaclkout_reset.clk clockRateSysInfo {201416016.0}
+	set_connection_parameter_value iopll_clk_avst_div2.outclk0/subsys_ftile_1588_dmaclkout_reset.clk clockResetSysInfo {}
+	set_connection_parameter_value iopll_clk_avst_div2.outclk0/subsys_ftile_1588_dmaclkout_reset.clk resetDomainSysInfo {5}
+	add_connection iopll_ftile_ptp_sampling_clk.outclk0/ftile_eth_hw_ip_top_0.i_clk_ptp_sample
+	set_connection_parameter_value iopll_ftile_ptp_sampling_clk.outclk0/ftile_eth_hw_ip_top_0.i_clk_ptp_sample clockDomainSysInfo {6}
+	set_connection_parameter_value iopll_ftile_ptp_sampling_clk.outclk0/ftile_eth_hw_ip_top_0.i_clk_ptp_sample clockRateSysInfo {114285714.0}
+	set_connection_parameter_value iopll_ftile_ptp_sampling_clk.outclk0/ftile_eth_hw_ip_top_0.i_clk_ptp_sample clockResetSysInfo {}
+	set_connection_parameter_value iopll_ftile_ptp_sampling_clk.outclk0/ftile_eth_hw_ip_top_0.i_clk_ptp_sample resetDomainSysInfo {6}
+	add_connection iopll_ftile_tod_sync_sampling_clk.locked/ftile_eth_hw_ip_top_0.i_clk_todsync_sample_locked
+	set_connection_parameter_value iopll_ftile_tod_sync_sampling_clk.locked/ftile_eth_hw_ip_top_0.i_clk_todsync_sample_locked endPort {}
+	set_connection_parameter_value iopll_ftile_tod_sync_sampling_clk.locked/ftile_eth_hw_ip_top_0.i_clk_todsync_sample_locked endPortLSB {0}
+	set_connection_parameter_value iopll_ftile_tod_sync_sampling_clk.locked/ftile_eth_hw_ip_top_0.i_clk_todsync_sample_locked startPort {}
+	set_connection_parameter_value iopll_ftile_tod_sync_sampling_clk.locked/ftile_eth_hw_ip_top_0.i_clk_todsync_sample_locked startPortLSB {0}
+	set_connection_parameter_value iopll_ftile_tod_sync_sampling_clk.locked/ftile_eth_hw_ip_top_0.i_clk_todsync_sample_locked width {0}
+	add_connection iopll_ftile_tod_sync_sampling_clk.outclk0/ftile_eth_hw_ip_top_0.i_clk_todsync_sample
+	set_connection_parameter_value iopll_ftile_tod_sync_sampling_clk.outclk0/ftile_eth_hw_ip_top_0.i_clk_todsync_sample clockDomainSysInfo {7}
+	set_connection_parameter_value iopll_ftile_tod_sync_sampling_clk.outclk0/ftile_eth_hw_ip_top_0.i_clk_todsync_sample clockRateSysInfo {151515152.0}
+	set_connection_parameter_value iopll_ftile_tod_sync_sampling_clk.outclk0/ftile_eth_hw_ip_top_0.i_clk_todsync_sample clockResetSysInfo {}
+	set_connection_parameter_value iopll_ftile_tod_sync_sampling_clk.outclk0/ftile_eth_hw_ip_top_0.i_clk_todsync_sample resetDomainSysInfo {7}
+	add_connection iopll_ftile_tod_sync_sampling_clk.outclk0/ftile_eth_hw_ip_top_0.i_clk_todsync_sample_10g
+	set_connection_parameter_value iopll_ftile_tod_sync_sampling_clk.outclk0/ftile_eth_hw_ip_top_0.i_clk_todsync_sample_10g clockDomainSysInfo {7}
+	set_connection_parameter_value iopll_ftile_tod_sync_sampling_clk.outclk0/ftile_eth_hw_ip_top_0.i_clk_todsync_sample_10g clockRateSysInfo {151515152.0}
+	set_connection_parameter_value iopll_ftile_tod_sync_sampling_clk.outclk0/ftile_eth_hw_ip_top_0.i_clk_todsync_sample_10g clockResetSysInfo {}
+	set_connection_parameter_value iopll_ftile_tod_sync_sampling_clk.outclk0/ftile_eth_hw_ip_top_0.i_clk_todsync_sample_10g resetDomainSysInfo {7}
+	add_connection subsys_ftile_1588_csr.m0/ftile_rx_dma_ch1.csr
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_rx_dma_ch1.csr addressMapSysInfo {<address-map><slave name='ftile_debug_status_pio_0.s1' start='0x0' end='0x10' datawidth='32' /><slave name='qsfpdd_status_pio.s1' start='0x10' end='0x20' datawidth='32' /><slave name='ftile_master_tod.csr' start='0x40' end='0x80' datawidth='32' /><slave name='ftile_rx_dma_ch1.rx_dma_prefetcher.Csr' start='0x800' end='0x820' datawidth='32' /><slave name='ftile_rx_dma_ch1.rx_dma_dispatcher.CSR' start='0x820' end='0x840' datawidth='32' /><slave name='ftile_rx_dma_ch1.rx_dma_pkt_fifo.csr' start='0x840' end='0x850' datawidth='32' /><slave name='ftile_tx_dma_ch1.tx_dma_prefetcher.Csr' start='0x900' end='0x920' datawidth='32' /><slave name='ftile_tx_dma_ch1.tx_dma_dispatcher.CSR' start='0x920' end='0x940' datawidth='32' /><slave name='ftile_tx_dma_ch1.tx_dma_tx_fifo.csr' start='0x940' end='0x960' datawidth='32' /><slave name='ftile_eth_hw_ip_top_0.reconfig_eth_xcvr_slave' start='0x4000000' end='0x8000000' datawidth='32' /></address-map>}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_rx_dma_ch1.csr addressWidthSysInfo {27}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_rx_dma_ch1.csr arbitrationPriority {1}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_rx_dma_ch1.csr baseAddress {0x0800}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_rx_dma_ch1.csr defaultConnection {0}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_rx_dma_ch1.csr domainAlias {}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_rx_dma_ch1.csr qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_rx_dma_ch1.csr qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_rx_dma_ch1.csr qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_rx_dma_ch1.csr qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_rx_dma_ch1.csr qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_rx_dma_ch1.csr qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_rx_dma_ch1.csr qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_rx_dma_ch1.csr qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_rx_dma_ch1.csr qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_rx_dma_ch1.csr qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_rx_dma_ch1.csr qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_rx_dma_ch1.csr qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_rx_dma_ch1.csr qsys_mm.syncResets {TRUE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_rx_dma_ch1.csr qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_rx_dma_ch1.csr slaveDataWidthSysInfo {32}
+	add_connection subsys_ftile_1588_csr.m0/ftile_tx_dma_ch1.csr
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_tx_dma_ch1.csr addressMapSysInfo {<address-map><slave name='ftile_debug_status_pio_0.s1' start='0x0' end='0x10' datawidth='32' /><slave name='qsfpdd_status_pio.s1' start='0x10' end='0x20' datawidth='32' /><slave name='ftile_master_tod.csr' start='0x40' end='0x80' datawidth='32' /><slave name='ftile_rx_dma_ch1.rx_dma_prefetcher.Csr' start='0x800' end='0x820' datawidth='32' /><slave name='ftile_rx_dma_ch1.rx_dma_dispatcher.CSR' start='0x820' end='0x840' datawidth='32' /><slave name='ftile_rx_dma_ch1.rx_dma_pkt_fifo.csr' start='0x840' end='0x850' datawidth='32' /><slave name='ftile_tx_dma_ch1.tx_dma_prefetcher.Csr' start='0x900' end='0x920' datawidth='32' /><slave name='ftile_tx_dma_ch1.tx_dma_dispatcher.CSR' start='0x920' end='0x940' datawidth='32' /><slave name='ftile_tx_dma_ch1.tx_dma_tx_fifo.csr' start='0x940' end='0x960' datawidth='32' /><slave name='ftile_eth_hw_ip_top_0.reconfig_eth_xcvr_slave' start='0x4000000' end='0x8000000' datawidth='32' /></address-map>}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_tx_dma_ch1.csr addressWidthSysInfo {27}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_tx_dma_ch1.csr arbitrationPriority {1}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_tx_dma_ch1.csr baseAddress {0x0900}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_tx_dma_ch1.csr defaultConnection {0}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_tx_dma_ch1.csr domainAlias {}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_tx_dma_ch1.csr qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_tx_dma_ch1.csr qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_tx_dma_ch1.csr qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_tx_dma_ch1.csr qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_tx_dma_ch1.csr qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_tx_dma_ch1.csr qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_tx_dma_ch1.csr qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_tx_dma_ch1.csr qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_tx_dma_ch1.csr qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_tx_dma_ch1.csr qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_tx_dma_ch1.csr qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_tx_dma_ch1.csr qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_tx_dma_ch1.csr qsys_mm.syncResets {TRUE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_tx_dma_ch1.csr qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_tx_dma_ch1.csr slaveDataWidthSysInfo {32}
+	add_connection subsys_ftile_1588_csr.m0/ftile_debug_status_pio_0.s1
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_debug_status_pio_0.s1 addressMapSysInfo {<address-map><slave name='ftile_debug_status_pio_0.s1' start='0x0' end='0x10' datawidth='32' /><slave name='qsfpdd_status_pio.s1' start='0x10' end='0x20' datawidth='32' /><slave name='ftile_master_tod.csr' start='0x40' end='0x80' datawidth='32' /><slave name='ftile_rx_dma_ch1.rx_dma_prefetcher.Csr' start='0x800' end='0x820' datawidth='32' /><slave name='ftile_rx_dma_ch1.rx_dma_dispatcher.CSR' start='0x820' end='0x840' datawidth='32' /><slave name='ftile_rx_dma_ch1.rx_dma_pkt_fifo.csr' start='0x840' end='0x850' datawidth='32' /><slave name='ftile_tx_dma_ch1.tx_dma_prefetcher.Csr' start='0x900' end='0x920' datawidth='32' /><slave name='ftile_tx_dma_ch1.tx_dma_dispatcher.CSR' start='0x920' end='0x940' datawidth='32' /><slave name='ftile_tx_dma_ch1.tx_dma_tx_fifo.csr' start='0x940' end='0x960' datawidth='32' /><slave name='ftile_eth_hw_ip_top_0.reconfig_eth_xcvr_slave' start='0x4000000' end='0x8000000' datawidth='32' /></address-map>}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_debug_status_pio_0.s1 addressWidthSysInfo {27}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_debug_status_pio_0.s1 arbitrationPriority {1}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_debug_status_pio_0.s1 baseAddress {0x0000}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_debug_status_pio_0.s1 defaultConnection {0}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_debug_status_pio_0.s1 domainAlias {}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_debug_status_pio_0.s1 qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_debug_status_pio_0.s1 qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_debug_status_pio_0.s1 qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_debug_status_pio_0.s1 qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_debug_status_pio_0.s1 qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_debug_status_pio_0.s1 qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_debug_status_pio_0.s1 qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_debug_status_pio_0.s1 qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_debug_status_pio_0.s1 qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_debug_status_pio_0.s1 qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_debug_status_pio_0.s1 qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_debug_status_pio_0.s1 qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_debug_status_pio_0.s1 qsys_mm.syncResets {TRUE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_debug_status_pio_0.s1 qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_debug_status_pio_0.s1 slaveDataWidthSysInfo {-1}
+	add_connection subsys_ftile_1588_csr.m0/ftile_eth_hw_ip_top_0.reconfig_eth_xcvr_slave
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_eth_hw_ip_top_0.reconfig_eth_xcvr_slave addressMapSysInfo {<address-map><slave name='ftile_debug_status_pio_0.s1' start='0x0' end='0x10' datawidth='32' /><slave name='qsfpdd_status_pio.s1' start='0x10' end='0x20' datawidth='32' /><slave name='ftile_master_tod.csr' start='0x40' end='0x80' datawidth='32' /><slave name='ftile_rx_dma_ch1.rx_dma_prefetcher.Csr' start='0x800' end='0x820' datawidth='32' /><slave name='ftile_rx_dma_ch1.rx_dma_dispatcher.CSR' start='0x820' end='0x840' datawidth='32' /><slave name='ftile_rx_dma_ch1.rx_dma_pkt_fifo.csr' start='0x840' end='0x850' datawidth='32' /><slave name='ftile_tx_dma_ch1.tx_dma_prefetcher.Csr' start='0x900' end='0x920' datawidth='32' /><slave name='ftile_tx_dma_ch1.tx_dma_dispatcher.CSR' start='0x920' end='0x940' datawidth='32' /><slave name='ftile_tx_dma_ch1.tx_dma_tx_fifo.csr' start='0x940' end='0x960' datawidth='32' /><slave name='ftile_eth_hw_ip_top_0.reconfig_eth_xcvr_slave' start='0x4000000' end='0x8000000' datawidth='32' /></address-map>}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_eth_hw_ip_top_0.reconfig_eth_xcvr_slave addressWidthSysInfo {27}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_eth_hw_ip_top_0.reconfig_eth_xcvr_slave arbitrationPriority {1}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_eth_hw_ip_top_0.reconfig_eth_xcvr_slave baseAddress {0x04000000}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_eth_hw_ip_top_0.reconfig_eth_xcvr_slave defaultConnection {0}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_eth_hw_ip_top_0.reconfig_eth_xcvr_slave domainAlias {}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_eth_hw_ip_top_0.reconfig_eth_xcvr_slave qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_eth_hw_ip_top_0.reconfig_eth_xcvr_slave qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_eth_hw_ip_top_0.reconfig_eth_xcvr_slave qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_eth_hw_ip_top_0.reconfig_eth_xcvr_slave qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_eth_hw_ip_top_0.reconfig_eth_xcvr_slave qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_eth_hw_ip_top_0.reconfig_eth_xcvr_slave qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_eth_hw_ip_top_0.reconfig_eth_xcvr_slave qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_eth_hw_ip_top_0.reconfig_eth_xcvr_slave qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_eth_hw_ip_top_0.reconfig_eth_xcvr_slave qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_eth_hw_ip_top_0.reconfig_eth_xcvr_slave qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_eth_hw_ip_top_0.reconfig_eth_xcvr_slave qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_eth_hw_ip_top_0.reconfig_eth_xcvr_slave qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_eth_hw_ip_top_0.reconfig_eth_xcvr_slave qsys_mm.syncResets {TRUE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_eth_hw_ip_top_0.reconfig_eth_xcvr_slave qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_eth_hw_ip_top_0.reconfig_eth_xcvr_slave slaveDataWidthSysInfo {-1}
+	add_connection subsys_ftile_1588_csr.m0/ftile_master_tod.csr
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_master_tod.csr addressMapSysInfo {<address-map><slave name='ftile_debug_status_pio_0.s1' start='0x0' end='0x10' datawidth='32' /><slave name='qsfpdd_status_pio.s1' start='0x10' end='0x20' datawidth='32' /><slave name='ftile_master_tod.csr' start='0x40' end='0x80' datawidth='32' /><slave name='ftile_rx_dma_ch1.rx_dma_prefetcher.Csr' start='0x800' end='0x820' datawidth='32' /><slave name='ftile_rx_dma_ch1.rx_dma_dispatcher.CSR' start='0x820' end='0x840' datawidth='32' /><slave name='ftile_rx_dma_ch1.rx_dma_pkt_fifo.csr' start='0x840' end='0x850' datawidth='32' /><slave name='ftile_tx_dma_ch1.tx_dma_prefetcher.Csr' start='0x900' end='0x920' datawidth='32' /><slave name='ftile_tx_dma_ch1.tx_dma_dispatcher.CSR' start='0x920' end='0x940' datawidth='32' /><slave name='ftile_tx_dma_ch1.tx_dma_tx_fifo.csr' start='0x940' end='0x960' datawidth='32' /><slave name='ftile_eth_hw_ip_top_0.reconfig_eth_xcvr_slave' start='0x4000000' end='0x8000000' datawidth='32' /></address-map>}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_master_tod.csr addressWidthSysInfo {27}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_master_tod.csr arbitrationPriority {1}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_master_tod.csr baseAddress {0x0040}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_master_tod.csr defaultConnection {0}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_master_tod.csr domainAlias {}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_master_tod.csr qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_master_tod.csr qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_master_tod.csr qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_master_tod.csr qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_master_tod.csr qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_master_tod.csr qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_master_tod.csr qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_master_tod.csr qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_master_tod.csr qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_master_tod.csr qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_master_tod.csr qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_master_tod.csr qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_master_tod.csr qsys_mm.syncResets {TRUE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_master_tod.csr qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/ftile_master_tod.csr slaveDataWidthSysInfo {-1}
+	add_connection subsys_ftile_1588_csr.m0/qsfpdd_status_pio.s1
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/qsfpdd_status_pio.s1 addressMapSysInfo {<address-map><slave name='ftile_debug_status_pio_0.s1' start='0x0' end='0x10' datawidth='32' /><slave name='qsfpdd_status_pio.s1' start='0x10' end='0x20' datawidth='32' /><slave name='ftile_master_tod.csr' start='0x40' end='0x80' datawidth='32' /><slave name='ftile_rx_dma_ch1.rx_dma_prefetcher.Csr' start='0x800' end='0x820' datawidth='32' /><slave name='ftile_rx_dma_ch1.rx_dma_dispatcher.CSR' start='0x820' end='0x840' datawidth='32' /><slave name='ftile_rx_dma_ch1.rx_dma_pkt_fifo.csr' start='0x840' end='0x850' datawidth='32' /><slave name='ftile_tx_dma_ch1.tx_dma_prefetcher.Csr' start='0x900' end='0x920' datawidth='32' /><slave name='ftile_tx_dma_ch1.tx_dma_dispatcher.CSR' start='0x920' end='0x940' datawidth='32' /><slave name='ftile_tx_dma_ch1.tx_dma_tx_fifo.csr' start='0x940' end='0x960' datawidth='32' /><slave name='ftile_eth_hw_ip_top_0.reconfig_eth_xcvr_slave' start='0x4000000' end='0x8000000' datawidth='32' /></address-map>}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/qsfpdd_status_pio.s1 addressWidthSysInfo {27}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/qsfpdd_status_pio.s1 arbitrationPriority {1}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/qsfpdd_status_pio.s1 baseAddress {0x0010}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/qsfpdd_status_pio.s1 defaultConnection {0}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/qsfpdd_status_pio.s1 domainAlias {}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/qsfpdd_status_pio.s1 qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/qsfpdd_status_pio.s1 qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/qsfpdd_status_pio.s1 qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/qsfpdd_status_pio.s1 qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/qsfpdd_status_pio.s1 qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/qsfpdd_status_pio.s1 qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/qsfpdd_status_pio.s1 qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/qsfpdd_status_pio.s1 qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/qsfpdd_status_pio.s1 qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/qsfpdd_status_pio.s1 qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/qsfpdd_status_pio.s1 qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/qsfpdd_status_pio.s1 qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/qsfpdd_status_pio.s1 qsys_mm.syncResets {TRUE}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/qsfpdd_status_pio.s1 qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value subsys_ftile_1588_csr.m0/qsfpdd_status_pio.s1 slaveDataWidthSysInfo {-1}
+	add_connection subsys_ftile_1588_csrclk.out_clk/ftile_debug_status_pio_0.clk
+	set_connection_parameter_value subsys_ftile_1588_csrclk.out_clk/ftile_debug_status_pio_0.clk clockDomainSysInfo {8}
+	set_connection_parameter_value subsys_ftile_1588_csrclk.out_clk/ftile_debug_status_pio_0.clk clockRateSysInfo {100000000.0}
+	set_connection_parameter_value subsys_ftile_1588_csrclk.out_clk/ftile_debug_status_pio_0.clk clockResetSysInfo {}
+	set_connection_parameter_value subsys_ftile_1588_csrclk.out_clk/ftile_debug_status_pio_0.clk resetDomainSysInfo {8}
+	add_connection subsys_ftile_1588_csrclk.out_clk/ftile_eth_hw_ip_top_0.i_reconfig_clk
+	set_connection_parameter_value subsys_ftile_1588_csrclk.out_clk/ftile_eth_hw_ip_top_0.i_reconfig_clk clockDomainSysInfo {8}
+	set_connection_parameter_value subsys_ftile_1588_csrclk.out_clk/ftile_eth_hw_ip_top_0.i_reconfig_clk clockRateSysInfo {100000000.0}
+	set_connection_parameter_value subsys_ftile_1588_csrclk.out_clk/ftile_eth_hw_ip_top_0.i_reconfig_clk clockResetSysInfo {}
+	set_connection_parameter_value subsys_ftile_1588_csrclk.out_clk/ftile_eth_hw_ip_top_0.i_reconfig_clk resetDomainSysInfo {8}
+	add_connection subsys_ftile_1588_csrclk.out_clk/ftile_master_tod.csr_clock
+	set_connection_parameter_value subsys_ftile_1588_csrclk.out_clk/ftile_master_tod.csr_clock clockDomainSysInfo {8}
+	set_connection_parameter_value subsys_ftile_1588_csrclk.out_clk/ftile_master_tod.csr_clock clockRateSysInfo {100000000.0}
+	set_connection_parameter_value subsys_ftile_1588_csrclk.out_clk/ftile_master_tod.csr_clock clockResetSysInfo {}
+	set_connection_parameter_value subsys_ftile_1588_csrclk.out_clk/ftile_master_tod.csr_clock resetDomainSysInfo {8}
+	add_connection subsys_ftile_1588_csrclk.out_clk/iopll_ftile_ptp_sampling_clk.refclk
+	set_connection_parameter_value subsys_ftile_1588_csrclk.out_clk/iopll_ftile_ptp_sampling_clk.refclk clockDomainSysInfo {8}
+	set_connection_parameter_value subsys_ftile_1588_csrclk.out_clk/iopll_ftile_ptp_sampling_clk.refclk clockRateSysInfo {100000000.0}
+	set_connection_parameter_value subsys_ftile_1588_csrclk.out_clk/iopll_ftile_ptp_sampling_clk.refclk clockResetSysInfo {}
+	set_connection_parameter_value subsys_ftile_1588_csrclk.out_clk/iopll_ftile_ptp_sampling_clk.refclk resetDomainSysInfo {8}
+	add_connection subsys_ftile_1588_csrclk.out_clk/qsfpdd_status_pio.clk
+	set_connection_parameter_value subsys_ftile_1588_csrclk.out_clk/qsfpdd_status_pio.clk clockDomainSysInfo {8}
+	set_connection_parameter_value subsys_ftile_1588_csrclk.out_clk/qsfpdd_status_pio.clk clockRateSysInfo {100000000.0}
+	set_connection_parameter_value subsys_ftile_1588_csrclk.out_clk/qsfpdd_status_pio.clk clockResetSysInfo {}
+	set_connection_parameter_value subsys_ftile_1588_csrclk.out_clk/qsfpdd_status_pio.clk resetDomainSysInfo {8}
+	add_connection subsys_ftile_1588_csrclk.out_clk/subsys_ftile_1588_csr.clk
+	set_connection_parameter_value subsys_ftile_1588_csrclk.out_clk/subsys_ftile_1588_csr.clk clockDomainSysInfo {8}
+	set_connection_parameter_value subsys_ftile_1588_csrclk.out_clk/subsys_ftile_1588_csr.clk clockRateSysInfo {100000000.0}
+	set_connection_parameter_value subsys_ftile_1588_csrclk.out_clk/subsys_ftile_1588_csr.clk clockResetSysInfo {}
+	set_connection_parameter_value subsys_ftile_1588_csrclk.out_clk/subsys_ftile_1588_csr.clk resetDomainSysInfo {8}
+	add_connection subsys_ftile_1588_csrclk.out_clk/subsys_ftile_1588_reset.clk
+	set_connection_parameter_value subsys_ftile_1588_csrclk.out_clk/subsys_ftile_1588_reset.clk clockDomainSysInfo {8}
+	set_connection_parameter_value subsys_ftile_1588_csrclk.out_clk/subsys_ftile_1588_reset.clk clockRateSysInfo {100000000.0}
+	set_connection_parameter_value subsys_ftile_1588_csrclk.out_clk/subsys_ftile_1588_reset.clk clockResetSysInfo {}
+	set_connection_parameter_value subsys_ftile_1588_csrclk.out_clk/subsys_ftile_1588_reset.clk resetDomainSysInfo {8}
+	add_connection subsys_ftile_1588_master_todclk.out_clk/ftile_eth_hw_ip_top_0.i_clk_master_tod
+	set_connection_parameter_value subsys_ftile_1588_master_todclk.out_clk/ftile_eth_hw_ip_top_0.i_clk_master_tod clockDomainSysInfo {13}
+	set_connection_parameter_value subsys_ftile_1588_master_todclk.out_clk/ftile_eth_hw_ip_top_0.i_clk_master_tod clockRateSysInfo {156250000.0}
+	set_connection_parameter_value subsys_ftile_1588_master_todclk.out_clk/ftile_eth_hw_ip_top_0.i_clk_master_tod clockResetSysInfo {}
+	set_connection_parameter_value subsys_ftile_1588_master_todclk.out_clk/ftile_eth_hw_ip_top_0.i_clk_master_tod resetDomainSysInfo {13}
+	add_connection subsys_ftile_1588_master_todclk.out_clk/ftile_master_tod.period_clock
+	set_connection_parameter_value subsys_ftile_1588_master_todclk.out_clk/ftile_master_tod.period_clock clockDomainSysInfo {13}
+	set_connection_parameter_value subsys_ftile_1588_master_todclk.out_clk/ftile_master_tod.period_clock clockRateSysInfo {156250000.0}
+	set_connection_parameter_value subsys_ftile_1588_master_todclk.out_clk/ftile_master_tod.period_clock clockResetSysInfo {}
+	set_connection_parameter_value subsys_ftile_1588_master_todclk.out_clk/ftile_master_tod.period_clock resetDomainSysInfo {13}
+	add_connection subsys_ftile_1588_master_todclk.out_clk/iopll_ftile_tod_sync_sampling_clk.refclk
+	set_connection_parameter_value subsys_ftile_1588_master_todclk.out_clk/iopll_ftile_tod_sync_sampling_clk.refclk clockDomainSysInfo {13}
+	set_connection_parameter_value subsys_ftile_1588_master_todclk.out_clk/iopll_ftile_tod_sync_sampling_clk.refclk clockRateSysInfo {156250000.0}
+	set_connection_parameter_value subsys_ftile_1588_master_todclk.out_clk/iopll_ftile_tod_sync_sampling_clk.refclk clockResetSysInfo {}
+	set_connection_parameter_value subsys_ftile_1588_master_todclk.out_clk/iopll_ftile_tod_sync_sampling_clk.refclk resetDomainSysInfo {13}
+	add_connection subsys_ftile_1588_ninitdone_reset.out_reset/iopll_clk_avst_div2.reset
+	set_connection_parameter_value subsys_ftile_1588_ninitdone_reset.out_reset/iopll_clk_avst_div2.reset clockDomainSysInfo {14}
+	set_connection_parameter_value subsys_ftile_1588_ninitdone_reset.out_reset/iopll_clk_avst_div2.reset clockResetSysInfo {}
+	set_connection_parameter_value subsys_ftile_1588_ninitdone_reset.out_reset/iopll_clk_avst_div2.reset resetDomainSysInfo {14}
+	add_connection subsys_ftile_1588_ninitdone_reset.out_reset/iopll_ftile_ptp_sampling_clk.reset
+	set_connection_parameter_value subsys_ftile_1588_ninitdone_reset.out_reset/iopll_ftile_ptp_sampling_clk.reset clockDomainSysInfo {14}
+	set_connection_parameter_value subsys_ftile_1588_ninitdone_reset.out_reset/iopll_ftile_ptp_sampling_clk.reset clockResetSysInfo {}
+	set_connection_parameter_value subsys_ftile_1588_ninitdone_reset.out_reset/iopll_ftile_ptp_sampling_clk.reset resetDomainSysInfo {14}
+	add_connection subsys_ftile_1588_ninitdone_reset.out_reset/iopll_ftile_tod_sync_sampling_clk.reset
+	set_connection_parameter_value subsys_ftile_1588_ninitdone_reset.out_reset/iopll_ftile_tod_sync_sampling_clk.reset clockDomainSysInfo {14}
+	set_connection_parameter_value subsys_ftile_1588_ninitdone_reset.out_reset/iopll_ftile_tod_sync_sampling_clk.reset clockResetSysInfo {}
+	set_connection_parameter_value subsys_ftile_1588_ninitdone_reset.out_reset/iopll_ftile_tod_sync_sampling_clk.reset resetDomainSysInfo {14}
+	add_connection subsys_ftile_1588_reset.out_reset/ftile_rx_dma_ch1.reset
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/ftile_rx_dma_ch1.reset clockDomainSysInfo {15}
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/ftile_rx_dma_ch1.reset clockResetSysInfo {}
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/ftile_rx_dma_ch1.reset resetDomainSysInfo {15}
+	add_connection subsys_ftile_1588_reset.out_reset/ftile_tx_dma_ch1.reset
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/ftile_tx_dma_ch1.reset clockDomainSysInfo {15}
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/ftile_tx_dma_ch1.reset clockResetSysInfo {}
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/ftile_tx_dma_ch1.reset resetDomainSysInfo {15}
+	add_connection subsys_ftile_1588_reset.out_reset/ftile_debug_status_pio_0.reset
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/ftile_debug_status_pio_0.reset clockDomainSysInfo {15}
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/ftile_debug_status_pio_0.reset clockResetSysInfo {}
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/ftile_debug_status_pio_0.reset resetDomainSysInfo {15}
+	add_connection subsys_ftile_1588_reset.out_reset/ftile_eth_hw_ip_top_0.i_ptp_master_tod_rst_n
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/ftile_eth_hw_ip_top_0.i_ptp_master_tod_rst_n clockDomainSysInfo {15}
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/ftile_eth_hw_ip_top_0.i_ptp_master_tod_rst_n clockResetSysInfo {}
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/ftile_eth_hw_ip_top_0.i_ptp_master_tod_rst_n resetDomainSysInfo {15}
+	add_connection subsys_ftile_1588_reset.out_reset/ftile_eth_hw_ip_top_0.i_reconfig_reset
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/ftile_eth_hw_ip_top_0.i_reconfig_reset clockDomainSysInfo {15}
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/ftile_eth_hw_ip_top_0.i_reconfig_reset clockResetSysInfo {}
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/ftile_eth_hw_ip_top_0.i_reconfig_reset resetDomainSysInfo {15}
+	add_connection subsys_ftile_1588_reset.out_reset/ftile_eth_hw_ip_top_0.i_rst_n
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/ftile_eth_hw_ip_top_0.i_rst_n clockDomainSysInfo {15}
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/ftile_eth_hw_ip_top_0.i_rst_n clockResetSysInfo {}
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/ftile_eth_hw_ip_top_0.i_rst_n resetDomainSysInfo {15}
+	add_connection subsys_ftile_1588_reset.out_reset/ftile_eth_hw_ip_top_0.i_rx_rst_n
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/ftile_eth_hw_ip_top_0.i_rx_rst_n clockDomainSysInfo {15}
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/ftile_eth_hw_ip_top_0.i_rx_rst_n clockResetSysInfo {}
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/ftile_eth_hw_ip_top_0.i_rx_rst_n resetDomainSysInfo {15}
+	add_connection subsys_ftile_1588_reset.out_reset/ftile_eth_hw_ip_top_0.i_tx_rst_n
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/ftile_eth_hw_ip_top_0.i_tx_rst_n clockDomainSysInfo {15}
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/ftile_eth_hw_ip_top_0.i_tx_rst_n clockResetSysInfo {}
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/ftile_eth_hw_ip_top_0.i_tx_rst_n resetDomainSysInfo {15}
+	add_connection subsys_ftile_1588_reset.out_reset/ftile_master_tod.csr_reset
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/ftile_master_tod.csr_reset clockDomainSysInfo {15}
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/ftile_master_tod.csr_reset clockResetSysInfo {}
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/ftile_master_tod.csr_reset resetDomainSysInfo {15}
+	add_connection subsys_ftile_1588_reset.out_reset/ftile_master_tod.period_clock_reset
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/ftile_master_tod.period_clock_reset clockDomainSysInfo {15}
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/ftile_master_tod.period_clock_reset clockResetSysInfo {}
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/ftile_master_tod.period_clock_reset resetDomainSysInfo {15}
+	add_connection subsys_ftile_1588_reset.out_reset/qsfpdd_status_pio.reset
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/qsfpdd_status_pio.reset clockDomainSysInfo {15}
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/qsfpdd_status_pio.reset clockResetSysInfo {}
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/qsfpdd_status_pio.reset resetDomainSysInfo {15}
+	add_connection subsys_ftile_1588_reset.out_reset/subsys_ftile_1588_csr.reset
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/subsys_ftile_1588_csr.reset clockDomainSysInfo {15}
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/subsys_ftile_1588_csr.reset clockResetSysInfo {}
+	set_connection_parameter_value subsys_ftile_1588_reset.out_reset/subsys_ftile_1588_csr.reset resetDomainSysInfo {15}
+
+	# add the exports
+	set_interface_property debug_status_pio_irq EXPORT_OF ftile_debug_status_pio_0.irq
+	set_interface_property ftile_eth_hw_ip_top_0_i_clk_sys EXPORT_OF ftile_eth_hw_ip_top_0.i_clk_sys
+	set_interface_property ftile_eth_hw_ip_top_0_i_clk_ref EXPORT_OF ftile_eth_hw_ip_top_0.i_clk_ref
+	set_interface_property ftile_eth_hw_ip_top_0_serial EXPORT_OF ftile_eth_hw_ip_top_0.serial
+	set_interface_property qsfpdd_status_pio_external_connection EXPORT_OF qsfpdd_status_pio.external_connection
+	set_interface_property qsfpdd_status_pio_irq EXPORT_OF qsfpdd_status_pio.irq
+	set_interface_property csr EXPORT_OF subsys_ftile_1588_csr.s0
+	set_interface_property clk EXPORT_OF subsys_ftile_1588_csrclk.in_clk
+	set_interface_property dma_clkout EXPORT_OF subsys_ftile_1588_dmaclkout.out_clk
+	set_interface_property dma_clkout_reset EXPORT_OF subsys_ftile_1588_dmaclkout_reset.out_reset
+	set_interface_property master_todclk EXPORT_OF subsys_ftile_1588_master_todclk.in_clk
+	set_interface_property ninit_done EXPORT_OF subsys_ftile_1588_ninitdone_reset.in_reset
+	set_interface_property reset EXPORT_OF subsys_ftile_1588_reset.in_reset
+	set_interface_property rx_dma_ch1_prefetcher_read_master EXPORT_OF ftile_rx_dma_ch1.prefetcher_read_master
+	set_interface_property rx_dma_ch1_prefetcher_write_master EXPORT_OF ftile_rx_dma_ch1.prefetcher_write_master
+	set_interface_property rx_dma_ch1_irq EXPORT_OF ftile_rx_dma_ch1.irq
+	set_interface_property rx_dma_ch1_write_master EXPORT_OF ftile_rx_dma_ch1.write_master
+	set_interface_property tx_dma_ch1_prefetcher_read_master EXPORT_OF ftile_tx_dma_ch1.prefetcher_read_master
+	set_interface_property tx_dma_ch1_prefetcher_write_master EXPORT_OF ftile_tx_dma_ch1.prefetcher_write_master
+	set_interface_property tx_dma_ch1_irq EXPORT_OF ftile_tx_dma_ch1.irq
+	set_interface_property tx_dma_ch1_read_master EXPORT_OF ftile_tx_dma_ch1.read_master
+
+	# set values for exposed HDL parameters
+	set_domain_assignment subsys_ftile_1588_csr.m0 qsys_mm.burstAdapterImplementation GENERIC_CONVERTER
+	set_domain_assignment subsys_ftile_1588_csr.m0 qsys_mm.clockCrossingAdapter HANDSHAKE
+	set_domain_assignment subsys_ftile_1588_csr.m0 qsys_mm.enableAllPipelines FALSE
+	set_domain_assignment subsys_ftile_1588_csr.m0 qsys_mm.enableEccProtection FALSE
+	set_domain_assignment subsys_ftile_1588_csr.m0 qsys_mm.enableInstrumentation FALSE
+	set_domain_assignment subsys_ftile_1588_csr.m0 qsys_mm.insertDefaultSlave FALSE
+	set_domain_assignment subsys_ftile_1588_csr.m0 qsys_mm.interconnectResetSource DEFAULT
+	set_domain_assignment subsys_ftile_1588_csr.m0 qsys_mm.interconnectType STANDARD
+	set_domain_assignment subsys_ftile_1588_csr.m0 qsys_mm.maxAdditionalLatency 1
+	set_domain_assignment subsys_ftile_1588_csr.m0 qsys_mm.optimizeRdFifoSize FALSE
+	set_domain_assignment subsys_ftile_1588_csr.m0 qsys_mm.piplineType PIPELINE_STAGE
+	set_domain_assignment subsys_ftile_1588_csr.m0 qsys_mm.responseFifoType REGISTER_BASED
+	set_domain_assignment subsys_ftile_1588_csr.m0 qsys_mm.syncResets TRUE
+	set_domain_assignment subsys_ftile_1588_csr.m0 qsys_mm.widthAdapterImplementation GENERIC_CONVERTER
+
+	# set the the module properties
+	set_module_property BONUS_DATA {<?xml version="1.0" encoding="UTF-8"?>
+<bonusData>
+ <element __value="ftile_rx_dma_ch1">
+  <datum __value="_sortIndex" value="6" type="int" />
+ </element>
+ <element __value="ftile_rx_dma_ch1.csr">
+  <datum __value="baseAddress" value="67108864" type="String" />
+ </element>
+ <element __value="ftile_tx_dma_ch1">
+  <datum __value="_sortIndex" value="5" type="int" />
+ </element>
+ <element __value="ftile_tx_dma_ch1.csr">
+  <datum __value="baseAddress" value="67108992" type="String" />
+ </element>
+ <element __value="ftile_debug_status_pio_0">
+  <datum __value="_sortIndex" value="11" type="int" />
+ </element>
+ <element __value="ftile_debug_status_pio_0.s1">
+  <datum __value="baseAddress" value="67109200" type="String" />
+ </element>
+ <element __value="ftile_eth_hw_ip_top_0">
+  <datum __value="_sortIndex" value="17" type="int" />
+ </element>
+ <element __value="ftile_eth_hw_ip_top_0.reconfig_eth_xcvr_slave">
+  <datum __value="baseAddress" value="0" type="String" />
+ </element>
+ <element __value="ftile_master_tod">
+  <datum __value="_sortIndex" value="12" type="int" />
+ </element>
+ <element __value="ftile_master_tod.csr">
+  <datum __value="baseAddress" value="67109120" type="String" />
+ </element>
+ <element __value="ftile_master_tod_load_off_64b">
+  <datum __value="_sortIndex" value="14" type="int" />
+ </element>
+ <element __value="ftile_master_tod_load_off_96b">
+  <datum __value="_sortIndex" value="13" type="int" />
+ </element>
+ <element __value="iopll_clk_avst_div2">
+  <datum __value="_sortIndex" value="7" type="int" />
+ </element>
+ <element __value="iopll_ftile_ptp_sampling_clk">
+  <datum __value="_sortIndex" value="8" type="int" />
+ </element>
+ <element __value="iopll_ftile_tod_sync_sampling_clk">
+  <datum __value="_sortIndex" value="9" type="int" />
+ </element>
+ <element __value="qsfpdd_status_pio">
+  <datum __value="_sortIndex" value="10" type="int" />
+ </element>
+ <element __value="qsfpdd_status_pio.s1">
+  <datum __value="baseAddress" value="67109184" type="String" />
+ </element>
+ <element __value="subsys_ftile_1588_csr">
+  <datum __value="_sortIndex" value="4" type="int" />
+ </element>
+ <element __value="subsys_ftile_1588_csrclk">
+  <datum __value="_sortIndex" value="0" type="int" />
+ </element>
+ <element __value="subsys_ftile_1588_dmaclkout">
+  <datum __value="_sortIndex" value="15" type="int" />
+ </element>
+ <element __value="subsys_ftile_1588_dmaclkout_reset">
+  <datum __value="_sortIndex" value="16" type="int" />
+ </element>
+ <element __value="subsys_ftile_1588_master_todclk">
+  <datum __value="_sortIndex" value="1" type="int" />
+ </element>
+ <element __value="subsys_ftile_1588_ninitdone_reset">
+  <datum __value="_sortIndex" value="3" type="int" />
+ </element>
+ <element __value="subsys_ftile_1588_reset">
+  <datum __value="_sortIndex" value="2" type="int" />
+ </element>
+</bonusData>
+}
+	set_module_property FILE {subsys_ftile_1588.qsys}
+	set_module_property GENERATION_ID {0x00000000}
+	set_module_property NAME {subsys_ftile_1588}
+
+	# save the system
+	sync_sysinfo_parameters
+	save_system subsys_ftile_1588
+}
+
+# create the system "subsys_ftile_rx_dma"
+proc do_create_subsys_ftile_rx_dma {} {
+	# create the system
+	create_system subsys_ftile_rx_dma
+	set_project_property DEVICE {AGIB027R31B1E2V}
+	set_project_property DEVICE_FAMILY {Agilex}
+	set_project_property HIDE_FROM_IP_CATALOG {false}
+	set_use_testbench_naming_pattern 0 {}
+
+	# add HDL parameters
+
+	# add the components
+	add_component rx_dma_clock ip/subsys_ftile_rx_dma/rx_dma_clock.ip altera_clock_bridge altera_clock_bridge_inst 19.2.0
+	load_component rx_dma_clock
+	set_component_parameter_value EXPLICIT_CLOCK_RATE {201416016.0}
+	set_component_parameter_value NUM_CLOCK_OUTPUTS {1}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation rx_dma_clock
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface in_clk clock INPUT
+	set_instantiation_interface_parameter_value in_clk clockRate {0}
+	set_instantiation_interface_parameter_value in_clk externallyDriven {false}
+	set_instantiation_interface_parameter_value in_clk ptfSchematicName {}
+	add_instantiation_interface_port in_clk in_clk clk 1 STD_LOGIC Input
+	add_instantiation_interface out_clk clock OUTPUT
+	set_instantiation_interface_parameter_value out_clk associatedDirectClock {in_clk}
+	set_instantiation_interface_parameter_value out_clk clockRate {201416016}
+	set_instantiation_interface_parameter_value out_clk clockRateKnown {true}
+	set_instantiation_interface_parameter_value out_clk externallyDriven {false}
+	set_instantiation_interface_parameter_value out_clk ptfSchematicName {}
+	set_instantiation_interface_sysinfo_parameter_value out_clk clock_rate {201416016}
+	add_instantiation_interface_port out_clk out_clk clk 1 STD_LOGIC Output
+	save_instantiation
+	add_component rx_dma_csr ip/subsys_ftile_rx_dma/rx_dma_csr.ip altera_avalon_mm_bridge altera_avalon_mm_bridge_inst 20.0.1
+	load_component rx_dma_csr
+	set_component_parameter_value ADDRESS_UNITS {SYMBOLS}
+	set_component_parameter_value ADDRESS_WIDTH {32}
+	set_component_parameter_value DATA_WIDTH {32}
+	set_component_parameter_value LINEWRAPBURSTS {0}
+	set_component_parameter_value MAX_BURST_SIZE {1}
+	set_component_parameter_value MAX_PENDING_RESPONSES {1}
+	set_component_parameter_value MAX_PENDING_WRITES {0}
+	set_component_parameter_value PIPELINE_COMMAND {1}
+	set_component_parameter_value PIPELINE_RESPONSE {1}
+	set_component_parameter_value SYMBOL_WIDTH {8}
+	set_component_parameter_value SYNC_RESET {0}
+	set_component_parameter_value USE_AUTO_ADDRESS_WIDTH {1}
+	set_component_parameter_value USE_RESPONSE {0}
+	set_component_parameter_value USE_WRITERESPONSE {0}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation rx_dma_csr
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface clk clock INPUT
+	set_instantiation_interface_parameter_value clk clockRate {0}
+	set_instantiation_interface_parameter_value clk externallyDriven {false}
+	set_instantiation_interface_parameter_value clk ptfSchematicName {}
+	add_instantiation_interface_port clk clk clk 1 STD_LOGIC Input
+	add_instantiation_interface reset reset INPUT
+	set_instantiation_interface_parameter_value reset associatedClock {clk}
+	set_instantiation_interface_parameter_value reset synchronousEdges {DEASSERT}
+	add_instantiation_interface_port reset reset reset 1 STD_LOGIC Input
+	add_instantiation_interface s0 avalon INPUT
+	set_instantiation_interface_parameter_value s0 addressAlignment {DYNAMIC}
+	set_instantiation_interface_parameter_value s0 addressGroup {0}
+	set_instantiation_interface_parameter_value s0 addressSpan {128}
+	set_instantiation_interface_parameter_value s0 addressUnits {SYMBOLS}
+	set_instantiation_interface_parameter_value s0 alwaysBurstMaxBurst {false}
+	set_instantiation_interface_parameter_value s0 associatedClock {clk}
+	set_instantiation_interface_parameter_value s0 associatedReset {reset}
+	set_instantiation_interface_parameter_value s0 bitsPerSymbol {8}
+	set_instantiation_interface_parameter_value s0 bridgedAddressOffset {0}
+	set_instantiation_interface_parameter_value s0 bridgesToMaster {m0}
+	set_instantiation_interface_parameter_value s0 burstOnBurstBoundariesOnly {false}
+	set_instantiation_interface_parameter_value s0 burstcountUnits {WORDS}
+	set_instantiation_interface_parameter_value s0 constantBurstBehavior {false}
+	set_instantiation_interface_parameter_value s0 explicitAddressSpan {0}
+	set_instantiation_interface_parameter_value s0 holdTime {0}
+	set_instantiation_interface_parameter_value s0 interleaveBursts {false}
+	set_instantiation_interface_parameter_value s0 isBigEndian {false}
+	set_instantiation_interface_parameter_value s0 isFlash {false}
+	set_instantiation_interface_parameter_value s0 isMemoryDevice {false}
+	set_instantiation_interface_parameter_value s0 isNonVolatileStorage {false}
+	set_instantiation_interface_parameter_value s0 linewrapBursts {false}
+	set_instantiation_interface_parameter_value s0 maximumPendingReadTransactions {1}
+	set_instantiation_interface_parameter_value s0 maximumPendingWriteTransactions {0}
+	set_instantiation_interface_parameter_value s0 minimumReadLatency {1}
+	set_instantiation_interface_parameter_value s0 minimumResponseLatency {1}
+	set_instantiation_interface_parameter_value s0 minimumUninterruptedRunLength {1}
+	set_instantiation_interface_parameter_value s0 prSafe {false}
+	set_instantiation_interface_parameter_value s0 printableDevice {false}
+	set_instantiation_interface_parameter_value s0 readLatency {0}
+	set_instantiation_interface_parameter_value s0 readWaitStates {0}
+	set_instantiation_interface_parameter_value s0 readWaitTime {0}
+	set_instantiation_interface_parameter_value s0 registerIncomingSignals {false}
+	set_instantiation_interface_parameter_value s0 registerOutgoingSignals {false}
+	set_instantiation_interface_parameter_value s0 setupTime {0}
+	set_instantiation_interface_parameter_value s0 timingUnits {Cycles}
+	set_instantiation_interface_parameter_value s0 transparentBridge {false}
+	set_instantiation_interface_parameter_value s0 waitrequestAllowance {0}
+	set_instantiation_interface_parameter_value s0 wellBehavedWaitrequest {false}
+	set_instantiation_interface_parameter_value s0 writeLatency {0}
+	set_instantiation_interface_parameter_value s0 writeWaitStates {0}
+	set_instantiation_interface_parameter_value s0 writeWaitTime {0}
+	set_instantiation_interface_assignment_value s0 embeddedsw.configuration.isFlash {0}
+	set_instantiation_interface_assignment_value s0 embeddedsw.configuration.isMemoryDevice {0}
+	set_instantiation_interface_assignment_value s0 embeddedsw.configuration.isNonVolatileStorage {0}
+	set_instantiation_interface_assignment_value s0 embeddedsw.configuration.isPrintableDevice {0}
+	set_instantiation_interface_sysinfo_parameter_value s0 address_map {}
+	set_instantiation_interface_sysinfo_parameter_value s0 address_width {}
+	set_instantiation_interface_sysinfo_parameter_value s0 max_slave_data_width {}
+	add_instantiation_interface_port s0 s0_waitrequest waitrequest 1 STD_LOGIC Output
+	add_instantiation_interface_port s0 s0_readdata readdata 32 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port s0 s0_readdatavalid readdatavalid 1 STD_LOGIC Output
+	add_instantiation_interface_port s0 s0_burstcount burstcount 1 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port s0 s0_writedata writedata 32 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port s0 s0_address address 7 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port s0 s0_write write 1 STD_LOGIC Input
+	add_instantiation_interface_port s0 s0_read read 1 STD_LOGIC Input
+	add_instantiation_interface_port s0 s0_byteenable byteenable 4 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port s0 s0_debugaccess debugaccess 1 STD_LOGIC Input
+	add_instantiation_interface m0 avalon OUTPUT
+	set_instantiation_interface_parameter_value m0 adaptsTo {}
+	set_instantiation_interface_parameter_value m0 addressGroup {0}
+	set_instantiation_interface_parameter_value m0 addressUnits {SYMBOLS}
+	set_instantiation_interface_parameter_value m0 alwaysBurstMaxBurst {false}
+	set_instantiation_interface_parameter_value m0 associatedClock {clk}
+	set_instantiation_interface_parameter_value m0 associatedReset {reset}
+	set_instantiation_interface_parameter_value m0 bitsPerSymbol {8}
+	set_instantiation_interface_parameter_value m0 burstOnBurstBoundariesOnly {false}
+	set_instantiation_interface_parameter_value m0 burstcountUnits {WORDS}
+	set_instantiation_interface_parameter_value m0 constantBurstBehavior {false}
+	set_instantiation_interface_parameter_value m0 dBSBigEndian {false}
+	set_instantiation_interface_parameter_value m0 doStreamReads {false}
+	set_instantiation_interface_parameter_value m0 doStreamWrites {false}
+	set_instantiation_interface_parameter_value m0 holdTime {0}
+	set_instantiation_interface_parameter_value m0 interleaveBursts {false}
+	set_instantiation_interface_parameter_value m0 isAsynchronous {false}
+	set_instantiation_interface_parameter_value m0 isBigEndian {false}
+	set_instantiation_interface_parameter_value m0 isReadable {false}
+	set_instantiation_interface_parameter_value m0 isWriteable {false}
+	set_instantiation_interface_parameter_value m0 linewrapBursts {false}
+	set_instantiation_interface_parameter_value m0 maxAddressWidth {32}
+	set_instantiation_interface_parameter_value m0 maximumPendingReadTransactions {0}
+	set_instantiation_interface_parameter_value m0 maximumPendingWriteTransactions {0}
+	set_instantiation_interface_parameter_value m0 minimumReadLatency {1}
+	set_instantiation_interface_parameter_value m0 minimumResponseLatency {1}
+	set_instantiation_interface_parameter_value m0 prSafe {false}
+	set_instantiation_interface_parameter_value m0 readLatency {0}
+	set_instantiation_interface_parameter_value m0 readWaitTime {1}
+	set_instantiation_interface_parameter_value m0 registerIncomingSignals {false}
+	set_instantiation_interface_parameter_value m0 registerOutgoingSignals {false}
+	set_instantiation_interface_parameter_value m0 setupTime {0}
+	set_instantiation_interface_parameter_value m0 timingUnits {Cycles}
+	set_instantiation_interface_parameter_value m0 waitrequestAllowance {0}
+	set_instantiation_interface_parameter_value m0 writeWaitTime {0}
+	add_instantiation_interface_port m0 m0_waitrequest waitrequest 1 STD_LOGIC Input
+	add_instantiation_interface_port m0 m0_readdata readdata 32 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port m0 m0_readdatavalid readdatavalid 1 STD_LOGIC Input
+	add_instantiation_interface_port m0 m0_burstcount burstcount 1 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port m0 m0_writedata writedata 32 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port m0 m0_address address 7 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port m0 m0_write write 1 STD_LOGIC Output
+	add_instantiation_interface_port m0 m0_read read 1 STD_LOGIC Output
+	add_instantiation_interface_port m0 m0_byteenable byteenable 4 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port m0 m0_debugaccess debugaccess 1 STD_LOGIC Output
+	save_instantiation
+	add_component rx_dma_dispatcher ip/subsys_ftile_rx_dma/rx_dma_dispatcher.ip modular_sgdma_dispatcher modular_sgdma_dispatcher_inst 19.2.0
+	load_component rx_dma_dispatcher
+	set_component_parameter_value BURST_ENABLE {0}
+	set_component_parameter_value BURST_WRAPPING_SUPPORT {0}
+	set_component_parameter_value CHANNEL_ENABLE {0}
+	set_component_parameter_value CHANNEL_WIDTH {8}
+	set_component_parameter_value CSR_ADDRESS_WIDTH {3}
+	set_component_parameter_value DATA_FIFO_DEPTH {32}
+	set_component_parameter_value DATA_WIDTH {32}
+	set_component_parameter_value DESCRIPTOR_FIFO_DEPTH {256}
+	set_component_parameter_value ENHANCED_FEATURES {1}
+	set_component_parameter_value ERROR_ENABLE {0}
+	set_component_parameter_value ERROR_WIDTH {8}
+	set_component_parameter_value GUI_RESPONSE_PORT {0}
+	set_component_parameter_value MAX_BURST_COUNT {2}
+	set_component_parameter_value MAX_BYTE {1024}
+	set_component_parameter_value MAX_STRIDE {1}
+	set_component_parameter_value MODE {2}
+	set_component_parameter_value PACKET_ENABLE {0}
+	set_component_parameter_value PREFETCHER_USE_CASE {1}
+	set_component_parameter_value PROGRAMMABLE_BURST_ENABLE {0}
+	set_component_parameter_value STRIDE_ENABLE {0}
+	set_component_parameter_value STRIDE_ENABLE_DERIVED {0}
+	set_component_parameter_value TRANSFER_TYPE {Aligned Accesses}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation rx_dma_dispatcher
+	remove_instantiation_interfaces_and_ports
+	set_instantiation_assignment_value embeddedsw.CMacro.BURST_ENABLE {0}
+	set_instantiation_assignment_value embeddedsw.CMacro.BURST_WRAPPING_SUPPORT {0}
+	set_instantiation_assignment_value embeddedsw.CMacro.DATA_FIFO_DEPTH {32}
+	set_instantiation_assignment_value embeddedsw.CMacro.DATA_WIDTH {32}
+	set_instantiation_assignment_value embeddedsw.CMacro.DESCRIPTOR_FIFO_DEPTH {256}
+	set_instantiation_assignment_value embeddedsw.CMacro.ENHANCED_FEATURES {1}
+	set_instantiation_assignment_value embeddedsw.CMacro.MAX_BURST_COUNT {2}
+	set_instantiation_assignment_value embeddedsw.CMacro.MAX_BYTE {1024}
+	set_instantiation_assignment_value embeddedsw.CMacro.MAX_STRIDE {1}
+	set_instantiation_assignment_value embeddedsw.CMacro.PROGRAMMABLE_BURST_ENABLE {0}
+	set_instantiation_assignment_value embeddedsw.CMacro.RESPONSE_FIFO_DEPTH {512}
+	set_instantiation_assignment_value embeddedsw.CMacro.RESPONSE_PORT {0}
+	set_instantiation_assignment_value embeddedsw.CMacro.STRIDE_ENABLE {0}
+	set_instantiation_assignment_value embeddedsw.CMacro.TRANSFER_TYPE {Aligned Accesses}
+	add_instantiation_interface clock clock INPUT
+	set_instantiation_interface_parameter_value clock clockRate {0}
+	set_instantiation_interface_parameter_value clock externallyDriven {false}
+	set_instantiation_interface_parameter_value clock ptfSchematicName {}
+	add_instantiation_interface_port clock clk clk 1 STD_LOGIC Input
+	add_instantiation_interface clock_reset reset INPUT
+	set_instantiation_interface_parameter_value clock_reset associatedClock {clock}
+	set_instantiation_interface_parameter_value clock_reset synchronousEdges {BOTH}
+	add_instantiation_interface_port clock_reset reset reset 1 STD_LOGIC Input
+	add_instantiation_interface CSR avalon INPUT
+	set_instantiation_interface_parameter_value CSR addressAlignment {DYNAMIC}
+	set_instantiation_interface_parameter_value CSR addressGroup {0}
+	set_instantiation_interface_parameter_value CSR addressSpan {32}
+	set_instantiation_interface_parameter_value CSR addressUnits {WORDS}
+	set_instantiation_interface_parameter_value CSR alwaysBurstMaxBurst {false}
+	set_instantiation_interface_parameter_value CSR associatedClock {clock}
+	set_instantiation_interface_parameter_value CSR associatedReset {clock_reset}
+	set_instantiation_interface_parameter_value CSR bitsPerSymbol {8}
+	set_instantiation_interface_parameter_value CSR bridgedAddressOffset {0}
+	set_instantiation_interface_parameter_value CSR bridgesToMaster {}
+	set_instantiation_interface_parameter_value CSR burstOnBurstBoundariesOnly {false}
+	set_instantiation_interface_parameter_value CSR burstcountUnits {WORDS}
+	set_instantiation_interface_parameter_value CSR constantBurstBehavior {false}
+	set_instantiation_interface_parameter_value CSR explicitAddressSpan {0}
+	set_instantiation_interface_parameter_value CSR holdTime {0}
+	set_instantiation_interface_parameter_value CSR interleaveBursts {false}
+	set_instantiation_interface_parameter_value CSR isBigEndian {false}
+	set_instantiation_interface_parameter_value CSR isFlash {false}
+	set_instantiation_interface_parameter_value CSR isMemoryDevice {false}
+	set_instantiation_interface_parameter_value CSR isNonVolatileStorage {false}
+	set_instantiation_interface_parameter_value CSR linewrapBursts {false}
+	set_instantiation_interface_parameter_value CSR maximumPendingReadTransactions {0}
+	set_instantiation_interface_parameter_value CSR maximumPendingWriteTransactions {0}
+	set_instantiation_interface_parameter_value CSR minimumReadLatency {1}
+	set_instantiation_interface_parameter_value CSR minimumResponseLatency {1}
+	set_instantiation_interface_parameter_value CSR minimumUninterruptedRunLength {1}
+	set_instantiation_interface_parameter_value CSR prSafe {false}
+	set_instantiation_interface_parameter_value CSR printableDevice {false}
+	set_instantiation_interface_parameter_value CSR readLatency {1}
+	set_instantiation_interface_parameter_value CSR readWaitStates {1}
+	set_instantiation_interface_parameter_value CSR readWaitTime {1}
+	set_instantiation_interface_parameter_value CSR registerIncomingSignals {false}
+	set_instantiation_interface_parameter_value CSR registerOutgoingSignals {false}
+	set_instantiation_interface_parameter_value CSR setupTime {0}
+	set_instantiation_interface_parameter_value CSR timingUnits {Cycles}
+	set_instantiation_interface_parameter_value CSR transparentBridge {false}
+	set_instantiation_interface_parameter_value CSR waitrequestAllowance {0}
+	set_instantiation_interface_parameter_value CSR wellBehavedWaitrequest {false}
+	set_instantiation_interface_parameter_value CSR writeLatency {0}
+	set_instantiation_interface_parameter_value CSR writeWaitStates {0}
+	set_instantiation_interface_parameter_value CSR writeWaitTime {0}
+	set_instantiation_interface_assignment_value CSR embeddedsw.configuration.isFlash {0}
+	set_instantiation_interface_assignment_value CSR embeddedsw.configuration.isMemoryDevice {0}
+	set_instantiation_interface_assignment_value CSR embeddedsw.configuration.isNonVolatileStorage {0}
+	set_instantiation_interface_assignment_value CSR embeddedsw.configuration.isPrintableDevice {0}
+	set_instantiation_interface_sysinfo_parameter_value CSR address_map {<address-map><slave name='CSR' start='0x0' end='0x20' datawidth='32' /></address-map>}
+	set_instantiation_interface_sysinfo_parameter_value CSR address_width {5}
+	set_instantiation_interface_sysinfo_parameter_value CSR max_slave_data_width {32}
+	add_instantiation_interface_port CSR csr_writedata writedata 32 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port CSR csr_write write 1 STD_LOGIC Input
+	add_instantiation_interface_port CSR csr_byteenable byteenable 4 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port CSR csr_readdata readdata 32 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port CSR csr_read read 1 STD_LOGIC Input
+	add_instantiation_interface_port CSR csr_address address 3 STD_LOGIC_VECTOR Input
+	add_instantiation_interface Response_Source avalon_streaming OUTPUT
+	set_instantiation_interface_parameter_value Response_Source associatedClock {clock}
+	set_instantiation_interface_parameter_value Response_Source associatedReset {clock_reset}
+	set_instantiation_interface_parameter_value Response_Source beatsPerCycle {1}
+	set_instantiation_interface_parameter_value Response_Source dataBitsPerSymbol {256}
+	set_instantiation_interface_parameter_value Response_Source emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value Response_Source errorDescriptor {}
+	set_instantiation_interface_parameter_value Response_Source firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value Response_Source highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value Response_Source maxChannel {0}
+	set_instantiation_interface_parameter_value Response_Source packetDescription {}
+	set_instantiation_interface_parameter_value Response_Source prSafe {false}
+	set_instantiation_interface_parameter_value Response_Source readyAllowance {0}
+	set_instantiation_interface_parameter_value Response_Source readyLatency {0}
+	set_instantiation_interface_parameter_value Response_Source symbolsPerBeat {1}
+	add_instantiation_interface_port Response_Source src_response_data data 256 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port Response_Source src_response_valid valid 1 STD_LOGIC Output
+	add_instantiation_interface_port Response_Source src_response_ready ready 1 STD_LOGIC Input
+	add_instantiation_interface Descriptor_Sink avalon_streaming INPUT
+	set_instantiation_interface_parameter_value Descriptor_Sink associatedClock {clock}
+	set_instantiation_interface_parameter_value Descriptor_Sink associatedReset {clock_reset}
+	set_instantiation_interface_parameter_value Descriptor_Sink beatsPerCycle {1}
+	set_instantiation_interface_parameter_value Descriptor_Sink dataBitsPerSymbol {256}
+	set_instantiation_interface_parameter_value Descriptor_Sink emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value Descriptor_Sink errorDescriptor {}
+	set_instantiation_interface_parameter_value Descriptor_Sink firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value Descriptor_Sink highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value Descriptor_Sink maxChannel {0}
+	set_instantiation_interface_parameter_value Descriptor_Sink packetDescription {}
+	set_instantiation_interface_parameter_value Descriptor_Sink prSafe {false}
+	set_instantiation_interface_parameter_value Descriptor_Sink readyAllowance {0}
+	set_instantiation_interface_parameter_value Descriptor_Sink readyLatency {0}
+	set_instantiation_interface_parameter_value Descriptor_Sink symbolsPerBeat {1}
+	add_instantiation_interface_port Descriptor_Sink snk_descriptor_data data 256 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port Descriptor_Sink snk_descriptor_valid valid 1 STD_LOGIC Input
+	add_instantiation_interface_port Descriptor_Sink snk_descriptor_ready ready 1 STD_LOGIC Output
+	add_instantiation_interface Write_Command_Source avalon_streaming OUTPUT
+	set_instantiation_interface_parameter_value Write_Command_Source associatedClock {clock}
+	set_instantiation_interface_parameter_value Write_Command_Source associatedReset {clock_reset}
+	set_instantiation_interface_parameter_value Write_Command_Source beatsPerCycle {1}
+	set_instantiation_interface_parameter_value Write_Command_Source dataBitsPerSymbol {256}
+	set_instantiation_interface_parameter_value Write_Command_Source emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value Write_Command_Source errorDescriptor {}
+	set_instantiation_interface_parameter_value Write_Command_Source firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value Write_Command_Source highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value Write_Command_Source maxChannel {0}
+	set_instantiation_interface_parameter_value Write_Command_Source packetDescription {}
+	set_instantiation_interface_parameter_value Write_Command_Source prSafe {false}
+	set_instantiation_interface_parameter_value Write_Command_Source readyAllowance {0}
+	set_instantiation_interface_parameter_value Write_Command_Source readyLatency {0}
+	set_instantiation_interface_parameter_value Write_Command_Source symbolsPerBeat {1}
+	add_instantiation_interface_port Write_Command_Source src_write_master_data data 256 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port Write_Command_Source src_write_master_valid valid 1 STD_LOGIC Output
+	add_instantiation_interface_port Write_Command_Source src_write_master_ready ready 1 STD_LOGIC Input
+	add_instantiation_interface Write_Response_Sink avalon_streaming INPUT
+	set_instantiation_interface_parameter_value Write_Response_Sink associatedClock {clock}
+	set_instantiation_interface_parameter_value Write_Response_Sink associatedReset {clock_reset}
+	set_instantiation_interface_parameter_value Write_Response_Sink beatsPerCycle {1}
+	set_instantiation_interface_parameter_value Write_Response_Sink dataBitsPerSymbol {256}
+	set_instantiation_interface_parameter_value Write_Response_Sink emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value Write_Response_Sink errorDescriptor {}
+	set_instantiation_interface_parameter_value Write_Response_Sink firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value Write_Response_Sink highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value Write_Response_Sink maxChannel {0}
+	set_instantiation_interface_parameter_value Write_Response_Sink packetDescription {}
+	set_instantiation_interface_parameter_value Write_Response_Sink prSafe {false}
+	set_instantiation_interface_parameter_value Write_Response_Sink readyAllowance {0}
+	set_instantiation_interface_parameter_value Write_Response_Sink readyLatency {0}
+	set_instantiation_interface_parameter_value Write_Response_Sink symbolsPerBeat {1}
+	add_instantiation_interface_port Write_Response_Sink snk_write_master_data data 256 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port Write_Response_Sink snk_write_master_valid valid 1 STD_LOGIC Input
+	add_instantiation_interface_port Write_Response_Sink snk_write_master_ready ready 1 STD_LOGIC Output
+	save_instantiation
+	add_component rx_dma_ftile_clock ip/subsys_ftile_rx_dma/rx_dma_ftile_clock.ip altera_clock_bridge altera_clock_bridge_inst 19.2.0
+	load_component rx_dma_ftile_clock
+	set_component_parameter_value EXPLICIT_CLOCK_RATE {402832031.0}
+	set_component_parameter_value NUM_CLOCK_OUTPUTS {1}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation rx_dma_ftile_clock
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface in_clk clock INPUT
+	set_instantiation_interface_parameter_value in_clk clockRate {0}
+	set_instantiation_interface_parameter_value in_clk externallyDriven {false}
+	set_instantiation_interface_parameter_value in_clk ptfSchematicName {}
+	add_instantiation_interface_port in_clk in_clk clk 1 STD_LOGIC Input
+	add_instantiation_interface out_clk clock OUTPUT
+	set_instantiation_interface_parameter_value out_clk associatedDirectClock {in_clk}
+	set_instantiation_interface_parameter_value out_clk clockRate {402832031}
+	set_instantiation_interface_parameter_value out_clk clockRateKnown {true}
+	set_instantiation_interface_parameter_value out_clk externallyDriven {false}
+	set_instantiation_interface_parameter_value out_clk ptfSchematicName {}
+	set_instantiation_interface_sysinfo_parameter_value out_clk clock_rate {402832031}
+	add_instantiation_interface_port out_clk out_clk clk 1 STD_LOGIC Output
+	save_instantiation
+	add_component rx_dma_pause_ctrl ip/subsys_ftile_rx_dma/rx_dma_pause_ctrl.ip altera_eth_fifo_pause_ctrl_adapter_hw altera_eth_fifo_pause_ctrl_adapter_hw_inst 1.0.0
+	load_component rx_dma_pause_ctrl
+	set_component_parameter_value FTILE_HIP_PAUSE_EN {1}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation rx_dma_pause_ctrl
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface clock clock INPUT
+	set_instantiation_interface_parameter_value clock clockRate {0}
+	set_instantiation_interface_parameter_value clock externallyDriven {false}
+	set_instantiation_interface_parameter_value clock ptfSchematicName {}
+	add_instantiation_interface_port clock clk clk 1 STD_LOGIC Input
+	add_instantiation_interface reset reset INPUT
+	set_instantiation_interface_parameter_value reset associatedClock {clock}
+	set_instantiation_interface_parameter_value reset synchronousEdges {DEASSERT}
+	add_instantiation_interface_port reset reset reset 1 STD_LOGIC Input
+	add_instantiation_interface almost_full_sink avalon_streaming INPUT
+	set_instantiation_interface_parameter_value almost_full_sink associatedClock {clock}
+	set_instantiation_interface_parameter_value almost_full_sink associatedReset {reset}
+	set_instantiation_interface_parameter_value almost_full_sink beatsPerCycle {1}
+	set_instantiation_interface_parameter_value almost_full_sink dataBitsPerSymbol {1}
+	set_instantiation_interface_parameter_value almost_full_sink emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value almost_full_sink errorDescriptor {}
+	set_instantiation_interface_parameter_value almost_full_sink firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value almost_full_sink highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value almost_full_sink maxChannel {0}
+	set_instantiation_interface_parameter_value almost_full_sink packetDescription {}
+	set_instantiation_interface_parameter_value almost_full_sink prSafe {false}
+	set_instantiation_interface_parameter_value almost_full_sink readyAllowance {0}
+	set_instantiation_interface_parameter_value almost_full_sink readyLatency {0}
+	set_instantiation_interface_parameter_value almost_full_sink symbolsPerBeat {1}
+	add_instantiation_interface_port almost_full_sink data_sink_almost_full data 1 STD_LOGIC Input
+	add_instantiation_interface almost_empty_sink avalon_streaming INPUT
+	set_instantiation_interface_parameter_value almost_empty_sink associatedClock {clock}
+	set_instantiation_interface_parameter_value almost_empty_sink associatedReset {reset}
+	set_instantiation_interface_parameter_value almost_empty_sink beatsPerCycle {1}
+	set_instantiation_interface_parameter_value almost_empty_sink dataBitsPerSymbol {1}
+	set_instantiation_interface_parameter_value almost_empty_sink emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value almost_empty_sink errorDescriptor {}
+	set_instantiation_interface_parameter_value almost_empty_sink firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value almost_empty_sink highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value almost_empty_sink maxChannel {0}
+	set_instantiation_interface_parameter_value almost_empty_sink packetDescription {}
+	set_instantiation_interface_parameter_value almost_empty_sink prSafe {false}
+	set_instantiation_interface_parameter_value almost_empty_sink readyAllowance {0}
+	set_instantiation_interface_parameter_value almost_empty_sink readyLatency {0}
+	set_instantiation_interface_parameter_value almost_empty_sink symbolsPerBeat {1}
+	add_instantiation_interface_port almost_empty_sink data_sink_almost_empty data 1 STD_LOGIC Input
+	add_instantiation_interface pause_ctrl_ftile_src_data conduit INPUT
+	set_instantiation_interface_parameter_value pause_ctrl_ftile_src_data associatedClock {}
+	set_instantiation_interface_parameter_value pause_ctrl_ftile_src_data associatedReset {}
+	set_instantiation_interface_parameter_value pause_ctrl_ftile_src_data prSafe {false}
+	add_instantiation_interface_port pause_ctrl_ftile_src_data pause_ctrl_ftile_src_data i_sl_tx_pause 1 STD_LOGIC Output
+	add_instantiation_interface_port pause_ctrl_ftile_src_data o_sl_rx_pause o_sl_rx_pause 1 STD_LOGIC Input
+	save_instantiation
+	add_component rx_dma_pkt_dc_fifo ip/subsys_ftile_rx_dma/rx_dma_pkt_dc_fifo.ip st_dc_fifo st_dc_fifo_inst 19.4.0
+	load_component rx_dma_pkt_dc_fifo
+	set_component_parameter_value BACKPRESSURE_DURING_RESET {1}
+	set_component_parameter_value BITS_PER_SYMBOL {8}
+	set_component_parameter_value CHANNEL_WIDTH {0}
+	set_component_parameter_value ENABLE_EXPLICIT_MAXCHANNEL {0}
+	set_component_parameter_value ERROR_WIDTH {6}
+	set_component_parameter_value EXPLICIT_MAXCHANNEL {0}
+	set_component_parameter_value FIFO_DEPTH {32}
+	set_component_parameter_value PIPELINE_POINTERS {0}
+	set_component_parameter_value RD_SYNC_DEPTH {3}
+	set_component_parameter_value SYMBOLS_PER_BEAT {16}
+	set_component_parameter_value SYNC_RESET {0}
+	set_component_parameter_value USE_IN_FILL_LEVEL {0}
+	set_component_parameter_value USE_OUT_FILL_LEVEL {0}
+	set_component_parameter_value USE_PACKETS {1}
+	set_component_parameter_value USE_SPACE_AVAIL_IF {0}
+	set_component_parameter_value WR_SYNC_DEPTH {3}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation rx_dma_pkt_dc_fifo
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface in_clk clock INPUT
+	set_instantiation_interface_parameter_value in_clk clockRate {0}
+	set_instantiation_interface_parameter_value in_clk externallyDriven {false}
+	set_instantiation_interface_parameter_value in_clk ptfSchematicName {}
+	add_instantiation_interface_port in_clk in_clk clk 1 STD_LOGIC Input
+	add_instantiation_interface in_clk_reset reset INPUT
+	set_instantiation_interface_parameter_value in_clk_reset associatedClock {in_clk}
+	set_instantiation_interface_parameter_value in_clk_reset synchronousEdges {DEASSERT}
+	add_instantiation_interface_port in_clk_reset in_reset_n reset_n 1 STD_LOGIC Input
+	add_instantiation_interface out_clk clock INPUT
+	set_instantiation_interface_parameter_value out_clk clockRate {0}
+	set_instantiation_interface_parameter_value out_clk externallyDriven {false}
+	set_instantiation_interface_parameter_value out_clk ptfSchematicName {}
+	add_instantiation_interface_port out_clk out_clk clk 1 STD_LOGIC Input
+	add_instantiation_interface out_clk_reset reset INPUT
+	set_instantiation_interface_parameter_value out_clk_reset associatedClock {out_clk}
+	set_instantiation_interface_parameter_value out_clk_reset synchronousEdges {DEASSERT}
+	add_instantiation_interface_port out_clk_reset out_reset_n reset_n 1 STD_LOGIC Input
+	add_instantiation_interface in avalon_streaming INPUT
+	set_instantiation_interface_parameter_value in associatedClock {in_clk}
+	set_instantiation_interface_parameter_value in associatedReset {in_clk_reset}
+	set_instantiation_interface_parameter_value in beatsPerCycle {1}
+	set_instantiation_interface_parameter_value in dataBitsPerSymbol {8}
+	set_instantiation_interface_parameter_value in emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value in errorDescriptor {}
+	set_instantiation_interface_parameter_value in firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value in highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value in maxChannel {0}
+	set_instantiation_interface_parameter_value in packetDescription {}
+	set_instantiation_interface_parameter_value in prSafe {false}
+	set_instantiation_interface_parameter_value in readyAllowance {0}
+	set_instantiation_interface_parameter_value in readyLatency {0}
+	set_instantiation_interface_parameter_value in symbolsPerBeat {16}
+	add_instantiation_interface_port in in_data data 128 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port in in_valid valid 1 STD_LOGIC Input
+	add_instantiation_interface_port in in_ready ready 1 STD_LOGIC Output
+	add_instantiation_interface_port in in_startofpacket startofpacket 1 STD_LOGIC Input
+	add_instantiation_interface_port in in_endofpacket endofpacket 1 STD_LOGIC Input
+	add_instantiation_interface_port in in_empty empty 4 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port in in_error error 6 STD_LOGIC_VECTOR Input
+	add_instantiation_interface out avalon_streaming OUTPUT
+	set_instantiation_interface_parameter_value out associatedClock {out_clk}
+	set_instantiation_interface_parameter_value out associatedReset {out_clk_reset}
+	set_instantiation_interface_parameter_value out beatsPerCycle {1}
+	set_instantiation_interface_parameter_value out dataBitsPerSymbol {8}
+	set_instantiation_interface_parameter_value out emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value out errorDescriptor {}
+	set_instantiation_interface_parameter_value out firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value out highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value out maxChannel {0}
+	set_instantiation_interface_parameter_value out packetDescription {}
+	set_instantiation_interface_parameter_value out prSafe {false}
+	set_instantiation_interface_parameter_value out readyAllowance {0}
+	set_instantiation_interface_parameter_value out readyLatency {0}
+	set_instantiation_interface_parameter_value out symbolsPerBeat {16}
+	add_instantiation_interface_port out out_data data 128 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port out out_valid valid 1 STD_LOGIC Output
+	add_instantiation_interface_port out out_ready ready 1 STD_LOGIC Input
+	add_instantiation_interface_port out out_startofpacket startofpacket 1 STD_LOGIC Output
+	add_instantiation_interface_port out out_endofpacket endofpacket 1 STD_LOGIC Output
+	add_instantiation_interface_port out out_empty empty 4 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port out out_error error 6 STD_LOGIC_VECTOR Output
+	save_instantiation
+	add_component rx_dma_pkt_fifo ip/subsys_ftile_rx_dma/rx_dma_pkt_fifo.ip altera_avalon_sc_fifo altera_avalon_sc_fifo_inst 19.3.1
+	load_component rx_dma_pkt_fifo
+	set_component_parameter_value BITS_PER_SYMBOL {8}
+	set_component_parameter_value CHANNEL_WIDTH {0}
+	set_component_parameter_value EMPTY_LATENCY {3}
+	set_component_parameter_value ENABLE_EXPLICIT_MAXCHANNEL {0}
+	set_component_parameter_value ERROR_WIDTH {6}
+	set_component_parameter_value EXPLICIT_MAXCHANNEL {0}
+	set_component_parameter_value FIFO_DEPTH {16384}
+	set_component_parameter_value SYMBOLS_PER_BEAT {16}
+	set_component_parameter_value SYNC_RESET {0}
+	set_component_parameter_value USE_ALMOST_EMPTY_IF {1}
+	set_component_parameter_value USE_ALMOST_FULL_IF {1}
+	set_component_parameter_value USE_FILL_LEVEL {1}
+	set_component_parameter_value USE_MEMORY_BLOCKS {1}
+	set_component_parameter_value USE_PACKETS {1}
+	set_component_parameter_value USE_STORE_FORWARD {0}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation rx_dma_pkt_fifo
+	remove_instantiation_interfaces_and_ports
+	set_instantiation_assignment_value debug.isTransparent {1}
+	add_instantiation_interface clk clock INPUT
+	set_instantiation_interface_parameter_value clk clockRate {0}
+	set_instantiation_interface_parameter_value clk externallyDriven {false}
+	set_instantiation_interface_parameter_value clk ptfSchematicName {}
+	add_instantiation_interface_port clk clk clk 1 STD_LOGIC Input
+	add_instantiation_interface clk_reset reset INPUT
+	set_instantiation_interface_parameter_value clk_reset associatedClock {clk}
+	set_instantiation_interface_parameter_value clk_reset synchronousEdges {DEASSERT}
+	add_instantiation_interface_port clk_reset reset reset 1 STD_LOGIC Input
+	add_instantiation_interface csr avalon INPUT
+	set_instantiation_interface_parameter_value csr addressAlignment {DYNAMIC}
+	set_instantiation_interface_parameter_value csr addressGroup {0}
+	set_instantiation_interface_parameter_value csr addressSpan {16}
+	set_instantiation_interface_parameter_value csr addressUnits {WORDS}
+	set_instantiation_interface_parameter_value csr alwaysBurstMaxBurst {false}
+	set_instantiation_interface_parameter_value csr associatedClock {clk}
+	set_instantiation_interface_parameter_value csr associatedReset {clk_reset}
+	set_instantiation_interface_parameter_value csr bitsPerSymbol {8}
+	set_instantiation_interface_parameter_value csr bridgedAddressOffset {0}
+	set_instantiation_interface_parameter_value csr bridgesToMaster {}
+	set_instantiation_interface_parameter_value csr burstOnBurstBoundariesOnly {false}
+	set_instantiation_interface_parameter_value csr burstcountUnits {WORDS}
+	set_instantiation_interface_parameter_value csr constantBurstBehavior {false}
+	set_instantiation_interface_parameter_value csr explicitAddressSpan {0}
+	set_instantiation_interface_parameter_value csr holdTime {0}
+	set_instantiation_interface_parameter_value csr interleaveBursts {false}
+	set_instantiation_interface_parameter_value csr isBigEndian {false}
+	set_instantiation_interface_parameter_value csr isFlash {false}
+	set_instantiation_interface_parameter_value csr isMemoryDevice {false}
+	set_instantiation_interface_parameter_value csr isNonVolatileStorage {false}
+	set_instantiation_interface_parameter_value csr linewrapBursts {false}
+	set_instantiation_interface_parameter_value csr maximumPendingReadTransactions {0}
+	set_instantiation_interface_parameter_value csr maximumPendingWriteTransactions {0}
+	set_instantiation_interface_parameter_value csr minimumReadLatency {1}
+	set_instantiation_interface_parameter_value csr minimumResponseLatency {1}
+	set_instantiation_interface_parameter_value csr minimumUninterruptedRunLength {1}
+	set_instantiation_interface_parameter_value csr prSafe {false}
+	set_instantiation_interface_parameter_value csr printableDevice {false}
+	set_instantiation_interface_parameter_value csr readLatency {1}
+	set_instantiation_interface_parameter_value csr readWaitStates {0}
+	set_instantiation_interface_parameter_value csr readWaitTime {0}
+	set_instantiation_interface_parameter_value csr registerIncomingSignals {false}
+	set_instantiation_interface_parameter_value csr registerOutgoingSignals {false}
+	set_instantiation_interface_parameter_value csr setupTime {0}
+	set_instantiation_interface_parameter_value csr timingUnits {Cycles}
+	set_instantiation_interface_parameter_value csr transparentBridge {false}
+	set_instantiation_interface_parameter_value csr waitrequestAllowance {0}
+	set_instantiation_interface_parameter_value csr wellBehavedWaitrequest {false}
+	set_instantiation_interface_parameter_value csr writeLatency {0}
+	set_instantiation_interface_parameter_value csr writeWaitStates {0}
+	set_instantiation_interface_parameter_value csr writeWaitTime {0}
+	set_instantiation_interface_assignment_value csr embeddedsw.configuration.isFlash {0}
+	set_instantiation_interface_assignment_value csr embeddedsw.configuration.isMemoryDevice {0}
+	set_instantiation_interface_assignment_value csr embeddedsw.configuration.isNonVolatileStorage {0}
+	set_instantiation_interface_assignment_value csr embeddedsw.configuration.isPrintableDevice {0}
+	set_instantiation_interface_sysinfo_parameter_value csr address_map {<address-map><slave name='csr' start='0x0' end='0x10' datawidth='32' /></address-map>}
+	set_instantiation_interface_sysinfo_parameter_value csr address_width {4}
+	set_instantiation_interface_sysinfo_parameter_value csr max_slave_data_width {32}
+	add_instantiation_interface_port csr csr_address address 2 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port csr csr_read read 1 STD_LOGIC Input
+	add_instantiation_interface_port csr csr_write write 1 STD_LOGIC Input
+	add_instantiation_interface_port csr csr_readdata readdata 32 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port csr csr_writedata writedata 32 STD_LOGIC_VECTOR Input
+	add_instantiation_interface almost_full avalon_streaming OUTPUT
+	set_instantiation_interface_parameter_value almost_full associatedClock {clk}
+	set_instantiation_interface_parameter_value almost_full associatedReset {clk_reset}
+	set_instantiation_interface_parameter_value almost_full beatsPerCycle {1}
+	set_instantiation_interface_parameter_value almost_full dataBitsPerSymbol {1}
+	set_instantiation_interface_parameter_value almost_full emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value almost_full errorDescriptor {}
+	set_instantiation_interface_parameter_value almost_full firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value almost_full highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value almost_full maxChannel {0}
+	set_instantiation_interface_parameter_value almost_full packetDescription {}
+	set_instantiation_interface_parameter_value almost_full prSafe {false}
+	set_instantiation_interface_parameter_value almost_full readyAllowance {0}
+	set_instantiation_interface_parameter_value almost_full readyLatency {0}
+	set_instantiation_interface_parameter_value almost_full symbolsPerBeat {1}
+	add_instantiation_interface_port almost_full almost_full_data data 1 STD_LOGIC Output
+	add_instantiation_interface almost_empty avalon_streaming OUTPUT
+	set_instantiation_interface_parameter_value almost_empty associatedClock {clk}
+	set_instantiation_interface_parameter_value almost_empty associatedReset {clk_reset}
+	set_instantiation_interface_parameter_value almost_empty beatsPerCycle {1}
+	set_instantiation_interface_parameter_value almost_empty dataBitsPerSymbol {1}
+	set_instantiation_interface_parameter_value almost_empty emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value almost_empty errorDescriptor {}
+	set_instantiation_interface_parameter_value almost_empty firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value almost_empty highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value almost_empty maxChannel {0}
+	set_instantiation_interface_parameter_value almost_empty packetDescription {}
+	set_instantiation_interface_parameter_value almost_empty prSafe {false}
+	set_instantiation_interface_parameter_value almost_empty readyAllowance {0}
+	set_instantiation_interface_parameter_value almost_empty readyLatency {0}
+	set_instantiation_interface_parameter_value almost_empty symbolsPerBeat {1}
+	add_instantiation_interface_port almost_empty almost_empty_data data 1 STD_LOGIC Output
+	add_instantiation_interface in avalon_streaming INPUT
+	set_instantiation_interface_parameter_value in associatedClock {clk}
+	set_instantiation_interface_parameter_value in associatedReset {clk_reset}
+	set_instantiation_interface_parameter_value in beatsPerCycle {1}
+	set_instantiation_interface_parameter_value in dataBitsPerSymbol {8}
+	set_instantiation_interface_parameter_value in emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value in errorDescriptor {}
+	set_instantiation_interface_parameter_value in firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value in highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value in maxChannel {0}
+	set_instantiation_interface_parameter_value in packetDescription {}
+	set_instantiation_interface_parameter_value in prSafe {false}
+	set_instantiation_interface_parameter_value in readyAllowance {0}
+	set_instantiation_interface_parameter_value in readyLatency {0}
+	set_instantiation_interface_parameter_value in symbolsPerBeat {16}
+	add_instantiation_interface_port in in_data data 128 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port in in_valid valid 1 STD_LOGIC Input
+	add_instantiation_interface_port in in_ready ready 1 STD_LOGIC Output
+	add_instantiation_interface_port in in_startofpacket startofpacket 1 STD_LOGIC Input
+	add_instantiation_interface_port in in_endofpacket endofpacket 1 STD_LOGIC Input
+	add_instantiation_interface_port in in_empty empty 4 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port in in_error error 6 STD_LOGIC_VECTOR Input
+	add_instantiation_interface out avalon_streaming OUTPUT
+	set_instantiation_interface_parameter_value out associatedClock {clk}
+	set_instantiation_interface_parameter_value out associatedReset {clk_reset}
+	set_instantiation_interface_parameter_value out beatsPerCycle {1}
+	set_instantiation_interface_parameter_value out dataBitsPerSymbol {8}
+	set_instantiation_interface_parameter_value out emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value out errorDescriptor {}
+	set_instantiation_interface_parameter_value out firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value out highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value out maxChannel {0}
+	set_instantiation_interface_parameter_value out packetDescription {}
+	set_instantiation_interface_parameter_value out prSafe {false}
+	set_instantiation_interface_parameter_value out readyAllowance {0}
+	set_instantiation_interface_parameter_value out readyLatency {0}
+	set_instantiation_interface_parameter_value out symbolsPerBeat {16}
+	set_instantiation_interface_assignment_value out debug.controlledBy {in}
+	add_instantiation_interface_port out out_data data 128 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port out out_valid valid 1 STD_LOGIC Output
+	add_instantiation_interface_port out out_ready ready 1 STD_LOGIC Input
+	add_instantiation_interface_port out out_startofpacket startofpacket 1 STD_LOGIC Output
+	add_instantiation_interface_port out out_endofpacket endofpacket 1 STD_LOGIC Output
+	add_instantiation_interface_port out out_empty empty 4 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port out out_error error 6 STD_LOGIC_VECTOR Output
+	save_instantiation
+	add_component rx_dma_prefetcher ip/subsys_ftile_rx_dma/rx_dma_prefetcher.ip altera_msgdma_prefetcher altera_msgdma_prefetcher_inst 19.3.0
+	load_component rx_dma_prefetcher
+	set_component_parameter_value DATA_WIDTH {128}
+	set_component_parameter_value ENABLE_READ_BURST {1}
+	set_component_parameter_value ENHANCED_FEATURES {1}
+	set_component_parameter_value FIX_ADDRESS_WIDTH {34}
+	set_component_parameter_value GUI_DESCRIPTOR_FIFO_DEPTH {128}
+	set_component_parameter_value GUI_MAX_READ_BURST_COUNT {4}
+	set_component_parameter_value GUI_TIMESTAMP_WRITEBACK {1}
+	set_component_parameter_value USE_FIX_ADDRESS_WIDTH {1}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation rx_dma_prefetcher
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface Clock clock INPUT
+	set_instantiation_interface_parameter_value Clock clockRate {0}
+	set_instantiation_interface_parameter_value Clock externallyDriven {false}
+	set_instantiation_interface_parameter_value Clock ptfSchematicName {}
+	add_instantiation_interface_port Clock clk clk 1 STD_LOGIC Input
+	add_instantiation_interface Clock_reset reset INPUT
+	set_instantiation_interface_parameter_value Clock_reset associatedClock {Clock}
+	set_instantiation_interface_parameter_value Clock_reset synchronousEdges {BOTH}
+	add_instantiation_interface_port Clock_reset reset reset 1 STD_LOGIC Input
+	add_instantiation_interface Descriptor_Read_Master avalon OUTPUT
+	set_instantiation_interface_parameter_value Descriptor_Read_Master adaptsTo {}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master addressGroup {0}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master addressUnits {SYMBOLS}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master alwaysBurstMaxBurst {false}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master associatedClock {Clock}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master associatedReset {Clock_reset}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master bitsPerSymbol {8}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master burstOnBurstBoundariesOnly {false}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master burstcountUnits {WORDS}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master constantBurstBehavior {false}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master dBSBigEndian {false}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master doStreamReads {false}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master doStreamWrites {false}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master holdTime {0}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master interleaveBursts {false}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master isAsynchronous {false}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master isBigEndian {false}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master isReadable {false}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master isWriteable {false}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master linewrapBursts {false}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master maxAddressWidth {32}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master maximumPendingReadTransactions {0}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master maximumPendingWriteTransactions {0}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master minimumReadLatency {1}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master minimumResponseLatency {1}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master prSafe {false}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master readLatency {0}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master readWaitTime {1}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master registerIncomingSignals {false}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master registerOutgoingSignals {false}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master setupTime {0}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master timingUnits {Cycles}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master waitrequestAllowance {0}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master writeWaitTime {0}
+	add_instantiation_interface_port Descriptor_Read_Master mm_read_address address 34 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port Descriptor_Read_Master mm_read_read read 1 STD_LOGIC Output
+	add_instantiation_interface_port Descriptor_Read_Master mm_read_readdata readdata 128 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port Descriptor_Read_Master mm_read_waitrequest waitrequest 1 STD_LOGIC Input
+	add_instantiation_interface_port Descriptor_Read_Master mm_read_readdatavalid readdatavalid 1 STD_LOGIC Input
+	add_instantiation_interface_port Descriptor_Read_Master mm_read_burstcount burstcount 3 STD_LOGIC_VECTOR Output
+	add_instantiation_interface Descriptor_Write_Master avalon OUTPUT
+	set_instantiation_interface_parameter_value Descriptor_Write_Master adaptsTo {}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master addressGroup {0}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master addressUnits {SYMBOLS}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master alwaysBurstMaxBurst {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master associatedClock {Clock}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master associatedReset {Clock_reset}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master bitsPerSymbol {8}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master burstOnBurstBoundariesOnly {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master burstcountUnits {WORDS}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master constantBurstBehavior {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master dBSBigEndian {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master doStreamReads {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master doStreamWrites {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master holdTime {0}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master interleaveBursts {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master isAsynchronous {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master isBigEndian {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master isReadable {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master isWriteable {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master linewrapBursts {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master maxAddressWidth {32}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master maximumPendingReadTransactions {0}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master maximumPendingWriteTransactions {3}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master minimumReadLatency {1}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master minimumResponseLatency {1}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master prSafe {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master readLatency {0}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master readWaitTime {1}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master registerIncomingSignals {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master registerOutgoingSignals {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master setupTime {0}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master timingUnits {Cycles}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master waitrequestAllowance {0}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master writeWaitTime {0}
+	add_instantiation_interface_port Descriptor_Write_Master mm_write_address address 34 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port Descriptor_Write_Master mm_write_write write 1 STD_LOGIC Output
+	add_instantiation_interface_port Descriptor_Write_Master mm_write_byteenable byteenable 16 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port Descriptor_Write_Master mm_write_writedata writedata 128 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port Descriptor_Write_Master mm_write_waitrequest waitrequest 1 STD_LOGIC Input
+	add_instantiation_interface_port Descriptor_Write_Master mm_write_response response 2 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port Descriptor_Write_Master mm_write_writeresponsevalid writeresponsevalid 1 STD_LOGIC Input
+	add_instantiation_interface Descriptor_Write_Dispatcher_Source avalon_streaming OUTPUT
+	set_instantiation_interface_parameter_value Descriptor_Write_Dispatcher_Source associatedClock {Clock}
+	set_instantiation_interface_parameter_value Descriptor_Write_Dispatcher_Source associatedReset {Clock_reset}
+	set_instantiation_interface_parameter_value Descriptor_Write_Dispatcher_Source beatsPerCycle {1}
+	set_instantiation_interface_parameter_value Descriptor_Write_Dispatcher_Source dataBitsPerSymbol {256}
+	set_instantiation_interface_parameter_value Descriptor_Write_Dispatcher_Source emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Dispatcher_Source errorDescriptor {}
+	set_instantiation_interface_parameter_value Descriptor_Write_Dispatcher_Source firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value Descriptor_Write_Dispatcher_Source highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Dispatcher_Source maxChannel {0}
+	set_instantiation_interface_parameter_value Descriptor_Write_Dispatcher_Source packetDescription {}
+	set_instantiation_interface_parameter_value Descriptor_Write_Dispatcher_Source prSafe {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Dispatcher_Source readyAllowance {0}
+	set_instantiation_interface_parameter_value Descriptor_Write_Dispatcher_Source readyLatency {0}
+	set_instantiation_interface_parameter_value Descriptor_Write_Dispatcher_Source symbolsPerBeat {1}
+	add_instantiation_interface_port Descriptor_Write_Dispatcher_Source st_src_descr_data data 256 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port Descriptor_Write_Dispatcher_Source st_src_descr_valid valid 1 STD_LOGIC Output
+	add_instantiation_interface_port Descriptor_Write_Dispatcher_Source st_src_descr_ready ready 1 STD_LOGIC Input
+	add_instantiation_interface Response_Sink avalon_streaming INPUT
+	set_instantiation_interface_parameter_value Response_Sink associatedClock {Clock}
+	set_instantiation_interface_parameter_value Response_Sink associatedReset {Clock_reset}
+	set_instantiation_interface_parameter_value Response_Sink beatsPerCycle {1}
+	set_instantiation_interface_parameter_value Response_Sink dataBitsPerSymbol {256}
+	set_instantiation_interface_parameter_value Response_Sink emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value Response_Sink errorDescriptor {}
+	set_instantiation_interface_parameter_value Response_Sink firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value Response_Sink highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value Response_Sink maxChannel {0}
+	set_instantiation_interface_parameter_value Response_Sink packetDescription {}
+	set_instantiation_interface_parameter_value Response_Sink prSafe {false}
+	set_instantiation_interface_parameter_value Response_Sink readyAllowance {0}
+	set_instantiation_interface_parameter_value Response_Sink readyLatency {0}
+	set_instantiation_interface_parameter_value Response_Sink symbolsPerBeat {1}
+	add_instantiation_interface_port Response_Sink st_snk_data data 256 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port Response_Sink st_snk_valid valid 1 STD_LOGIC Input
+	add_instantiation_interface_port Response_Sink st_snk_ready ready 1 STD_LOGIC Output
+	add_instantiation_interface Csr avalon INPUT
+	set_instantiation_interface_parameter_value Csr addressAlignment {DYNAMIC}
+	set_instantiation_interface_parameter_value Csr addressGroup {0}
+	set_instantiation_interface_parameter_value Csr addressSpan {32}
+	set_instantiation_interface_parameter_value Csr addressUnits {WORDS}
+	set_instantiation_interface_parameter_value Csr alwaysBurstMaxBurst {false}
+	set_instantiation_interface_parameter_value Csr associatedClock {Clock}
+	set_instantiation_interface_parameter_value Csr associatedReset {Clock_reset}
+	set_instantiation_interface_parameter_value Csr bitsPerSymbol {8}
+	set_instantiation_interface_parameter_value Csr bridgedAddressOffset {0}
+	set_instantiation_interface_parameter_value Csr bridgesToMaster {}
+	set_instantiation_interface_parameter_value Csr burstOnBurstBoundariesOnly {false}
+	set_instantiation_interface_parameter_value Csr burstcountUnits {WORDS}
+	set_instantiation_interface_parameter_value Csr constantBurstBehavior {false}
+	set_instantiation_interface_parameter_value Csr explicitAddressSpan {0}
+	set_instantiation_interface_parameter_value Csr holdTime {0}
+	set_instantiation_interface_parameter_value Csr interleaveBursts {false}
+	set_instantiation_interface_parameter_value Csr isBigEndian {false}
+	set_instantiation_interface_parameter_value Csr isFlash {false}
+	set_instantiation_interface_parameter_value Csr isMemoryDevice {false}
+	set_instantiation_interface_parameter_value Csr isNonVolatileStorage {false}
+	set_instantiation_interface_parameter_value Csr linewrapBursts {false}
+	set_instantiation_interface_parameter_value Csr maximumPendingReadTransactions {0}
+	set_instantiation_interface_parameter_value Csr maximumPendingWriteTransactions {0}
+	set_instantiation_interface_parameter_value Csr minimumReadLatency {1}
+	set_instantiation_interface_parameter_value Csr minimumResponseLatency {1}
+	set_instantiation_interface_parameter_value Csr minimumUninterruptedRunLength {1}
+	set_instantiation_interface_parameter_value Csr prSafe {false}
+	set_instantiation_interface_parameter_value Csr printableDevice {false}
+	set_instantiation_interface_parameter_value Csr readLatency {1}
+	set_instantiation_interface_parameter_value Csr readWaitStates {0}
+	set_instantiation_interface_parameter_value Csr readWaitTime {0}
+	set_instantiation_interface_parameter_value Csr registerIncomingSignals {false}
+	set_instantiation_interface_parameter_value Csr registerOutgoingSignals {false}
+	set_instantiation_interface_parameter_value Csr setupTime {0}
+	set_instantiation_interface_parameter_value Csr timingUnits {Cycles}
+	set_instantiation_interface_parameter_value Csr transparentBridge {false}
+	set_instantiation_interface_parameter_value Csr waitrequestAllowance {0}
+	set_instantiation_interface_parameter_value Csr wellBehavedWaitrequest {false}
+	set_instantiation_interface_parameter_value Csr writeLatency {0}
+	set_instantiation_interface_parameter_value Csr writeWaitStates {0}
+	set_instantiation_interface_parameter_value Csr writeWaitTime {0}
+	set_instantiation_interface_assignment_value Csr embeddedsw.configuration.isFlash {0}
+	set_instantiation_interface_assignment_value Csr embeddedsw.configuration.isMemoryDevice {0}
+	set_instantiation_interface_assignment_value Csr embeddedsw.configuration.isNonVolatileStorage {0}
+	set_instantiation_interface_assignment_value Csr embeddedsw.configuration.isPrintableDevice {0}
+	set_instantiation_interface_sysinfo_parameter_value Csr address_map {<address-map><slave name='Csr' start='0x0' end='0x20' datawidth='32' /></address-map>}
+	set_instantiation_interface_sysinfo_parameter_value Csr address_width {5}
+	set_instantiation_interface_sysinfo_parameter_value Csr max_slave_data_width {32}
+	add_instantiation_interface_port Csr mm_csr_address address 3 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port Csr mm_csr_read read 1 STD_LOGIC Input
+	add_instantiation_interface_port Csr mm_csr_write write 1 STD_LOGIC Input
+	add_instantiation_interface_port Csr mm_csr_writedata writedata 32 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port Csr mm_csr_readdata readdata 32 STD_LOGIC_VECTOR Output
+	add_instantiation_interface Csr_Irq interrupt INPUT
+	set_instantiation_interface_parameter_value Csr_Irq associatedAddressablePoint {rx_dma_prefetcher.Csr}
+	set_instantiation_interface_parameter_value Csr_Irq associatedClock {Clock}
+	set_instantiation_interface_parameter_value Csr_Irq associatedReset {Clock_reset}
+	set_instantiation_interface_parameter_value Csr_Irq bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value Csr_Irq bridgesToReceiver {}
+	set_instantiation_interface_parameter_value Csr_Irq irqScheme {NONE}
+	add_instantiation_interface_port Csr_Irq csr_irq irq 1 STD_LOGIC Output
+	save_instantiation
+	add_component rx_dma_reset ip/subsys_ftile_rx_dma/rx_dma_reset.ip altera_reset_bridge altera_reset_bridge_inst 19.2.0
+	load_component rx_dma_reset
+	set_component_parameter_value ACTIVE_LOW_RESET {1}
+	set_component_parameter_value NUM_RESET_OUTPUTS {1}
+	set_component_parameter_value SYNCHRONOUS_EDGES {both}
+	set_component_parameter_value SYNC_RESET {0}
+	set_component_parameter_value USE_RESET_REQUEST {0}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation rx_dma_reset
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface clk clock INPUT
+	set_instantiation_interface_parameter_value clk clockRate {0}
+	set_instantiation_interface_parameter_value clk externallyDriven {false}
+	set_instantiation_interface_parameter_value clk ptfSchematicName {}
+	add_instantiation_interface_port clk clk clk 1 STD_LOGIC Input
+	add_instantiation_interface in_reset reset INPUT
+	set_instantiation_interface_parameter_value in_reset associatedClock {clk}
+	set_instantiation_interface_parameter_value in_reset synchronousEdges {BOTH}
+	add_instantiation_interface_port in_reset in_reset_n reset_n 1 STD_LOGIC Input
+	add_instantiation_interface out_reset reset OUTPUT
+	set_instantiation_interface_parameter_value out_reset associatedClock {clk}
+	set_instantiation_interface_parameter_value out_reset associatedDirectReset {in_reset}
+	set_instantiation_interface_parameter_value out_reset associatedResetSinks {in_reset}
+	set_instantiation_interface_parameter_value out_reset synchronousEdges {BOTH}
+	add_instantiation_interface_port out_reset out_reset_n reset_n 1 STD_LOGIC Output
+	save_instantiation
+	add_component rx_dma_timestamp_adapter ip/subsys_ftile_rx_dma/rx_dma_timestamp_adapter.ip eth_rx_timestamp_adapter eth_rx_timestamp_adapter_inst 1.0.0
+	load_component rx_dma_timestamp_adapter
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation rx_dma_timestamp_adapter
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface reset reset INPUT
+	set_instantiation_interface_parameter_value reset associatedClock {clock}
+	set_instantiation_interface_parameter_value reset synchronousEdges {BOTH}
+	add_instantiation_interface_port reset reset reset 1 STD_LOGIC Input
+	add_instantiation_interface clock clock INPUT
+	set_instantiation_interface_parameter_value clock clockRate {0}
+	set_instantiation_interface_parameter_value clock externallyDriven {false}
+	set_instantiation_interface_parameter_value clock ptfSchematicName {}
+	add_instantiation_interface_port clock clock clk 1 STD_LOGIC Input
+	add_instantiation_interface src_timestamp avalon_streaming OUTPUT
+	set_instantiation_interface_parameter_value src_timestamp associatedClock {clock}
+	set_instantiation_interface_parameter_value src_timestamp associatedReset {reset}
+	set_instantiation_interface_parameter_value src_timestamp beatsPerCycle {1}
+	set_instantiation_interface_parameter_value src_timestamp dataBitsPerSymbol {96}
+	set_instantiation_interface_parameter_value src_timestamp emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value src_timestamp errorDescriptor {}
+	set_instantiation_interface_parameter_value src_timestamp firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value src_timestamp highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value src_timestamp maxChannel {0}
+	set_instantiation_interface_parameter_value src_timestamp packetDescription {}
+	set_instantiation_interface_parameter_value src_timestamp prSafe {false}
+	set_instantiation_interface_parameter_value src_timestamp readyAllowance {0}
+	set_instantiation_interface_parameter_value src_timestamp readyLatency {0}
+	set_instantiation_interface_parameter_value src_timestamp symbolsPerBeat {1}
+	add_instantiation_interface_port src_timestamp aso_timestamp_valid valid 1 STD_LOGIC Output
+	add_instantiation_interface_port src_timestamp aso_timestamp_ready ready 1 STD_LOGIC Input
+	add_instantiation_interface_port src_timestamp aso_timestamp data 96 STD_LOGIC_VECTOR Output
+	add_instantiation_interface timestamp conduit INPUT
+	set_instantiation_interface_parameter_value timestamp associatedClock {}
+	set_instantiation_interface_parameter_value timestamp associatedReset {}
+	set_instantiation_interface_parameter_value timestamp prSafe {false}
+	add_instantiation_interface_port timestamp timestamp_valid valid 1 STD_LOGIC Input
+	add_instantiation_interface_port timestamp timestamp_data data 96 STD_LOGIC_VECTOR Input
+	save_instantiation
+	add_component rx_dma_ts_fifo ip/subsys_ftile_rx_dma/rx_dma_ts_fifo.ip st_dc_fifo st_dc_fifo_inst 19.4.0
+	load_component rx_dma_ts_fifo
+	set_component_parameter_value BACKPRESSURE_DURING_RESET {0}
+	set_component_parameter_value BITS_PER_SYMBOL {96}
+	set_component_parameter_value CHANNEL_WIDTH {0}
+	set_component_parameter_value ENABLE_EXPLICIT_MAXCHANNEL {0}
+	set_component_parameter_value ERROR_WIDTH {0}
+	set_component_parameter_value EXPLICIT_MAXCHANNEL {0}
+	set_component_parameter_value FIFO_DEPTH {2048}
+	set_component_parameter_value PIPELINE_POINTERS {0}
+	set_component_parameter_value RD_SYNC_DEPTH {3}
+	set_component_parameter_value SYMBOLS_PER_BEAT {1}
+	set_component_parameter_value SYNC_RESET {0}
+	set_component_parameter_value USE_IN_FILL_LEVEL {0}
+	set_component_parameter_value USE_OUT_FILL_LEVEL {0}
+	set_component_parameter_value USE_PACKETS {0}
+	set_component_parameter_value USE_SPACE_AVAIL_IF {0}
+	set_component_parameter_value WR_SYNC_DEPTH {3}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation rx_dma_ts_fifo
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface in_clk clock INPUT
+	set_instantiation_interface_parameter_value in_clk clockRate {0}
+	set_instantiation_interface_parameter_value in_clk externallyDriven {false}
+	set_instantiation_interface_parameter_value in_clk ptfSchematicName {}
+	add_instantiation_interface_port in_clk in_clk clk 1 STD_LOGIC Input
+	add_instantiation_interface in_clk_reset reset INPUT
+	set_instantiation_interface_parameter_value in_clk_reset associatedClock {in_clk}
+	set_instantiation_interface_parameter_value in_clk_reset synchronousEdges {DEASSERT}
+	add_instantiation_interface_port in_clk_reset in_reset_n reset_n 1 STD_LOGIC Input
+	add_instantiation_interface out_clk clock INPUT
+	set_instantiation_interface_parameter_value out_clk clockRate {0}
+	set_instantiation_interface_parameter_value out_clk externallyDriven {false}
+	set_instantiation_interface_parameter_value out_clk ptfSchematicName {}
+	add_instantiation_interface_port out_clk out_clk clk 1 STD_LOGIC Input
+	add_instantiation_interface out_clk_reset reset INPUT
+	set_instantiation_interface_parameter_value out_clk_reset associatedClock {out_clk}
+	set_instantiation_interface_parameter_value out_clk_reset synchronousEdges {DEASSERT}
+	add_instantiation_interface_port out_clk_reset out_reset_n reset_n 1 STD_LOGIC Input
+	add_instantiation_interface in avalon_streaming INPUT
+	set_instantiation_interface_parameter_value in associatedClock {in_clk}
+	set_instantiation_interface_parameter_value in associatedReset {in_clk_reset}
+	set_instantiation_interface_parameter_value in beatsPerCycle {1}
+	set_instantiation_interface_parameter_value in dataBitsPerSymbol {96}
+	set_instantiation_interface_parameter_value in emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value in errorDescriptor {}
+	set_instantiation_interface_parameter_value in firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value in highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value in maxChannel {0}
+	set_instantiation_interface_parameter_value in packetDescription {}
+	set_instantiation_interface_parameter_value in prSafe {false}
+	set_instantiation_interface_parameter_value in readyAllowance {0}
+	set_instantiation_interface_parameter_value in readyLatency {0}
+	set_instantiation_interface_parameter_value in symbolsPerBeat {1}
+	add_instantiation_interface_port in in_data data 96 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port in in_valid valid 1 STD_LOGIC Input
+	add_instantiation_interface_port in in_ready ready 1 STD_LOGIC Output
+	add_instantiation_interface out avalon_streaming OUTPUT
+	set_instantiation_interface_parameter_value out associatedClock {out_clk}
+	set_instantiation_interface_parameter_value out associatedReset {out_clk_reset}
+	set_instantiation_interface_parameter_value out beatsPerCycle {1}
+	set_instantiation_interface_parameter_value out dataBitsPerSymbol {96}
+	set_instantiation_interface_parameter_value out emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value out errorDescriptor {}
+	set_instantiation_interface_parameter_value out firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value out highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value out maxChannel {0}
+	set_instantiation_interface_parameter_value out packetDescription {}
+	set_instantiation_interface_parameter_value out prSafe {false}
+	set_instantiation_interface_parameter_value out readyAllowance {0}
+	set_instantiation_interface_parameter_value out readyLatency {0}
+	set_instantiation_interface_parameter_value out symbolsPerBeat {1}
+	add_instantiation_interface_port out out_data data 96 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port out out_valid valid 1 STD_LOGIC Output
+	add_instantiation_interface_port out out_ready ready 1 STD_LOGIC Input
+	save_instantiation
+	add_component rx_dma_ts_insert ip/subsys_ftile_rx_dma/rx_dma_ts_insert.ip altera_msgdma_prefetcher_ts_insert altera_msgdma_prefetcher_ts_insert_inst 1.0.0
+	load_component rx_dma_ts_insert
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation rx_dma_ts_insert
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface clock clock INPUT
+	set_instantiation_interface_parameter_value clock clockRate {0}
+	set_instantiation_interface_parameter_value clock externallyDriven {false}
+	set_instantiation_interface_parameter_value clock ptfSchematicName {}
+	add_instantiation_interface_port clock clk clk 1 STD_LOGIC Input
+	add_instantiation_interface reset reset INPUT
+	set_instantiation_interface_parameter_value reset associatedClock {clock}
+	set_instantiation_interface_parameter_value reset synchronousEdges {DEASSERT}
+	add_instantiation_interface_port reset reset reset 1 STD_LOGIC Input
+	add_instantiation_interface snk_response avalon_streaming INPUT
+	set_instantiation_interface_parameter_value snk_response associatedClock {clock}
+	set_instantiation_interface_parameter_value snk_response associatedReset {reset}
+	set_instantiation_interface_parameter_value snk_response beatsPerCycle {1}
+	set_instantiation_interface_parameter_value snk_response dataBitsPerSymbol {256}
+	set_instantiation_interface_parameter_value snk_response emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value snk_response errorDescriptor {}
+	set_instantiation_interface_parameter_value snk_response firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value snk_response highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value snk_response maxChannel {0}
+	set_instantiation_interface_parameter_value snk_response packetDescription {}
+	set_instantiation_interface_parameter_value snk_response prSafe {false}
+	set_instantiation_interface_parameter_value snk_response readyAllowance {0}
+	set_instantiation_interface_parameter_value snk_response readyLatency {0}
+	set_instantiation_interface_parameter_value snk_response symbolsPerBeat {1}
+	add_instantiation_interface_port snk_response snk_response_valid valid 1 STD_LOGIC Input
+	add_instantiation_interface_port snk_response snk_response_ready ready 1 STD_LOGIC Output
+	add_instantiation_interface_port snk_response snk_response_data data 256 STD_LOGIC_VECTOR Input
+	add_instantiation_interface snk_timestamp avalon_streaming INPUT
+	set_instantiation_interface_parameter_value snk_timestamp associatedClock {clock}
+	set_instantiation_interface_parameter_value snk_timestamp associatedReset {reset}
+	set_instantiation_interface_parameter_value snk_timestamp beatsPerCycle {1}
+	set_instantiation_interface_parameter_value snk_timestamp dataBitsPerSymbol {96}
+	set_instantiation_interface_parameter_value snk_timestamp emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value snk_timestamp errorDescriptor {}
+	set_instantiation_interface_parameter_value snk_timestamp firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value snk_timestamp highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value snk_timestamp maxChannel {0}
+	set_instantiation_interface_parameter_value snk_timestamp packetDescription {}
+	set_instantiation_interface_parameter_value snk_timestamp prSafe {false}
+	set_instantiation_interface_parameter_value snk_timestamp readyAllowance {0}
+	set_instantiation_interface_parameter_value snk_timestamp readyLatency {0}
+	set_instantiation_interface_parameter_value snk_timestamp symbolsPerBeat {1}
+	add_instantiation_interface_port snk_timestamp snk_timestamp_valid valid 1 STD_LOGIC Input
+	add_instantiation_interface_port snk_timestamp snk_timestamp_ready ready 1 STD_LOGIC Output
+	add_instantiation_interface_port snk_timestamp snk_timestamp data 96 STD_LOGIC_VECTOR Input
+	add_instantiation_interface src_response avalon_streaming OUTPUT
+	set_instantiation_interface_parameter_value src_response associatedClock {clock}
+	set_instantiation_interface_parameter_value src_response associatedReset {reset}
+	set_instantiation_interface_parameter_value src_response beatsPerCycle {1}
+	set_instantiation_interface_parameter_value src_response dataBitsPerSymbol {256}
+	set_instantiation_interface_parameter_value src_response emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value src_response errorDescriptor {}
+	set_instantiation_interface_parameter_value src_response firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value src_response highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value src_response maxChannel {0}
+	set_instantiation_interface_parameter_value src_response packetDescription {}
+	set_instantiation_interface_parameter_value src_response prSafe {false}
+	set_instantiation_interface_parameter_value src_response readyAllowance {0}
+	set_instantiation_interface_parameter_value src_response readyLatency {0}
+	set_instantiation_interface_parameter_value src_response symbolsPerBeat {1}
+	add_instantiation_interface_port src_response src_response_data data 256 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port src_response src_response_ready ready 1 STD_LOGIC Input
+	add_instantiation_interface_port src_response src_response_valid valid 1 STD_LOGIC Output
+	save_instantiation
+	add_component rx_dma_write_master ip/subsys_ftile_rx_dma/rx_dma_write_master.ip dma_write_master dma_write_master_inst 19.2.0
+	load_component rx_dma_write_master
+	set_component_parameter_value BURST_ENABLE {1}
+	set_component_parameter_value DATA_WIDTH {128}
+	set_component_parameter_value ERROR_ENABLE {1}
+	set_component_parameter_value ERROR_WIDTH {6}
+	set_component_parameter_value FIFO_DEPTH {256}
+	set_component_parameter_value FIFO_SPEED_OPTIMIZATION {1}
+	set_component_parameter_value FIX_ADDRESS_WIDTH {34}
+	set_component_parameter_value GUI_BURST_WRAPPING_SUPPORT {1}
+	set_component_parameter_value GUI_MAX_BURST_COUNT {16}
+	set_component_parameter_value GUI_NO_BYTEENABLES {0}
+	set_component_parameter_value GUI_PROGRAMMABLE_BURST_ENABLE {0}
+	set_component_parameter_value GUI_STRIDE_WIDTH {1}
+	set_component_parameter_value LENGTH_WIDTH {14}
+	set_component_parameter_value PACKET_ENABLE {1}
+	set_component_parameter_value STRIDE_ENABLE {0}
+	set_component_parameter_value TRANSFER_TYPE {Unaligned Accesses}
+	set_component_parameter_value USE_FIX_ADDRESS_WIDTH {1}
+	set_component_parameter_value WRITE_RESPONSE_ENABLE {1}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation rx_dma_write_master
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface Clock clock INPUT
+	set_instantiation_interface_parameter_value Clock clockRate {0}
+	set_instantiation_interface_parameter_value Clock externallyDriven {false}
+	set_instantiation_interface_parameter_value Clock ptfSchematicName {}
+	add_instantiation_interface_port Clock clk clk 1 STD_LOGIC Input
+	add_instantiation_interface Clock_reset reset INPUT
+	set_instantiation_interface_parameter_value Clock_reset associatedClock {Clock}
+	set_instantiation_interface_parameter_value Clock_reset synchronousEdges {BOTH}
+	add_instantiation_interface_port Clock_reset reset reset 1 STD_LOGIC Input
+	add_instantiation_interface Data_Write_Master avalon OUTPUT
+	set_instantiation_interface_parameter_value Data_Write_Master adaptsTo {}
+	set_instantiation_interface_parameter_value Data_Write_Master addressGroup {0}
+	set_instantiation_interface_parameter_value Data_Write_Master addressUnits {SYMBOLS}
+	set_instantiation_interface_parameter_value Data_Write_Master alwaysBurstMaxBurst {false}
+	set_instantiation_interface_parameter_value Data_Write_Master associatedClock {Clock}
+	set_instantiation_interface_parameter_value Data_Write_Master associatedReset {Clock_reset}
+	set_instantiation_interface_parameter_value Data_Write_Master bitsPerSymbol {8}
+	set_instantiation_interface_parameter_value Data_Write_Master burstOnBurstBoundariesOnly {true}
+	set_instantiation_interface_parameter_value Data_Write_Master burstcountUnits {WORDS}
+	set_instantiation_interface_parameter_value Data_Write_Master constantBurstBehavior {false}
+	set_instantiation_interface_parameter_value Data_Write_Master dBSBigEndian {false}
+	set_instantiation_interface_parameter_value Data_Write_Master doStreamReads {false}
+	set_instantiation_interface_parameter_value Data_Write_Master doStreamWrites {false}
+	set_instantiation_interface_parameter_value Data_Write_Master holdTime {0}
+	set_instantiation_interface_parameter_value Data_Write_Master interleaveBursts {false}
+	set_instantiation_interface_parameter_value Data_Write_Master isAsynchronous {false}
+	set_instantiation_interface_parameter_value Data_Write_Master isBigEndian {false}
+	set_instantiation_interface_parameter_value Data_Write_Master isReadable {false}
+	set_instantiation_interface_parameter_value Data_Write_Master isWriteable {false}
+	set_instantiation_interface_parameter_value Data_Write_Master linewrapBursts {false}
+	set_instantiation_interface_parameter_value Data_Write_Master maxAddressWidth {32}
+	set_instantiation_interface_parameter_value Data_Write_Master maximumPendingReadTransactions {0}
+	set_instantiation_interface_parameter_value Data_Write_Master maximumPendingWriteTransactions {0}
+	set_instantiation_interface_parameter_value Data_Write_Master minimumReadLatency {1}
+	set_instantiation_interface_parameter_value Data_Write_Master minimumResponseLatency {1}
+	set_instantiation_interface_parameter_value Data_Write_Master prSafe {false}
+	set_instantiation_interface_parameter_value Data_Write_Master readLatency {0}
+	set_instantiation_interface_parameter_value Data_Write_Master readWaitTime {1}
+	set_instantiation_interface_parameter_value Data_Write_Master registerIncomingSignals {false}
+	set_instantiation_interface_parameter_value Data_Write_Master registerOutgoingSignals {false}
+	set_instantiation_interface_parameter_value Data_Write_Master setupTime {0}
+	set_instantiation_interface_parameter_value Data_Write_Master timingUnits {Cycles}
+	set_instantiation_interface_parameter_value Data_Write_Master waitrequestAllowance {0}
+	set_instantiation_interface_parameter_value Data_Write_Master writeWaitTime {0}
+	add_instantiation_interface_port Data_Write_Master master_address address 34 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port Data_Write_Master master_write write 1 STD_LOGIC Output
+	add_instantiation_interface_port Data_Write_Master master_byteenable byteenable 16 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port Data_Write_Master master_writedata writedata 128 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port Data_Write_Master master_waitrequest waitrequest 1 STD_LOGIC Input
+	add_instantiation_interface_port Data_Write_Master master_burstcount burstcount 5 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port Data_Write_Master master_response response 2 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port Data_Write_Master master_writeresponsevalid writeresponsevalid 1 STD_LOGIC Input
+	add_instantiation_interface Data_Sink avalon_streaming INPUT
+	set_instantiation_interface_parameter_value Data_Sink associatedClock {Clock}
+	set_instantiation_interface_parameter_value Data_Sink associatedReset {Clock_reset}
+	set_instantiation_interface_parameter_value Data_Sink beatsPerCycle {1}
+	set_instantiation_interface_parameter_value Data_Sink dataBitsPerSymbol {8}
+	set_instantiation_interface_parameter_value Data_Sink emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value Data_Sink errorDescriptor {}
+	set_instantiation_interface_parameter_value Data_Sink firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value Data_Sink highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value Data_Sink maxChannel {0}
+	set_instantiation_interface_parameter_value Data_Sink packetDescription {}
+	set_instantiation_interface_parameter_value Data_Sink prSafe {false}
+	set_instantiation_interface_parameter_value Data_Sink readyAllowance {0}
+	set_instantiation_interface_parameter_value Data_Sink readyLatency {0}
+	set_instantiation_interface_parameter_value Data_Sink symbolsPerBeat {16}
+	add_instantiation_interface_port Data_Sink snk_data data 128 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port Data_Sink snk_valid valid 1 STD_LOGIC Input
+	add_instantiation_interface_port Data_Sink snk_ready ready 1 STD_LOGIC Output
+	add_instantiation_interface_port Data_Sink snk_sop startofpacket 1 STD_LOGIC Input
+	add_instantiation_interface_port Data_Sink snk_eop endofpacket 1 STD_LOGIC Input
+	add_instantiation_interface_port Data_Sink snk_empty empty 4 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port Data_Sink snk_error error 6 STD_LOGIC_VECTOR Input
+	add_instantiation_interface Command_Sink avalon_streaming INPUT
+	set_instantiation_interface_parameter_value Command_Sink associatedClock {Clock}
+	set_instantiation_interface_parameter_value Command_Sink associatedReset {Clock_reset}
+	set_instantiation_interface_parameter_value Command_Sink beatsPerCycle {1}
+	set_instantiation_interface_parameter_value Command_Sink dataBitsPerSymbol {256}
+	set_instantiation_interface_parameter_value Command_Sink emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value Command_Sink errorDescriptor {}
+	set_instantiation_interface_parameter_value Command_Sink firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value Command_Sink highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value Command_Sink maxChannel {0}
+	set_instantiation_interface_parameter_value Command_Sink packetDescription {}
+	set_instantiation_interface_parameter_value Command_Sink prSafe {false}
+	set_instantiation_interface_parameter_value Command_Sink readyAllowance {0}
+	set_instantiation_interface_parameter_value Command_Sink readyLatency {0}
+	set_instantiation_interface_parameter_value Command_Sink symbolsPerBeat {1}
+	add_instantiation_interface_port Command_Sink snk_command_data data 256 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port Command_Sink snk_command_valid valid 1 STD_LOGIC Input
+	add_instantiation_interface_port Command_Sink snk_command_ready ready 1 STD_LOGIC Output
+	add_instantiation_interface Response_Source avalon_streaming OUTPUT
+	set_instantiation_interface_parameter_value Response_Source associatedClock {Clock}
+	set_instantiation_interface_parameter_value Response_Source associatedReset {Clock_reset}
+	set_instantiation_interface_parameter_value Response_Source beatsPerCycle {1}
+	set_instantiation_interface_parameter_value Response_Source dataBitsPerSymbol {256}
+	set_instantiation_interface_parameter_value Response_Source emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value Response_Source errorDescriptor {}
+	set_instantiation_interface_parameter_value Response_Source firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value Response_Source highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value Response_Source maxChannel {0}
+	set_instantiation_interface_parameter_value Response_Source packetDescription {}
+	set_instantiation_interface_parameter_value Response_Source prSafe {false}
+	set_instantiation_interface_parameter_value Response_Source readyAllowance {0}
+	set_instantiation_interface_parameter_value Response_Source readyLatency {0}
+	set_instantiation_interface_parameter_value Response_Source symbolsPerBeat {1}
+	add_instantiation_interface_port Response_Source src_response_data data 256 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port Response_Source src_response_valid valid 1 STD_LOGIC Output
+	add_instantiation_interface_port Response_Source src_response_ready ready 1 STD_LOGIC Input
+	save_instantiation
+
+	# add wirelevel expressions
+
+	# preserve ports for debug
+
+	# add the connections
+	add_connection rx_dma_clock.out_clk/rx_dma_csr.clk
+	set_connection_parameter_value rx_dma_clock.out_clk/rx_dma_csr.clk clockDomainSysInfo {-1}
+	set_connection_parameter_value rx_dma_clock.out_clk/rx_dma_csr.clk clockRateSysInfo {201416016.0}
+	set_connection_parameter_value rx_dma_clock.out_clk/rx_dma_csr.clk clockResetSysInfo {}
+	set_connection_parameter_value rx_dma_clock.out_clk/rx_dma_csr.clk resetDomainSysInfo {-1}
+	add_connection rx_dma_clock.out_clk/rx_dma_dispatcher.clock
+	set_connection_parameter_value rx_dma_clock.out_clk/rx_dma_dispatcher.clock clockDomainSysInfo {-1}
+	set_connection_parameter_value rx_dma_clock.out_clk/rx_dma_dispatcher.clock clockRateSysInfo {201416016.0}
+	set_connection_parameter_value rx_dma_clock.out_clk/rx_dma_dispatcher.clock clockResetSysInfo {}
+	set_connection_parameter_value rx_dma_clock.out_clk/rx_dma_dispatcher.clock resetDomainSysInfo {-1}
+	add_connection rx_dma_clock.out_clk/rx_dma_pkt_dc_fifo.out_clk
+	set_connection_parameter_value rx_dma_clock.out_clk/rx_dma_pkt_dc_fifo.out_clk clockDomainSysInfo {-1}
+	set_connection_parameter_value rx_dma_clock.out_clk/rx_dma_pkt_dc_fifo.out_clk clockRateSysInfo {201416016.0}
+	set_connection_parameter_value rx_dma_clock.out_clk/rx_dma_pkt_dc_fifo.out_clk clockResetSysInfo {}
+	set_connection_parameter_value rx_dma_clock.out_clk/rx_dma_pkt_dc_fifo.out_clk resetDomainSysInfo {-1}
+	add_connection rx_dma_clock.out_clk/rx_dma_prefetcher.Clock
+	set_connection_parameter_value rx_dma_clock.out_clk/rx_dma_prefetcher.Clock clockDomainSysInfo {-1}
+	set_connection_parameter_value rx_dma_clock.out_clk/rx_dma_prefetcher.Clock clockRateSysInfo {201416016.0}
+	set_connection_parameter_value rx_dma_clock.out_clk/rx_dma_prefetcher.Clock clockResetSysInfo {}
+	set_connection_parameter_value rx_dma_clock.out_clk/rx_dma_prefetcher.Clock resetDomainSysInfo {-1}
+	add_connection rx_dma_clock.out_clk/rx_dma_reset.clk
+	set_connection_parameter_value rx_dma_clock.out_clk/rx_dma_reset.clk clockDomainSysInfo {-1}
+	set_connection_parameter_value rx_dma_clock.out_clk/rx_dma_reset.clk clockRateSysInfo {201416016.0}
+	set_connection_parameter_value rx_dma_clock.out_clk/rx_dma_reset.clk clockResetSysInfo {}
+	set_connection_parameter_value rx_dma_clock.out_clk/rx_dma_reset.clk resetDomainSysInfo {-1}
+	add_connection rx_dma_clock.out_clk/rx_dma_ts_fifo.out_clk
+	set_connection_parameter_value rx_dma_clock.out_clk/rx_dma_ts_fifo.out_clk clockDomainSysInfo {-1}
+	set_connection_parameter_value rx_dma_clock.out_clk/rx_dma_ts_fifo.out_clk clockRateSysInfo {201416016.0}
+	set_connection_parameter_value rx_dma_clock.out_clk/rx_dma_ts_fifo.out_clk clockResetSysInfo {}
+	set_connection_parameter_value rx_dma_clock.out_clk/rx_dma_ts_fifo.out_clk resetDomainSysInfo {-1}
+	add_connection rx_dma_clock.out_clk/rx_dma_ts_insert.clock
+	set_connection_parameter_value rx_dma_clock.out_clk/rx_dma_ts_insert.clock clockDomainSysInfo {-1}
+	set_connection_parameter_value rx_dma_clock.out_clk/rx_dma_ts_insert.clock clockRateSysInfo {201416016.0}
+	set_connection_parameter_value rx_dma_clock.out_clk/rx_dma_ts_insert.clock clockResetSysInfo {}
+	set_connection_parameter_value rx_dma_clock.out_clk/rx_dma_ts_insert.clock resetDomainSysInfo {-1}
+	add_connection rx_dma_clock.out_clk/rx_dma_write_master.Clock
+	set_connection_parameter_value rx_dma_clock.out_clk/rx_dma_write_master.Clock clockDomainSysInfo {-1}
+	set_connection_parameter_value rx_dma_clock.out_clk/rx_dma_write_master.Clock clockRateSysInfo {201416016.0}
+	set_connection_parameter_value rx_dma_clock.out_clk/rx_dma_write_master.Clock clockResetSysInfo {}
+	set_connection_parameter_value rx_dma_clock.out_clk/rx_dma_write_master.Clock resetDomainSysInfo {-1}
+	add_connection rx_dma_csr.m0/rx_dma_dispatcher.CSR
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_dispatcher.CSR addressMapSysInfo {}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_dispatcher.CSR addressWidthSysInfo {7}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_dispatcher.CSR arbitrationPriority {1}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_dispatcher.CSR baseAddress {0x0020}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_dispatcher.CSR defaultConnection {0}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_dispatcher.CSR domainAlias {}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_dispatcher.CSR qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_dispatcher.CSR qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_dispatcher.CSR qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_dispatcher.CSR qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_dispatcher.CSR qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_dispatcher.CSR qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_dispatcher.CSR qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_dispatcher.CSR qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_dispatcher.CSR qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_dispatcher.CSR qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_dispatcher.CSR qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_dispatcher.CSR qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_dispatcher.CSR qsys_mm.syncResets {TRUE}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_dispatcher.CSR qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_dispatcher.CSR slaveDataWidthSysInfo {-1}
+	add_connection rx_dma_csr.m0/rx_dma_pkt_fifo.csr
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_pkt_fifo.csr addressMapSysInfo {}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_pkt_fifo.csr addressWidthSysInfo {7}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_pkt_fifo.csr arbitrationPriority {1}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_pkt_fifo.csr baseAddress {0x0040}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_pkt_fifo.csr defaultConnection {0}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_pkt_fifo.csr domainAlias {}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_pkt_fifo.csr qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_pkt_fifo.csr qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_pkt_fifo.csr qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_pkt_fifo.csr qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_pkt_fifo.csr qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_pkt_fifo.csr qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_pkt_fifo.csr qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_pkt_fifo.csr qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_pkt_fifo.csr qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_pkt_fifo.csr qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_pkt_fifo.csr qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_pkt_fifo.csr qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_pkt_fifo.csr qsys_mm.syncResets {TRUE}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_pkt_fifo.csr qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_pkt_fifo.csr slaveDataWidthSysInfo {-1}
+	add_connection rx_dma_csr.m0/rx_dma_prefetcher.Csr
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_prefetcher.Csr addressMapSysInfo {}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_prefetcher.Csr addressWidthSysInfo {7}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_prefetcher.Csr arbitrationPriority {1}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_prefetcher.Csr baseAddress {0x0000}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_prefetcher.Csr defaultConnection {0}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_prefetcher.Csr domainAlias {}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_prefetcher.Csr qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_prefetcher.Csr qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_prefetcher.Csr qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_prefetcher.Csr qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_prefetcher.Csr qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_prefetcher.Csr qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_prefetcher.Csr qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_prefetcher.Csr qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_prefetcher.Csr qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_prefetcher.Csr qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_prefetcher.Csr qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_prefetcher.Csr qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_prefetcher.Csr qsys_mm.syncResets {TRUE}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_prefetcher.Csr qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value rx_dma_csr.m0/rx_dma_prefetcher.Csr slaveDataWidthSysInfo {-1}
+	add_connection rx_dma_dispatcher.Response_Source/rx_dma_ts_insert.snk_response
+	set_connection_parameter_value rx_dma_dispatcher.Response_Source/rx_dma_ts_insert.snk_response qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value rx_dma_dispatcher.Response_Source/rx_dma_ts_insert.snk_response qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value rx_dma_dispatcher.Response_Source/rx_dma_ts_insert.snk_response qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value rx_dma_dispatcher.Response_Source/rx_dma_ts_insert.snk_response qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value rx_dma_dispatcher.Response_Source/rx_dma_ts_insert.snk_response qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value rx_dma_dispatcher.Response_Source/rx_dma_ts_insert.snk_response qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value rx_dma_dispatcher.Response_Source/rx_dma_ts_insert.snk_response qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value rx_dma_dispatcher.Response_Source/rx_dma_ts_insert.snk_response qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value rx_dma_dispatcher.Response_Source/rx_dma_ts_insert.snk_response qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value rx_dma_dispatcher.Response_Source/rx_dma_ts_insert.snk_response qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value rx_dma_dispatcher.Response_Source/rx_dma_ts_insert.snk_response qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value rx_dma_dispatcher.Response_Source/rx_dma_ts_insert.snk_response qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value rx_dma_dispatcher.Response_Source/rx_dma_ts_insert.snk_response qsys_mm.syncResets {FALSE}
+	set_connection_parameter_value rx_dma_dispatcher.Response_Source/rx_dma_ts_insert.snk_response qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	add_connection rx_dma_dispatcher.Write_Command_Source/rx_dma_write_master.Command_Sink
+	set_connection_parameter_value rx_dma_dispatcher.Write_Command_Source/rx_dma_write_master.Command_Sink qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value rx_dma_dispatcher.Write_Command_Source/rx_dma_write_master.Command_Sink qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value rx_dma_dispatcher.Write_Command_Source/rx_dma_write_master.Command_Sink qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value rx_dma_dispatcher.Write_Command_Source/rx_dma_write_master.Command_Sink qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value rx_dma_dispatcher.Write_Command_Source/rx_dma_write_master.Command_Sink qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value rx_dma_dispatcher.Write_Command_Source/rx_dma_write_master.Command_Sink qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value rx_dma_dispatcher.Write_Command_Source/rx_dma_write_master.Command_Sink qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value rx_dma_dispatcher.Write_Command_Source/rx_dma_write_master.Command_Sink qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value rx_dma_dispatcher.Write_Command_Source/rx_dma_write_master.Command_Sink qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value rx_dma_dispatcher.Write_Command_Source/rx_dma_write_master.Command_Sink qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value rx_dma_dispatcher.Write_Command_Source/rx_dma_write_master.Command_Sink qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value rx_dma_dispatcher.Write_Command_Source/rx_dma_write_master.Command_Sink qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value rx_dma_dispatcher.Write_Command_Source/rx_dma_write_master.Command_Sink qsys_mm.syncResets {FALSE}
+	set_connection_parameter_value rx_dma_dispatcher.Write_Command_Source/rx_dma_write_master.Command_Sink qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	add_connection rx_dma_ftile_clock.out_clk/rx_dma_pause_ctrl.clock
+	set_connection_parameter_value rx_dma_ftile_clock.out_clk/rx_dma_pause_ctrl.clock clockDomainSysInfo {-1}
+	set_connection_parameter_value rx_dma_ftile_clock.out_clk/rx_dma_pause_ctrl.clock clockRateSysInfo {402832031.0}
+	set_connection_parameter_value rx_dma_ftile_clock.out_clk/rx_dma_pause_ctrl.clock clockResetSysInfo {}
+	set_connection_parameter_value rx_dma_ftile_clock.out_clk/rx_dma_pause_ctrl.clock resetDomainSysInfo {-1}
+	add_connection rx_dma_ftile_clock.out_clk/rx_dma_pkt_dc_fifo.in_clk
+	set_connection_parameter_value rx_dma_ftile_clock.out_clk/rx_dma_pkt_dc_fifo.in_clk clockDomainSysInfo {-1}
+	set_connection_parameter_value rx_dma_ftile_clock.out_clk/rx_dma_pkt_dc_fifo.in_clk clockRateSysInfo {402832031.0}
+	set_connection_parameter_value rx_dma_ftile_clock.out_clk/rx_dma_pkt_dc_fifo.in_clk clockResetSysInfo {}
+	set_connection_parameter_value rx_dma_ftile_clock.out_clk/rx_dma_pkt_dc_fifo.in_clk resetDomainSysInfo {-1}
+	add_connection rx_dma_ftile_clock.out_clk/rx_dma_pkt_fifo.clk
+	set_connection_parameter_value rx_dma_ftile_clock.out_clk/rx_dma_pkt_fifo.clk clockDomainSysInfo {-1}
+	set_connection_parameter_value rx_dma_ftile_clock.out_clk/rx_dma_pkt_fifo.clk clockRateSysInfo {402832031.0}
+	set_connection_parameter_value rx_dma_ftile_clock.out_clk/rx_dma_pkt_fifo.clk clockResetSysInfo {}
+	set_connection_parameter_value rx_dma_ftile_clock.out_clk/rx_dma_pkt_fifo.clk resetDomainSysInfo {-1}
+	add_connection rx_dma_ftile_clock.out_clk/rx_dma_timestamp_adapter.clock
+	set_connection_parameter_value rx_dma_ftile_clock.out_clk/rx_dma_timestamp_adapter.clock clockDomainSysInfo {-1}
+	set_connection_parameter_value rx_dma_ftile_clock.out_clk/rx_dma_timestamp_adapter.clock clockRateSysInfo {402832031.0}
+	set_connection_parameter_value rx_dma_ftile_clock.out_clk/rx_dma_timestamp_adapter.clock clockResetSysInfo {}
+	set_connection_parameter_value rx_dma_ftile_clock.out_clk/rx_dma_timestamp_adapter.clock resetDomainSysInfo {-1}
+	add_connection rx_dma_ftile_clock.out_clk/rx_dma_ts_fifo.in_clk
+	set_connection_parameter_value rx_dma_ftile_clock.out_clk/rx_dma_ts_fifo.in_clk clockDomainSysInfo {-1}
+	set_connection_parameter_value rx_dma_ftile_clock.out_clk/rx_dma_ts_fifo.in_clk clockRateSysInfo {402832031.0}
+	set_connection_parameter_value rx_dma_ftile_clock.out_clk/rx_dma_ts_fifo.in_clk clockResetSysInfo {}
+	set_connection_parameter_value rx_dma_ftile_clock.out_clk/rx_dma_ts_fifo.in_clk resetDomainSysInfo {-1}
+	add_connection rx_dma_pkt_dc_fifo.out/rx_dma_write_master.Data_Sink
+	set_connection_parameter_value rx_dma_pkt_dc_fifo.out/rx_dma_write_master.Data_Sink qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value rx_dma_pkt_dc_fifo.out/rx_dma_write_master.Data_Sink qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value rx_dma_pkt_dc_fifo.out/rx_dma_write_master.Data_Sink qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value rx_dma_pkt_dc_fifo.out/rx_dma_write_master.Data_Sink qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value rx_dma_pkt_dc_fifo.out/rx_dma_write_master.Data_Sink qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value rx_dma_pkt_dc_fifo.out/rx_dma_write_master.Data_Sink qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value rx_dma_pkt_dc_fifo.out/rx_dma_write_master.Data_Sink qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value rx_dma_pkt_dc_fifo.out/rx_dma_write_master.Data_Sink qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value rx_dma_pkt_dc_fifo.out/rx_dma_write_master.Data_Sink qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value rx_dma_pkt_dc_fifo.out/rx_dma_write_master.Data_Sink qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value rx_dma_pkt_dc_fifo.out/rx_dma_write_master.Data_Sink qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value rx_dma_pkt_dc_fifo.out/rx_dma_write_master.Data_Sink qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value rx_dma_pkt_dc_fifo.out/rx_dma_write_master.Data_Sink qsys_mm.syncResets {FALSE}
+	set_connection_parameter_value rx_dma_pkt_dc_fifo.out/rx_dma_write_master.Data_Sink qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	add_connection rx_dma_pkt_fifo.almost_empty/rx_dma_pause_ctrl.almost_empty_sink
+	set_connection_parameter_value rx_dma_pkt_fifo.almost_empty/rx_dma_pause_ctrl.almost_empty_sink qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value rx_dma_pkt_fifo.almost_empty/rx_dma_pause_ctrl.almost_empty_sink qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value rx_dma_pkt_fifo.almost_empty/rx_dma_pause_ctrl.almost_empty_sink qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value rx_dma_pkt_fifo.almost_empty/rx_dma_pause_ctrl.almost_empty_sink qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value rx_dma_pkt_fifo.almost_empty/rx_dma_pause_ctrl.almost_empty_sink qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value rx_dma_pkt_fifo.almost_empty/rx_dma_pause_ctrl.almost_empty_sink qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value rx_dma_pkt_fifo.almost_empty/rx_dma_pause_ctrl.almost_empty_sink qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value rx_dma_pkt_fifo.almost_empty/rx_dma_pause_ctrl.almost_empty_sink qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value rx_dma_pkt_fifo.almost_empty/rx_dma_pause_ctrl.almost_empty_sink qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value rx_dma_pkt_fifo.almost_empty/rx_dma_pause_ctrl.almost_empty_sink qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value rx_dma_pkt_fifo.almost_empty/rx_dma_pause_ctrl.almost_empty_sink qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value rx_dma_pkt_fifo.almost_empty/rx_dma_pause_ctrl.almost_empty_sink qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value rx_dma_pkt_fifo.almost_empty/rx_dma_pause_ctrl.almost_empty_sink qsys_mm.syncResets {FALSE}
+	set_connection_parameter_value rx_dma_pkt_fifo.almost_empty/rx_dma_pause_ctrl.almost_empty_sink qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	add_connection rx_dma_pkt_fifo.almost_full/rx_dma_pause_ctrl.almost_full_sink
+	set_connection_parameter_value rx_dma_pkt_fifo.almost_full/rx_dma_pause_ctrl.almost_full_sink qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value rx_dma_pkt_fifo.almost_full/rx_dma_pause_ctrl.almost_full_sink qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value rx_dma_pkt_fifo.almost_full/rx_dma_pause_ctrl.almost_full_sink qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value rx_dma_pkt_fifo.almost_full/rx_dma_pause_ctrl.almost_full_sink qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value rx_dma_pkt_fifo.almost_full/rx_dma_pause_ctrl.almost_full_sink qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value rx_dma_pkt_fifo.almost_full/rx_dma_pause_ctrl.almost_full_sink qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value rx_dma_pkt_fifo.almost_full/rx_dma_pause_ctrl.almost_full_sink qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value rx_dma_pkt_fifo.almost_full/rx_dma_pause_ctrl.almost_full_sink qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value rx_dma_pkt_fifo.almost_full/rx_dma_pause_ctrl.almost_full_sink qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value rx_dma_pkt_fifo.almost_full/rx_dma_pause_ctrl.almost_full_sink qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value rx_dma_pkt_fifo.almost_full/rx_dma_pause_ctrl.almost_full_sink qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value rx_dma_pkt_fifo.almost_full/rx_dma_pause_ctrl.almost_full_sink qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value rx_dma_pkt_fifo.almost_full/rx_dma_pause_ctrl.almost_full_sink qsys_mm.syncResets {FALSE}
+	set_connection_parameter_value rx_dma_pkt_fifo.almost_full/rx_dma_pause_ctrl.almost_full_sink qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	add_connection rx_dma_pkt_fifo.out/rx_dma_pkt_dc_fifo.in
+	set_connection_parameter_value rx_dma_pkt_fifo.out/rx_dma_pkt_dc_fifo.in qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value rx_dma_pkt_fifo.out/rx_dma_pkt_dc_fifo.in qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value rx_dma_pkt_fifo.out/rx_dma_pkt_dc_fifo.in qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value rx_dma_pkt_fifo.out/rx_dma_pkt_dc_fifo.in qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value rx_dma_pkt_fifo.out/rx_dma_pkt_dc_fifo.in qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value rx_dma_pkt_fifo.out/rx_dma_pkt_dc_fifo.in qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value rx_dma_pkt_fifo.out/rx_dma_pkt_dc_fifo.in qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value rx_dma_pkt_fifo.out/rx_dma_pkt_dc_fifo.in qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value rx_dma_pkt_fifo.out/rx_dma_pkt_dc_fifo.in qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value rx_dma_pkt_fifo.out/rx_dma_pkt_dc_fifo.in qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value rx_dma_pkt_fifo.out/rx_dma_pkt_dc_fifo.in qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value rx_dma_pkt_fifo.out/rx_dma_pkt_dc_fifo.in qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value rx_dma_pkt_fifo.out/rx_dma_pkt_dc_fifo.in qsys_mm.syncResets {FALSE}
+	set_connection_parameter_value rx_dma_pkt_fifo.out/rx_dma_pkt_dc_fifo.in qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	add_connection rx_dma_prefetcher.Descriptor_Write_Dispatcher_Source/rx_dma_dispatcher.Descriptor_Sink
+	set_connection_parameter_value rx_dma_prefetcher.Descriptor_Write_Dispatcher_Source/rx_dma_dispatcher.Descriptor_Sink qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value rx_dma_prefetcher.Descriptor_Write_Dispatcher_Source/rx_dma_dispatcher.Descriptor_Sink qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value rx_dma_prefetcher.Descriptor_Write_Dispatcher_Source/rx_dma_dispatcher.Descriptor_Sink qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value rx_dma_prefetcher.Descriptor_Write_Dispatcher_Source/rx_dma_dispatcher.Descriptor_Sink qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value rx_dma_prefetcher.Descriptor_Write_Dispatcher_Source/rx_dma_dispatcher.Descriptor_Sink qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value rx_dma_prefetcher.Descriptor_Write_Dispatcher_Source/rx_dma_dispatcher.Descriptor_Sink qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value rx_dma_prefetcher.Descriptor_Write_Dispatcher_Source/rx_dma_dispatcher.Descriptor_Sink qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value rx_dma_prefetcher.Descriptor_Write_Dispatcher_Source/rx_dma_dispatcher.Descriptor_Sink qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value rx_dma_prefetcher.Descriptor_Write_Dispatcher_Source/rx_dma_dispatcher.Descriptor_Sink qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value rx_dma_prefetcher.Descriptor_Write_Dispatcher_Source/rx_dma_dispatcher.Descriptor_Sink qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value rx_dma_prefetcher.Descriptor_Write_Dispatcher_Source/rx_dma_dispatcher.Descriptor_Sink qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value rx_dma_prefetcher.Descriptor_Write_Dispatcher_Source/rx_dma_dispatcher.Descriptor_Sink qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value rx_dma_prefetcher.Descriptor_Write_Dispatcher_Source/rx_dma_dispatcher.Descriptor_Sink qsys_mm.syncResets {FALSE}
+	set_connection_parameter_value rx_dma_prefetcher.Descriptor_Write_Dispatcher_Source/rx_dma_dispatcher.Descriptor_Sink qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	add_connection rx_dma_reset.out_reset/rx_dma_csr.reset
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_csr.reset clockDomainSysInfo {-1}
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_csr.reset clockResetSysInfo {}
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_csr.reset resetDomainSysInfo {-1}
+	add_connection rx_dma_reset.out_reset/rx_dma_dispatcher.clock_reset
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_dispatcher.clock_reset clockDomainSysInfo {-1}
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_dispatcher.clock_reset clockResetSysInfo {}
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_dispatcher.clock_reset resetDomainSysInfo {-1}
+	add_connection rx_dma_reset.out_reset/rx_dma_pause_ctrl.reset
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_pause_ctrl.reset clockDomainSysInfo {-1}
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_pause_ctrl.reset clockResetSysInfo {}
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_pause_ctrl.reset resetDomainSysInfo {-1}
+	add_connection rx_dma_reset.out_reset/rx_dma_pkt_dc_fifo.in_clk_reset
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_pkt_dc_fifo.in_clk_reset clockDomainSysInfo {-1}
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_pkt_dc_fifo.in_clk_reset clockResetSysInfo {}
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_pkt_dc_fifo.in_clk_reset resetDomainSysInfo {-1}
+	add_connection rx_dma_reset.out_reset/rx_dma_pkt_dc_fifo.out_clk_reset
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_pkt_dc_fifo.out_clk_reset clockDomainSysInfo {-1}
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_pkt_dc_fifo.out_clk_reset clockResetSysInfo {}
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_pkt_dc_fifo.out_clk_reset resetDomainSysInfo {-1}
+	add_connection rx_dma_reset.out_reset/rx_dma_pkt_fifo.clk_reset
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_pkt_fifo.clk_reset clockDomainSysInfo {-1}
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_pkt_fifo.clk_reset clockResetSysInfo {}
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_pkt_fifo.clk_reset resetDomainSysInfo {-1}
+	add_connection rx_dma_reset.out_reset/rx_dma_prefetcher.Clock_reset
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_prefetcher.Clock_reset clockDomainSysInfo {-1}
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_prefetcher.Clock_reset clockResetSysInfo {}
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_prefetcher.Clock_reset resetDomainSysInfo {-1}
+	add_connection rx_dma_reset.out_reset/rx_dma_timestamp_adapter.reset
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_timestamp_adapter.reset clockDomainSysInfo {-1}
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_timestamp_adapter.reset clockResetSysInfo {}
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_timestamp_adapter.reset resetDomainSysInfo {-1}
+	add_connection rx_dma_reset.out_reset/rx_dma_ts_fifo.in_clk_reset
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_ts_fifo.in_clk_reset clockDomainSysInfo {-1}
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_ts_fifo.in_clk_reset clockResetSysInfo {}
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_ts_fifo.in_clk_reset resetDomainSysInfo {-1}
+	add_connection rx_dma_reset.out_reset/rx_dma_ts_fifo.out_clk_reset
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_ts_fifo.out_clk_reset clockDomainSysInfo {-1}
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_ts_fifo.out_clk_reset clockResetSysInfo {}
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_ts_fifo.out_clk_reset resetDomainSysInfo {-1}
+	add_connection rx_dma_reset.out_reset/rx_dma_ts_insert.reset
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_ts_insert.reset clockDomainSysInfo {-1}
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_ts_insert.reset clockResetSysInfo {}
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_ts_insert.reset resetDomainSysInfo {-1}
+	add_connection rx_dma_reset.out_reset/rx_dma_write_master.Clock_reset
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_write_master.Clock_reset clockDomainSysInfo {-1}
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_write_master.Clock_reset clockResetSysInfo {}
+	set_connection_parameter_value rx_dma_reset.out_reset/rx_dma_write_master.Clock_reset resetDomainSysInfo {-1}
+	add_connection rx_dma_timestamp_adapter.src_timestamp/rx_dma_ts_fifo.in
+	set_connection_parameter_value rx_dma_timestamp_adapter.src_timestamp/rx_dma_ts_fifo.in qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value rx_dma_timestamp_adapter.src_timestamp/rx_dma_ts_fifo.in qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value rx_dma_timestamp_adapter.src_timestamp/rx_dma_ts_fifo.in qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value rx_dma_timestamp_adapter.src_timestamp/rx_dma_ts_fifo.in qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value rx_dma_timestamp_adapter.src_timestamp/rx_dma_ts_fifo.in qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value rx_dma_timestamp_adapter.src_timestamp/rx_dma_ts_fifo.in qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value rx_dma_timestamp_adapter.src_timestamp/rx_dma_ts_fifo.in qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value rx_dma_timestamp_adapter.src_timestamp/rx_dma_ts_fifo.in qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value rx_dma_timestamp_adapter.src_timestamp/rx_dma_ts_fifo.in qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value rx_dma_timestamp_adapter.src_timestamp/rx_dma_ts_fifo.in qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value rx_dma_timestamp_adapter.src_timestamp/rx_dma_ts_fifo.in qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value rx_dma_timestamp_adapter.src_timestamp/rx_dma_ts_fifo.in qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value rx_dma_timestamp_adapter.src_timestamp/rx_dma_ts_fifo.in qsys_mm.syncResets {FALSE}
+	set_connection_parameter_value rx_dma_timestamp_adapter.src_timestamp/rx_dma_ts_fifo.in qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	add_connection rx_dma_ts_fifo.out/rx_dma_ts_insert.snk_timestamp
+	set_connection_parameter_value rx_dma_ts_fifo.out/rx_dma_ts_insert.snk_timestamp qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value rx_dma_ts_fifo.out/rx_dma_ts_insert.snk_timestamp qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value rx_dma_ts_fifo.out/rx_dma_ts_insert.snk_timestamp qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value rx_dma_ts_fifo.out/rx_dma_ts_insert.snk_timestamp qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value rx_dma_ts_fifo.out/rx_dma_ts_insert.snk_timestamp qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value rx_dma_ts_fifo.out/rx_dma_ts_insert.snk_timestamp qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value rx_dma_ts_fifo.out/rx_dma_ts_insert.snk_timestamp qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value rx_dma_ts_fifo.out/rx_dma_ts_insert.snk_timestamp qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value rx_dma_ts_fifo.out/rx_dma_ts_insert.snk_timestamp qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value rx_dma_ts_fifo.out/rx_dma_ts_insert.snk_timestamp qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value rx_dma_ts_fifo.out/rx_dma_ts_insert.snk_timestamp qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value rx_dma_ts_fifo.out/rx_dma_ts_insert.snk_timestamp qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value rx_dma_ts_fifo.out/rx_dma_ts_insert.snk_timestamp qsys_mm.syncResets {FALSE}
+	set_connection_parameter_value rx_dma_ts_fifo.out/rx_dma_ts_insert.snk_timestamp qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	add_connection rx_dma_ts_insert.src_response/rx_dma_prefetcher.Response_Sink
+	set_connection_parameter_value rx_dma_ts_insert.src_response/rx_dma_prefetcher.Response_Sink qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value rx_dma_ts_insert.src_response/rx_dma_prefetcher.Response_Sink qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value rx_dma_ts_insert.src_response/rx_dma_prefetcher.Response_Sink qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value rx_dma_ts_insert.src_response/rx_dma_prefetcher.Response_Sink qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value rx_dma_ts_insert.src_response/rx_dma_prefetcher.Response_Sink qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value rx_dma_ts_insert.src_response/rx_dma_prefetcher.Response_Sink qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value rx_dma_ts_insert.src_response/rx_dma_prefetcher.Response_Sink qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value rx_dma_ts_insert.src_response/rx_dma_prefetcher.Response_Sink qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value rx_dma_ts_insert.src_response/rx_dma_prefetcher.Response_Sink qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value rx_dma_ts_insert.src_response/rx_dma_prefetcher.Response_Sink qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value rx_dma_ts_insert.src_response/rx_dma_prefetcher.Response_Sink qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value rx_dma_ts_insert.src_response/rx_dma_prefetcher.Response_Sink qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value rx_dma_ts_insert.src_response/rx_dma_prefetcher.Response_Sink qsys_mm.syncResets {FALSE}
+	set_connection_parameter_value rx_dma_ts_insert.src_response/rx_dma_prefetcher.Response_Sink qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	add_connection rx_dma_write_master.Response_Source/rx_dma_dispatcher.Write_Response_Sink
+	set_connection_parameter_value rx_dma_write_master.Response_Source/rx_dma_dispatcher.Write_Response_Sink qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value rx_dma_write_master.Response_Source/rx_dma_dispatcher.Write_Response_Sink qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value rx_dma_write_master.Response_Source/rx_dma_dispatcher.Write_Response_Sink qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value rx_dma_write_master.Response_Source/rx_dma_dispatcher.Write_Response_Sink qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value rx_dma_write_master.Response_Source/rx_dma_dispatcher.Write_Response_Sink qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value rx_dma_write_master.Response_Source/rx_dma_dispatcher.Write_Response_Sink qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value rx_dma_write_master.Response_Source/rx_dma_dispatcher.Write_Response_Sink qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value rx_dma_write_master.Response_Source/rx_dma_dispatcher.Write_Response_Sink qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value rx_dma_write_master.Response_Source/rx_dma_dispatcher.Write_Response_Sink qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value rx_dma_write_master.Response_Source/rx_dma_dispatcher.Write_Response_Sink qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value rx_dma_write_master.Response_Source/rx_dma_dispatcher.Write_Response_Sink qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value rx_dma_write_master.Response_Source/rx_dma_dispatcher.Write_Response_Sink qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value rx_dma_write_master.Response_Source/rx_dma_dispatcher.Write_Response_Sink qsys_mm.syncResets {FALSE}
+	set_connection_parameter_value rx_dma_write_master.Response_Source/rx_dma_dispatcher.Write_Response_Sink qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+
+	# add the exports
+	set_interface_property dma_clk EXPORT_OF rx_dma_clock.in_clk
+	set_interface_property csr EXPORT_OF rx_dma_csr.s0
+	set_interface_property ftile_clk EXPORT_OF rx_dma_ftile_clock.in_clk
+	set_interface_property pause_ctrl_ftile EXPORT_OF rx_dma_pause_ctrl.pause_ctrl_ftile_src_data
+	set_interface_property pktin EXPORT_OF rx_dma_pkt_fifo.in
+	set_interface_property prefetcher_read_master EXPORT_OF rx_dma_prefetcher.Descriptor_Read_Master
+	set_interface_property prefetcher_write_master EXPORT_OF rx_dma_prefetcher.Descriptor_Write_Master
+	set_interface_property irq EXPORT_OF rx_dma_prefetcher.Csr_Irq
+	set_interface_property reset EXPORT_OF rx_dma_reset.in_reset
+	set_interface_property timestamp EXPORT_OF rx_dma_timestamp_adapter.timestamp
+	set_interface_property write_master EXPORT_OF rx_dma_write_master.Data_Write_Master
+
+	# set values for exposed HDL parameters
+	set_domain_assignment rx_dma_csr.m0 qsys_mm.burstAdapterImplementation GENERIC_CONVERTER
+	set_domain_assignment rx_dma_csr.m0 qsys_mm.clockCrossingAdapter HANDSHAKE
+	set_domain_assignment rx_dma_csr.m0 qsys_mm.enableAllPipelines FALSE
+	set_domain_assignment rx_dma_csr.m0 qsys_mm.enableEccProtection FALSE
+	set_domain_assignment rx_dma_csr.m0 qsys_mm.enableInstrumentation FALSE
+	set_domain_assignment rx_dma_csr.m0 qsys_mm.insertDefaultSlave FALSE
+	set_domain_assignment rx_dma_csr.m0 qsys_mm.interconnectResetSource DEFAULT
+	set_domain_assignment rx_dma_csr.m0 qsys_mm.interconnectType STANDARD
+	set_domain_assignment rx_dma_csr.m0 qsys_mm.maxAdditionalLatency 1
+	set_domain_assignment rx_dma_csr.m0 qsys_mm.optimizeRdFifoSize FALSE
+	set_domain_assignment rx_dma_csr.m0 qsys_mm.piplineType PIPELINE_STAGE
+	set_domain_assignment rx_dma_csr.m0 qsys_mm.responseFifoType REGISTER_BASED
+	set_domain_assignment rx_dma_csr.m0 qsys_mm.syncResets TRUE
+	set_domain_assignment rx_dma_csr.m0 qsys_mm.widthAdapterImplementation GENERIC_CONVERTER
+
+	# set the the module properties
+	set_module_property BONUS_DATA {<?xml version="1.0" encoding="UTF-8"?>
+<bonusData>
+ <element __value="rx_dma_clock">
+  <datum __value="_sortIndex" value="0" type="int" />
+ </element>
+ <element __value="rx_dma_csr">
+  <datum __value="_sortIndex" value="3" type="int" />
+ </element>
+ <element __value="rx_dma_dispatcher">
+  <datum __value="_sortIndex" value="5" type="int" />
+ </element>
+ <element __value="rx_dma_ftile_clock">
+  <datum __value="_sortIndex" value="1" type="int" />
+ </element>
+ <element __value="rx_dma_pause_ctrl">
+  <datum __value="_sortIndex" value="11" type="int" />
+ </element>
+ <element __value="rx_dma_pkt_dc_fifo">
+  <datum __value="_sortIndex" value="9" type="int" />
+ </element>
+ <element __value="rx_dma_pkt_fifo">
+  <datum __value="_sortIndex" value="10" type="int" />
+ </element>
+ <element __value="rx_dma_prefetcher">
+  <datum __value="_sortIndex" value="4" type="int" />
+ </element>
+ <element __value="rx_dma_reset">
+  <datum __value="_sortIndex" value="2" type="int" />
+ </element>
+ <element __value="rx_dma_timestamp_adapter">
+  <datum __value="_sortIndex" value="12" type="int" />
+ </element>
+ <element __value="rx_dma_ts_fifo">
+  <datum __value="_sortIndex" value="8" type="int" />
+ </element>
+ <element __value="rx_dma_ts_insert">
+  <datum __value="_sortIndex" value="7" type="int" />
+ </element>
+ <element __value="rx_dma_write_master">
+  <datum __value="_sortIndex" value="6" type="int" />
+ </element>
+</bonusData>
+}
+	set_module_property FILE {subsys_ftile_rx_dma.qsys}
+	set_module_property GENERATION_ID {0x00000000}
+	set_module_property NAME {subsys_ftile_rx_dma}
+
+	# save the system
+	sync_sysinfo_parameters
+	save_system subsys_ftile_rx_dma
+}
+
+# create the system "subsys_ftile_tx_dma"
+proc do_create_subsys_ftile_tx_dma {} {
+	# create the system
+	create_system subsys_ftile_tx_dma
+	set_project_property DEVICE {AGIB027R31B1E2V}
+	set_project_property DEVICE_FAMILY {Agilex}
+	set_project_property HIDE_FROM_IP_CATALOG {false}
+	set_use_testbench_naming_pattern 0 {}
+
+	# add HDL parameters
+
+	# add the components
+	add_component tx_dma_clock ip/subsys_ftile_tx_dma/tx_dma_clock.ip altera_clock_bridge altera_clock_bridge_inst 19.2.0
+	load_component tx_dma_clock
+	set_component_parameter_value EXPLICIT_CLOCK_RATE {201416016.0}
+	set_component_parameter_value NUM_CLOCK_OUTPUTS {1}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation tx_dma_clock
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface in_clk clock INPUT
+	set_instantiation_interface_parameter_value in_clk clockRate {0}
+	set_instantiation_interface_parameter_value in_clk externallyDriven {false}
+	set_instantiation_interface_parameter_value in_clk ptfSchematicName {}
+	add_instantiation_interface_port in_clk in_clk clk 1 STD_LOGIC Input
+	add_instantiation_interface out_clk clock OUTPUT
+	set_instantiation_interface_parameter_value out_clk associatedDirectClock {in_clk}
+	set_instantiation_interface_parameter_value out_clk clockRate {201416016}
+	set_instantiation_interface_parameter_value out_clk clockRateKnown {true}
+	set_instantiation_interface_parameter_value out_clk externallyDriven {false}
+	set_instantiation_interface_parameter_value out_clk ptfSchematicName {}
+	set_instantiation_interface_sysinfo_parameter_value out_clk clock_rate {201416016}
+	add_instantiation_interface_port out_clk out_clk clk 1 STD_LOGIC Output
+	save_instantiation
+	add_component tx_dma_csr ip/subsys_ftile_tx_dma/tx_dma_csr.ip altera_avalon_mm_bridge altera_avalon_mm_bridge_inst 20.0.1
+	load_component tx_dma_csr
+	set_component_parameter_value ADDRESS_UNITS {SYMBOLS}
+	set_component_parameter_value ADDRESS_WIDTH {32}
+	set_component_parameter_value DATA_WIDTH {32}
+	set_component_parameter_value LINEWRAPBURSTS {0}
+	set_component_parameter_value MAX_BURST_SIZE {1}
+	set_component_parameter_value MAX_PENDING_RESPONSES {1}
+	set_component_parameter_value MAX_PENDING_WRITES {0}
+	set_component_parameter_value PIPELINE_COMMAND {1}
+	set_component_parameter_value PIPELINE_RESPONSE {1}
+	set_component_parameter_value SYMBOL_WIDTH {8}
+	set_component_parameter_value SYNC_RESET {0}
+	set_component_parameter_value USE_AUTO_ADDRESS_WIDTH {1}
+	set_component_parameter_value USE_RESPONSE {0}
+	set_component_parameter_value USE_WRITERESPONSE {0}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation tx_dma_csr
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface clk clock INPUT
+	set_instantiation_interface_parameter_value clk clockRate {0}
+	set_instantiation_interface_parameter_value clk externallyDriven {false}
+	set_instantiation_interface_parameter_value clk ptfSchematicName {}
+	add_instantiation_interface_port clk clk clk 1 STD_LOGIC Input
+	add_instantiation_interface reset reset INPUT
+	set_instantiation_interface_parameter_value reset associatedClock {clk}
+	set_instantiation_interface_parameter_value reset synchronousEdges {DEASSERT}
+	add_instantiation_interface_port reset reset reset 1 STD_LOGIC Input
+	add_instantiation_interface s0 avalon INPUT
+	set_instantiation_interface_parameter_value s0 addressAlignment {DYNAMIC}
+	set_instantiation_interface_parameter_value s0 addressGroup {0}
+	set_instantiation_interface_parameter_value s0 addressSpan {128}
+	set_instantiation_interface_parameter_value s0 addressUnits {SYMBOLS}
+	set_instantiation_interface_parameter_value s0 alwaysBurstMaxBurst {false}
+	set_instantiation_interface_parameter_value s0 associatedClock {clk}
+	set_instantiation_interface_parameter_value s0 associatedReset {reset}
+	set_instantiation_interface_parameter_value s0 bitsPerSymbol {8}
+	set_instantiation_interface_parameter_value s0 bridgedAddressOffset {0}
+	set_instantiation_interface_parameter_value s0 bridgesToMaster {m0}
+	set_instantiation_interface_parameter_value s0 burstOnBurstBoundariesOnly {false}
+	set_instantiation_interface_parameter_value s0 burstcountUnits {WORDS}
+	set_instantiation_interface_parameter_value s0 constantBurstBehavior {false}
+	set_instantiation_interface_parameter_value s0 explicitAddressSpan {0}
+	set_instantiation_interface_parameter_value s0 holdTime {0}
+	set_instantiation_interface_parameter_value s0 interleaveBursts {false}
+	set_instantiation_interface_parameter_value s0 isBigEndian {false}
+	set_instantiation_interface_parameter_value s0 isFlash {false}
+	set_instantiation_interface_parameter_value s0 isMemoryDevice {false}
+	set_instantiation_interface_parameter_value s0 isNonVolatileStorage {false}
+	set_instantiation_interface_parameter_value s0 linewrapBursts {false}
+	set_instantiation_interface_parameter_value s0 maximumPendingReadTransactions {1}
+	set_instantiation_interface_parameter_value s0 maximumPendingWriteTransactions {0}
+	set_instantiation_interface_parameter_value s0 minimumReadLatency {1}
+	set_instantiation_interface_parameter_value s0 minimumResponseLatency {1}
+	set_instantiation_interface_parameter_value s0 minimumUninterruptedRunLength {1}
+	set_instantiation_interface_parameter_value s0 prSafe {false}
+	set_instantiation_interface_parameter_value s0 printableDevice {false}
+	set_instantiation_interface_parameter_value s0 readLatency {0}
+	set_instantiation_interface_parameter_value s0 readWaitStates {0}
+	set_instantiation_interface_parameter_value s0 readWaitTime {0}
+	set_instantiation_interface_parameter_value s0 registerIncomingSignals {false}
+	set_instantiation_interface_parameter_value s0 registerOutgoingSignals {false}
+	set_instantiation_interface_parameter_value s0 setupTime {0}
+	set_instantiation_interface_parameter_value s0 timingUnits {Cycles}
+	set_instantiation_interface_parameter_value s0 transparentBridge {false}
+	set_instantiation_interface_parameter_value s0 waitrequestAllowance {0}
+	set_instantiation_interface_parameter_value s0 wellBehavedWaitrequest {false}
+	set_instantiation_interface_parameter_value s0 writeLatency {0}
+	set_instantiation_interface_parameter_value s0 writeWaitStates {0}
+	set_instantiation_interface_parameter_value s0 writeWaitTime {0}
+	set_instantiation_interface_assignment_value s0 embeddedsw.configuration.isFlash {0}
+	set_instantiation_interface_assignment_value s0 embeddedsw.configuration.isMemoryDevice {0}
+	set_instantiation_interface_assignment_value s0 embeddedsw.configuration.isNonVolatileStorage {0}
+	set_instantiation_interface_assignment_value s0 embeddedsw.configuration.isPrintableDevice {0}
+	set_instantiation_interface_sysinfo_parameter_value s0 address_map {}
+	set_instantiation_interface_sysinfo_parameter_value s0 address_width {}
+	set_instantiation_interface_sysinfo_parameter_value s0 max_slave_data_width {}
+	add_instantiation_interface_port s0 s0_waitrequest waitrequest 1 STD_LOGIC Output
+	add_instantiation_interface_port s0 s0_readdata readdata 32 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port s0 s0_readdatavalid readdatavalid 1 STD_LOGIC Output
+	add_instantiation_interface_port s0 s0_burstcount burstcount 1 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port s0 s0_writedata writedata 32 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port s0 s0_address address 7 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port s0 s0_write write 1 STD_LOGIC Input
+	add_instantiation_interface_port s0 s0_read read 1 STD_LOGIC Input
+	add_instantiation_interface_port s0 s0_byteenable byteenable 4 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port s0 s0_debugaccess debugaccess 1 STD_LOGIC Input
+	add_instantiation_interface m0 avalon OUTPUT
+	set_instantiation_interface_parameter_value m0 adaptsTo {}
+	set_instantiation_interface_parameter_value m0 addressGroup {0}
+	set_instantiation_interface_parameter_value m0 addressUnits {SYMBOLS}
+	set_instantiation_interface_parameter_value m0 alwaysBurstMaxBurst {false}
+	set_instantiation_interface_parameter_value m0 associatedClock {clk}
+	set_instantiation_interface_parameter_value m0 associatedReset {reset}
+	set_instantiation_interface_parameter_value m0 bitsPerSymbol {8}
+	set_instantiation_interface_parameter_value m0 burstOnBurstBoundariesOnly {false}
+	set_instantiation_interface_parameter_value m0 burstcountUnits {WORDS}
+	set_instantiation_interface_parameter_value m0 constantBurstBehavior {false}
+	set_instantiation_interface_parameter_value m0 dBSBigEndian {false}
+	set_instantiation_interface_parameter_value m0 doStreamReads {false}
+	set_instantiation_interface_parameter_value m0 doStreamWrites {false}
+	set_instantiation_interface_parameter_value m0 holdTime {0}
+	set_instantiation_interface_parameter_value m0 interleaveBursts {false}
+	set_instantiation_interface_parameter_value m0 isAsynchronous {false}
+	set_instantiation_interface_parameter_value m0 isBigEndian {false}
+	set_instantiation_interface_parameter_value m0 isReadable {false}
+	set_instantiation_interface_parameter_value m0 isWriteable {false}
+	set_instantiation_interface_parameter_value m0 linewrapBursts {false}
+	set_instantiation_interface_parameter_value m0 maxAddressWidth {32}
+	set_instantiation_interface_parameter_value m0 maximumPendingReadTransactions {0}
+	set_instantiation_interface_parameter_value m0 maximumPendingWriteTransactions {0}
+	set_instantiation_interface_parameter_value m0 minimumReadLatency {1}
+	set_instantiation_interface_parameter_value m0 minimumResponseLatency {1}
+	set_instantiation_interface_parameter_value m0 prSafe {false}
+	set_instantiation_interface_parameter_value m0 readLatency {0}
+	set_instantiation_interface_parameter_value m0 readWaitTime {1}
+	set_instantiation_interface_parameter_value m0 registerIncomingSignals {false}
+	set_instantiation_interface_parameter_value m0 registerOutgoingSignals {false}
+	set_instantiation_interface_parameter_value m0 setupTime {0}
+	set_instantiation_interface_parameter_value m0 timingUnits {Cycles}
+	set_instantiation_interface_parameter_value m0 waitrequestAllowance {0}
+	set_instantiation_interface_parameter_value m0 writeWaitTime {0}
+	add_instantiation_interface_port m0 m0_waitrequest waitrequest 1 STD_LOGIC Input
+	add_instantiation_interface_port m0 m0_readdata readdata 32 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port m0 m0_readdatavalid readdatavalid 1 STD_LOGIC Input
+	add_instantiation_interface_port m0 m0_burstcount burstcount 1 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port m0 m0_writedata writedata 32 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port m0 m0_address address 7 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port m0 m0_write write 1 STD_LOGIC Output
+	add_instantiation_interface_port m0 m0_read read 1 STD_LOGIC Output
+	add_instantiation_interface_port m0 m0_byteenable byteenable 4 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port m0 m0_debugaccess debugaccess 1 STD_LOGIC Output
+	save_instantiation
+	add_component tx_dma_dispatcher ip/subsys_ftile_tx_dma/tx_dma_dispatcher.ip modular_sgdma_dispatcher modular_sgdma_dispatcher_inst 19.2.0
+	load_component tx_dma_dispatcher
+	set_component_parameter_value BURST_ENABLE {0}
+	set_component_parameter_value BURST_WRAPPING_SUPPORT {0}
+	set_component_parameter_value CHANNEL_ENABLE {0}
+	set_component_parameter_value CHANNEL_WIDTH {8}
+	set_component_parameter_value CSR_ADDRESS_WIDTH {3}
+	set_component_parameter_value DATA_FIFO_DEPTH {32}
+	set_component_parameter_value DATA_WIDTH {32}
+	set_component_parameter_value DESCRIPTOR_FIFO_DEPTH {128}
+	set_component_parameter_value ENHANCED_FEATURES {1}
+	set_component_parameter_value ERROR_ENABLE {0}
+	set_component_parameter_value ERROR_WIDTH {8}
+	set_component_parameter_value GUI_RESPONSE_PORT {0}
+	set_component_parameter_value MAX_BURST_COUNT {2}
+	set_component_parameter_value MAX_BYTE {1024}
+	set_component_parameter_value MAX_STRIDE {1}
+	set_component_parameter_value MODE {1}
+	set_component_parameter_value PACKET_ENABLE {0}
+	set_component_parameter_value PREFETCHER_USE_CASE {1}
+	set_component_parameter_value PROGRAMMABLE_BURST_ENABLE {0}
+	set_component_parameter_value STRIDE_ENABLE {0}
+	set_component_parameter_value STRIDE_ENABLE_DERIVED {0}
+	set_component_parameter_value TRANSFER_TYPE {Aligned Accesses}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation tx_dma_dispatcher
+	remove_instantiation_interfaces_and_ports
+	set_instantiation_assignment_value embeddedsw.CMacro.BURST_ENABLE {0}
+	set_instantiation_assignment_value embeddedsw.CMacro.BURST_WRAPPING_SUPPORT {0}
+	set_instantiation_assignment_value embeddedsw.CMacro.DATA_FIFO_DEPTH {32}
+	set_instantiation_assignment_value embeddedsw.CMacro.DATA_WIDTH {32}
+	set_instantiation_assignment_value embeddedsw.CMacro.DESCRIPTOR_FIFO_DEPTH {128}
+	set_instantiation_assignment_value embeddedsw.CMacro.ENHANCED_FEATURES {1}
+	set_instantiation_assignment_value embeddedsw.CMacro.MAX_BURST_COUNT {2}
+	set_instantiation_assignment_value embeddedsw.CMacro.MAX_BYTE {1024}
+	set_instantiation_assignment_value embeddedsw.CMacro.MAX_STRIDE {1}
+	set_instantiation_assignment_value embeddedsw.CMacro.PROGRAMMABLE_BURST_ENABLE {0}
+	set_instantiation_assignment_value embeddedsw.CMacro.RESPONSE_FIFO_DEPTH {256}
+	set_instantiation_assignment_value embeddedsw.CMacro.RESPONSE_PORT {0}
+	set_instantiation_assignment_value embeddedsw.CMacro.STRIDE_ENABLE {0}
+	set_instantiation_assignment_value embeddedsw.CMacro.TRANSFER_TYPE {Aligned Accesses}
+	add_instantiation_interface clock clock INPUT
+	set_instantiation_interface_parameter_value clock clockRate {0}
+	set_instantiation_interface_parameter_value clock externallyDriven {false}
+	set_instantiation_interface_parameter_value clock ptfSchematicName {}
+	add_instantiation_interface_port clock clk clk 1 STD_LOGIC Input
+	add_instantiation_interface clock_reset reset INPUT
+	set_instantiation_interface_parameter_value clock_reset associatedClock {clock}
+	set_instantiation_interface_parameter_value clock_reset synchronousEdges {BOTH}
+	add_instantiation_interface_port clock_reset reset reset 1 STD_LOGIC Input
+	add_instantiation_interface CSR avalon INPUT
+	set_instantiation_interface_parameter_value CSR addressAlignment {DYNAMIC}
+	set_instantiation_interface_parameter_value CSR addressGroup {0}
+	set_instantiation_interface_parameter_value CSR addressSpan {32}
+	set_instantiation_interface_parameter_value CSR addressUnits {WORDS}
+	set_instantiation_interface_parameter_value CSR alwaysBurstMaxBurst {false}
+	set_instantiation_interface_parameter_value CSR associatedClock {clock}
+	set_instantiation_interface_parameter_value CSR associatedReset {clock_reset}
+	set_instantiation_interface_parameter_value CSR bitsPerSymbol {8}
+	set_instantiation_interface_parameter_value CSR bridgedAddressOffset {0}
+	set_instantiation_interface_parameter_value CSR bridgesToMaster {}
+	set_instantiation_interface_parameter_value CSR burstOnBurstBoundariesOnly {false}
+	set_instantiation_interface_parameter_value CSR burstcountUnits {WORDS}
+	set_instantiation_interface_parameter_value CSR constantBurstBehavior {false}
+	set_instantiation_interface_parameter_value CSR explicitAddressSpan {0}
+	set_instantiation_interface_parameter_value CSR holdTime {0}
+	set_instantiation_interface_parameter_value CSR interleaveBursts {false}
+	set_instantiation_interface_parameter_value CSR isBigEndian {false}
+	set_instantiation_interface_parameter_value CSR isFlash {false}
+	set_instantiation_interface_parameter_value CSR isMemoryDevice {false}
+	set_instantiation_interface_parameter_value CSR isNonVolatileStorage {false}
+	set_instantiation_interface_parameter_value CSR linewrapBursts {false}
+	set_instantiation_interface_parameter_value CSR maximumPendingReadTransactions {0}
+	set_instantiation_interface_parameter_value CSR maximumPendingWriteTransactions {0}
+	set_instantiation_interface_parameter_value CSR minimumReadLatency {1}
+	set_instantiation_interface_parameter_value CSR minimumResponseLatency {1}
+	set_instantiation_interface_parameter_value CSR minimumUninterruptedRunLength {1}
+	set_instantiation_interface_parameter_value CSR prSafe {false}
+	set_instantiation_interface_parameter_value CSR printableDevice {false}
+	set_instantiation_interface_parameter_value CSR readLatency {1}
+	set_instantiation_interface_parameter_value CSR readWaitStates {1}
+	set_instantiation_interface_parameter_value CSR readWaitTime {1}
+	set_instantiation_interface_parameter_value CSR registerIncomingSignals {false}
+	set_instantiation_interface_parameter_value CSR registerOutgoingSignals {false}
+	set_instantiation_interface_parameter_value CSR setupTime {0}
+	set_instantiation_interface_parameter_value CSR timingUnits {Cycles}
+	set_instantiation_interface_parameter_value CSR transparentBridge {false}
+	set_instantiation_interface_parameter_value CSR waitrequestAllowance {0}
+	set_instantiation_interface_parameter_value CSR wellBehavedWaitrequest {false}
+	set_instantiation_interface_parameter_value CSR writeLatency {0}
+	set_instantiation_interface_parameter_value CSR writeWaitStates {0}
+	set_instantiation_interface_parameter_value CSR writeWaitTime {0}
+	set_instantiation_interface_assignment_value CSR embeddedsw.configuration.isFlash {0}
+	set_instantiation_interface_assignment_value CSR embeddedsw.configuration.isMemoryDevice {0}
+	set_instantiation_interface_assignment_value CSR embeddedsw.configuration.isNonVolatileStorage {0}
+	set_instantiation_interface_assignment_value CSR embeddedsw.configuration.isPrintableDevice {0}
+	set_instantiation_interface_sysinfo_parameter_value CSR address_map {<address-map><slave name='CSR' start='0x0' end='0x20' datawidth='32' /></address-map>}
+	set_instantiation_interface_sysinfo_parameter_value CSR address_width {5}
+	set_instantiation_interface_sysinfo_parameter_value CSR max_slave_data_width {32}
+	add_instantiation_interface_port CSR csr_writedata writedata 32 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port CSR csr_write write 1 STD_LOGIC Input
+	add_instantiation_interface_port CSR csr_byteenable byteenable 4 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port CSR csr_readdata readdata 32 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port CSR csr_read read 1 STD_LOGIC Input
+	add_instantiation_interface_port CSR csr_address address 3 STD_LOGIC_VECTOR Input
+	add_instantiation_interface Response_Source avalon_streaming OUTPUT
+	set_instantiation_interface_parameter_value Response_Source associatedClock {clock}
+	set_instantiation_interface_parameter_value Response_Source associatedReset {clock_reset}
+	set_instantiation_interface_parameter_value Response_Source beatsPerCycle {1}
+	set_instantiation_interface_parameter_value Response_Source dataBitsPerSymbol {256}
+	set_instantiation_interface_parameter_value Response_Source emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value Response_Source errorDescriptor {}
+	set_instantiation_interface_parameter_value Response_Source firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value Response_Source highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value Response_Source maxChannel {0}
+	set_instantiation_interface_parameter_value Response_Source packetDescription {}
+	set_instantiation_interface_parameter_value Response_Source prSafe {false}
+	set_instantiation_interface_parameter_value Response_Source readyAllowance {0}
+	set_instantiation_interface_parameter_value Response_Source readyLatency {0}
+	set_instantiation_interface_parameter_value Response_Source symbolsPerBeat {1}
+	add_instantiation_interface_port Response_Source src_response_data data 256 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port Response_Source src_response_valid valid 1 STD_LOGIC Output
+	add_instantiation_interface_port Response_Source src_response_ready ready 1 STD_LOGIC Input
+	add_instantiation_interface Descriptor_Sink avalon_streaming INPUT
+	set_instantiation_interface_parameter_value Descriptor_Sink associatedClock {clock}
+	set_instantiation_interface_parameter_value Descriptor_Sink associatedReset {clock_reset}
+	set_instantiation_interface_parameter_value Descriptor_Sink beatsPerCycle {1}
+	set_instantiation_interface_parameter_value Descriptor_Sink dataBitsPerSymbol {256}
+	set_instantiation_interface_parameter_value Descriptor_Sink emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value Descriptor_Sink errorDescriptor {}
+	set_instantiation_interface_parameter_value Descriptor_Sink firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value Descriptor_Sink highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value Descriptor_Sink maxChannel {0}
+	set_instantiation_interface_parameter_value Descriptor_Sink packetDescription {}
+	set_instantiation_interface_parameter_value Descriptor_Sink prSafe {false}
+	set_instantiation_interface_parameter_value Descriptor_Sink readyAllowance {0}
+	set_instantiation_interface_parameter_value Descriptor_Sink readyLatency {0}
+	set_instantiation_interface_parameter_value Descriptor_Sink symbolsPerBeat {1}
+	add_instantiation_interface_port Descriptor_Sink snk_descriptor_data data 256 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port Descriptor_Sink snk_descriptor_valid valid 1 STD_LOGIC Input
+	add_instantiation_interface_port Descriptor_Sink snk_descriptor_ready ready 1 STD_LOGIC Output
+	add_instantiation_interface Read_Command_Source avalon_streaming OUTPUT
+	set_instantiation_interface_parameter_value Read_Command_Source associatedClock {clock}
+	set_instantiation_interface_parameter_value Read_Command_Source associatedReset {clock_reset}
+	set_instantiation_interface_parameter_value Read_Command_Source beatsPerCycle {1}
+	set_instantiation_interface_parameter_value Read_Command_Source dataBitsPerSymbol {256}
+	set_instantiation_interface_parameter_value Read_Command_Source emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value Read_Command_Source errorDescriptor {}
+	set_instantiation_interface_parameter_value Read_Command_Source firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value Read_Command_Source highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value Read_Command_Source maxChannel {0}
+	set_instantiation_interface_parameter_value Read_Command_Source packetDescription {}
+	set_instantiation_interface_parameter_value Read_Command_Source prSafe {false}
+	set_instantiation_interface_parameter_value Read_Command_Source readyAllowance {0}
+	set_instantiation_interface_parameter_value Read_Command_Source readyLatency {0}
+	set_instantiation_interface_parameter_value Read_Command_Source symbolsPerBeat {1}
+	add_instantiation_interface_port Read_Command_Source src_read_master_data data 256 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port Read_Command_Source src_read_master_valid valid 1 STD_LOGIC Output
+	add_instantiation_interface_port Read_Command_Source src_read_master_ready ready 1 STD_LOGIC Input
+	add_instantiation_interface Read_Response_Sink avalon_streaming INPUT
+	set_instantiation_interface_parameter_value Read_Response_Sink associatedClock {clock}
+	set_instantiation_interface_parameter_value Read_Response_Sink associatedReset {clock_reset}
+	set_instantiation_interface_parameter_value Read_Response_Sink beatsPerCycle {1}
+	set_instantiation_interface_parameter_value Read_Response_Sink dataBitsPerSymbol {256}
+	set_instantiation_interface_parameter_value Read_Response_Sink emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value Read_Response_Sink errorDescriptor {}
+	set_instantiation_interface_parameter_value Read_Response_Sink firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value Read_Response_Sink highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value Read_Response_Sink maxChannel {0}
+	set_instantiation_interface_parameter_value Read_Response_Sink packetDescription {}
+	set_instantiation_interface_parameter_value Read_Response_Sink prSafe {false}
+	set_instantiation_interface_parameter_value Read_Response_Sink readyAllowance {0}
+	set_instantiation_interface_parameter_value Read_Response_Sink readyLatency {0}
+	set_instantiation_interface_parameter_value Read_Response_Sink symbolsPerBeat {1}
+	add_instantiation_interface_port Read_Response_Sink snk_read_master_data data 256 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port Read_Response_Sink snk_read_master_valid valid 1 STD_LOGIC Input
+	add_instantiation_interface_port Read_Response_Sink snk_read_master_ready ready 1 STD_LOGIC Output
+	save_instantiation
+	add_component tx_dma_fingerprint_compare ip/subsys_ftile_tx_dma/tx_dma_fingerprint_compare.ip eth_ts_fingerprint_compare eth_ts_fingerprint_compare_inst 1.0.0
+	load_component tx_dma_fingerprint_compare
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation tx_dma_fingerprint_compare
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface reset reset INPUT
+	set_instantiation_interface_parameter_value reset associatedClock {clock}
+	set_instantiation_interface_parameter_value reset synchronousEdges {BOTH}
+	add_instantiation_interface_port reset reset reset 1 STD_LOGIC Input
+	add_instantiation_interface fingerprint avalon_streaming INPUT
+	set_instantiation_interface_parameter_value fingerprint associatedClock {clock}
+	set_instantiation_interface_parameter_value fingerprint associatedReset {reset}
+	set_instantiation_interface_parameter_value fingerprint beatsPerCycle {1}
+	set_instantiation_interface_parameter_value fingerprint dataBitsPerSymbol {8}
+	set_instantiation_interface_parameter_value fingerprint emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value fingerprint errorDescriptor {}
+	set_instantiation_interface_parameter_value fingerprint firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value fingerprint highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value fingerprint maxChannel {0}
+	set_instantiation_interface_parameter_value fingerprint packetDescription {}
+	set_instantiation_interface_parameter_value fingerprint prSafe {false}
+	set_instantiation_interface_parameter_value fingerprint readyAllowance {0}
+	set_instantiation_interface_parameter_value fingerprint readyLatency {0}
+	set_instantiation_interface_parameter_value fingerprint symbolsPerBeat {1}
+	add_instantiation_interface_port fingerprint asi_fingerprint_valid valid 1 STD_LOGIC Input
+	add_instantiation_interface_port fingerprint asi_fingerprint_ready ready 1 STD_LOGIC Output
+	add_instantiation_interface_port fingerprint asi_fingerprint data 8 STD_LOGIC_VECTOR Input
+	add_instantiation_interface timestamp_fp avalon_streaming INPUT
+	set_instantiation_interface_parameter_value timestamp_fp associatedClock {clock}
+	set_instantiation_interface_parameter_value timestamp_fp associatedReset {reset}
+	set_instantiation_interface_parameter_value timestamp_fp beatsPerCycle {1}
+	set_instantiation_interface_parameter_value timestamp_fp dataBitsPerSymbol {104}
+	set_instantiation_interface_parameter_value timestamp_fp emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value timestamp_fp errorDescriptor {}
+	set_instantiation_interface_parameter_value timestamp_fp firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value timestamp_fp highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value timestamp_fp maxChannel {0}
+	set_instantiation_interface_parameter_value timestamp_fp packetDescription {}
+	set_instantiation_interface_parameter_value timestamp_fp prSafe {false}
+	set_instantiation_interface_parameter_value timestamp_fp readyAllowance {0}
+	set_instantiation_interface_parameter_value timestamp_fp readyLatency {0}
+	set_instantiation_interface_parameter_value timestamp_fp symbolsPerBeat {1}
+	add_instantiation_interface_port timestamp_fp asi_timestamp_fp_valid valid 1 STD_LOGIC Input
+	add_instantiation_interface_port timestamp_fp asi_timestamp_fp_ready ready 1 STD_LOGIC Output
+	add_instantiation_interface_port timestamp_fp asi_timestamp_fp data 104 STD_LOGIC_VECTOR Input
+	add_instantiation_interface timestamp avalon_streaming OUTPUT
+	set_instantiation_interface_parameter_value timestamp associatedClock {clock}
+	set_instantiation_interface_parameter_value timestamp associatedReset {reset}
+	set_instantiation_interface_parameter_value timestamp beatsPerCycle {1}
+	set_instantiation_interface_parameter_value timestamp dataBitsPerSymbol {96}
+	set_instantiation_interface_parameter_value timestamp emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value timestamp errorDescriptor {}
+	set_instantiation_interface_parameter_value timestamp firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value timestamp highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value timestamp maxChannel {0}
+	set_instantiation_interface_parameter_value timestamp packetDescription {}
+	set_instantiation_interface_parameter_value timestamp prSafe {false}
+	set_instantiation_interface_parameter_value timestamp readyAllowance {0}
+	set_instantiation_interface_parameter_value timestamp readyLatency {0}
+	set_instantiation_interface_parameter_value timestamp symbolsPerBeat {1}
+	add_instantiation_interface_port timestamp aso_timestamp_valid valid 1 STD_LOGIC Output
+	add_instantiation_interface_port timestamp aso_timestamp_ready ready 1 STD_LOGIC Input
+	add_instantiation_interface_port timestamp aso_timestamp data 96 STD_LOGIC_VECTOR Output
+	add_instantiation_interface clock clock INPUT
+	set_instantiation_interface_parameter_value clock clockRate {0}
+	set_instantiation_interface_parameter_value clock externallyDriven {false}
+	set_instantiation_interface_parameter_value clock ptfSchematicName {}
+	add_instantiation_interface_port clock clock clk 1 STD_LOGIC Input
+	save_instantiation
+	add_component tx_dma_fingerprint_fifo ip/subsys_ftile_tx_dma/tx_dma_fingerprint_fifo.ip st_dc_fifo st_dc_fifo_inst 19.4.0
+	load_component tx_dma_fingerprint_fifo
+	set_component_parameter_value BACKPRESSURE_DURING_RESET {0}
+	set_component_parameter_value BITS_PER_SYMBOL {8}
+	set_component_parameter_value CHANNEL_WIDTH {0}
+	set_component_parameter_value ENABLE_EXPLICIT_MAXCHANNEL {0}
+	set_component_parameter_value ERROR_WIDTH {0}
+	set_component_parameter_value EXPLICIT_MAXCHANNEL {0}
+	set_component_parameter_value FIFO_DEPTH {256}
+	set_component_parameter_value PIPELINE_POINTERS {0}
+	set_component_parameter_value RD_SYNC_DEPTH {3}
+	set_component_parameter_value SYMBOLS_PER_BEAT {1}
+	set_component_parameter_value SYNC_RESET {0}
+	set_component_parameter_value USE_IN_FILL_LEVEL {0}
+	set_component_parameter_value USE_OUT_FILL_LEVEL {0}
+	set_component_parameter_value USE_PACKETS {0}
+	set_component_parameter_value USE_SPACE_AVAIL_IF {0}
+	set_component_parameter_value WR_SYNC_DEPTH {3}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation tx_dma_fingerprint_fifo
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface in_clk clock INPUT
+	set_instantiation_interface_parameter_value in_clk clockRate {0}
+	set_instantiation_interface_parameter_value in_clk externallyDriven {false}
+	set_instantiation_interface_parameter_value in_clk ptfSchematicName {}
+	add_instantiation_interface_port in_clk in_clk clk 1 STD_LOGIC Input
+	add_instantiation_interface in_clk_reset reset INPUT
+	set_instantiation_interface_parameter_value in_clk_reset associatedClock {in_clk}
+	set_instantiation_interface_parameter_value in_clk_reset synchronousEdges {DEASSERT}
+	add_instantiation_interface_port in_clk_reset in_reset_n reset_n 1 STD_LOGIC Input
+	add_instantiation_interface out_clk clock INPUT
+	set_instantiation_interface_parameter_value out_clk clockRate {0}
+	set_instantiation_interface_parameter_value out_clk externallyDriven {false}
+	set_instantiation_interface_parameter_value out_clk ptfSchematicName {}
+	add_instantiation_interface_port out_clk out_clk clk 1 STD_LOGIC Input
+	add_instantiation_interface out_clk_reset reset INPUT
+	set_instantiation_interface_parameter_value out_clk_reset associatedClock {out_clk}
+	set_instantiation_interface_parameter_value out_clk_reset synchronousEdges {DEASSERT}
+	add_instantiation_interface_port out_clk_reset out_reset_n reset_n 1 STD_LOGIC Input
+	add_instantiation_interface in avalon_streaming INPUT
+	set_instantiation_interface_parameter_value in associatedClock {in_clk}
+	set_instantiation_interface_parameter_value in associatedReset {in_clk_reset}
+	set_instantiation_interface_parameter_value in beatsPerCycle {1}
+	set_instantiation_interface_parameter_value in dataBitsPerSymbol {8}
+	set_instantiation_interface_parameter_value in emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value in errorDescriptor {}
+	set_instantiation_interface_parameter_value in firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value in highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value in maxChannel {0}
+	set_instantiation_interface_parameter_value in packetDescription {}
+	set_instantiation_interface_parameter_value in prSafe {false}
+	set_instantiation_interface_parameter_value in readyAllowance {0}
+	set_instantiation_interface_parameter_value in readyLatency {0}
+	set_instantiation_interface_parameter_value in symbolsPerBeat {1}
+	add_instantiation_interface_port in in_data data 8 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port in in_valid valid 1 STD_LOGIC Input
+	add_instantiation_interface_port in in_ready ready 1 STD_LOGIC Output
+	add_instantiation_interface out avalon_streaming OUTPUT
+	set_instantiation_interface_parameter_value out associatedClock {out_clk}
+	set_instantiation_interface_parameter_value out associatedReset {out_clk_reset}
+	set_instantiation_interface_parameter_value out beatsPerCycle {1}
+	set_instantiation_interface_parameter_value out dataBitsPerSymbol {8}
+	set_instantiation_interface_parameter_value out emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value out errorDescriptor {}
+	set_instantiation_interface_parameter_value out firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value out highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value out maxChannel {0}
+	set_instantiation_interface_parameter_value out packetDescription {}
+	set_instantiation_interface_parameter_value out prSafe {false}
+	set_instantiation_interface_parameter_value out readyAllowance {0}
+	set_instantiation_interface_parameter_value out readyLatency {0}
+	set_instantiation_interface_parameter_value out symbolsPerBeat {1}
+	add_instantiation_interface_port out out_data data 8 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port out out_valid valid 1 STD_LOGIC Output
+	add_instantiation_interface_port out out_ready ready 1 STD_LOGIC Input
+	save_instantiation
+	add_component tx_dma_ftile_clock ip/subsys_ftile_tx_dma/tx_dma_ftile_clock.ip altera_clock_bridge altera_clock_bridge_inst 19.2.0
+	load_component tx_dma_ftile_clock
+	set_component_parameter_value EXPLICIT_CLOCK_RATE {402832031.0}
+	set_component_parameter_value NUM_CLOCK_OUTPUTS {1}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation tx_dma_ftile_clock
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface in_clk clock INPUT
+	set_instantiation_interface_parameter_value in_clk clockRate {0}
+	set_instantiation_interface_parameter_value in_clk externallyDriven {false}
+	set_instantiation_interface_parameter_value in_clk ptfSchematicName {}
+	add_instantiation_interface_port in_clk in_clk clk 1 STD_LOGIC Input
+	add_instantiation_interface out_clk clock OUTPUT
+	set_instantiation_interface_parameter_value out_clk associatedDirectClock {in_clk}
+	set_instantiation_interface_parameter_value out_clk clockRate {402832031}
+	set_instantiation_interface_parameter_value out_clk clockRateKnown {true}
+	set_instantiation_interface_parameter_value out_clk externallyDriven {false}
+	set_instantiation_interface_parameter_value out_clk ptfSchematicName {}
+	set_instantiation_interface_sysinfo_parameter_value out_clk clock_rate {402832031}
+	add_instantiation_interface_port out_clk out_clk clk 1 STD_LOGIC Output
+	save_instantiation
+	add_component tx_dma_prefetcher ip/subsys_ftile_tx_dma/tx_dma_prefetcher.ip altera_msgdma_prefetcher altera_msgdma_prefetcher_inst 19.3.0
+	load_component tx_dma_prefetcher
+	set_component_parameter_value DATA_WIDTH {128}
+	set_component_parameter_value ENABLE_READ_BURST {1}
+	set_component_parameter_value ENHANCED_FEATURES {1}
+	set_component_parameter_value FIX_ADDRESS_WIDTH {34}
+	set_component_parameter_value GUI_DESCRIPTOR_FIFO_DEPTH {128}
+	set_component_parameter_value GUI_MAX_READ_BURST_COUNT {4}
+	set_component_parameter_value GUI_TIMESTAMP_WRITEBACK {1}
+	set_component_parameter_value USE_FIX_ADDRESS_WIDTH {1}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation tx_dma_prefetcher
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface Clock clock INPUT
+	set_instantiation_interface_parameter_value Clock clockRate {0}
+	set_instantiation_interface_parameter_value Clock externallyDriven {false}
+	set_instantiation_interface_parameter_value Clock ptfSchematicName {}
+	add_instantiation_interface_port Clock clk clk 1 STD_LOGIC Input
+	add_instantiation_interface Clock_reset reset INPUT
+	set_instantiation_interface_parameter_value Clock_reset associatedClock {Clock}
+	set_instantiation_interface_parameter_value Clock_reset synchronousEdges {BOTH}
+	add_instantiation_interface_port Clock_reset reset reset 1 STD_LOGIC Input
+	add_instantiation_interface Descriptor_Read_Master avalon OUTPUT
+	set_instantiation_interface_parameter_value Descriptor_Read_Master adaptsTo {}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master addressGroup {0}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master addressUnits {SYMBOLS}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master alwaysBurstMaxBurst {false}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master associatedClock {Clock}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master associatedReset {Clock_reset}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master bitsPerSymbol {8}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master burstOnBurstBoundariesOnly {false}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master burstcountUnits {WORDS}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master constantBurstBehavior {false}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master dBSBigEndian {false}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master doStreamReads {false}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master doStreamWrites {false}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master holdTime {0}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master interleaveBursts {false}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master isAsynchronous {false}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master isBigEndian {false}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master isReadable {false}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master isWriteable {false}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master linewrapBursts {false}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master maxAddressWidth {32}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master maximumPendingReadTransactions {0}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master maximumPendingWriteTransactions {0}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master minimumReadLatency {1}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master minimumResponseLatency {1}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master prSafe {false}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master readLatency {0}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master readWaitTime {1}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master registerIncomingSignals {false}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master registerOutgoingSignals {false}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master setupTime {0}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master timingUnits {Cycles}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master waitrequestAllowance {0}
+	set_instantiation_interface_parameter_value Descriptor_Read_Master writeWaitTime {0}
+	add_instantiation_interface_port Descriptor_Read_Master mm_read_address address 34 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port Descriptor_Read_Master mm_read_read read 1 STD_LOGIC Output
+	add_instantiation_interface_port Descriptor_Read_Master mm_read_readdata readdata 128 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port Descriptor_Read_Master mm_read_waitrequest waitrequest 1 STD_LOGIC Input
+	add_instantiation_interface_port Descriptor_Read_Master mm_read_readdatavalid readdatavalid 1 STD_LOGIC Input
+	add_instantiation_interface_port Descriptor_Read_Master mm_read_burstcount burstcount 3 STD_LOGIC_VECTOR Output
+	add_instantiation_interface Descriptor_Write_Master avalon OUTPUT
+	set_instantiation_interface_parameter_value Descriptor_Write_Master adaptsTo {}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master addressGroup {0}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master addressUnits {SYMBOLS}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master alwaysBurstMaxBurst {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master associatedClock {Clock}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master associatedReset {Clock_reset}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master bitsPerSymbol {8}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master burstOnBurstBoundariesOnly {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master burstcountUnits {WORDS}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master constantBurstBehavior {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master dBSBigEndian {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master doStreamReads {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master doStreamWrites {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master holdTime {0}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master interleaveBursts {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master isAsynchronous {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master isBigEndian {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master isReadable {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master isWriteable {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master linewrapBursts {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master maxAddressWidth {32}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master maximumPendingReadTransactions {0}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master maximumPendingWriteTransactions {3}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master minimumReadLatency {1}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master minimumResponseLatency {1}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master prSafe {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master readLatency {0}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master readWaitTime {1}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master registerIncomingSignals {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master registerOutgoingSignals {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master setupTime {0}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master timingUnits {Cycles}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master waitrequestAllowance {0}
+	set_instantiation_interface_parameter_value Descriptor_Write_Master writeWaitTime {0}
+	add_instantiation_interface_port Descriptor_Write_Master mm_write_address address 34 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port Descriptor_Write_Master mm_write_write write 1 STD_LOGIC Output
+	add_instantiation_interface_port Descriptor_Write_Master mm_write_byteenable byteenable 16 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port Descriptor_Write_Master mm_write_writedata writedata 128 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port Descriptor_Write_Master mm_write_waitrequest waitrequest 1 STD_LOGIC Input
+	add_instantiation_interface_port Descriptor_Write_Master mm_write_response response 2 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port Descriptor_Write_Master mm_write_writeresponsevalid writeresponsevalid 1 STD_LOGIC Input
+	add_instantiation_interface Descriptor_Write_Dispatcher_Source avalon_streaming OUTPUT
+	set_instantiation_interface_parameter_value Descriptor_Write_Dispatcher_Source associatedClock {Clock}
+	set_instantiation_interface_parameter_value Descriptor_Write_Dispatcher_Source associatedReset {Clock_reset}
+	set_instantiation_interface_parameter_value Descriptor_Write_Dispatcher_Source beatsPerCycle {1}
+	set_instantiation_interface_parameter_value Descriptor_Write_Dispatcher_Source dataBitsPerSymbol {256}
+	set_instantiation_interface_parameter_value Descriptor_Write_Dispatcher_Source emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Dispatcher_Source errorDescriptor {}
+	set_instantiation_interface_parameter_value Descriptor_Write_Dispatcher_Source firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value Descriptor_Write_Dispatcher_Source highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Dispatcher_Source maxChannel {0}
+	set_instantiation_interface_parameter_value Descriptor_Write_Dispatcher_Source packetDescription {}
+	set_instantiation_interface_parameter_value Descriptor_Write_Dispatcher_Source prSafe {false}
+	set_instantiation_interface_parameter_value Descriptor_Write_Dispatcher_Source readyAllowance {0}
+	set_instantiation_interface_parameter_value Descriptor_Write_Dispatcher_Source readyLatency {0}
+	set_instantiation_interface_parameter_value Descriptor_Write_Dispatcher_Source symbolsPerBeat {1}
+	add_instantiation_interface_port Descriptor_Write_Dispatcher_Source st_src_descr_data data 256 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port Descriptor_Write_Dispatcher_Source st_src_descr_valid valid 1 STD_LOGIC Output
+	add_instantiation_interface_port Descriptor_Write_Dispatcher_Source st_src_descr_ready ready 1 STD_LOGIC Input
+	add_instantiation_interface Response_Sink avalon_streaming INPUT
+	set_instantiation_interface_parameter_value Response_Sink associatedClock {Clock}
+	set_instantiation_interface_parameter_value Response_Sink associatedReset {Clock_reset}
+	set_instantiation_interface_parameter_value Response_Sink beatsPerCycle {1}
+	set_instantiation_interface_parameter_value Response_Sink dataBitsPerSymbol {256}
+	set_instantiation_interface_parameter_value Response_Sink emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value Response_Sink errorDescriptor {}
+	set_instantiation_interface_parameter_value Response_Sink firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value Response_Sink highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value Response_Sink maxChannel {0}
+	set_instantiation_interface_parameter_value Response_Sink packetDescription {}
+	set_instantiation_interface_parameter_value Response_Sink prSafe {false}
+	set_instantiation_interface_parameter_value Response_Sink readyAllowance {0}
+	set_instantiation_interface_parameter_value Response_Sink readyLatency {0}
+	set_instantiation_interface_parameter_value Response_Sink symbolsPerBeat {1}
+	add_instantiation_interface_port Response_Sink st_snk_data data 256 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port Response_Sink st_snk_valid valid 1 STD_LOGIC Input
+	add_instantiation_interface_port Response_Sink st_snk_ready ready 1 STD_LOGIC Output
+	add_instantiation_interface Csr avalon INPUT
+	set_instantiation_interface_parameter_value Csr addressAlignment {DYNAMIC}
+	set_instantiation_interface_parameter_value Csr addressGroup {0}
+	set_instantiation_interface_parameter_value Csr addressSpan {32}
+	set_instantiation_interface_parameter_value Csr addressUnits {WORDS}
+	set_instantiation_interface_parameter_value Csr alwaysBurstMaxBurst {false}
+	set_instantiation_interface_parameter_value Csr associatedClock {Clock}
+	set_instantiation_interface_parameter_value Csr associatedReset {Clock_reset}
+	set_instantiation_interface_parameter_value Csr bitsPerSymbol {8}
+	set_instantiation_interface_parameter_value Csr bridgedAddressOffset {0}
+	set_instantiation_interface_parameter_value Csr bridgesToMaster {}
+	set_instantiation_interface_parameter_value Csr burstOnBurstBoundariesOnly {false}
+	set_instantiation_interface_parameter_value Csr burstcountUnits {WORDS}
+	set_instantiation_interface_parameter_value Csr constantBurstBehavior {false}
+	set_instantiation_interface_parameter_value Csr explicitAddressSpan {0}
+	set_instantiation_interface_parameter_value Csr holdTime {0}
+	set_instantiation_interface_parameter_value Csr interleaveBursts {false}
+	set_instantiation_interface_parameter_value Csr isBigEndian {false}
+	set_instantiation_interface_parameter_value Csr isFlash {false}
+	set_instantiation_interface_parameter_value Csr isMemoryDevice {false}
+	set_instantiation_interface_parameter_value Csr isNonVolatileStorage {false}
+	set_instantiation_interface_parameter_value Csr linewrapBursts {false}
+	set_instantiation_interface_parameter_value Csr maximumPendingReadTransactions {0}
+	set_instantiation_interface_parameter_value Csr maximumPendingWriteTransactions {0}
+	set_instantiation_interface_parameter_value Csr minimumReadLatency {1}
+	set_instantiation_interface_parameter_value Csr minimumResponseLatency {1}
+	set_instantiation_interface_parameter_value Csr minimumUninterruptedRunLength {1}
+	set_instantiation_interface_parameter_value Csr prSafe {false}
+	set_instantiation_interface_parameter_value Csr printableDevice {false}
+	set_instantiation_interface_parameter_value Csr readLatency {1}
+	set_instantiation_interface_parameter_value Csr readWaitStates {0}
+	set_instantiation_interface_parameter_value Csr readWaitTime {0}
+	set_instantiation_interface_parameter_value Csr registerIncomingSignals {false}
+	set_instantiation_interface_parameter_value Csr registerOutgoingSignals {false}
+	set_instantiation_interface_parameter_value Csr setupTime {0}
+	set_instantiation_interface_parameter_value Csr timingUnits {Cycles}
+	set_instantiation_interface_parameter_value Csr transparentBridge {false}
+	set_instantiation_interface_parameter_value Csr waitrequestAllowance {0}
+	set_instantiation_interface_parameter_value Csr wellBehavedWaitrequest {false}
+	set_instantiation_interface_parameter_value Csr writeLatency {0}
+	set_instantiation_interface_parameter_value Csr writeWaitStates {0}
+	set_instantiation_interface_parameter_value Csr writeWaitTime {0}
+	set_instantiation_interface_assignment_value Csr embeddedsw.configuration.isFlash {0}
+	set_instantiation_interface_assignment_value Csr embeddedsw.configuration.isMemoryDevice {0}
+	set_instantiation_interface_assignment_value Csr embeddedsw.configuration.isNonVolatileStorage {0}
+	set_instantiation_interface_assignment_value Csr embeddedsw.configuration.isPrintableDevice {0}
+	set_instantiation_interface_sysinfo_parameter_value Csr address_map {<address-map><slave name='Csr' start='0x0' end='0x20' datawidth='32' /></address-map>}
+	set_instantiation_interface_sysinfo_parameter_value Csr address_width {5}
+	set_instantiation_interface_sysinfo_parameter_value Csr max_slave_data_width {32}
+	add_instantiation_interface_port Csr mm_csr_address address 3 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port Csr mm_csr_read read 1 STD_LOGIC Input
+	add_instantiation_interface_port Csr mm_csr_write write 1 STD_LOGIC Input
+	add_instantiation_interface_port Csr mm_csr_writedata writedata 32 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port Csr mm_csr_readdata readdata 32 STD_LOGIC_VECTOR Output
+	add_instantiation_interface Csr_Irq interrupt INPUT
+	set_instantiation_interface_parameter_value Csr_Irq associatedAddressablePoint {tx_dma_prefetcher.Csr}
+	set_instantiation_interface_parameter_value Csr_Irq associatedClock {Clock}
+	set_instantiation_interface_parameter_value Csr_Irq associatedReset {Clock_reset}
+	set_instantiation_interface_parameter_value Csr_Irq bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value Csr_Irq bridgesToReceiver {}
+	set_instantiation_interface_parameter_value Csr_Irq irqScheme {NONE}
+	add_instantiation_interface_port Csr_Irq csr_irq irq 1 STD_LOGIC Output
+	save_instantiation
+	add_component tx_dma_read_master ip/subsys_ftile_tx_dma/tx_dma_read_master.ip dma_read_master dma_read_master_inst 19.2.0
+	load_component tx_dma_read_master
+	set_component_parameter_value BURST_ENABLE {1}
+	set_component_parameter_value CHANNEL_ENABLE {0}
+	set_component_parameter_value CHANNEL_WIDTH {8}
+	set_component_parameter_value DATA_WIDTH {128}
+	set_component_parameter_value ERROR_ENABLE {1}
+	set_component_parameter_value ERROR_WIDTH {1}
+	set_component_parameter_value FIFO_DEPTH {256}
+	set_component_parameter_value FIFO_SPEED_OPTIMIZATION {1}
+	set_component_parameter_value FIX_ADDRESS_WIDTH {34}
+	set_component_parameter_value GUI_BURST_WRAPPING_SUPPORT {1}
+	set_component_parameter_value GUI_MAX_BURST_COUNT {16}
+	set_component_parameter_value GUI_PROGRAMMABLE_BURST_ENABLE {0}
+	set_component_parameter_value GUI_STRIDE_WIDTH {1}
+	set_component_parameter_value LENGTH_WIDTH {14}
+	set_component_parameter_value PACKET_ENABLE {1}
+	set_component_parameter_value STRIDE_ENABLE {0}
+	set_component_parameter_value TRANSFER_TYPE {Unaligned Accesses}
+	set_component_parameter_value USE_FIX_ADDRESS_WIDTH {1}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation tx_dma_read_master
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface Clock clock INPUT
+	set_instantiation_interface_parameter_value Clock clockRate {0}
+	set_instantiation_interface_parameter_value Clock externallyDriven {false}
+	set_instantiation_interface_parameter_value Clock ptfSchematicName {}
+	add_instantiation_interface_port Clock clk clk 1 STD_LOGIC Input
+	add_instantiation_interface Clock_reset reset INPUT
+	set_instantiation_interface_parameter_value Clock_reset associatedClock {Clock}
+	set_instantiation_interface_parameter_value Clock_reset synchronousEdges {BOTH}
+	add_instantiation_interface_port Clock_reset reset reset 1 STD_LOGIC Input
+	add_instantiation_interface Data_Read_Master avalon OUTPUT
+	set_instantiation_interface_parameter_value Data_Read_Master adaptsTo {}
+	set_instantiation_interface_parameter_value Data_Read_Master addressGroup {0}
+	set_instantiation_interface_parameter_value Data_Read_Master addressUnits {SYMBOLS}
+	set_instantiation_interface_parameter_value Data_Read_Master alwaysBurstMaxBurst {false}
+	set_instantiation_interface_parameter_value Data_Read_Master associatedClock {Clock}
+	set_instantiation_interface_parameter_value Data_Read_Master associatedReset {Clock_reset}
+	set_instantiation_interface_parameter_value Data_Read_Master bitsPerSymbol {8}
+	set_instantiation_interface_parameter_value Data_Read_Master burstOnBurstBoundariesOnly {true}
+	set_instantiation_interface_parameter_value Data_Read_Master burstcountUnits {WORDS}
+	set_instantiation_interface_parameter_value Data_Read_Master constantBurstBehavior {false}
+	set_instantiation_interface_parameter_value Data_Read_Master dBSBigEndian {false}
+	set_instantiation_interface_parameter_value Data_Read_Master doStreamReads {false}
+	set_instantiation_interface_parameter_value Data_Read_Master doStreamWrites {false}
+	set_instantiation_interface_parameter_value Data_Read_Master holdTime {0}
+	set_instantiation_interface_parameter_value Data_Read_Master interleaveBursts {false}
+	set_instantiation_interface_parameter_value Data_Read_Master isAsynchronous {false}
+	set_instantiation_interface_parameter_value Data_Read_Master isBigEndian {false}
+	set_instantiation_interface_parameter_value Data_Read_Master isReadable {false}
+	set_instantiation_interface_parameter_value Data_Read_Master isWriteable {false}
+	set_instantiation_interface_parameter_value Data_Read_Master linewrapBursts {false}
+	set_instantiation_interface_parameter_value Data_Read_Master maxAddressWidth {32}
+	set_instantiation_interface_parameter_value Data_Read_Master maximumPendingReadTransactions {0}
+	set_instantiation_interface_parameter_value Data_Read_Master maximumPendingWriteTransactions {0}
+	set_instantiation_interface_parameter_value Data_Read_Master minimumReadLatency {1}
+	set_instantiation_interface_parameter_value Data_Read_Master minimumResponseLatency {1}
+	set_instantiation_interface_parameter_value Data_Read_Master prSafe {false}
+	set_instantiation_interface_parameter_value Data_Read_Master readLatency {0}
+	set_instantiation_interface_parameter_value Data_Read_Master readWaitTime {1}
+	set_instantiation_interface_parameter_value Data_Read_Master registerIncomingSignals {false}
+	set_instantiation_interface_parameter_value Data_Read_Master registerOutgoingSignals {false}
+	set_instantiation_interface_parameter_value Data_Read_Master setupTime {0}
+	set_instantiation_interface_parameter_value Data_Read_Master timingUnits {Cycles}
+	set_instantiation_interface_parameter_value Data_Read_Master waitrequestAllowance {0}
+	set_instantiation_interface_parameter_value Data_Read_Master writeWaitTime {0}
+	add_instantiation_interface_port Data_Read_Master master_address address 34 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port Data_Read_Master master_read read 1 STD_LOGIC Output
+	add_instantiation_interface_port Data_Read_Master master_byteenable byteenable 16 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port Data_Read_Master master_readdata readdata 128 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port Data_Read_Master master_waitrequest waitrequest 1 STD_LOGIC Input
+	add_instantiation_interface_port Data_Read_Master master_readdatavalid readdatavalid 1 STD_LOGIC Input
+	add_instantiation_interface_port Data_Read_Master master_burstcount burstcount 5 STD_LOGIC_VECTOR Output
+	add_instantiation_interface Data_Source avalon_streaming OUTPUT
+	set_instantiation_interface_parameter_value Data_Source associatedClock {Clock}
+	set_instantiation_interface_parameter_value Data_Source associatedReset {Clock_reset}
+	set_instantiation_interface_parameter_value Data_Source beatsPerCycle {1}
+	set_instantiation_interface_parameter_value Data_Source dataBitsPerSymbol {8}
+	set_instantiation_interface_parameter_value Data_Source emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value Data_Source errorDescriptor {}
+	set_instantiation_interface_parameter_value Data_Source firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value Data_Source highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value Data_Source maxChannel {0}
+	set_instantiation_interface_parameter_value Data_Source packetDescription {}
+	set_instantiation_interface_parameter_value Data_Source prSafe {false}
+	set_instantiation_interface_parameter_value Data_Source readyAllowance {0}
+	set_instantiation_interface_parameter_value Data_Source readyLatency {0}
+	set_instantiation_interface_parameter_value Data_Source symbolsPerBeat {16}
+	add_instantiation_interface_port Data_Source src_data data 128 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port Data_Source src_valid valid 1 STD_LOGIC Output
+	add_instantiation_interface_port Data_Source src_ready ready 1 STD_LOGIC Input
+	add_instantiation_interface_port Data_Source src_sop startofpacket 1 STD_LOGIC Output
+	add_instantiation_interface_port Data_Source src_eop endofpacket 1 STD_LOGIC Output
+	add_instantiation_interface_port Data_Source src_empty empty 4 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port Data_Source src_error error 1 STD_LOGIC Output
+	add_instantiation_interface Command_Sink avalon_streaming INPUT
+	set_instantiation_interface_parameter_value Command_Sink associatedClock {Clock}
+	set_instantiation_interface_parameter_value Command_Sink associatedReset {Clock_reset}
+	set_instantiation_interface_parameter_value Command_Sink beatsPerCycle {1}
+	set_instantiation_interface_parameter_value Command_Sink dataBitsPerSymbol {256}
+	set_instantiation_interface_parameter_value Command_Sink emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value Command_Sink errorDescriptor {}
+	set_instantiation_interface_parameter_value Command_Sink firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value Command_Sink highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value Command_Sink maxChannel {0}
+	set_instantiation_interface_parameter_value Command_Sink packetDescription {}
+	set_instantiation_interface_parameter_value Command_Sink prSafe {false}
+	set_instantiation_interface_parameter_value Command_Sink readyAllowance {0}
+	set_instantiation_interface_parameter_value Command_Sink readyLatency {0}
+	set_instantiation_interface_parameter_value Command_Sink symbolsPerBeat {1}
+	add_instantiation_interface_port Command_Sink snk_command_data data 256 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port Command_Sink snk_command_valid valid 1 STD_LOGIC Input
+	add_instantiation_interface_port Command_Sink snk_command_ready ready 1 STD_LOGIC Output
+	add_instantiation_interface Response_Source avalon_streaming OUTPUT
+	set_instantiation_interface_parameter_value Response_Source associatedClock {Clock}
+	set_instantiation_interface_parameter_value Response_Source associatedReset {Clock_reset}
+	set_instantiation_interface_parameter_value Response_Source beatsPerCycle {1}
+	set_instantiation_interface_parameter_value Response_Source dataBitsPerSymbol {256}
+	set_instantiation_interface_parameter_value Response_Source emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value Response_Source errorDescriptor {}
+	set_instantiation_interface_parameter_value Response_Source firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value Response_Source highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value Response_Source maxChannel {0}
+	set_instantiation_interface_parameter_value Response_Source packetDescription {}
+	set_instantiation_interface_parameter_value Response_Source prSafe {false}
+	set_instantiation_interface_parameter_value Response_Source readyAllowance {0}
+	set_instantiation_interface_parameter_value Response_Source readyLatency {0}
+	set_instantiation_interface_parameter_value Response_Source symbolsPerBeat {1}
+	add_instantiation_interface_port Response_Source src_response_data data 256 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port Response_Source src_response_valid valid 1 STD_LOGIC Output
+	add_instantiation_interface_port Response_Source src_response_ready ready 1 STD_LOGIC Input
+	save_instantiation
+	add_component tx_dma_reset ip/subsys_ftile_tx_dma/tx_dma_reset.ip altera_reset_bridge altera_reset_bridge_inst 19.2.0
+	load_component tx_dma_reset
+	set_component_parameter_value ACTIVE_LOW_RESET {1}
+	set_component_parameter_value NUM_RESET_OUTPUTS {1}
+	set_component_parameter_value SYNCHRONOUS_EDGES {both}
+	set_component_parameter_value SYNC_RESET {0}
+	set_component_parameter_value USE_RESET_REQUEST {0}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation tx_dma_reset
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface clk clock INPUT
+	set_instantiation_interface_parameter_value clk clockRate {0}
+	set_instantiation_interface_parameter_value clk externallyDriven {false}
+	set_instantiation_interface_parameter_value clk ptfSchematicName {}
+	add_instantiation_interface_port clk clk clk 1 STD_LOGIC Input
+	add_instantiation_interface in_reset reset INPUT
+	set_instantiation_interface_parameter_value in_reset associatedClock {clk}
+	set_instantiation_interface_parameter_value in_reset synchronousEdges {BOTH}
+	add_instantiation_interface_port in_reset in_reset_n reset_n 1 STD_LOGIC Input
+	add_instantiation_interface out_reset reset OUTPUT
+	set_instantiation_interface_parameter_value out_reset associatedClock {clk}
+	set_instantiation_interface_parameter_value out_reset associatedDirectReset {in_reset}
+	set_instantiation_interface_parameter_value out_reset associatedResetSinks {in_reset}
+	set_instantiation_interface_parameter_value out_reset synchronousEdges {BOTH}
+	add_instantiation_interface_port out_reset out_reset_n reset_n 1 STD_LOGIC Output
+	save_instantiation
+	add_component tx_dma_timestamp_adapter ip/subsys_ftile_tx_dma/tx_dma_timestamp_adapter.ip eth_tx_timestamp_adapter eth_tx_timestamp_adapter_inst 1.0.0
+	load_component tx_dma_timestamp_adapter
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation tx_dma_timestamp_adapter
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface reset reset INPUT
+	set_instantiation_interface_parameter_value reset associatedClock {clock}
+	set_instantiation_interface_parameter_value reset synchronousEdges {DEASSERT}
+	add_instantiation_interface_port reset reset reset 1 STD_LOGIC Input
+	add_instantiation_interface aso_timestamp_fp avalon_streaming OUTPUT
+	set_instantiation_interface_parameter_value aso_timestamp_fp associatedClock {clock}
+	set_instantiation_interface_parameter_value aso_timestamp_fp associatedReset {reset}
+	set_instantiation_interface_parameter_value aso_timestamp_fp beatsPerCycle {1}
+	set_instantiation_interface_parameter_value aso_timestamp_fp dataBitsPerSymbol {104}
+	set_instantiation_interface_parameter_value aso_timestamp_fp emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value aso_timestamp_fp errorDescriptor {}
+	set_instantiation_interface_parameter_value aso_timestamp_fp firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value aso_timestamp_fp highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value aso_timestamp_fp maxChannel {0}
+	set_instantiation_interface_parameter_value aso_timestamp_fp packetDescription {}
+	set_instantiation_interface_parameter_value aso_timestamp_fp prSafe {false}
+	set_instantiation_interface_parameter_value aso_timestamp_fp readyAllowance {0}
+	set_instantiation_interface_parameter_value aso_timestamp_fp readyLatency {0}
+	set_instantiation_interface_parameter_value aso_timestamp_fp symbolsPerBeat {1}
+	add_instantiation_interface_port aso_timestamp_fp aso_timestamp_fp data 104 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port aso_timestamp_fp aso_timestamp_fp_ready ready 1 STD_LOGIC Input
+	add_instantiation_interface_port aso_timestamp_fp aso_timestamp_fp_valid valid 1 STD_LOGIC Output
+	add_instantiation_interface clock clock INPUT
+	set_instantiation_interface_parameter_value clock clockRate {0}
+	set_instantiation_interface_parameter_value clock externallyDriven {false}
+	set_instantiation_interface_parameter_value clock ptfSchematicName {}
+	add_instantiation_interface_port clock clock clk 1 STD_LOGIC Input
+	add_instantiation_interface timestamp conduit INPUT
+	set_instantiation_interface_parameter_value timestamp associatedClock {}
+	set_instantiation_interface_parameter_value timestamp associatedReset {}
+	set_instantiation_interface_parameter_value timestamp prSafe {false}
+	add_instantiation_interface_port timestamp timestamp_fp_valid valid 1 STD_LOGIC Input
+	add_instantiation_interface_port timestamp timestamp_fp_data data 96 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port timestamp timestamp_fp_fingerprint fingerprint 8 STD_LOGIC_VECTOR Input
+	save_instantiation
+	add_component tx_dma_timestamp_insert ip/subsys_ftile_tx_dma/tx_dma_timestamp_insert.ip altera_msgdma_prefetcher_ts_insert altera_msgdma_prefetcher_ts_insert_inst 1.0.0
+	load_component tx_dma_timestamp_insert
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation tx_dma_timestamp_insert
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface clock clock INPUT
+	set_instantiation_interface_parameter_value clock clockRate {0}
+	set_instantiation_interface_parameter_value clock externallyDriven {false}
+	set_instantiation_interface_parameter_value clock ptfSchematicName {}
+	add_instantiation_interface_port clock clk clk 1 STD_LOGIC Input
+	add_instantiation_interface reset reset INPUT
+	set_instantiation_interface_parameter_value reset associatedClock {clock}
+	set_instantiation_interface_parameter_value reset synchronousEdges {DEASSERT}
+	add_instantiation_interface_port reset reset reset 1 STD_LOGIC Input
+	add_instantiation_interface snk_response avalon_streaming INPUT
+	set_instantiation_interface_parameter_value snk_response associatedClock {clock}
+	set_instantiation_interface_parameter_value snk_response associatedReset {reset}
+	set_instantiation_interface_parameter_value snk_response beatsPerCycle {1}
+	set_instantiation_interface_parameter_value snk_response dataBitsPerSymbol {256}
+	set_instantiation_interface_parameter_value snk_response emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value snk_response errorDescriptor {}
+	set_instantiation_interface_parameter_value snk_response firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value snk_response highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value snk_response maxChannel {0}
+	set_instantiation_interface_parameter_value snk_response packetDescription {}
+	set_instantiation_interface_parameter_value snk_response prSafe {false}
+	set_instantiation_interface_parameter_value snk_response readyAllowance {0}
+	set_instantiation_interface_parameter_value snk_response readyLatency {0}
+	set_instantiation_interface_parameter_value snk_response symbolsPerBeat {1}
+	add_instantiation_interface_port snk_response snk_response_valid valid 1 STD_LOGIC Input
+	add_instantiation_interface_port snk_response snk_response_ready ready 1 STD_LOGIC Output
+	add_instantiation_interface_port snk_response snk_response_data data 256 STD_LOGIC_VECTOR Input
+	add_instantiation_interface snk_timestamp avalon_streaming INPUT
+	set_instantiation_interface_parameter_value snk_timestamp associatedClock {clock}
+	set_instantiation_interface_parameter_value snk_timestamp associatedReset {reset}
+	set_instantiation_interface_parameter_value snk_timestamp beatsPerCycle {1}
+	set_instantiation_interface_parameter_value snk_timestamp dataBitsPerSymbol {96}
+	set_instantiation_interface_parameter_value snk_timestamp emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value snk_timestamp errorDescriptor {}
+	set_instantiation_interface_parameter_value snk_timestamp firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value snk_timestamp highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value snk_timestamp maxChannel {0}
+	set_instantiation_interface_parameter_value snk_timestamp packetDescription {}
+	set_instantiation_interface_parameter_value snk_timestamp prSafe {false}
+	set_instantiation_interface_parameter_value snk_timestamp readyAllowance {0}
+	set_instantiation_interface_parameter_value snk_timestamp readyLatency {0}
+	set_instantiation_interface_parameter_value snk_timestamp symbolsPerBeat {1}
+	add_instantiation_interface_port snk_timestamp snk_timestamp_valid valid 1 STD_LOGIC Input
+	add_instantiation_interface_port snk_timestamp snk_timestamp_ready ready 1 STD_LOGIC Output
+	add_instantiation_interface_port snk_timestamp snk_timestamp data 96 STD_LOGIC_VECTOR Input
+	add_instantiation_interface src_response avalon_streaming OUTPUT
+	set_instantiation_interface_parameter_value src_response associatedClock {clock}
+	set_instantiation_interface_parameter_value src_response associatedReset {reset}
+	set_instantiation_interface_parameter_value src_response beatsPerCycle {1}
+	set_instantiation_interface_parameter_value src_response dataBitsPerSymbol {256}
+	set_instantiation_interface_parameter_value src_response emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value src_response errorDescriptor {}
+	set_instantiation_interface_parameter_value src_response firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value src_response highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value src_response maxChannel {0}
+	set_instantiation_interface_parameter_value src_response packetDescription {}
+	set_instantiation_interface_parameter_value src_response prSafe {false}
+	set_instantiation_interface_parameter_value src_response readyAllowance {0}
+	set_instantiation_interface_parameter_value src_response readyLatency {0}
+	set_instantiation_interface_parameter_value src_response symbolsPerBeat {1}
+	add_instantiation_interface_port src_response src_response_data data 256 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port src_response src_response_ready ready 1 STD_LOGIC Input
+	add_instantiation_interface_port src_response src_response_valid valid 1 STD_LOGIC Output
+	save_instantiation
+	add_component tx_dma_timestamp_req ip/subsys_ftile_tx_dma/tx_dma_timestamp_req.ip eth_tx_dma_timestamp_req eth_tx_dma_timestamp_req_inst 1.0.0
+	load_component tx_dma_timestamp_req
+	set_component_parameter_value BITSPERSYMBOL {8}
+	set_component_parameter_value EMPTY_WIDTH {3}
+	set_component_parameter_value ERROR_WIDTH {1}
+	set_component_parameter_value SYMBOLSPERBEAT {8}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation tx_dma_timestamp_req
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface reset reset INPUT
+	set_instantiation_interface_parameter_value reset associatedClock {clock}
+	set_instantiation_interface_parameter_value reset synchronousEdges {DEASSERT}
+	add_instantiation_interface_port reset reset reset 1 STD_LOGIC Input
+	add_instantiation_interface pktin avalon_streaming INPUT
+	set_instantiation_interface_parameter_value pktin associatedClock {clock}
+	set_instantiation_interface_parameter_value pktin associatedReset {reset}
+	set_instantiation_interface_parameter_value pktin beatsPerCycle {1}
+	set_instantiation_interface_parameter_value pktin dataBitsPerSymbol {8}
+	set_instantiation_interface_parameter_value pktin emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value pktin errorDescriptor {}
+	set_instantiation_interface_parameter_value pktin firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value pktin highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value pktin maxChannel {0}
+	set_instantiation_interface_parameter_value pktin packetDescription {}
+	set_instantiation_interface_parameter_value pktin prSafe {false}
+	set_instantiation_interface_parameter_value pktin readyAllowance {0}
+	set_instantiation_interface_parameter_value pktin readyLatency {0}
+	set_instantiation_interface_parameter_value pktin symbolsPerBeat {1}
+	add_instantiation_interface_port pktin asi_pktin_valid valid 1 STD_LOGIC Input
+	add_instantiation_interface_port pktin asi_pktin_ready ready 1 STD_LOGIC Output
+	add_instantiation_interface_port pktin asi_pktin_data data 64 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port pktin asi_pktin_empty empty 3 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port pktin asi_pktin_error error 1 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port pktin asi_pktin_eop endofpacket 1 STD_LOGIC Input
+	add_instantiation_interface_port pktin asi_pktin_sop startofpacket 1 STD_LOGIC Input
+	add_instantiation_interface pktout avalon_streaming OUTPUT
+	set_instantiation_interface_parameter_value pktout associatedClock {clock}
+	set_instantiation_interface_parameter_value pktout associatedReset {reset}
+	set_instantiation_interface_parameter_value pktout beatsPerCycle {1}
+	set_instantiation_interface_parameter_value pktout dataBitsPerSymbol {8}
+	set_instantiation_interface_parameter_value pktout emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value pktout errorDescriptor {}
+	set_instantiation_interface_parameter_value pktout firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value pktout highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value pktout maxChannel {0}
+	set_instantiation_interface_parameter_value pktout packetDescription {}
+	set_instantiation_interface_parameter_value pktout prSafe {false}
+	set_instantiation_interface_parameter_value pktout readyAllowance {0}
+	set_instantiation_interface_parameter_value pktout readyLatency {0}
+	set_instantiation_interface_parameter_value pktout symbolsPerBeat {1}
+	add_instantiation_interface_port pktout aso_pktout_valid valid 1 STD_LOGIC Output
+	add_instantiation_interface_port pktout aso_pktout_ready ready 1 STD_LOGIC Input
+	add_instantiation_interface_port pktout aso_pktout_data data 64 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port pktout aso_pktout_empty empty 3 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port pktout aso_pktout_error error 1 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port pktout aso_pktout_eop endofpacket 1 STD_LOGIC Output
+	add_instantiation_interface_port pktout aso_pktout_sop startofpacket 1 STD_LOGIC Output
+	add_instantiation_interface clock clock INPUT
+	set_instantiation_interface_parameter_value clock clockRate {0}
+	set_instantiation_interface_parameter_value clock externallyDriven {false}
+	set_instantiation_interface_parameter_value clock ptfSchematicName {}
+	add_instantiation_interface_port clock clock clk 1 STD_LOGIC Input
+	add_instantiation_interface timestamp_request conduit INPUT
+	set_instantiation_interface_parameter_value timestamp_request associatedClock {}
+	set_instantiation_interface_parameter_value timestamp_request associatedReset {}
+	set_instantiation_interface_parameter_value timestamp_request prSafe {false}
+	add_instantiation_interface_port timestamp_request tstamp_req_valid valid 1 STD_LOGIC Output
+	add_instantiation_interface_port timestamp_request tstamp_req_fingerprint fingerprint 8 STD_LOGIC_VECTOR Output
+	add_instantiation_interface fingerprint avalon_streaming OUTPUT
+	set_instantiation_interface_parameter_value fingerprint associatedClock {clock}
+	set_instantiation_interface_parameter_value fingerprint associatedReset {reset}
+	set_instantiation_interface_parameter_value fingerprint beatsPerCycle {1}
+	set_instantiation_interface_parameter_value fingerprint dataBitsPerSymbol {8}
+	set_instantiation_interface_parameter_value fingerprint emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value fingerprint errorDescriptor {}
+	set_instantiation_interface_parameter_value fingerprint firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value fingerprint highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value fingerprint maxChannel {0}
+	set_instantiation_interface_parameter_value fingerprint packetDescription {}
+	set_instantiation_interface_parameter_value fingerprint prSafe {false}
+	set_instantiation_interface_parameter_value fingerprint readyAllowance {0}
+	set_instantiation_interface_parameter_value fingerprint readyLatency {0}
+	set_instantiation_interface_parameter_value fingerprint symbolsPerBeat {1}
+	add_instantiation_interface_port fingerprint aso_fingerprint_valid valid 1 STD_LOGIC Output
+	add_instantiation_interface_port fingerprint aso_fingerprint_ready ready 1 STD_LOGIC Input
+	add_instantiation_interface_port fingerprint aso_fingerprint data 8 STD_LOGIC_VECTOR Output
+	save_instantiation
+	add_component tx_dma_ts_fifo ip/subsys_ftile_tx_dma/tx_dma_ts_fifo.ip st_dc_fifo st_dc_fifo_inst 19.4.0
+	load_component tx_dma_ts_fifo
+	set_component_parameter_value BACKPRESSURE_DURING_RESET {0}
+	set_component_parameter_value BITS_PER_SYMBOL {104}
+	set_component_parameter_value CHANNEL_WIDTH {0}
+	set_component_parameter_value ENABLE_EXPLICIT_MAXCHANNEL {0}
+	set_component_parameter_value ERROR_WIDTH {0}
+	set_component_parameter_value EXPLICIT_MAXCHANNEL {0}
+	set_component_parameter_value FIFO_DEPTH {256}
+	set_component_parameter_value PIPELINE_POINTERS {0}
+	set_component_parameter_value RD_SYNC_DEPTH {3}
+	set_component_parameter_value SYMBOLS_PER_BEAT {1}
+	set_component_parameter_value SYNC_RESET {0}
+	set_component_parameter_value USE_IN_FILL_LEVEL {0}
+	set_component_parameter_value USE_OUT_FILL_LEVEL {0}
+	set_component_parameter_value USE_PACKETS {0}
+	set_component_parameter_value USE_SPACE_AVAIL_IF {0}
+	set_component_parameter_value WR_SYNC_DEPTH {3}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation tx_dma_ts_fifo
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface in_clk clock INPUT
+	set_instantiation_interface_parameter_value in_clk clockRate {0}
+	set_instantiation_interface_parameter_value in_clk externallyDriven {false}
+	set_instantiation_interface_parameter_value in_clk ptfSchematicName {}
+	add_instantiation_interface_port in_clk in_clk clk 1 STD_LOGIC Input
+	add_instantiation_interface in_clk_reset reset INPUT
+	set_instantiation_interface_parameter_value in_clk_reset associatedClock {in_clk}
+	set_instantiation_interface_parameter_value in_clk_reset synchronousEdges {DEASSERT}
+	add_instantiation_interface_port in_clk_reset in_reset_n reset_n 1 STD_LOGIC Input
+	add_instantiation_interface out_clk clock INPUT
+	set_instantiation_interface_parameter_value out_clk clockRate {0}
+	set_instantiation_interface_parameter_value out_clk externallyDriven {false}
+	set_instantiation_interface_parameter_value out_clk ptfSchematicName {}
+	add_instantiation_interface_port out_clk out_clk clk 1 STD_LOGIC Input
+	add_instantiation_interface out_clk_reset reset INPUT
+	set_instantiation_interface_parameter_value out_clk_reset associatedClock {out_clk}
+	set_instantiation_interface_parameter_value out_clk_reset synchronousEdges {DEASSERT}
+	add_instantiation_interface_port out_clk_reset out_reset_n reset_n 1 STD_LOGIC Input
+	add_instantiation_interface in avalon_streaming INPUT
+	set_instantiation_interface_parameter_value in associatedClock {in_clk}
+	set_instantiation_interface_parameter_value in associatedReset {in_clk_reset}
+	set_instantiation_interface_parameter_value in beatsPerCycle {1}
+	set_instantiation_interface_parameter_value in dataBitsPerSymbol {104}
+	set_instantiation_interface_parameter_value in emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value in errorDescriptor {}
+	set_instantiation_interface_parameter_value in firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value in highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value in maxChannel {0}
+	set_instantiation_interface_parameter_value in packetDescription {}
+	set_instantiation_interface_parameter_value in prSafe {false}
+	set_instantiation_interface_parameter_value in readyAllowance {0}
+	set_instantiation_interface_parameter_value in readyLatency {0}
+	set_instantiation_interface_parameter_value in symbolsPerBeat {1}
+	add_instantiation_interface_port in in_data data 104 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port in in_valid valid 1 STD_LOGIC Input
+	add_instantiation_interface_port in in_ready ready 1 STD_LOGIC Output
+	add_instantiation_interface out avalon_streaming OUTPUT
+	set_instantiation_interface_parameter_value out associatedClock {out_clk}
+	set_instantiation_interface_parameter_value out associatedReset {out_clk_reset}
+	set_instantiation_interface_parameter_value out beatsPerCycle {1}
+	set_instantiation_interface_parameter_value out dataBitsPerSymbol {104}
+	set_instantiation_interface_parameter_value out emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value out errorDescriptor {}
+	set_instantiation_interface_parameter_value out firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value out highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value out maxChannel {0}
+	set_instantiation_interface_parameter_value out packetDescription {}
+	set_instantiation_interface_parameter_value out prSafe {false}
+	set_instantiation_interface_parameter_value out readyAllowance {0}
+	set_instantiation_interface_parameter_value out readyLatency {0}
+	set_instantiation_interface_parameter_value out symbolsPerBeat {1}
+	add_instantiation_interface_port out out_data data 104 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port out out_valid valid 1 STD_LOGIC Output
+	add_instantiation_interface_port out out_ready ready 1 STD_LOGIC Input
+	save_instantiation
+	add_component tx_dma_tx_dc_fifo ip/subsys_ftile_tx_dma/tx_dma_tx_dc_fifo.ip st_dc_fifo st_dc_fifo_inst 19.4.0
+	load_component tx_dma_tx_dc_fifo
+	set_component_parameter_value BACKPRESSURE_DURING_RESET {1}
+	set_component_parameter_value BITS_PER_SYMBOL {8}
+	set_component_parameter_value CHANNEL_WIDTH {0}
+	set_component_parameter_value ENABLE_EXPLICIT_MAXCHANNEL {0}
+	set_component_parameter_value ERROR_WIDTH {1}
+	set_component_parameter_value EXPLICIT_MAXCHANNEL {0}
+	set_component_parameter_value FIFO_DEPTH {32}
+	set_component_parameter_value PIPELINE_POINTERS {0}
+	set_component_parameter_value RD_SYNC_DEPTH {3}
+	set_component_parameter_value SYMBOLS_PER_BEAT {16}
+	set_component_parameter_value SYNC_RESET {0}
+	set_component_parameter_value USE_IN_FILL_LEVEL {0}
+	set_component_parameter_value USE_OUT_FILL_LEVEL {0}
+	set_component_parameter_value USE_PACKETS {1}
+	set_component_parameter_value USE_SPACE_AVAIL_IF {0}
+	set_component_parameter_value WR_SYNC_DEPTH {3}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation tx_dma_tx_dc_fifo
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface in_clk clock INPUT
+	set_instantiation_interface_parameter_value in_clk clockRate {0}
+	set_instantiation_interface_parameter_value in_clk externallyDriven {false}
+	set_instantiation_interface_parameter_value in_clk ptfSchematicName {}
+	add_instantiation_interface_port in_clk in_clk clk 1 STD_LOGIC Input
+	add_instantiation_interface in_clk_reset reset INPUT
+	set_instantiation_interface_parameter_value in_clk_reset associatedClock {in_clk}
+	set_instantiation_interface_parameter_value in_clk_reset synchronousEdges {DEASSERT}
+	add_instantiation_interface_port in_clk_reset in_reset_n reset_n 1 STD_LOGIC Input
+	add_instantiation_interface out_clk clock INPUT
+	set_instantiation_interface_parameter_value out_clk clockRate {0}
+	set_instantiation_interface_parameter_value out_clk externallyDriven {false}
+	set_instantiation_interface_parameter_value out_clk ptfSchematicName {}
+	add_instantiation_interface_port out_clk out_clk clk 1 STD_LOGIC Input
+	add_instantiation_interface out_clk_reset reset INPUT
+	set_instantiation_interface_parameter_value out_clk_reset associatedClock {out_clk}
+	set_instantiation_interface_parameter_value out_clk_reset synchronousEdges {DEASSERT}
+	add_instantiation_interface_port out_clk_reset out_reset_n reset_n 1 STD_LOGIC Input
+	add_instantiation_interface in avalon_streaming INPUT
+	set_instantiation_interface_parameter_value in associatedClock {in_clk}
+	set_instantiation_interface_parameter_value in associatedReset {in_clk_reset}
+	set_instantiation_interface_parameter_value in beatsPerCycle {1}
+	set_instantiation_interface_parameter_value in dataBitsPerSymbol {8}
+	set_instantiation_interface_parameter_value in emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value in errorDescriptor {}
+	set_instantiation_interface_parameter_value in firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value in highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value in maxChannel {0}
+	set_instantiation_interface_parameter_value in packetDescription {}
+	set_instantiation_interface_parameter_value in prSafe {false}
+	set_instantiation_interface_parameter_value in readyAllowance {0}
+	set_instantiation_interface_parameter_value in readyLatency {0}
+	set_instantiation_interface_parameter_value in symbolsPerBeat {16}
+	add_instantiation_interface_port in in_data data 128 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port in in_valid valid 1 STD_LOGIC Input
+	add_instantiation_interface_port in in_ready ready 1 STD_LOGIC Output
+	add_instantiation_interface_port in in_startofpacket startofpacket 1 STD_LOGIC Input
+	add_instantiation_interface_port in in_endofpacket endofpacket 1 STD_LOGIC Input
+	add_instantiation_interface_port in in_empty empty 4 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port in in_error error 1 STD_LOGIC_VECTOR Input
+	add_instantiation_interface out avalon_streaming OUTPUT
+	set_instantiation_interface_parameter_value out associatedClock {out_clk}
+	set_instantiation_interface_parameter_value out associatedReset {out_clk_reset}
+	set_instantiation_interface_parameter_value out beatsPerCycle {1}
+	set_instantiation_interface_parameter_value out dataBitsPerSymbol {8}
+	set_instantiation_interface_parameter_value out emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value out errorDescriptor {}
+	set_instantiation_interface_parameter_value out firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value out highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value out maxChannel {0}
+	set_instantiation_interface_parameter_value out packetDescription {}
+	set_instantiation_interface_parameter_value out prSafe {false}
+	set_instantiation_interface_parameter_value out readyAllowance {0}
+	set_instantiation_interface_parameter_value out readyLatency {0}
+	set_instantiation_interface_parameter_value out symbolsPerBeat {16}
+	add_instantiation_interface_port out out_data data 128 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port out out_valid valid 1 STD_LOGIC Output
+	add_instantiation_interface_port out out_ready ready 1 STD_LOGIC Input
+	add_instantiation_interface_port out out_startofpacket startofpacket 1 STD_LOGIC Output
+	add_instantiation_interface_port out out_endofpacket endofpacket 1 STD_LOGIC Output
+	add_instantiation_interface_port out out_empty empty 4 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port out out_error error 1 STD_LOGIC_VECTOR Output
+	save_instantiation
+	add_component tx_dma_tx_fifo ip/subsys_ftile_tx_dma/tx_dma_tx_fifo.ip altera_avalon_sc_fifo altera_avalon_sc_fifo_inst 19.3.1
+	load_component tx_dma_tx_fifo
+	set_component_parameter_value BITS_PER_SYMBOL {8}
+	set_component_parameter_value CHANNEL_WIDTH {0}
+	set_component_parameter_value EMPTY_LATENCY {3}
+	set_component_parameter_value ENABLE_EXPLICIT_MAXCHANNEL {0}
+	set_component_parameter_value ERROR_WIDTH {1}
+	set_component_parameter_value EXPLICIT_MAXCHANNEL {0}
+	set_component_parameter_value FIFO_DEPTH {4096}
+	set_component_parameter_value SYMBOLS_PER_BEAT {8}
+	set_component_parameter_value SYNC_RESET {0}
+	set_component_parameter_value USE_ALMOST_EMPTY_IF {0}
+	set_component_parameter_value USE_ALMOST_FULL_IF {0}
+	set_component_parameter_value USE_FILL_LEVEL {1}
+	set_component_parameter_value USE_MEMORY_BLOCKS {1}
+	set_component_parameter_value USE_PACKETS {1}
+	set_component_parameter_value USE_STORE_FORWARD {1}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation tx_dma_tx_fifo
+	remove_instantiation_interfaces_and_ports
+	set_instantiation_assignment_value debug.isTransparent {1}
+	add_instantiation_interface clk clock INPUT
+	set_instantiation_interface_parameter_value clk clockRate {0}
+	set_instantiation_interface_parameter_value clk externallyDriven {false}
+	set_instantiation_interface_parameter_value clk ptfSchematicName {}
+	add_instantiation_interface_port clk clk clk 1 STD_LOGIC Input
+	add_instantiation_interface clk_reset reset INPUT
+	set_instantiation_interface_parameter_value clk_reset associatedClock {clk}
+	set_instantiation_interface_parameter_value clk_reset synchronousEdges {DEASSERT}
+	add_instantiation_interface_port clk_reset reset reset 1 STD_LOGIC Input
+	add_instantiation_interface csr avalon INPUT
+	set_instantiation_interface_parameter_value csr addressAlignment {DYNAMIC}
+	set_instantiation_interface_parameter_value csr addressGroup {0}
+	set_instantiation_interface_parameter_value csr addressSpan {32}
+	set_instantiation_interface_parameter_value csr addressUnits {WORDS}
+	set_instantiation_interface_parameter_value csr alwaysBurstMaxBurst {false}
+	set_instantiation_interface_parameter_value csr associatedClock {clk}
+	set_instantiation_interface_parameter_value csr associatedReset {clk_reset}
+	set_instantiation_interface_parameter_value csr bitsPerSymbol {8}
+	set_instantiation_interface_parameter_value csr bridgedAddressOffset {0}
+	set_instantiation_interface_parameter_value csr bridgesToMaster {}
+	set_instantiation_interface_parameter_value csr burstOnBurstBoundariesOnly {false}
+	set_instantiation_interface_parameter_value csr burstcountUnits {WORDS}
+	set_instantiation_interface_parameter_value csr constantBurstBehavior {false}
+	set_instantiation_interface_parameter_value csr explicitAddressSpan {0}
+	set_instantiation_interface_parameter_value csr holdTime {0}
+	set_instantiation_interface_parameter_value csr interleaveBursts {false}
+	set_instantiation_interface_parameter_value csr isBigEndian {false}
+	set_instantiation_interface_parameter_value csr isFlash {false}
+	set_instantiation_interface_parameter_value csr isMemoryDevice {false}
+	set_instantiation_interface_parameter_value csr isNonVolatileStorage {false}
+	set_instantiation_interface_parameter_value csr linewrapBursts {false}
+	set_instantiation_interface_parameter_value csr maximumPendingReadTransactions {0}
+	set_instantiation_interface_parameter_value csr maximumPendingWriteTransactions {0}
+	set_instantiation_interface_parameter_value csr minimumReadLatency {1}
+	set_instantiation_interface_parameter_value csr minimumResponseLatency {1}
+	set_instantiation_interface_parameter_value csr minimumUninterruptedRunLength {1}
+	set_instantiation_interface_parameter_value csr prSafe {false}
+	set_instantiation_interface_parameter_value csr printableDevice {false}
+	set_instantiation_interface_parameter_value csr readLatency {1}
+	set_instantiation_interface_parameter_value csr readWaitStates {0}
+	set_instantiation_interface_parameter_value csr readWaitTime {0}
+	set_instantiation_interface_parameter_value csr registerIncomingSignals {false}
+	set_instantiation_interface_parameter_value csr registerOutgoingSignals {false}
+	set_instantiation_interface_parameter_value csr setupTime {0}
+	set_instantiation_interface_parameter_value csr timingUnits {Cycles}
+	set_instantiation_interface_parameter_value csr transparentBridge {false}
+	set_instantiation_interface_parameter_value csr waitrequestAllowance {0}
+	set_instantiation_interface_parameter_value csr wellBehavedWaitrequest {false}
+	set_instantiation_interface_parameter_value csr writeLatency {0}
+	set_instantiation_interface_parameter_value csr writeWaitStates {0}
+	set_instantiation_interface_parameter_value csr writeWaitTime {0}
+	set_instantiation_interface_assignment_value csr embeddedsw.configuration.isFlash {0}
+	set_instantiation_interface_assignment_value csr embeddedsw.configuration.isMemoryDevice {0}
+	set_instantiation_interface_assignment_value csr embeddedsw.configuration.isNonVolatileStorage {0}
+	set_instantiation_interface_assignment_value csr embeddedsw.configuration.isPrintableDevice {0}
+	set_instantiation_interface_sysinfo_parameter_value csr address_map {<address-map><slave name='csr' start='0x0' end='0x20' datawidth='32' /></address-map>}
+	set_instantiation_interface_sysinfo_parameter_value csr address_width {5}
+	set_instantiation_interface_sysinfo_parameter_value csr max_slave_data_width {32}
+	add_instantiation_interface_port csr csr_address address 3 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port csr csr_read read 1 STD_LOGIC Input
+	add_instantiation_interface_port csr csr_write write 1 STD_LOGIC Input
+	add_instantiation_interface_port csr csr_readdata readdata 32 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port csr csr_writedata writedata 32 STD_LOGIC_VECTOR Input
+	add_instantiation_interface in avalon_streaming INPUT
+	set_instantiation_interface_parameter_value in associatedClock {clk}
+	set_instantiation_interface_parameter_value in associatedReset {clk_reset}
+	set_instantiation_interface_parameter_value in beatsPerCycle {1}
+	set_instantiation_interface_parameter_value in dataBitsPerSymbol {8}
+	set_instantiation_interface_parameter_value in emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value in errorDescriptor {}
+	set_instantiation_interface_parameter_value in firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value in highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value in maxChannel {0}
+	set_instantiation_interface_parameter_value in packetDescription {}
+	set_instantiation_interface_parameter_value in prSafe {false}
+	set_instantiation_interface_parameter_value in readyAllowance {0}
+	set_instantiation_interface_parameter_value in readyLatency {0}
+	set_instantiation_interface_parameter_value in symbolsPerBeat {8}
+	add_instantiation_interface_port in in_data data 64 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port in in_valid valid 1 STD_LOGIC Input
+	add_instantiation_interface_port in in_ready ready 1 STD_LOGIC Output
+	add_instantiation_interface_port in in_startofpacket startofpacket 1 STD_LOGIC Input
+	add_instantiation_interface_port in in_endofpacket endofpacket 1 STD_LOGIC Input
+	add_instantiation_interface_port in in_empty empty 3 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port in in_error error 1 STD_LOGIC_VECTOR Input
+	add_instantiation_interface out avalon_streaming OUTPUT
+	set_instantiation_interface_parameter_value out associatedClock {clk}
+	set_instantiation_interface_parameter_value out associatedReset {clk_reset}
+	set_instantiation_interface_parameter_value out beatsPerCycle {1}
+	set_instantiation_interface_parameter_value out dataBitsPerSymbol {8}
+	set_instantiation_interface_parameter_value out emptyWithinPacket {false}
+	set_instantiation_interface_parameter_value out errorDescriptor {}
+	set_instantiation_interface_parameter_value out firstSymbolInHighOrderBits {true}
+	set_instantiation_interface_parameter_value out highOrderSymbolAtMSB {false}
+	set_instantiation_interface_parameter_value out maxChannel {0}
+	set_instantiation_interface_parameter_value out packetDescription {}
+	set_instantiation_interface_parameter_value out prSafe {false}
+	set_instantiation_interface_parameter_value out readyAllowance {0}
+	set_instantiation_interface_parameter_value out readyLatency {0}
+	set_instantiation_interface_parameter_value out symbolsPerBeat {8}
+	set_instantiation_interface_assignment_value out debug.controlledBy {in}
+	add_instantiation_interface_port out out_data data 64 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port out out_valid valid 1 STD_LOGIC Output
+	add_instantiation_interface_port out out_ready ready 1 STD_LOGIC Input
+	add_instantiation_interface_port out out_startofpacket startofpacket 1 STD_LOGIC Output
+	add_instantiation_interface_port out out_endofpacket endofpacket 1 STD_LOGIC Output
+	add_instantiation_interface_port out out_empty empty 3 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port out out_error error 1 STD_LOGIC_VECTOR Output
+	save_instantiation
+
+	# add wirelevel expressions
+
+	# preserve ports for debug
+
+	# add the connections
+	add_connection tx_dma_clock.out_clk/tx_dma_csr.clk
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_csr.clk clockDomainSysInfo {-1}
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_csr.clk clockRateSysInfo {201416016.0}
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_csr.clk clockResetSysInfo {}
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_csr.clk resetDomainSysInfo {-1}
+	add_connection tx_dma_clock.out_clk/tx_dma_dispatcher.clock
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_dispatcher.clock clockDomainSysInfo {-1}
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_dispatcher.clock clockRateSysInfo {201416016.0}
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_dispatcher.clock clockResetSysInfo {}
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_dispatcher.clock resetDomainSysInfo {-1}
+	add_connection tx_dma_clock.out_clk/tx_dma_fingerprint_compare.clock
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_fingerprint_compare.clock clockDomainSysInfo {-1}
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_fingerprint_compare.clock clockRateSysInfo {201416016.0}
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_fingerprint_compare.clock clockResetSysInfo {}
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_fingerprint_compare.clock resetDomainSysInfo {-1}
+	add_connection tx_dma_clock.out_clk/tx_dma_fingerprint_fifo.out_clk
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_fingerprint_fifo.out_clk clockDomainSysInfo {-1}
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_fingerprint_fifo.out_clk clockRateSysInfo {201416016.0}
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_fingerprint_fifo.out_clk clockResetSysInfo {}
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_fingerprint_fifo.out_clk resetDomainSysInfo {-1}
+	add_connection tx_dma_clock.out_clk/tx_dma_prefetcher.Clock
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_prefetcher.Clock clockDomainSysInfo {-1}
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_prefetcher.Clock clockRateSysInfo {201416016.0}
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_prefetcher.Clock clockResetSysInfo {}
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_prefetcher.Clock resetDomainSysInfo {-1}
+	add_connection tx_dma_clock.out_clk/tx_dma_read_master.Clock
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_read_master.Clock clockDomainSysInfo {-1}
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_read_master.Clock clockRateSysInfo {201416016.0}
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_read_master.Clock clockResetSysInfo {}
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_read_master.Clock resetDomainSysInfo {-1}
+	add_connection tx_dma_clock.out_clk/tx_dma_reset.clk
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_reset.clk clockDomainSysInfo {-1}
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_reset.clk clockRateSysInfo {201416016.0}
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_reset.clk clockResetSysInfo {}
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_reset.clk resetDomainSysInfo {-1}
+	add_connection tx_dma_clock.out_clk/tx_dma_timestamp_insert.clock
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_timestamp_insert.clock clockDomainSysInfo {-1}
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_timestamp_insert.clock clockRateSysInfo {201416016.0}
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_timestamp_insert.clock clockResetSysInfo {}
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_timestamp_insert.clock resetDomainSysInfo {-1}
+	add_connection tx_dma_clock.out_clk/tx_dma_ts_fifo.out_clk
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_ts_fifo.out_clk clockDomainSysInfo {-1}
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_ts_fifo.out_clk clockRateSysInfo {201416016.0}
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_ts_fifo.out_clk clockResetSysInfo {}
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_ts_fifo.out_clk resetDomainSysInfo {-1}
+	add_connection tx_dma_clock.out_clk/tx_dma_tx_dc_fifo.in_clk
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_tx_dc_fifo.in_clk clockDomainSysInfo {-1}
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_tx_dc_fifo.in_clk clockRateSysInfo {201416016.0}
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_tx_dc_fifo.in_clk clockResetSysInfo {}
+	set_connection_parameter_value tx_dma_clock.out_clk/tx_dma_tx_dc_fifo.in_clk resetDomainSysInfo {-1}
+	add_connection tx_dma_csr.m0/tx_dma_dispatcher.CSR
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_dispatcher.CSR addressMapSysInfo {}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_dispatcher.CSR addressWidthSysInfo {7}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_dispatcher.CSR arbitrationPriority {1}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_dispatcher.CSR baseAddress {0x0020}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_dispatcher.CSR defaultConnection {0}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_dispatcher.CSR domainAlias {}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_dispatcher.CSR qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_dispatcher.CSR qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_dispatcher.CSR qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_dispatcher.CSR qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_dispatcher.CSR qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_dispatcher.CSR qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_dispatcher.CSR qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_dispatcher.CSR qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_dispatcher.CSR qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_dispatcher.CSR qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_dispatcher.CSR qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_dispatcher.CSR qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_dispatcher.CSR qsys_mm.syncResets {TRUE}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_dispatcher.CSR qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_dispatcher.CSR slaveDataWidthSysInfo {-1}
+	add_connection tx_dma_csr.m0/tx_dma_prefetcher.Csr
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_prefetcher.Csr addressMapSysInfo {}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_prefetcher.Csr addressWidthSysInfo {7}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_prefetcher.Csr arbitrationPriority {1}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_prefetcher.Csr baseAddress {0x0000}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_prefetcher.Csr defaultConnection {0}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_prefetcher.Csr domainAlias {}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_prefetcher.Csr qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_prefetcher.Csr qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_prefetcher.Csr qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_prefetcher.Csr qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_prefetcher.Csr qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_prefetcher.Csr qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_prefetcher.Csr qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_prefetcher.Csr qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_prefetcher.Csr qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_prefetcher.Csr qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_prefetcher.Csr qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_prefetcher.Csr qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_prefetcher.Csr qsys_mm.syncResets {TRUE}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_prefetcher.Csr qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_prefetcher.Csr slaveDataWidthSysInfo {-1}
+	add_connection tx_dma_csr.m0/tx_dma_tx_fifo.csr
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_tx_fifo.csr addressMapSysInfo {}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_tx_fifo.csr addressWidthSysInfo {7}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_tx_fifo.csr arbitrationPriority {1}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_tx_fifo.csr baseAddress {0x0040}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_tx_fifo.csr defaultConnection {0}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_tx_fifo.csr domainAlias {}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_tx_fifo.csr qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_tx_fifo.csr qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_tx_fifo.csr qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_tx_fifo.csr qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_tx_fifo.csr qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_tx_fifo.csr qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_tx_fifo.csr qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_tx_fifo.csr qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_tx_fifo.csr qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_tx_fifo.csr qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_tx_fifo.csr qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_tx_fifo.csr qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_tx_fifo.csr qsys_mm.syncResets {TRUE}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_tx_fifo.csr qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value tx_dma_csr.m0/tx_dma_tx_fifo.csr slaveDataWidthSysInfo {-1}
+	add_connection tx_dma_dispatcher.Read_Command_Source/tx_dma_read_master.Command_Sink
+	set_connection_parameter_value tx_dma_dispatcher.Read_Command_Source/tx_dma_read_master.Command_Sink qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value tx_dma_dispatcher.Read_Command_Source/tx_dma_read_master.Command_Sink qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value tx_dma_dispatcher.Read_Command_Source/tx_dma_read_master.Command_Sink qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value tx_dma_dispatcher.Read_Command_Source/tx_dma_read_master.Command_Sink qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value tx_dma_dispatcher.Read_Command_Source/tx_dma_read_master.Command_Sink qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value tx_dma_dispatcher.Read_Command_Source/tx_dma_read_master.Command_Sink qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value tx_dma_dispatcher.Read_Command_Source/tx_dma_read_master.Command_Sink qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value tx_dma_dispatcher.Read_Command_Source/tx_dma_read_master.Command_Sink qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value tx_dma_dispatcher.Read_Command_Source/tx_dma_read_master.Command_Sink qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value tx_dma_dispatcher.Read_Command_Source/tx_dma_read_master.Command_Sink qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value tx_dma_dispatcher.Read_Command_Source/tx_dma_read_master.Command_Sink qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value tx_dma_dispatcher.Read_Command_Source/tx_dma_read_master.Command_Sink qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value tx_dma_dispatcher.Read_Command_Source/tx_dma_read_master.Command_Sink qsys_mm.syncResets {FALSE}
+	set_connection_parameter_value tx_dma_dispatcher.Read_Command_Source/tx_dma_read_master.Command_Sink qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	add_connection tx_dma_dispatcher.Response_Source/tx_dma_timestamp_insert.snk_response
+	set_connection_parameter_value tx_dma_dispatcher.Response_Source/tx_dma_timestamp_insert.snk_response qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value tx_dma_dispatcher.Response_Source/tx_dma_timestamp_insert.snk_response qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value tx_dma_dispatcher.Response_Source/tx_dma_timestamp_insert.snk_response qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value tx_dma_dispatcher.Response_Source/tx_dma_timestamp_insert.snk_response qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value tx_dma_dispatcher.Response_Source/tx_dma_timestamp_insert.snk_response qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value tx_dma_dispatcher.Response_Source/tx_dma_timestamp_insert.snk_response qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value tx_dma_dispatcher.Response_Source/tx_dma_timestamp_insert.snk_response qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value tx_dma_dispatcher.Response_Source/tx_dma_timestamp_insert.snk_response qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value tx_dma_dispatcher.Response_Source/tx_dma_timestamp_insert.snk_response qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value tx_dma_dispatcher.Response_Source/tx_dma_timestamp_insert.snk_response qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value tx_dma_dispatcher.Response_Source/tx_dma_timestamp_insert.snk_response qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value tx_dma_dispatcher.Response_Source/tx_dma_timestamp_insert.snk_response qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value tx_dma_dispatcher.Response_Source/tx_dma_timestamp_insert.snk_response qsys_mm.syncResets {FALSE}
+	set_connection_parameter_value tx_dma_dispatcher.Response_Source/tx_dma_timestamp_insert.snk_response qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	add_connection tx_dma_fingerprint_compare.timestamp/tx_dma_timestamp_insert.snk_timestamp
+	set_connection_parameter_value tx_dma_fingerprint_compare.timestamp/tx_dma_timestamp_insert.snk_timestamp qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value tx_dma_fingerprint_compare.timestamp/tx_dma_timestamp_insert.snk_timestamp qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value tx_dma_fingerprint_compare.timestamp/tx_dma_timestamp_insert.snk_timestamp qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value tx_dma_fingerprint_compare.timestamp/tx_dma_timestamp_insert.snk_timestamp qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value tx_dma_fingerprint_compare.timestamp/tx_dma_timestamp_insert.snk_timestamp qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value tx_dma_fingerprint_compare.timestamp/tx_dma_timestamp_insert.snk_timestamp qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value tx_dma_fingerprint_compare.timestamp/tx_dma_timestamp_insert.snk_timestamp qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value tx_dma_fingerprint_compare.timestamp/tx_dma_timestamp_insert.snk_timestamp qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value tx_dma_fingerprint_compare.timestamp/tx_dma_timestamp_insert.snk_timestamp qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value tx_dma_fingerprint_compare.timestamp/tx_dma_timestamp_insert.snk_timestamp qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value tx_dma_fingerprint_compare.timestamp/tx_dma_timestamp_insert.snk_timestamp qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value tx_dma_fingerprint_compare.timestamp/tx_dma_timestamp_insert.snk_timestamp qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value tx_dma_fingerprint_compare.timestamp/tx_dma_timestamp_insert.snk_timestamp qsys_mm.syncResets {FALSE}
+	set_connection_parameter_value tx_dma_fingerprint_compare.timestamp/tx_dma_timestamp_insert.snk_timestamp qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	add_connection tx_dma_fingerprint_fifo.out/tx_dma_fingerprint_compare.fingerprint
+	set_connection_parameter_value tx_dma_fingerprint_fifo.out/tx_dma_fingerprint_compare.fingerprint qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value tx_dma_fingerprint_fifo.out/tx_dma_fingerprint_compare.fingerprint qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value tx_dma_fingerprint_fifo.out/tx_dma_fingerprint_compare.fingerprint qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value tx_dma_fingerprint_fifo.out/tx_dma_fingerprint_compare.fingerprint qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value tx_dma_fingerprint_fifo.out/tx_dma_fingerprint_compare.fingerprint qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value tx_dma_fingerprint_fifo.out/tx_dma_fingerprint_compare.fingerprint qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value tx_dma_fingerprint_fifo.out/tx_dma_fingerprint_compare.fingerprint qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value tx_dma_fingerprint_fifo.out/tx_dma_fingerprint_compare.fingerprint qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value tx_dma_fingerprint_fifo.out/tx_dma_fingerprint_compare.fingerprint qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value tx_dma_fingerprint_fifo.out/tx_dma_fingerprint_compare.fingerprint qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value tx_dma_fingerprint_fifo.out/tx_dma_fingerprint_compare.fingerprint qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value tx_dma_fingerprint_fifo.out/tx_dma_fingerprint_compare.fingerprint qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value tx_dma_fingerprint_fifo.out/tx_dma_fingerprint_compare.fingerprint qsys_mm.syncResets {FALSE}
+	set_connection_parameter_value tx_dma_fingerprint_fifo.out/tx_dma_fingerprint_compare.fingerprint qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	add_connection tx_dma_ftile_clock.out_clk/tx_dma_fingerprint_fifo.in_clk
+	set_connection_parameter_value tx_dma_ftile_clock.out_clk/tx_dma_fingerprint_fifo.in_clk clockDomainSysInfo {-1}
+	set_connection_parameter_value tx_dma_ftile_clock.out_clk/tx_dma_fingerprint_fifo.in_clk clockRateSysInfo {402832031.0}
+	set_connection_parameter_value tx_dma_ftile_clock.out_clk/tx_dma_fingerprint_fifo.in_clk clockResetSysInfo {}
+	set_connection_parameter_value tx_dma_ftile_clock.out_clk/tx_dma_fingerprint_fifo.in_clk resetDomainSysInfo {-1}
+	add_connection tx_dma_ftile_clock.out_clk/tx_dma_timestamp_adapter.clock
+	set_connection_parameter_value tx_dma_ftile_clock.out_clk/tx_dma_timestamp_adapter.clock clockDomainSysInfo {-1}
+	set_connection_parameter_value tx_dma_ftile_clock.out_clk/tx_dma_timestamp_adapter.clock clockRateSysInfo {402832031.0}
+	set_connection_parameter_value tx_dma_ftile_clock.out_clk/tx_dma_timestamp_adapter.clock clockResetSysInfo {}
+	set_connection_parameter_value tx_dma_ftile_clock.out_clk/tx_dma_timestamp_adapter.clock resetDomainSysInfo {-1}
+	add_connection tx_dma_ftile_clock.out_clk/tx_dma_timestamp_req.clock
+	set_connection_parameter_value tx_dma_ftile_clock.out_clk/tx_dma_timestamp_req.clock clockDomainSysInfo {-1}
+	set_connection_parameter_value tx_dma_ftile_clock.out_clk/tx_dma_timestamp_req.clock clockRateSysInfo {402832031.0}
+	set_connection_parameter_value tx_dma_ftile_clock.out_clk/tx_dma_timestamp_req.clock clockResetSysInfo {}
+	set_connection_parameter_value tx_dma_ftile_clock.out_clk/tx_dma_timestamp_req.clock resetDomainSysInfo {-1}
+	add_connection tx_dma_ftile_clock.out_clk/tx_dma_ts_fifo.in_clk
+	set_connection_parameter_value tx_dma_ftile_clock.out_clk/tx_dma_ts_fifo.in_clk clockDomainSysInfo {-1}
+	set_connection_parameter_value tx_dma_ftile_clock.out_clk/tx_dma_ts_fifo.in_clk clockRateSysInfo {402832031.0}
+	set_connection_parameter_value tx_dma_ftile_clock.out_clk/tx_dma_ts_fifo.in_clk clockResetSysInfo {}
+	set_connection_parameter_value tx_dma_ftile_clock.out_clk/tx_dma_ts_fifo.in_clk resetDomainSysInfo {-1}
+	add_connection tx_dma_ftile_clock.out_clk/tx_dma_tx_dc_fifo.out_clk
+	set_connection_parameter_value tx_dma_ftile_clock.out_clk/tx_dma_tx_dc_fifo.out_clk clockDomainSysInfo {-1}
+	set_connection_parameter_value tx_dma_ftile_clock.out_clk/tx_dma_tx_dc_fifo.out_clk clockRateSysInfo {402832031.0}
+	set_connection_parameter_value tx_dma_ftile_clock.out_clk/tx_dma_tx_dc_fifo.out_clk clockResetSysInfo {}
+	set_connection_parameter_value tx_dma_ftile_clock.out_clk/tx_dma_tx_dc_fifo.out_clk resetDomainSysInfo {-1}
+	add_connection tx_dma_ftile_clock.out_clk/tx_dma_tx_fifo.clk
+	set_connection_parameter_value tx_dma_ftile_clock.out_clk/tx_dma_tx_fifo.clk clockDomainSysInfo {-1}
+	set_connection_parameter_value tx_dma_ftile_clock.out_clk/tx_dma_tx_fifo.clk clockRateSysInfo {402832031.0}
+	set_connection_parameter_value tx_dma_ftile_clock.out_clk/tx_dma_tx_fifo.clk clockResetSysInfo {}
+	set_connection_parameter_value tx_dma_ftile_clock.out_clk/tx_dma_tx_fifo.clk resetDomainSysInfo {-1}
+	add_connection tx_dma_prefetcher.Descriptor_Write_Dispatcher_Source/tx_dma_dispatcher.Descriptor_Sink
+	set_connection_parameter_value tx_dma_prefetcher.Descriptor_Write_Dispatcher_Source/tx_dma_dispatcher.Descriptor_Sink qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value tx_dma_prefetcher.Descriptor_Write_Dispatcher_Source/tx_dma_dispatcher.Descriptor_Sink qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value tx_dma_prefetcher.Descriptor_Write_Dispatcher_Source/tx_dma_dispatcher.Descriptor_Sink qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value tx_dma_prefetcher.Descriptor_Write_Dispatcher_Source/tx_dma_dispatcher.Descriptor_Sink qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value tx_dma_prefetcher.Descriptor_Write_Dispatcher_Source/tx_dma_dispatcher.Descriptor_Sink qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value tx_dma_prefetcher.Descriptor_Write_Dispatcher_Source/tx_dma_dispatcher.Descriptor_Sink qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value tx_dma_prefetcher.Descriptor_Write_Dispatcher_Source/tx_dma_dispatcher.Descriptor_Sink qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value tx_dma_prefetcher.Descriptor_Write_Dispatcher_Source/tx_dma_dispatcher.Descriptor_Sink qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value tx_dma_prefetcher.Descriptor_Write_Dispatcher_Source/tx_dma_dispatcher.Descriptor_Sink qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value tx_dma_prefetcher.Descriptor_Write_Dispatcher_Source/tx_dma_dispatcher.Descriptor_Sink qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value tx_dma_prefetcher.Descriptor_Write_Dispatcher_Source/tx_dma_dispatcher.Descriptor_Sink qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value tx_dma_prefetcher.Descriptor_Write_Dispatcher_Source/tx_dma_dispatcher.Descriptor_Sink qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value tx_dma_prefetcher.Descriptor_Write_Dispatcher_Source/tx_dma_dispatcher.Descriptor_Sink qsys_mm.syncResets {FALSE}
+	set_connection_parameter_value tx_dma_prefetcher.Descriptor_Write_Dispatcher_Source/tx_dma_dispatcher.Descriptor_Sink qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	add_connection tx_dma_read_master.Data_Source/tx_dma_tx_dc_fifo.in
+	set_connection_parameter_value tx_dma_read_master.Data_Source/tx_dma_tx_dc_fifo.in qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value tx_dma_read_master.Data_Source/tx_dma_tx_dc_fifo.in qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value tx_dma_read_master.Data_Source/tx_dma_tx_dc_fifo.in qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value tx_dma_read_master.Data_Source/tx_dma_tx_dc_fifo.in qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value tx_dma_read_master.Data_Source/tx_dma_tx_dc_fifo.in qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value tx_dma_read_master.Data_Source/tx_dma_tx_dc_fifo.in qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value tx_dma_read_master.Data_Source/tx_dma_tx_dc_fifo.in qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value tx_dma_read_master.Data_Source/tx_dma_tx_dc_fifo.in qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value tx_dma_read_master.Data_Source/tx_dma_tx_dc_fifo.in qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value tx_dma_read_master.Data_Source/tx_dma_tx_dc_fifo.in qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value tx_dma_read_master.Data_Source/tx_dma_tx_dc_fifo.in qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value tx_dma_read_master.Data_Source/tx_dma_tx_dc_fifo.in qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value tx_dma_read_master.Data_Source/tx_dma_tx_dc_fifo.in qsys_mm.syncResets {FALSE}
+	set_connection_parameter_value tx_dma_read_master.Data_Source/tx_dma_tx_dc_fifo.in qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	add_connection tx_dma_read_master.Response_Source/tx_dma_dispatcher.Read_Response_Sink
+	set_connection_parameter_value tx_dma_read_master.Response_Source/tx_dma_dispatcher.Read_Response_Sink qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value tx_dma_read_master.Response_Source/tx_dma_dispatcher.Read_Response_Sink qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value tx_dma_read_master.Response_Source/tx_dma_dispatcher.Read_Response_Sink qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value tx_dma_read_master.Response_Source/tx_dma_dispatcher.Read_Response_Sink qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value tx_dma_read_master.Response_Source/tx_dma_dispatcher.Read_Response_Sink qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value tx_dma_read_master.Response_Source/tx_dma_dispatcher.Read_Response_Sink qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value tx_dma_read_master.Response_Source/tx_dma_dispatcher.Read_Response_Sink qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value tx_dma_read_master.Response_Source/tx_dma_dispatcher.Read_Response_Sink qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value tx_dma_read_master.Response_Source/tx_dma_dispatcher.Read_Response_Sink qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value tx_dma_read_master.Response_Source/tx_dma_dispatcher.Read_Response_Sink qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value tx_dma_read_master.Response_Source/tx_dma_dispatcher.Read_Response_Sink qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value tx_dma_read_master.Response_Source/tx_dma_dispatcher.Read_Response_Sink qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value tx_dma_read_master.Response_Source/tx_dma_dispatcher.Read_Response_Sink qsys_mm.syncResets {FALSE}
+	set_connection_parameter_value tx_dma_read_master.Response_Source/tx_dma_dispatcher.Read_Response_Sink qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	add_connection tx_dma_reset.out_reset/tx_dma_csr.reset
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_csr.reset clockDomainSysInfo {-1}
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_csr.reset clockResetSysInfo {}
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_csr.reset resetDomainSysInfo {-1}
+	add_connection tx_dma_reset.out_reset/tx_dma_dispatcher.clock_reset
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_dispatcher.clock_reset clockDomainSysInfo {-1}
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_dispatcher.clock_reset clockResetSysInfo {}
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_dispatcher.clock_reset resetDomainSysInfo {-1}
+	add_connection tx_dma_reset.out_reset/tx_dma_fingerprint_compare.reset
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_fingerprint_compare.reset clockDomainSysInfo {-1}
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_fingerprint_compare.reset clockResetSysInfo {}
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_fingerprint_compare.reset resetDomainSysInfo {-1}
+	add_connection tx_dma_reset.out_reset/tx_dma_fingerprint_fifo.in_clk_reset
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_fingerprint_fifo.in_clk_reset clockDomainSysInfo {-1}
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_fingerprint_fifo.in_clk_reset clockResetSysInfo {}
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_fingerprint_fifo.in_clk_reset resetDomainSysInfo {-1}
+	add_connection tx_dma_reset.out_reset/tx_dma_fingerprint_fifo.out_clk_reset
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_fingerprint_fifo.out_clk_reset clockDomainSysInfo {-1}
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_fingerprint_fifo.out_clk_reset clockResetSysInfo {}
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_fingerprint_fifo.out_clk_reset resetDomainSysInfo {-1}
+	add_connection tx_dma_reset.out_reset/tx_dma_prefetcher.Clock_reset
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_prefetcher.Clock_reset clockDomainSysInfo {-1}
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_prefetcher.Clock_reset clockResetSysInfo {}
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_prefetcher.Clock_reset resetDomainSysInfo {-1}
+	add_connection tx_dma_reset.out_reset/tx_dma_read_master.Clock_reset
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_read_master.Clock_reset clockDomainSysInfo {-1}
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_read_master.Clock_reset clockResetSysInfo {}
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_read_master.Clock_reset resetDomainSysInfo {-1}
+	add_connection tx_dma_reset.out_reset/tx_dma_timestamp_adapter.reset
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_timestamp_adapter.reset clockDomainSysInfo {-1}
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_timestamp_adapter.reset clockResetSysInfo {}
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_timestamp_adapter.reset resetDomainSysInfo {-1}
+	add_connection tx_dma_reset.out_reset/tx_dma_timestamp_insert.reset
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_timestamp_insert.reset clockDomainSysInfo {-1}
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_timestamp_insert.reset clockResetSysInfo {}
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_timestamp_insert.reset resetDomainSysInfo {-1}
+	add_connection tx_dma_reset.out_reset/tx_dma_timestamp_req.reset
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_timestamp_req.reset clockDomainSysInfo {-1}
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_timestamp_req.reset clockResetSysInfo {}
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_timestamp_req.reset resetDomainSysInfo {-1}
+	add_connection tx_dma_reset.out_reset/tx_dma_ts_fifo.in_clk_reset
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_ts_fifo.in_clk_reset clockDomainSysInfo {-1}
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_ts_fifo.in_clk_reset clockResetSysInfo {}
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_ts_fifo.in_clk_reset resetDomainSysInfo {-1}
+	add_connection tx_dma_reset.out_reset/tx_dma_ts_fifo.out_clk_reset
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_ts_fifo.out_clk_reset clockDomainSysInfo {-1}
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_ts_fifo.out_clk_reset clockResetSysInfo {}
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_ts_fifo.out_clk_reset resetDomainSysInfo {-1}
+	add_connection tx_dma_reset.out_reset/tx_dma_tx_dc_fifo.in_clk_reset
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_tx_dc_fifo.in_clk_reset clockDomainSysInfo {-1}
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_tx_dc_fifo.in_clk_reset clockResetSysInfo {}
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_tx_dc_fifo.in_clk_reset resetDomainSysInfo {-1}
+	add_connection tx_dma_reset.out_reset/tx_dma_tx_dc_fifo.out_clk_reset
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_tx_dc_fifo.out_clk_reset clockDomainSysInfo {-1}
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_tx_dc_fifo.out_clk_reset clockResetSysInfo {}
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_tx_dc_fifo.out_clk_reset resetDomainSysInfo {-1}
+	add_connection tx_dma_reset.out_reset/tx_dma_tx_fifo.clk_reset
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_tx_fifo.clk_reset clockDomainSysInfo {-1}
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_tx_fifo.clk_reset clockResetSysInfo {}
+	set_connection_parameter_value tx_dma_reset.out_reset/tx_dma_tx_fifo.clk_reset resetDomainSysInfo {-1}
+	add_connection tx_dma_timestamp_adapter.aso_timestamp_fp/tx_dma_ts_fifo.in
+	set_connection_parameter_value tx_dma_timestamp_adapter.aso_timestamp_fp/tx_dma_ts_fifo.in qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value tx_dma_timestamp_adapter.aso_timestamp_fp/tx_dma_ts_fifo.in qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value tx_dma_timestamp_adapter.aso_timestamp_fp/tx_dma_ts_fifo.in qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value tx_dma_timestamp_adapter.aso_timestamp_fp/tx_dma_ts_fifo.in qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value tx_dma_timestamp_adapter.aso_timestamp_fp/tx_dma_ts_fifo.in qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value tx_dma_timestamp_adapter.aso_timestamp_fp/tx_dma_ts_fifo.in qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value tx_dma_timestamp_adapter.aso_timestamp_fp/tx_dma_ts_fifo.in qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value tx_dma_timestamp_adapter.aso_timestamp_fp/tx_dma_ts_fifo.in qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value tx_dma_timestamp_adapter.aso_timestamp_fp/tx_dma_ts_fifo.in qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value tx_dma_timestamp_adapter.aso_timestamp_fp/tx_dma_ts_fifo.in qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value tx_dma_timestamp_adapter.aso_timestamp_fp/tx_dma_ts_fifo.in qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value tx_dma_timestamp_adapter.aso_timestamp_fp/tx_dma_ts_fifo.in qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value tx_dma_timestamp_adapter.aso_timestamp_fp/tx_dma_ts_fifo.in qsys_mm.syncResets {FALSE}
+	set_connection_parameter_value tx_dma_timestamp_adapter.aso_timestamp_fp/tx_dma_ts_fifo.in qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	add_connection tx_dma_timestamp_insert.src_response/tx_dma_prefetcher.Response_Sink
+	set_connection_parameter_value tx_dma_timestamp_insert.src_response/tx_dma_prefetcher.Response_Sink qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value tx_dma_timestamp_insert.src_response/tx_dma_prefetcher.Response_Sink qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value tx_dma_timestamp_insert.src_response/tx_dma_prefetcher.Response_Sink qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value tx_dma_timestamp_insert.src_response/tx_dma_prefetcher.Response_Sink qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value tx_dma_timestamp_insert.src_response/tx_dma_prefetcher.Response_Sink qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value tx_dma_timestamp_insert.src_response/tx_dma_prefetcher.Response_Sink qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value tx_dma_timestamp_insert.src_response/tx_dma_prefetcher.Response_Sink qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value tx_dma_timestamp_insert.src_response/tx_dma_prefetcher.Response_Sink qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value tx_dma_timestamp_insert.src_response/tx_dma_prefetcher.Response_Sink qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value tx_dma_timestamp_insert.src_response/tx_dma_prefetcher.Response_Sink qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value tx_dma_timestamp_insert.src_response/tx_dma_prefetcher.Response_Sink qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value tx_dma_timestamp_insert.src_response/tx_dma_prefetcher.Response_Sink qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value tx_dma_timestamp_insert.src_response/tx_dma_prefetcher.Response_Sink qsys_mm.syncResets {FALSE}
+	set_connection_parameter_value tx_dma_timestamp_insert.src_response/tx_dma_prefetcher.Response_Sink qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	add_connection tx_dma_timestamp_req.fingerprint/tx_dma_fingerprint_fifo.in
+	set_connection_parameter_value tx_dma_timestamp_req.fingerprint/tx_dma_fingerprint_fifo.in qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value tx_dma_timestamp_req.fingerprint/tx_dma_fingerprint_fifo.in qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value tx_dma_timestamp_req.fingerprint/tx_dma_fingerprint_fifo.in qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value tx_dma_timestamp_req.fingerprint/tx_dma_fingerprint_fifo.in qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value tx_dma_timestamp_req.fingerprint/tx_dma_fingerprint_fifo.in qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value tx_dma_timestamp_req.fingerprint/tx_dma_fingerprint_fifo.in qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value tx_dma_timestamp_req.fingerprint/tx_dma_fingerprint_fifo.in qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value tx_dma_timestamp_req.fingerprint/tx_dma_fingerprint_fifo.in qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value tx_dma_timestamp_req.fingerprint/tx_dma_fingerprint_fifo.in qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value tx_dma_timestamp_req.fingerprint/tx_dma_fingerprint_fifo.in qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value tx_dma_timestamp_req.fingerprint/tx_dma_fingerprint_fifo.in qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value tx_dma_timestamp_req.fingerprint/tx_dma_fingerprint_fifo.in qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value tx_dma_timestamp_req.fingerprint/tx_dma_fingerprint_fifo.in qsys_mm.syncResets {FALSE}
+	set_connection_parameter_value tx_dma_timestamp_req.fingerprint/tx_dma_fingerprint_fifo.in qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	add_connection tx_dma_ts_fifo.out/tx_dma_fingerprint_compare.timestamp_fp
+	set_connection_parameter_value tx_dma_ts_fifo.out/tx_dma_fingerprint_compare.timestamp_fp qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value tx_dma_ts_fifo.out/tx_dma_fingerprint_compare.timestamp_fp qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value tx_dma_ts_fifo.out/tx_dma_fingerprint_compare.timestamp_fp qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value tx_dma_ts_fifo.out/tx_dma_fingerprint_compare.timestamp_fp qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value tx_dma_ts_fifo.out/tx_dma_fingerprint_compare.timestamp_fp qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value tx_dma_ts_fifo.out/tx_dma_fingerprint_compare.timestamp_fp qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value tx_dma_ts_fifo.out/tx_dma_fingerprint_compare.timestamp_fp qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value tx_dma_ts_fifo.out/tx_dma_fingerprint_compare.timestamp_fp qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value tx_dma_ts_fifo.out/tx_dma_fingerprint_compare.timestamp_fp qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value tx_dma_ts_fifo.out/tx_dma_fingerprint_compare.timestamp_fp qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value tx_dma_ts_fifo.out/tx_dma_fingerprint_compare.timestamp_fp qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value tx_dma_ts_fifo.out/tx_dma_fingerprint_compare.timestamp_fp qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value tx_dma_ts_fifo.out/tx_dma_fingerprint_compare.timestamp_fp qsys_mm.syncResets {FALSE}
+	set_connection_parameter_value tx_dma_ts_fifo.out/tx_dma_fingerprint_compare.timestamp_fp qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	add_connection tx_dma_tx_dc_fifo.out/tx_dma_tx_fifo.in
+	set_connection_parameter_value tx_dma_tx_dc_fifo.out/tx_dma_tx_fifo.in qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value tx_dma_tx_dc_fifo.out/tx_dma_tx_fifo.in qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value tx_dma_tx_dc_fifo.out/tx_dma_tx_fifo.in qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value tx_dma_tx_dc_fifo.out/tx_dma_tx_fifo.in qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value tx_dma_tx_dc_fifo.out/tx_dma_tx_fifo.in qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value tx_dma_tx_dc_fifo.out/tx_dma_tx_fifo.in qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value tx_dma_tx_dc_fifo.out/tx_dma_tx_fifo.in qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value tx_dma_tx_dc_fifo.out/tx_dma_tx_fifo.in qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value tx_dma_tx_dc_fifo.out/tx_dma_tx_fifo.in qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value tx_dma_tx_dc_fifo.out/tx_dma_tx_fifo.in qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value tx_dma_tx_dc_fifo.out/tx_dma_tx_fifo.in qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value tx_dma_tx_dc_fifo.out/tx_dma_tx_fifo.in qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value tx_dma_tx_dc_fifo.out/tx_dma_tx_fifo.in qsys_mm.syncResets {FALSE}
+	set_connection_parameter_value tx_dma_tx_dc_fifo.out/tx_dma_tx_fifo.in qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	add_connection tx_dma_tx_fifo.out/tx_dma_timestamp_req.pktin
+	set_connection_parameter_value tx_dma_tx_fifo.out/tx_dma_timestamp_req.pktin qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value tx_dma_tx_fifo.out/tx_dma_timestamp_req.pktin qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value tx_dma_tx_fifo.out/tx_dma_timestamp_req.pktin qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value tx_dma_tx_fifo.out/tx_dma_timestamp_req.pktin qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value tx_dma_tx_fifo.out/tx_dma_timestamp_req.pktin qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value tx_dma_tx_fifo.out/tx_dma_timestamp_req.pktin qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value tx_dma_tx_fifo.out/tx_dma_timestamp_req.pktin qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value tx_dma_tx_fifo.out/tx_dma_timestamp_req.pktin qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value tx_dma_tx_fifo.out/tx_dma_timestamp_req.pktin qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value tx_dma_tx_fifo.out/tx_dma_timestamp_req.pktin qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value tx_dma_tx_fifo.out/tx_dma_timestamp_req.pktin qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value tx_dma_tx_fifo.out/tx_dma_timestamp_req.pktin qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value tx_dma_tx_fifo.out/tx_dma_timestamp_req.pktin qsys_mm.syncResets {FALSE}
+	set_connection_parameter_value tx_dma_tx_fifo.out/tx_dma_timestamp_req.pktin qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+
+	# add the exports
+	set_interface_property dma_clk EXPORT_OF tx_dma_clock.in_clk
+	set_interface_property csr EXPORT_OF tx_dma_csr.s0
+	set_interface_property ftile_clk EXPORT_OF tx_dma_ftile_clock.in_clk
+	set_interface_property prefetcher_read_master EXPORT_OF tx_dma_prefetcher.Descriptor_Read_Master
+	set_interface_property prefetcher_write_master EXPORT_OF tx_dma_prefetcher.Descriptor_Write_Master
+	set_interface_property irq EXPORT_OF tx_dma_prefetcher.Csr_Irq
+	set_interface_property read_master EXPORT_OF tx_dma_read_master.Data_Read_Master
+	set_interface_property reset EXPORT_OF tx_dma_reset.in_reset
+	set_interface_property timestamp EXPORT_OF tx_dma_timestamp_adapter.timestamp
+	set_interface_property pktout EXPORT_OF tx_dma_timestamp_req.pktout
+	set_interface_property timestamp_req EXPORT_OF tx_dma_timestamp_req.timestamp_request
+
+	# set values for exposed HDL parameters
+	set_domain_assignment tx_dma_csr.m0 qsys_mm.burstAdapterImplementation GENERIC_CONVERTER
+	set_domain_assignment tx_dma_csr.m0 qsys_mm.clockCrossingAdapter HANDSHAKE
+	set_domain_assignment tx_dma_csr.m0 qsys_mm.enableAllPipelines FALSE
+	set_domain_assignment tx_dma_csr.m0 qsys_mm.enableEccProtection FALSE
+	set_domain_assignment tx_dma_csr.m0 qsys_mm.enableInstrumentation FALSE
+	set_domain_assignment tx_dma_csr.m0 qsys_mm.insertDefaultSlave FALSE
+	set_domain_assignment tx_dma_csr.m0 qsys_mm.interconnectResetSource DEFAULT
+	set_domain_assignment tx_dma_csr.m0 qsys_mm.interconnectType STANDARD
+	set_domain_assignment tx_dma_csr.m0 qsys_mm.maxAdditionalLatency 1
+	set_domain_assignment tx_dma_csr.m0 qsys_mm.optimizeRdFifoSize FALSE
+	set_domain_assignment tx_dma_csr.m0 qsys_mm.piplineType PIPELINE_STAGE
+	set_domain_assignment tx_dma_csr.m0 qsys_mm.responseFifoType REGISTER_BASED
+	set_domain_assignment tx_dma_csr.m0 qsys_mm.syncResets TRUE
+	set_domain_assignment tx_dma_csr.m0 qsys_mm.widthAdapterImplementation GENERIC_CONVERTER
+
+	# set the the module properties
+	set_module_property BONUS_DATA {<?xml version="1.0" encoding="UTF-8"?>
+<bonusData>
+ <element __value="tx_dma_clock">
+  <datum __value="_sortIndex" value="0" type="int" />
+ </element>
+ <element __value="tx_dma_csr">
+  <datum __value="_sortIndex" value="3" type="int" />
+ </element>
+ <element __value="tx_dma_dispatcher">
+  <datum __value="_sortIndex" value="5" type="int" />
+ </element>
+ <element __value="tx_dma_fingerprint_compare">
+  <datum __value="_sortIndex" value="12" type="int" />
+ </element>
+ <element __value="tx_dma_fingerprint_fifo">
+  <datum __value="_sortIndex" value="11" type="int" />
+ </element>
+ <element __value="tx_dma_ftile_clock">
+  <datum __value="_sortIndex" value="1" type="int" />
+ </element>
+ <element __value="tx_dma_prefetcher">
+  <datum __value="_sortIndex" value="4" type="int" />
+ </element>
+ <element __value="tx_dma_read_master">
+  <datum __value="_sortIndex" value="6" type="int" />
+ </element>
+ <element __value="tx_dma_reset">
+  <datum __value="_sortIndex" value="2" type="int" />
+ </element>
+ <element __value="tx_dma_timestamp_adapter">
+  <datum __value="_sortIndex" value="14" type="int" />
+ </element>
+ <element __value="tx_dma_timestamp_insert">
+  <datum __value="_sortIndex" value="7" type="int" />
+ </element>
+ <element __value="tx_dma_timestamp_req">
+  <datum __value="_sortIndex" value="13" type="int" />
+ </element>
+ <element __value="tx_dma_ts_fifo">
+  <datum __value="_sortIndex" value="8" type="int" />
+ </element>
+ <element __value="tx_dma_tx_dc_fifo">
+  <datum __value="_sortIndex" value="9" type="int" />
+ </element>
+ <element __value="tx_dma_tx_fifo">
+  <datum __value="_sortIndex" value="10" type="int" />
+ </element>
+</bonusData>
+}
+	set_module_property FILE {subsys_ftile_tx_dma.qsys}
+	set_module_property GENERATION_ID {0x00000000}
+	set_module_property NAME {subsys_ftile_tx_dma}
+
+	# save the system
+	sync_sysinfo_parameters
+	save_system subsys_ftile_tx_dma
+}
+
+proc do_set_exported_interface_sysinfo_parameters {} {
+	load_system subsys_ftile_rx_dma.qsys
+	set_exported_interface_sysinfo_parameter_value dma_clk clock_domain {8}
+	set_exported_interface_sysinfo_parameter_value dma_clk clock_rate {201416016}
+	set_exported_interface_sysinfo_parameter_value dma_clk reset_domain {8}
+	set_exported_interface_sysinfo_parameter_value ftile_clk clock_domain {1}
+	set_exported_interface_sysinfo_parameter_value ftile_clk clock_rate {402832031}
+	set_exported_interface_sysinfo_parameter_value ftile_clk reset_domain {1}
+	set_exported_interface_sysinfo_parameter_value prefetcher_read_master address_width {-1}
+	set_exported_interface_sysinfo_parameter_value write_master address_width {-1}
+	save_system subsys_ftile_rx_dma.qsys
+	load_system subsys_ftile_tx_dma.qsys
+	set_exported_interface_sysinfo_parameter_value dma_clk clock_domain {8}
+	set_exported_interface_sysinfo_parameter_value dma_clk clock_rate {201416016}
+	set_exported_interface_sysinfo_parameter_value dma_clk reset_domain {8}
+	set_exported_interface_sysinfo_parameter_value ftile_clk clock_domain {1}
+	set_exported_interface_sysinfo_parameter_value ftile_clk clock_rate {402832031}
+	set_exported_interface_sysinfo_parameter_value ftile_clk reset_domain {1}
+	set_exported_interface_sysinfo_parameter_value prefetcher_read_master address_width {-1}
+	set_exported_interface_sysinfo_parameter_value read_master address_width {-1}
+	save_system subsys_ftile_tx_dma.qsys
+	load_system subsys_ftile_1588.qsys
+	set_exported_interface_sysinfo_parameter_value clk clock_domain {1}
+	set_exported_interface_sysinfo_parameter_value clk clock_rate {100000000}
+	set_exported_interface_sysinfo_parameter_value clk reset_domain {1}
+	set_exported_interface_sysinfo_parameter_value master_todclk clock_domain {-1}
+	set_exported_interface_sysinfo_parameter_value master_todclk clock_rate {-1}
+	set_exported_interface_sysinfo_parameter_value master_todclk reset_domain {-1}
+	set_exported_interface_sysinfo_parameter_value rx_dma_ch1_prefetcher_read_master address_map {<address-map><slave name='parent/agilex_hps.f2h_axi_slave' start='0x0' end='0x400000000' datawidth='512' /></address-map>}
+	set_exported_interface_sysinfo_parameter_value rx_dma_ch1_prefetcher_read_master address_width {34}
+	set_exported_interface_sysinfo_parameter_value rx_dma_ch1_prefetcher_write_master address_map {<address-map><slave name='parent/agilex_hps.f2h_axi_slave' start='0x0' end='0x400000000' datawidth='512' /></address-map>}
+	set_exported_interface_sysinfo_parameter_value rx_dma_ch1_prefetcher_write_master address_width {34}
+	set_exported_interface_sysinfo_parameter_value rx_dma_ch1_write_master address_map {<address-map><slave name='parent/agilex_hps.f2h_axi_slave' start='0x0' end='0x400000000' datawidth='512' /></address-map>}
+	set_exported_interface_sysinfo_parameter_value rx_dma_ch1_write_master address_width {34}
+	set_exported_interface_sysinfo_parameter_value tx_dma_ch1_prefetcher_read_master address_map {<address-map><slave name='parent/agilex_hps.f2h_axi_slave' start='0x0' end='0x400000000' datawidth='512' /></address-map>}
+	set_exported_interface_sysinfo_parameter_value tx_dma_ch1_prefetcher_read_master address_width {34}
+	set_exported_interface_sysinfo_parameter_value tx_dma_ch1_prefetcher_write_master address_map {<address-map><slave name='parent/agilex_hps.f2h_axi_slave' start='0x0' end='0x400000000' datawidth='512' /></address-map>}
+	set_exported_interface_sysinfo_parameter_value tx_dma_ch1_prefetcher_write_master address_width {34}
+	set_exported_interface_sysinfo_parameter_value tx_dma_ch1_read_master address_map {<address-map><slave name='parent/agilex_hps.f2h_axi_slave' start='0x0' end='0x400000000' datawidth='512' /></address-map>}
+	set_exported_interface_sysinfo_parameter_value tx_dma_ch1_read_master address_width {34}
+	save_system subsys_ftile_1588.qsys
+}
+
+# create all the systems, from bottom up
+do_create_subsys_ftile_tx_dma
+reload_ip_catalog
+do_create_subsys_ftile_rx_dma
+reload_ip_catalog
+do_create_subsys_ftile_1588
+
+# set system info parameters on exported interface, from bottom up
+do_set_exported_interface_sysinfo_parameters

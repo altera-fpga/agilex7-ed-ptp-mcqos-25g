@@ -1,0 +1,54 @@
+//# ######################################################################## 
+//# Copyright (C) 2025 Altera Corporation.
+//# SPDX-License-Identifier: MIT
+//# ######################################################################## 
+
+//****************************************************************************
+//
+// Ethernet TX timestamp adapter IP
+// TX Timestamp Adapter for Intel PSG Ethernet IP
+//
+//****************************************************************************
+
+module eth_tx_timestamp_adapter
+
+(
+	input wire		clock,
+	input wire		reset,
+
+	//Timestamp input
+	input 	        									timestamp_fp_valid,
+	input	[127:0]  									timestamp_fp_data,
+		
+	//Timestamp AVST Output
+	output reg											aso_timestamp_fp_valid,
+	output reg	[127:0]									aso_timestamp_fp,
+	input												aso_timestamp_fp_ready
+);
+
+/* 
+ * timestamp_fp_valid should be valid for 1 cycle and valid
+ * only once during a transmit packet
+*/
+
+always@(posedge clock)
+begin
+	if(reset)
+	begin
+		aso_timestamp_fp_valid <= 1'b0;
+		aso_timestamp_fp <= 128'h0;
+	end
+	else
+	begin
+		if(timestamp_fp_valid)
+			aso_timestamp_fp <= timestamp_fp_data;
+			
+		if(timestamp_fp_valid)
+			aso_timestamp_fp_valid <= 1'b1;
+		else if(aso_timestamp_fp_ready)
+			aso_timestamp_fp_valid <= 1'b0;
+		
+	end
+end
+
+endmodule
