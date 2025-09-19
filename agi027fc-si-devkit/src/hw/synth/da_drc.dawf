@@ -1,0 +1,40 @@
+
+::drc::add_waiver \
+	-description {Waiver for ref_pps_in port} \
+	-rule_id {TMC-20011} \
+	-query_string {Port == 'ref_pps_in'} \
+	-stages {analysis_final_quartus_sta} \
+	-tag {TMC-20011_ref_pps_in_waiver} \
+	-timestamp {2025-08-06*06:42:40} \
+	-owner {idas} \
+	-no_warn
+
+::drc::add_waiver \
+	-description {can be ignored for normal timing analysis} \
+	-rule_id {CLK-30026} \
+	-query_string {Clock == 'altera_reserved_tck'} \
+	-stages {analysis_final_quartus_sta} \
+	-tag {} \
+	-timestamp {2025-08-06*06:47:46} \
+	-owner {idas} \
+	-no_warn
+
+::drc::add_waiver \
+	-description {Falsepath nodes in Custom IP } \
+	-rule_id {CDC-50001} \
+	-query_string {"From Clock" == 'MAIN_CLOCK' && "To Clock" == 'TOD_CLOCK' && Reason == 'Asynchronous path'} \
+	-stages {analysis_final_quartus_sta} \
+	-tag {} \
+	-timestamp {2025-08-06*06:52:01} \
+	-owner {idas} \
+	-no_warn
+
+::drc::add_waiver \
+	-description {Asynchronous false path} \
+	-rule_id {CDC-50001} \
+	-query_string {From == 'mtod_subsys' && To == 'mtod_subsys'} \
+	-stages {analysis_final_quartus_sta} \
+	-tag {} \
+	-timestamp {2025-08-06*06:55:22} \
+	-owner {idas} \
+	-no_warn
