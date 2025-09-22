@@ -16,7 +16,7 @@ Directory Structure used in this example design:
  ```bash
     |--- artifacts
     	|--- u-boot-spl-dtb.hex
-	|-- .config
+   	|-- .config
     |--- yocto
 		|--- meta-agilex7-sed
 		|--- meta-clang
