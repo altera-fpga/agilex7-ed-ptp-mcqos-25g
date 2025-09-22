@@ -8,7 +8,6 @@ use strict;
 use Cwd qw();
 my $input_path     = $ARGV[0] ;
 my $ptile_top_path = $input_path."/qsys/qsys_top/sim/qsys_top.v";
-print "PTILE PATH = $ptile_top_path\n";
 
 #===============================================
 # [STAGE:1] Copying required files from IP Path
