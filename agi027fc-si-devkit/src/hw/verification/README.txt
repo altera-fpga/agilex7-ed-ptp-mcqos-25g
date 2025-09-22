@@ -4,9 +4,12 @@
 
 Initial set the resources as per the following order and set all the environemnt variables as per the setup.sh in the given order
 1)  Set all tool paths vcs, python etc. Please make sure Tool versions used are as follows:
-      VCS : vcsmx/T-2022.06-SP2-3
-      Python : python/3.7.7
+      VCS     : vcsmx/T-2022.06-SP2-3
+      Python  : python/3.7.7
       Quartus : Quartus Version 25.1
+      PERL    : perl/5.8.8
+      CMAKE   : cmake/3.11.4
+      GCC     : gcc/7.2.0
       PTP_ROOTDIR : <user path>/<repo name>/src/hw/verification/2P25G_DV
 2)  Set the required environment and directory Structure variables (as shown below)
       source <user path>/<repo name>/src/hw/verification/2P25G_DV/env/setup.sh
