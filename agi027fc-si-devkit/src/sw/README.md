@@ -34,7 +34,7 @@ Please refer to https://altera-fpga.github.io/rel-25.1.1/embedded-designs/agilex
 - Burn the HPS first jic file to the QSFP flash to setup HPS first boot system
 - Burn the sd card wic image to the bootable SD card.
 
-Please use the specific file provided in the release artifactory to burn the images for direct boot up. The below procedure assumes that this repo has been cloned.
+Please use the specific file provided in the release directory tag to burn the images for direct boot up. The below procedure assumes that this repo has been cloned.
 
 ### Yocto Build
 As described earlier, the Yocto builds everything required for a boot of the devkit with the deisgn. To start building please use the devkit specific script
@@ -49,17 +49,16 @@ As described earlier, the Yocto builds everything required for a boot of the dev
 You can build the Linux kernel alone for debugging purposes. The below steps will help you create a new Linux kernel from the base linux repo.
 Download toolchain from https://developer.arm.com/-/media/Files/downloads/gnu/11.3.rel1/binrel/arm-gnu-toolchain-11.3.rel1-x86_64-aarch64-none-linux-gnu.tar.xz extract it.
 
-    	$ export ARCH=arm64;
+	$ export ARCH=arm64;
 	$ export CROSS_COMPILE=`pwd`/arm-gnu-toolchain-11.3.rel1-x86_64-aarch64-none-linux-gnu/bin/aarch64-none-linux-gnu-
-    	$ git clone https://github.com/altera-fpga/linux-socfpga.git -b socfpga-6.12.19-lts-ethernet-sed
-    	$ cd linux-socfpga/
-    	$ git checkout SED-2x25GE-agilex7_dk_si_agi027fc-Q25.1.1-Rel-1.1
-    	$ make defconfig
-    	$ make menuconfig
-    	  Enable the configs listed: 
-	  	<yocto>/meta-agilex7-sed/recipes-kernel/linux/linux-socfpga-lts/config_eth.cfg
+	$ git clone https://github.com/altera-fpga/linux-socfpga.git -b socfpga-6.12.19-lts-ethernet-sed
+	$ cd linux-socfpga/
+	$ git checkout SED-2x25GE-agilex7_dk_si_agi027fc-Q25.1.1-Rel-1.1
+	$ make defconfig
+	$ make menuconfig
+		Enable the configs listed: 
+		<yocto>/meta-agilex7-sed/recipes-kernel/linux/linux-socfpga-lts/config_eth.cfg
 		<yocto>/meta-agilex7-sed/recipes-kernel/linux/linux-socfpga-lts/config_mcq.cfg
-
 		You can also copy the example .config present at <BASEDIR>/agi027fc-si-devkit/src/sw/artifacts/
 	$ make -j32
 
@@ -81,14 +80,13 @@ Folow the steps below to build the ATF from source
 
 ### Building u-boot from source
 Follow the steps below to build UBoot
-      
-      $ git clone https://github.com/altera-fpga/u-boot-socfpga.git
-      $ cd u-boot-socfpga
 
-      copy the generated bl31.bin (generated during build from ATF source or Yocot build) to u-boot home folder.
-      copy the gsrd-console-image-agilex7.cpio from the release folder.
+	$ git clone https://github.com/altera-fpga/u-boot-socfpga.git
+	$ cd u-boot-socfpga
 
-      $ make socfpga_agilex_defconfig
-      $ make -j32
-      u-boot.itb will be created, you can replace the u-boot.itb present on the target with this file.
+	copy the generated bl31.bin (generated during build from ATF source or Yocot build) to u-boot home folder.
+	copy the gsrd-console-image-agilex7.cpio from the release folder.
 
+	$ make socfpga_agilex_defconfig
+	$ make -j32
+	u-boot.itb will be created, you can replace the u-boot.itb present on the target with this file.
