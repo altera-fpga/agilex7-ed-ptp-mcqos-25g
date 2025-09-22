@@ -1,0 +1,281 @@
+//########################################################################
+//# Copyright (C) 2025 Altera Corporation.
+//# SPDX-License-Identifier: MIT
+//########################################################################
+//# Includes defines for Registers and TB defines
+//########################################################################
+
+`define TOP fptp_top_tb.u_dut.inst_qsys_top
+`define NUM_INST 2
+`define NUM_MASTERS 1
+`define NUM_SLAVES  1
+
+`ifndef SVT_AXI_MAX_ADDR_WIDTH
+  `define SVT_AXI_MAX_ADDR_WIDTH 64
+`endif
+
+`ifndef SVT_AXI_MAX_DATA_WIDTH
+  `define SVT_AXI_MAX_DATA_WIDTH 256
+`endif
+
+`ifndef SVT_AXI_MAX_ID_WIDTH
+   `define SVT_AXI_MAX_ID_WIDTH 8
+`endif
+
+`define NUM_D2H_ST_PORTS 1
+`define NUM_H2D_ST_PORTS 1
+
+`ifdef FTILE_PTP_HSSI_25G
+`define PAYLOAD_WIDTH 64
+`define PAYLOAD_STRB 8
+`define CH_WIDTH 6
+`define DESC_LENGTH 1024
+`define NUM_CHN 6
+`define P_LEN 16 
+`define ADDR_W 32
+`endif
+
+
+
+localparam PORT0_TXDMA_ADDR 			= 32'h2400_0000;
+localparam PORT1_TXDMA_ADDR 			= 32'h2480_0000;
+localparam PORT2_TXDMA_ADDR 			= 32'h2500_0000;
+localparam PORT3_TXDMA_ADDR 			= 32'h2580_0000;
+localparam PORT4_TXDMA_ADDR 			= 32'h2600_0000;
+localparam PORT5_TXDMA_ADDR 			= 32'h2680_0000;
+
+localparam PORT0_RXDMA_ADDR 			= 32'h2000_0000;
+localparam PORT1_RXDMA_ADDR 			= 32'h2080_0000;
+localparam PORT2_RXDMA_ADDR 			= 32'h2100_0000;
+localparam PORT3_RXDMA_ADDR 			= 32'h2180_0000;
+localparam PORT4_RXDMA_ADDR 			= 32'h2200_0000;
+localparam PORT5_RXDMA_ADDR 			= 32'h2280_0000;
+
+localparam PORT0_SA				= 48'hAAAA_AAAA_AAAA;
+localparam PORT1_SA				= 48'hBBBB_BBBB_BBBB;
+localparam PORT2_SA				= 48'hCCCC_CCCC_CCCC;
+localparam PORT3_SA				= 48'h6666_6666_6666;
+localparam PORT4_SA				= 48'h7777_7777_7777;
+localparam PORT5_SA				= 48'h8888_8888_8888;
+
+localparam PORT0_DA				= 48'hDDDD_DDDD_DDDD;
+localparam PORT1_DA				= 48'hFFFF_FFFF_FFFF;
+localparam PORT2_DA				= 48'hEEEE_EEEE_EEEE;
+localparam PORT3_DA				= 48'h3333_3333_3333;
+localparam PORT4_DA				= 48'h4444_4444_4444;
+localparam PORT5_DA				= 48'h5555_5555_5555;
+
+localparam PORT0_START_DESC_CTRL		= 32'hC000_1300;
+localparam PORT1_START_DESC_CTRL		= 32'hC000_1301;
+localparam PORT2_START_DESC_CTRL		= 32'hC000_1302;
+localparam PORT3_START_DESC_CTRL		= 32'hC000_1303;
+localparam PORT4_START_DESC_CTRL		= 32'hC000_1304;
+localparam PORT5_START_DESC_CTRL		= 32'hC000_1305;
+
+localparam PORT0_END_DESC_CTRL			= 32'h8000_1300;
+localparam PORT1_END_DESC_CTRL			= 32'h8000_1301;
+localparam PORT2_END_DESC_CTRL			= 32'h8000_1302;
+localparam PORT3_END_DESC_CTRL			= 32'h8000_1303;
+localparam PORT4_END_DESC_CTRL			= 32'h8000_1304;
+localparam PORT5_END_DESC_CTRL			= 32'h8000_1305;
+
+localparam HSSI_SS_BASE_ADDR                    = 64'h000_0000;
+localparam PTP_BRIDGE_BASE_ADDR                 = 64'h405_0000;
+localparam PTP_TCAM0_BASE_ADDR                  = 64'h405_0200;
+localparam PTP_TCAM0_KEY_BASE_ADDR              = 64'h405_1200;
+localparam PTP_TCAM0_RESULT_BASE_ADDR           = 64'h405_2200;
+localparam PTP_TCAM0_MASK_BASE_ADDR             = 64'h405_3200;
+
+localparam PTP_TCAM1_BASE_ADDR                  = 64'h405_4200;
+localparam PTP_TCAM1_KEY_BASE_ADDR              = 64'h405_5200;
+localparam PTP_TCAM1_RESULT_BASE_ADDR           = 64'h405_6200;
+localparam PTP_TCAM1_MASK_BASE_ADDR             = 64'h405_7200;
+
+localparam PKTCLI0_BASE_ADDR                    = 64'h406_0000;
+localparam PKTCLI1_BASE_ADDR                    = 64'h407_0000;
+localparam OCM_BASE_ADDR                        = 64'h400_0000;
+localparam MAIN_TOD_SS_BASE_ADDR                = 64'h404_0000;
+
+localparam DMA_PORT0_BASE_TXDMA_PREF_ADDR       = 64'h448_0000;
+localparam DMA_PORT0_BASE_TXDMA_CSR_ADDR        = 64'h448_0020;
+localparam DMA_PORT0_BASE_RXDMA_PREF_ADDR       = 64'h448_0080;
+localparam DMA_PORT0_BASE_RXDMA_CSR_ADDR        = 64'h448_00A0;
+
+localparam DMA_PORT1_BASE_TXDMA_PREF_ADDR       = 64'h44C_0000;
+localparam DMA_PORT1_BASE_TXDMA_CSR_ADDR        = 64'h44C_0020;
+localparam DMA_PORT1_BASE_RXDMA_PREF_ADDR       = 64'h44C_0080;
+localparam DMA_PORT1_BASE_RXDMA_CSR_ADDR        = 64'h44C_00A0;
+
+
+localparam DMA_PORT2_BASE_TXDMA_PREF_ADDR       = 64'h450_0000;
+localparam DMA_PORT2_BASE_TXDMA_CSR_ADDR        = 64'h450_0020;
+localparam DMA_PORT2_BASE_RXDMA_PREF_ADDR       = 64'h450_0080;
+localparam DMA_PORT2_BASE_RXDMA_CSR_ADDR        = 64'h450_00A0;
+
+
+localparam DMA_PORT3_BASE_TXDMA_PREF_ADDR       = 64'h454_0000;
+localparam DMA_PORT3_BASE_TXDMA_CSR_ADDR        = 64'h454_0020;
+localparam DMA_PORT3_BASE_RXDMA_PREF_ADDR       = 64'h454_0080;
+localparam DMA_PORT3_BASE_RXDMA_CSR_ADDR        = 64'h454_00A0;
+
+localparam DMA_PORT4_BASE_TXDMA_PREF_ADDR       = 64'h458_0000;
+localparam DMA_PORT4_BASE_TXDMA_CSR_ADDR        = 64'h458_0020;
+localparam DMA_PORT4_BASE_RXDMA_PREF_ADDR       = 64'h458_0080;
+localparam DMA_PORT4_BASE_RXDMA_CSR_ADDR        = 64'h458_00A0;
+
+localparam DMA_PORT5_BASE_TXDMA_PREF_ADDR       = 64'h45C_0000;
+localparam DMA_PORT5_BASE_TXDMA_CSR_ADDR        = 64'h45C_0020;
+localparam DMA_PORT5_BASE_RXDMA_PREF_ADDR       = 64'h45C_0080;
+localparam DMA_PORT5_BASE_RXDMA_CSR_ADDR        = 64'h45C_00A0;
+
+localparam DMA_PORT0_BASE_ADDR       = 64'h448_0000;
+localparam DMA_PORT1_BASE_ADDR       = 64'h44C_0000;
+localparam DMA_PORT2_BASE_ADDR       = 64'h450_0000;
+localparam DMA_PORT3_BASE_ADDR       = 64'h454_0000;
+localparam DMA_PORT4_BASE_ADDR       = 64'h458_0000;
+localparam DMA_PORT5_BASE_ADDR       = 64'h45C_0000;
+
+localparam PORT0_TXDESC_BASE_ADDR      = 64'h1400_0000;
+localparam PORT1_TXDESC_BASE_ADDR      = 64'h1480_0000;
+localparam PORT2_TXDESC_BASE_ADDR      = 64'h1500_0000;
+localparam PORT3_TXDESC_BASE_ADDR      = 64'h1580_0000;
+localparam PORT4_TXDESC_BASE_ADDR      = 64'h1600_0000;
+localparam PORT5_TXDESC_BASE_ADDR      = 64'h1680_0000;
+
+localparam PORT0_RXDESC_BASE_ADDR      = 64'h1000_0000;
+localparam PORT1_RXDESC_BASE_ADDR      = 64'h1080_0000;
+localparam PORT2_RXDESC_BASE_ADDR      = 64'h1100_0000;
+localparam PORT3_RXDESC_BASE_ADDR      = 64'h1180_0000;
+localparam PORT4_RXDESC_BASE_ADDR      = 64'h1200_0000;
+localparam PORT5_RXDESC_BASE_ADDR      = 64'h1280_0000;
+
+
+
+
+  localparam PKTCLI0_CFG_PKT_CL_CTRL    = PKTCLI0_BASE_ADDR+64'h00;
+  localparam PKTCLI0_CFG_TEST_LOOP_CNT  = PKTCLI0_BASE_ADDR+64'h04;
+  localparam PKTCLI0_CFG_ROM_ADDR       = PKTCLI0_BASE_ADDR+64'h08;
+  localparam PKTCLI0_DYN_DMAC_ADDR_U    = PKTCLI0_BASE_ADDR+64'h0C;
+  localparam PKTCLI0_DYN_DMAC_ADDR_L    = PKTCLI0_BASE_ADDR+64'h10;
+  localparam PKTCLI0_DYN_SMAC_ADDR_U    = PKTCLI0_BASE_ADDR+64'h14;
+  localparam PKTCLI0_DYN_SMAC_ADDR_L    = PKTCLI0_BASE_ADDR+64'h18;
+  localparam PKTCLI0_DYN_PKT_NUM        = PKTCLI0_BASE_ADDR+64'h1C;
+  localparam PKTCLI0_DYN_PKT_SIZE_CFG   = PKTCLI0_BASE_ADDR+64'h20;
+  localparam PKTCLI0_STAT_TX_SOP_CNT_L  = PKTCLI0_BASE_ADDR+64'h24;
+  localparam PKTCLI0_STAT_TX_SOP_CNT_U  = PKTCLI0_BASE_ADDR+64'h28;
+  localparam PKTCLI0_STAT_TX_EOP_CNT_L  = PKTCLI0_BASE_ADDR+64'h2C;
+  localparam PKTCLI0_STAT_TX_EOP_CNT_U  = PKTCLI0_BASE_ADDR+64'h30;
+  localparam PKTCLI0_STAT_TX_ERR_CNT_L  = PKTCLI0_BASE_ADDR+64'h34;
+  localparam PKTCLI0_STAT_TX_ERR_CNT_U  = PKTCLI0_BASE_ADDR+64'h38;
+  localparam PKTCLI0_STAT_RX_SOP_CNT_L  = PKTCLI0_BASE_ADDR+64'h3C;
+  localparam PKTCLI0_STAT_RX_SOP_CNT_U  = PKTCLI0_BASE_ADDR+64'h40;
+  localparam PKTCLI0_STAT_RX_EOP_CNT_L  = PKTCLI0_BASE_ADDR+64'h44;
+  localparam PKTCLI0_STAT_RX_EOP_CNT_U  = PKTCLI0_BASE_ADDR+64'h48;
+  localparam PKTCLI0_STAT_RX_ERR_CNT_L  = PKTCLI0_BASE_ADDR+64'h4C;
+  localparam PKTCLI0_STAT_RX_ERR_CNT_U  = PKTCLI0_BASE_ADDR+64'h50;
+  localparam PKTCLI0_STAT_SYSTEM_MISC   = PKTCLI0_BASE_ADDR+64'h54;
+  localparam PKTCLI0_STAT_CHECKER_MISC  = PKTCLI0_BASE_ADDR+64'h58;
+  localparam PKTCLI0_STAT_CHECKER_CNT   = PKTCLI0_BASE_ADDR+64'h5C;
+  localparam PKTCLI0_RX_BYTE_CNT_L      = PKTCLI0_BASE_ADDR+64'h60;
+  localparam PKTCLI0_RX_BYTE_CNT_U      = PKTCLI0_BASE_ADDR+64'h64;
+  localparam PKTCLI0_TX_BYTE_CNT_L      = PKTCLI0_BASE_ADDR+64'h68;
+  localparam PKTCLI0_TX_BYTE_CNT_U      = PKTCLI0_BASE_ADDR+64'h6C;
+  localparam PKTCLI0_TX_NUM_TICKS_L     = PKTCLI0_BASE_ADDR+64'h70;
+  localparam PKTCLI0_TX_NUM_TICKS_U     = PKTCLI0_BASE_ADDR+64'h74;
+  localparam PKTCLI0_RX_NUM_TICKS_L     = PKTCLI0_BASE_ADDR+64'h78;
+  localparam PKTCLI0_RX_NUM_TICKS_U     = PKTCLI0_BASE_ADDR+64'h7C;
+  localparam PKTCLI0_UNUSED_ADDR        = PKTCLI0_BASE_ADDR+64'h80;
+
+  localparam PKTCLI1_CFG_PKT_CL_CTRL    = PKTCLI1_BASE_ADDR+64'h00;
+  localparam PKTCLI1_CFG_TEST_LOOP_CNT  = PKTCLI1_BASE_ADDR+64'h04;
+  localparam PKTCLI1_CFG_ROM_ADDR       = PKTCLI1_BASE_ADDR+64'h08;
+  localparam PKTCLI1_DYN_DMAC_ADDR_U    = PKTCLI1_BASE_ADDR+64'h0C;
+  localparam PKTCLI1_DYN_DMAC_ADDR_L    = PKTCLI1_BASE_ADDR+64'h10;
+  localparam PKTCLI1_DYN_SMAC_ADDR_U    = PKTCLI1_BASE_ADDR+64'h14;
+  localparam PKTCLI1_DYN_SMAC_ADDR_L    = PKTCLI1_BASE_ADDR+64'h18;
+  localparam PKTCLI1_DYN_PKT_NUM        = PKTCLI1_BASE_ADDR+64'h1C;
+  localparam PKTCLI1_DYN_PKT_SIZE_CFG   = PKTCLI1_BASE_ADDR+64'h20;
+  localparam PKTCLI1_STAT_TX_SOP_CNT_L  = PKTCLI1_BASE_ADDR+64'h24;
+  localparam PKTCLI1_STAT_TX_SOP_CNT_U  = PKTCLI1_BASE_ADDR+64'h28;
+  localparam PKTCLI1_STAT_TX_EOP_CNT_L  = PKTCLI1_BASE_ADDR+64'h2C;
+  localparam PKTCLI1_STAT_TX_EOP_CNT_U  = PKTCLI1_BASE_ADDR+64'h30;
+  localparam PKTCLI1_STAT_TX_ERR_CNT_L  = PKTCLI1_BASE_ADDR+64'h34;
+  localparam PKTCLI1_STAT_TX_ERR_CNT_U  = PKTCLI1_BASE_ADDR+64'h38;
+  localparam PKTCLI1_STAT_RX_SOP_CNT_L  = PKTCLI1_BASE_ADDR+64'h3C;
+  localparam PKTCLI1_STAT_RX_SOP_CNT_U  = PKTCLI1_BASE_ADDR+64'h40;
+  localparam PKTCLI1_STAT_RX_EOP_CNT_L  = PKTCLI1_BASE_ADDR+64'h44;
+  localparam PKTCLI1_STAT_RX_EOP_CNT_U  = PKTCLI1_BASE_ADDR+64'h48;
+  localparam PKTCLI1_STAT_RX_ERR_CNT_L  = PKTCLI1_BASE_ADDR+64'h4C;
+  localparam PKTCLI1_STAT_RX_ERR_CNT_U  = PKTCLI1_BASE_ADDR+64'h50;
+  localparam PKTCLI1_STAT_SYSTEM_MISC   = PKTCLI1_BASE_ADDR+64'h54;
+  localparam PKTCLI1_STAT_CHECKER_MISC  = PKTCLI1_BASE_ADDR+64'h58;
+  localparam PKTCLI1_STAT_CHECKER_CNT   = PKTCLI1_BASE_ADDR+64'h5C;
+  localparam PKTCLI1_RX_BYTE_CNT_L      = PKTCLI1_BASE_ADDR+64'h60;
+  localparam PKTCLI1_RX_BYTE_CNT_U      = PKTCLI1_BASE_ADDR+64'h64;
+  localparam PKTCLI1_TX_BYTE_CNT_L      = PKTCLI1_BASE_ADDR+64'h68;
+  localparam PKTCLI1_TX_BYTE_CNT_U      = PKTCLI1_BASE_ADDR+64'h6C;
+  localparam PKTCLI1_TX_NUM_TICKS_L     = PKTCLI1_BASE_ADDR+64'h70;
+  localparam PKTCLI1_TX_NUM_TICKS_U     = PKTCLI1_BASE_ADDR+64'h74;
+  localparam PKTCLI1_RX_NUM_TICKS_L     = PKTCLI1_BASE_ADDR+64'h78;
+  localparam PKTCLI1_RX_NUM_TICKS_U     = PKTCLI1_BASE_ADDR+64'h7C;
+  localparam PKTCLI1_UNUSED_ADDR        = PKTCLI1_BASE_ADDR+64'h80;
+
+  localparam ING_ARB0_SCRATCH__REG     = PTP_BRIDGE_BASE_ADDR+64'h0;
+  localparam ING_ARB0_CFG_PRI_DMA_REG  = PTP_BRIDGE_BASE_ADDR+64'h4;
+  localparam ING_ARB0_CFG_PRI_USR_REG  = PTP_BRIDGE_BASE_ADDR+64'h8;
+  localparam ING_ARB1_SCRATCH__REG     = PTP_BRIDGE_BASE_ADDR+64'hC;
+  localparam ING_ARB1_CFG_PRI_DMA_REG  = PTP_BRIDGE_BASE_ADDR+64'h10;
+  localparam ING_ARB1_CFG_PRI_USR_REG  = PTP_BRIDGE_BASE_ADDR+64'h14;
+  localparam ING_ARB1_RSVD0        = PTP_BRIDGE_BASE_ADDR+64'h18;
+  localparam ING_ARB1_RSVD1        = PTP_BRIDGE_BASE_ADDR+64'h1C;
+  localparam ING_ARB1_RSVD2        = PTP_BRIDGE_BASE_ADDR+64'h20;
+  localparam ING_ARB1_RSVD3        = PTP_BRIDGE_BASE_ADDR+64'h24;
+  localparam ING_ARB1_RSVD4        = PTP_BRIDGE_BASE_ADDR+64'h28;
+  localparam ING_ARB1_RSVD5        = PTP_BRIDGE_BASE_ADDR+64'h2C;
+  localparam ING_ARB1_RSVD6        = PTP_BRIDGE_BASE_ADDR+64'h30;
+  localparam ING_ARB1_RSVD7        = PTP_BRIDGE_BASE_ADDR+64'h34;
+  localparam ING_ARB1_RSVD8        = PTP_BRIDGE_BASE_ADDR+64'h38;
+  localparam ING_ARB1_RSVD9        = PTP_BRIDGE_BASE_ADDR+64'h3C;
+  localparam ING_ARB1_RSVD10       = PTP_BRIDGE_BASE_ADDR+64'h40;
+  localparam ING_ARB1_RSVD11       = PTP_BRIDGE_BASE_ADDR+64'h44;
+  localparam ING_ARB1_RSVD12       = PTP_BRIDGE_BASE_ADDR+64'h48;
+  localparam ING_ARB1_RSVD13       = PTP_BRIDGE_BASE_ADDR+64'h4C;
+  localparam ING_ARB1_RSVD14       = PTP_BRIDGE_BASE_ADDR+64'h50;
+  localparam ING_ARB1_RSVD15       = PTP_BRIDGE_BASE_ADDR+64'h54;
+  localparam ING_ARB1_RSVD16       = PTP_BRIDGE_BASE_ADDR+64'h58;
+  localparam ING_ARB1_RSVD17       = PTP_BRIDGE_BASE_ADDR+64'h5C;
+
+  localparam EGR_RXDM0_SCRATCH_REG       = PTP_BRIDGE_BASE_ADDR+64'h60;
+  localparam EGR_RXDM0_CONTROL_REG       = PTP_BRIDGE_BASE_ADDR+64'h64;
+  localparam EGR_RXDM0_DMA0_DROP_THR_REG = PTP_BRIDGE_BASE_ADDR+64'h68;
+  localparam EGR_RXDM0_DMA1_DROP_THR_REG = PTP_BRIDGE_BASE_ADDR+64'h6C;
+  localparam EGR_RXDM0_DMA2_DROP_THR_REG = PTP_BRIDGE_BASE_ADDR+64'h70;
+
+  localparam ING_RX_WID_ADP0_SCR_REG     = PTP_BRIDGE_BASE_ADDR+64'h1A0;
+  localparam ING_RX_WID_ADP0_CTR_REG     = PTP_BRIDGE_BASE_ADDR+64'h1A4;
+  localparam ING_RX_WID_ADP0_CFG_THR_REG = PTP_BRIDGE_BASE_ADDR+64'h1A8;
+
+  localparam ING_RX_WID_ADP1_SCR_REG     = PTP_BRIDGE_BASE_ADDR+64'h1AC;
+  localparam ING_RX_WID_ADP1_CTR_REG     = PTP_BRIDGE_BASE_ADDR+64'h1B0;
+  localparam ING_RX_WID_ADP1_CFG_THR_REG = PTP_BRIDGE_BASE_ADDR+64'h1B4;
+
+
+  localparam EGR_RX_WID_ADP0_SCR_REG         = PTP_BRIDGE_BASE_ADDR+64'h8200;
+  localparam EGR_RX_WID_ADP0_CTR_REG         = PTP_BRIDGE_BASE_ADDR+64'h8204;
+  localparam EGR_RX_WID_ADP0_CFG_DRP_THR_REG = PTP_BRIDGE_BASE_ADDR+64'h8208;
+
+  localparam EGR_RX_WID_ADP1_SCR_REG         = PTP_BRIDGE_BASE_ADDR+64'h820C;
+  localparam EGR_RX_WID_ADP1_CTR_REG         = PTP_BRIDGE_BASE_ADDR+64'h8210;
+  localparam EGR_RX_WID_ADP1_CFG_DRP_THR_REG = PTP_BRIDGE_BASE_ADDR+64'h8214;
+    
+  localparam HSSI_DEV_FEAT_HDR_LO            = HSSI_SS_BASE_ADDR+64'h0;   
+  localparam HSSI_DEV_FEAT_HDR_HI            = HSSI_SS_BASE_ADDR+64'h4;   
+  localparam HSSI_FEAT_GUID_L_LSB            = HSSI_SS_BASE_ADDR+64'h8;   
+  localparam HSSI_FEAT_GUID_L_MSB            = HSSI_SS_BASE_ADDR+64'hC;   
+  localparam HSSI_FEAT_GUID_H_LSB            = HSSI_SS_BASE_ADDR+64'h10;   
+  localparam HSSI_FEAT_GUID_H_MSB            = HSSI_SS_BASE_ADDR+64'h14;   
+  localparam HSSI_FEAT_CSR_ADDR_LSB          = HSSI_SS_BASE_ADDR+64'h18;   
+  localparam HSSI_FEAT_CSR_ADDR_MSB          = HSSI_SS_BASE_ADDR+64'h1C;   
+  localparam HSSI_FEAT_CSR_ADDR_SG_LSB      = HSSI_SS_BASE_ADDR+64'h20;   
+  localparam HSSI_FEAT_CSR_ADDR_SG_MSB      = HSSI_SS_BASE_ADDR+64'h24;   
+
