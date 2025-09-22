@@ -45,7 +45,6 @@ class fptp_csr_seq extends fptp_base_seq;
               .wdata(exp_data),
               .data(data)
       );
-      $display(" PORT0_ADDRESS = %h",DMA_PORT0_BASE_ADDR+j*4);
       check(exp_data,data[0][31:0],"DMA PORT0",DMA_PORT0_BASE_ADDR+j*4);
     end
     `uvm_info(get_full_name(), "Body: DMA PORT0 ENDS...", UVM_DEBUG)

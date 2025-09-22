@@ -376,7 +376,6 @@ class fptp_data_traffic_cfg_seq extends fptp_base_seq;
  
    for (int i=0; i <6; i++)
    begin
-      $display ("CHANNEL EN = %h", ch_en);
      case (i)
      0 : begin
           addr = DMA_PORT0_BASE_RXDMA_PREF_ADDR;

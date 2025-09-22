@@ -1,6 +1,5 @@
-$VCS_HOME/etc/uvm-1.2/uvm_pkg.sv
-+incdir+/p/psg/eda/synopsys/vcsmx/T-2022.06-SP2-3/linux64/suse/etc/uvm-1.2/vcs
-
+$VCS_HOME/etc/uvm-1.2/src/uvm_pkg.sv
++incdir+$VCS_HOME/etc/uvm-1.2/vcs
 +incdir $VCS_HOME/etc/uvm-1.2/src
 +incdir+$PTP_ROOTDIR/vip/axi_vip/include/sverilog
 +incdir+$PTP_ROOTDIR/vip/axi_vip/src/verilog/vcs
@@ -11,7 +10,7 @@ $VCS_HOME/etc/uvm-1.2/uvm_pkg.sv
 +incdir+$PTP_ROOTDIR/testbench/tests/sequences
 +incdir+$PTP_ROOTDIR/scripts
 
-/p/psg/eda/synopsys/vcsmx/T-2022.06-SP2-3/linux64/suse/etc/uvm-1.2/vcs/uvm_custom_install_vcs_recorder.sv
+$VCS_HOME/etc/uvm-1.2/vcs/uvm_custom_install_vcs_recorder.sv
 
 $VCS_HOME/etc/uvm-1.2/src/uvm_pkg.sv
 $PTP_ROOTDIR/vip/axi_vip/include/sverilog/svt.uvm.pkg

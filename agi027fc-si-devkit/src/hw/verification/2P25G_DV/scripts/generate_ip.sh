@@ -6,12 +6,6 @@
 # Script to upgrade IP/Qsys system given a list of .ip/.qsys
 #-------------------------------------------------------------------------
 
-usage()
-{
-   echo "usage: sh upgrade_ip.sh <Path to IP list> "
-   echo "       e.g. sh upgrade_ip.sh \$RP_ROOTDIR/syn/ptile_x16/agilex_soc_devkit_ghrd/P_tile_subsystem/design/setup/ip_list.f "
-   exit -1
-}
 echo "markdtet generate_ip Started"
 
 cleanup()

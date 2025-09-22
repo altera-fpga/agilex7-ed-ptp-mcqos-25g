@@ -161,21 +161,17 @@ class fptp_axi_slave_host_response_seq extends svt_axi_slave_base_sequence;
     svt_configuration get_cfg;
     
     super.body();
-    `uvm_info("body", "Entered ...", UVM_NONE)
-    $display("HOST SEQ ENTERED1");
     
     p_sequencer.get_cfg(get_cfg);
     if (!$cast(cfg, get_cfg)) begin
       `uvm_fatal("body", "Unable to $cast the configuration to a svt_axi_port_configuration class");
     end
-    $display("HOST SEQ ENTERED2");
     
     // consumes responses sent by driver
     soc_timer_counter_ns = 0;
 			
 
     //////////////////////////////////////////////////////////////////////////////////
-    `uvm_info("body", "Entered 112233...", UVM_NONE)
 
     fork 
       begin
@@ -184,7 +180,6 @@ class fptp_axi_slave_host_response_seq extends svt_axi_slave_base_sequence;
           #1ns;   
           if ((host_read_pkt_received == 1) || (host_write_pkt_received == 1))begin
             soc_timer_counter_ns = 0;
-            $display("reset soc_timer_counter_ns");
           end else begin
             soc_timer_counter_ns += 1;
           end
@@ -215,25 +210,23 @@ class fptp_axi_slave_host_response_seq extends svt_axi_slave_base_sequence;
             bit [511:0] wr_data[];
             host_write_pkt_received = 1;
             $cast(address_type,req_resp.addr[30:28]); 
-             $display("HOST SEQ ENTERED8");
             `uvm_info(get_full_name(), "Received WRITE packet", UVM_NONE)
             if (address_type == DMA_DATA) begin
                 $cast(agent_type,req_resp.addr[27:26]);
                 $cast(agent_port,req_resp.addr[25:23]);
                 $cast(burst_length,req_resp.burst_length);
-                $display("Address type received for WR DMA DATA");
-                $display("agent_type for last : %0d",agent_type);
-                $display("agent_port for last : %0d",agent_port);
-                $display("burst_length : %0d",burst_length);
+                `uvm_info(get_type_name(),$sformatf("RX DMA AGENT PORT = %0d", agent_port),UVM_LOW);
+                `uvm_info(get_type_name(),$sformatf("RX DMA BURST LENGTH = %0d", burst_length),UVM_LOW);
             end
             else if (address_type == DESCR) begin   
                 $cast(agent_type,req_resp.addr[27:26]);
                 $cast(agent_port,req_resp.addr[25:23]);
                 $cast(burst_length,req_resp.burst_length);
+                `uvm_info("body", "Address type received for DESC WR BACK ... ", UVM_NONE)
                 $display("Address type received for DESC WR BACK");
-                $display("agent_type for last : %0d",agent_type);
-                $display("agent_port for last : %0d",agent_port);
-                $display("burst_length : %0d",burst_length);
+                `uvm_info(get_type_name(),$sformatf("RX DESC AGENT PORT = %0d", agent_port),UVM_LOW);
+                `uvm_info(get_type_name(),$sformatf("RX DESC BURST LENGTH = %0d", burst_length),UVM_LOW);
+                `uvm_info(get_type_name(),$sformatf("RX DESC AGENT TYPE = %0d", agent_type),UVM_LOW);
             end
             num_of_desc_requested_per_awlen = burst_length;
             while (desc_offset_per_memwr_pkt_request < num_of_desc_requested_per_awlen) begin
@@ -244,23 +237,16 @@ class fptp_axi_slave_host_response_seq extends svt_axi_slave_base_sequence;
                end
                desc_offset_per_memwr_pkt_request++;
             end
-            $display("sending BRESP to slave sequencer");
             `uvm_rand_send_with(req, {	
               bresp == svt_axi_slave_transaction::OKAY;
-              `ifdef WATCHDOG_TIMER_EN	
-              addr_ready_delay == 16;
-              `endif//WATCHDOG_TIMER_EN
             })
             host_write_pkt_received = 0;
-            $display (" WRITE TXN ENDS");
           end
 
           //----------------------------------------------------------------------------------
           // Host read respond 
           //---------------------------------------------------------------------------------- 
           if((req_resp.xact_type ==(svt_axi_transaction::COHERENT)) && (req_resp.transmitted_channel == (svt_axi_transaction::READ)))begin
-             $display("CHECK THE REQ IS FOR READ for H2D/D2H ENTERED4");
-             $display("CHECK THE REQ IS FOR DESC READ/DMA READ ENTERED4");
             `uvm_info(get_full_name(), "Received READ packet", UVM_NONE)
             host_read_pkt_received = 1;
             
@@ -272,27 +258,20 @@ class fptp_axi_slave_host_response_seq extends svt_axi_slave_base_sequence;
               $cast(agent_type,req_resp.addr[21:20]);
               $cast(agent_port,req_resp.addr[16:13]);
               $cast(burst_length,req_resp.burst_length);
-              $display("burst_length : %0d",burst_length);
-              $display("Address type received CSR");
             end  
             else if (address_type == DESCR) begin
                 $cast(agent_type,req_resp.addr[27:26]);  
                 $cast(agent_port,req_resp.addr[25:23]);
                 $cast(burst_length,req_resp.burst_length);
+                `uvm_info(get_type_name(),$sformatf("TX DESC AGENT PORT = %0d", agent_port),UVM_LOW);
+                `uvm_info(get_type_name(),$sformatf("TX DESC BURST LENGTH = %0d", burst_length),UVM_LOW);
+                `uvm_info(get_type_name(),$sformatf("TX DESC AGENT TYPE = %0d", agent_type),UVM_LOW);
                 if (req_resp.addr[31]) begin
                    last_desc = 1;
-                   $display("Received DESC Addr = %h",req_resp.addr);  
-                   $display("burst_length : %0d",burst_length);
-                   $display("agent_type   : %0d",agent_type);
-                   $display("agent_port   : %0d",agent_port);
                 end
                 else begin
                    last_desc = 0;
                    $display("Received DESC Addr = %h",req_resp.addr);  
-                   $display("burst_length for other than last %0d",burst_length);
-                   $display("Address type received non CSR");
-                   $display("agent_type for last : %0d",agent_type);
-                   $display("agent_port for last : %0d",agent_port);
                 end
             end
             else if (address_type == DMA_DATA) begin
@@ -301,11 +280,7 @@ class fptp_axi_slave_host_response_seq extends svt_axi_slave_base_sequence;
                 $cast(agent_port,req_resp.addr[25:23]);
                 $cast(burst_length,req_resp.burst_length);
                 $display("Address type received for DMA DATA");
-                $display("agent_type for last : %0d",agent_type);
-                $display("agent_port for last : %0d",agent_port);
-                $display("burst_length for DMA DATA: %0d",burst_length);
                 if (burst_length > 1) begin
-                    $display("In case burst_length for DMA DATA: %0d",burst_length);
                     if (burst_length==8 ) begin
                         up_burst_length = 1;
                     end
@@ -322,12 +297,9 @@ class fptp_axi_slave_host_response_seq extends svt_axi_slave_base_sequence;
                 else begin
                      up_burst_mod    = ch_desc_length[agent_port]%8;
                 end
-                $display("UP_burst_length : %0d",up_burst_length);
-                $display("UP_burst_mod : %0d",up_burst_mod);
                 case(req_resp.addr[25:23])
                  0 : begin
                        ch_rd_addr[0] = req_resp.addr;
-                       $display("PORT0 DMA addr = %h",ch_rd_addr[0]);
                      end
                  1 : begin
                        ch_rd_addr[1] = req_resp.addr;
@@ -358,15 +330,8 @@ class fptp_axi_slave_host_response_seq extends svt_axi_slave_base_sequence;
             // STEP 2::Address type == DESCR, construct rdata to prefetcher, to return descriptors
             //----------------------------------------------------------------------------------------
             if (address_type == DESCR) begin
-              $display("=================================================================================");
-              $display("Memory read request for descriptor request: 256'h%0h", req_resp.addr);
-              $display("=================================================================================");
-              $display("HOST SEQ ENTERED5");
               
               num_of_desc_requested_per_arlen = burst_length;
-              `uvm_info(get_full_name(),
-                        $sformatf("num_of_desc_requested_per_arlen : %0d",num_of_desc_requested_per_arlen),
-                        UVM_NONE)
               // Initialize before processing the request of an memory read packet.
               desc_offset_per_memrd_pkt_request = 0;
               // [IF BLOCK]
@@ -395,23 +360,15 @@ class fptp_axi_slave_host_response_seq extends svt_axi_slave_base_sequence;
               
 
               // [WHILE LOOP::Prefetcher TLP Payload]
-              $display("ENTER_WHILE_LOOP_PREFETCHER_PAYLOAD");
               while (desc_offset_per_memrd_pkt_request < num_of_desc_requested_per_arlen) begin
                 desc_offset_per_memrd_pkt_request++;
-                $display("desc_offset_per_memrd_pkt_request",desc_offset_per_memrd_pkt_request);
-                $display("num_of_desc_requested_per_arlen",num_of_desc_requested_per_arlen);
-                $display("START OF WHILE LOOP");
                 if (desc_offset_per_memrd_pkt_request	== num_of_desc_requested_per_arlen) begin
-                  $display("----Send MemRd Cpl TLP Packet----");
-                  $display("HOST SEQ ENTERED6");
                   if (agent_type == H2D_ST_AGENT) begin
                      rdata_out = new[burst_length]; 
                      rdesc_pop = rdesc_queue[agent_port].pop_front();
                      for (int i=0; i<burst_length; i++) begin 
                         $display("%d, rdesc_pop = %h",i,rdesc_pop);
                         rdata_out[i] = rdesc_pop[64*i+:64];
-                        $display("rdata_out[%0d]:%h",i,rdata_out[i]);
-                        $display ("IN PORT[%d] RDESC POP",agent_port);
                      end
                   end   
                   else if (agent_type == D2H_ST_AGENT) begin
@@ -420,12 +377,9 @@ class fptp_axi_slave_host_response_seq extends svt_axi_slave_base_sequence;
                      for (int i=0; i<burst_length; i++) begin 
                        $display("%d, wdesc_pop = %h",i,wdesc_pop);
                        rdata_out[i] = wdesc_pop[64*i+:64];
-                       $display("rdata_out[%0d]:%h",i,rdata_out[i]);
-                       $display ("IN PORT[%d] WDESC POP",agent_port);
                      end
                    end
                 end
-                $display("END OF WHILE LOOP");
               end //end of WHILE LOOP
 
               // send req_resp to driver
@@ -447,10 +401,6 @@ class fptp_axi_slave_host_response_seq extends svt_axi_slave_base_sequence;
             // STEP 3::Address type == DMA, construct rdata to Agents, to return DMA data
             //----------------------------------------------------------------------------------------
             if (address_type == DMA_DATA) begin
-              $display("=================================================================================");
-              $display("Memory read request for DMA data request: 256'h%0h", req_resp.addr);
-              $display("=================================================================================");
-              $display("HOST SEQ ENTERED7");
               
               // send req_resp to driver
               `uvm_info("body", "sending DMA data to slave sequencer ", UVM_NONE)
@@ -471,16 +421,12 @@ class fptp_axi_slave_host_response_seq extends svt_axi_slave_base_sequence;
                     data_pop[0] = data_queue[agent_port].pop_front();
                     for (int j=0; j<8; j++) begin 
                          rdata_out[i*8+j] = data_pop[0][64*j+:64];
-                         $display("rdata_out[%0d]:%h",i*8+j,rdata_out[i*8+j]);
-                         $display ("IN PORT[%d] RDATA POP",agent_port);
                     end  
                   end
-                  rec_bytes[0] = burst_length*8 + rec_bytes[agent_port]; 
-                  $display(" Totallength = %d",rec_bytes[agent_port]);
+                  rec_bytes[agent_port] = burst_length*8 + rec_bytes[agent_port]; 
                   if(ch_desc_length[agent_port] == rec_bytes[agent_port]) begin
                         hdr_sent[agent_port] = 0;
                         rec_bytes[agent_port] = 0;
-                        $display(" HDR SENT[%d] = %h, Port = %d", agent_port, hdr_sent[agent_port], agent_port) ;
                   end
                   
                end
@@ -490,24 +436,18 @@ class fptp_axi_slave_host_response_seq extends svt_axi_slave_base_sequence;
                  begin 
                      z = rdata_out.size(); 
                      z= z-1;  
-                     $display(" DATA OUT SIZE= %d", rdata_out.size());  
                      data_pop[0] = pend_data_queue[agent_port].pop_front();
                      for (int j=0; j<up_burst_mod; j++) begin 
                          rdata_out[z+j] = data_pop[0][64*j+:64];
-                         $display("rdata_out[%0d]:%h",z+j,rdata_out[z+j]);
-                         $display ("IN PORT[%d] RDATA POP",agent_port);
                      end  
                  end
                  else 
                  begin 
                      z = rdata_out.size(); 
                      z= z-1;  
-                     $display(" DATA OUT SIZE= %d", rdata_out.size());  
                      data_pop[0] = pend_data_queue[agent_port].pop_front();
                      for (int j=0; j<8; j++) begin 
                          rdata_out[z+j] = data_pop[0][64*j+:64];
-                         $display("rdata_out[%0d]:%h",z+j,rdata_out[z+j]);
-                         $display ("IN PORT[%d] RDATA POP",agent_port);
                      end  
                  end
                end
@@ -522,11 +462,9 @@ class fptp_axi_slave_host_response_seq extends svt_axi_slave_base_sequence;
                                  })
             end //end of DMA_DATA
           end //end of READ transaction 
-          $display ("TASK END BEFORE");
         end //forever
       end // fork end
     join_any
-     $display ("TASK END");
     `uvm_info("Exiting_body", "fptp_axi_slave_host_response_seq...!! ", UVM_NONE)
   endtask: body 
 
@@ -537,7 +475,6 @@ class fptp_axi_slave_host_response_seq extends svt_axi_slave_base_sequence;
       logic [31:0] ectrl;
       logic [31:0] descptr;
       logic [31:0] addr;
-      $display("MAX_DESC in PORT[%d] = %d",port, desc);
       $display("DESC LENGTH n PORT[%d] = %d",port,ch_desc_length[port]);
        case (port)
             0 : begin
@@ -577,10 +514,6 @@ class fptp_axi_slave_host_response_seq extends svt_axi_slave_base_sequence;
                   addr = PORT5_TXDMA_ADDR;
                 end
        endcase   
-       $display(" SCTRL = %h",sctrl);
-       $display(" ECTRL = %h",ectrl);
-       $display(" DESCR = %h",descptr);
-       $display(" ADDR = %h",addr);
          for (int i = 0; i <desc;i++) begin // No.of desc
             if ( i ==0 )
             begin 
@@ -588,7 +521,6 @@ class fptp_axi_slave_host_response_seq extends svt_axi_slave_base_sequence;
                  seq_num = i;
                  next_descptr = descptr;; 
                  rd_addr = addr;
-                 $display(" SCTRL = %h",sctrl);
                   
             end
             else if (i>=1 && i<desc-1)
@@ -597,7 +529,6 @@ class fptp_axi_slave_host_response_seq extends svt_axi_slave_base_sequence;
                  seq_num = i;
                  next_descptr = next_descptr +'h100;
                  rd_addr =  rd_addr + 'h600;
-                 $display(" SCTRL = %h",sctrl);
             end
             else if (i==desc-1)
             begin 
@@ -605,7 +536,6 @@ class fptp_axi_slave_host_response_seq extends svt_axi_slave_base_sequence;
                  seq_num = i;
                  next_descptr = next_descptr +'h100;
                  rd_addr =  rd_addr + 'h600;
-                 $display(" ECTRL = %h",ectrl);
             end
              h2d_st_data_desc_1.Control = ctrl;
              h2d_st_data_desc_1.Reserved = 'h0;
@@ -622,7 +552,6 @@ class fptp_axi_slave_host_response_seq extends svt_axi_slave_base_sequence;
              h2d_st_data_desc_1.WriteAddressL = 'h0;
              h2d_st_data_desc_1.ReadAddressL = rd_addr;
    
-             $display("----link_desc----");
              rdesc_queue[port].push_back({
              h2d_st_data_desc_1.Control, // SOP and EOP set
              h2d_st_data_desc_1.Reserved,
@@ -638,8 +567,6 @@ class fptp_axi_slave_host_response_seq extends svt_axi_slave_base_sequence;
              h2d_st_data_desc_1.Length, 
              h2d_st_data_desc_1.WriteAddressL,
              h2d_st_data_desc_1.ReadAddressL}); 
-             $display("rdesc_queue[%d]:%h",port,rdesc_queue[port][i]);
-             $display ("IN PORT[%d] RDESC QUEUE",port);
          end   
    endtask
 
@@ -649,7 +576,6 @@ class fptp_axi_slave_host_response_seq extends svt_axi_slave_base_sequence;
       logic [31:0] ectrl;
       logic [31:0] descptr;
       logic [31:0] addr;
-      $display("MAX_DESC in PORT[%d] = %d",port, desc);
       $display("DESC LENGTH n PORT[%d] = %d",port,ch_desc_length[port]);
        case (port)
             0 : begin
@@ -689,10 +615,6 @@ class fptp_axi_slave_host_response_seq extends svt_axi_slave_base_sequence;
                   addr = PORT5_RXDMA_ADDR;
                 end
        endcase   
-       $display(" SCTRL = %h",sctrl);
-       $display(" ECTRL = %h",ectrl);
-       $display(" DESCR = %h",descptr);
-       $display(" ADDR = %h",addr);
          for (int i = 0; i <desc;i++) begin // No.of desc
             if ( i ==0 )
             begin 
@@ -700,7 +622,6 @@ class fptp_axi_slave_host_response_seq extends svt_axi_slave_base_sequence;
                  seq_num = i;
                  next_descptr = descptr;; 
                  wr_addr = addr;
-                 $display(" SCTRL = %h",sctrl);
                   
             end
             else if (i>=1 && i<desc-1)
@@ -709,7 +630,6 @@ class fptp_axi_slave_host_response_seq extends svt_axi_slave_base_sequence;
                  seq_num = i;
                  next_descptr = next_descptr +'h100;
                  wr_addr =  wr_addr + 'h600;
-                 $display(" SCTRL = %h",sctrl);
             end
             else if (i==desc-1)
             begin 
@@ -717,7 +637,6 @@ class fptp_axi_slave_host_response_seq extends svt_axi_slave_base_sequence;
                  seq_num = i;
                  next_descptr = next_descptr +'h100;
                  wr_addr =  wr_addr + 'h600;
-                 $display(" ECTRL = %h",ectrl);
             end
              h2d_st_data_desc_1.Control = ctrl;
              h2d_st_data_desc_1.Reserved = 'h0;
@@ -734,7 +653,6 @@ class fptp_axi_slave_host_response_seq extends svt_axi_slave_base_sequence;
              h2d_st_data_desc_1.WriteAddressL = wr_addr;
              h2d_st_data_desc_1.ReadAddressL = 'h0;
    
-             $display("----link_desc----");
              wdesc_queue[port].push_back({
              h2d_st_data_desc_1.Control, // SOP and EOP set
              h2d_st_data_desc_1.Reserved,
@@ -750,8 +668,6 @@ class fptp_axi_slave_host_response_seq extends svt_axi_slave_base_sequence;
              h2d_st_data_desc_1.Length, 
              h2d_st_data_desc_1.WriteAddressL,
              h2d_st_data_desc_1.ReadAddressL}); 
-             $display("wdesc_queue[%d]:%h",port,wdesc_queue[port][i]);
-             $display ("IN PORT[%d] WDESC QUEUE",port);
          end   
    endtask
    
@@ -762,15 +678,11 @@ class fptp_axi_slave_host_response_seq extends svt_axi_slave_base_sequence;
            for (int j=0; j<up_burst_length; j++) begin
                if (j==0)
                begin
-                   $display(" ADDR0 = %h",ch_rd_addr[port]);   
-                   $display (" IN LENGTH1 && J 0");
-                   $display(" HDR SENT[%d] = %h, Port = %d", port, hdr_sent[port], port) ;
                    if (!hdr_sent[port]) begin
                       sa = SA;
                       da = DA;
                       len = ETH;
                       hdr_sent[port] = 1;
-                      $display(" HDR SENT[%d] in first if = %h, Port = %d", port, hdr_sent[port], port) ;
                    end
                    else
                    begin
@@ -802,16 +714,13 @@ class fptp_axi_slave_host_response_seq extends svt_axi_slave_base_sequence;
                eth_pkt_1.sa,
                eth_pkt_1.da });
                $display("data_queue[%0d]:%h",port,j,data_queue[port][j]);
-               $display("FIRST PKT PORT0 %d",  j);
            end
          end
          else  begin
            // Check for mod to be non_zero and its value between 1 to 7
              if (up_burst_mod!=0)
              begin
-               $display(" ADDR0 = %h",ch_rd_addr[port]);   
                hdr_sent[port] = 0;
-               $display(" HDR SENT[%d] in RESET0 = %h, Port = %d", port, hdr_sent[port], port) ;
                for (int j=0; j<up_burst_mod; j++) begin
                    eth_pkt_1.data3 = $random;
                    eth_pkt_1.data2 = $random;
@@ -830,14 +739,11 @@ class fptp_axi_slave_host_response_seq extends svt_axi_slave_base_sequence;
                    eth_pkt_1.sa,
                    eth_pkt_1.da });
                    $display("pend_data_queue[%0d]:%h",port,j,pend_data_queue[port][j]);
-                   $display("SECONDPKT PORT0");
                end
              end    
              else if (!up_burst_mod) 
              begin
-               $display(" ADDR0 = %h",ch_rd_addr[port]);   
                hdr_sent[port] = 0;
-               $display(" HDR SENT[%d] in RESET1 = %h, Port = %d", port, hdr_sent[port], port) ;
                for (int j=0; j<8; j++) begin
                    eth_pkt_1.data3 = $random;
                    eth_pkt_1.data2 = $random;
@@ -856,7 +762,6 @@ class fptp_axi_slave_host_response_seq extends svt_axi_slave_base_sequence;
                    eth_pkt_1.sa,
                    eth_pkt_1.da });
                    $display("pend_data_queue[%0d]:%h",port,j,pend_data_queue[port][j]);
-                   $display("SECONDPKT PORT0");
                end
              end     
          end

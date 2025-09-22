@@ -87,7 +87,6 @@ class fptp_base_seq extends uvm_sequence;
 
     `uvm_send(mst_seq)
 
-    $display($time, "wait for response object to be fetched");
     wait (mst_seq.rsp !== null);
     `uvm_info(get_full_name(),$sformatf(" print response object \n%s", mst_seq.rsp.sprint()), UVM_LOW)
     data = mst_seq.rsp.data;

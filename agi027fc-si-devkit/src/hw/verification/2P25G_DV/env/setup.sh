@@ -10,7 +10,7 @@ export DESIGN_DIR=$PTP_ROOTDIR/../../src
 export QUARTUS_HOME=$QUARTUS_ROOTDIR
 export QUARTUS_INSTALL_DIR=$QUARTUS_ROOTDIR
 export QUARTUS_ROOTDIR_OVERRIDE=$QUARTUS_ROOTDIR
-export DESIGNWARE_HOME=/p/psg/EIP/synopsys/vip_common/vip_R-2020.09A
+export DESIGNWARE_HOME= <synopsys vip location> verion -vip_R-2020.09A
 export UVM_HOME=$VCS_HOME/etc/uvm-1.2
 export SYNTH_DIR=$PTP_ROOTDIR/../../synth
 
