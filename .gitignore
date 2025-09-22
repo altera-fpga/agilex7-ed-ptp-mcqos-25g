@@ -1,0 +1,5 @@
+agi027fc-si-devkit/src/sw/yocto/*.patch
+agi027fc-si-devkit/src/sw/yocto/*-rootfs/*
+agi027fc-si-devkit/src/sw/yocto/*-images/*
+agi027fc-si-devkit/src/sw/yocto/downloads/*
+agi027fc-si-devkit/src/sw/yocto/sstate_cache/*

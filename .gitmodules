@@ -1,0 +1,20 @@
+[submodule "agi027fc-si-devkit/src/sw/yocto/poky"]
+	path = agi027fc-si-devkit/src/sw/yocto/poky
+	url = https://git.yoctoproject.org/git/poky
+	branch = scarthgap
+[submodule "agi027fc-si-devkit/src/sw/yocto/meta-intel-fpga"]
+	path = agi027fc-si-devkit/src/sw/yocto/meta-intel-fpga
+	url = https://git.yoctoproject.org/git/meta-intel-fpga
+	branch = scarthgap
+[submodule "agi027fc-si-devkit/src/sw/yocto/meta-intel-fpga-refdes"]
+	path = agi027fc-si-devkit/src/sw/yocto/meta-intel-fpga-refdes
+	url = https://github.com/altera-opensource/meta-intel-fpga-refdes.git
+	branch = scarthgap
+[submodule "agi027fc-si-devkit/src/sw/yocto/meta-openembedded"]
+	path = agi027fc-si-devkit/src/sw/yocto/meta-openembedded
+	url = https://git.openembedded.org/meta-openembedded
+	branch = scarthgap
+[submodule "agi027fc-si-devkit/src/sw/yocto/meta-clang"]
+	path = agi027fc-si-devkit/src/sw/yocto/meta-clang
+	url = https://github.com/kraj/meta-clang.git
+	branch = scarthgap
