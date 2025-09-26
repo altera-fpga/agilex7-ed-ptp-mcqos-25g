@@ -103,14 +103,14 @@ verification
 Note: 
 Cmplib command will take 30-40mts to execute.
 
-3)  For building RTL & TB QOS , execute: “gmake -f Makefile.mk build  HSSI_25G=1” 
+3)  For building RTL & TB QOS , execute: “gmake -f Makefile.mk build  HSSI_25G=1 <DUMP=1>" [DUMP is an option. If VPD is required,DUMP=1 option is used]
     Once IPs are generated and relevant libraries are compiled, next step is compile and elaborate the design and testbench. The "build" command will do the same. 
     This command is also required to be executed once. But if any design and testbench files updates are required, then this command needs to be executed accordingly as per the requirement before the test run. Mostly design files won't be updated.
 
 Note: 
 Build command will take 30-40mts to execute.
 
-4)  For tests run execute: “gmake -f Makefile.mk run TESTNAME=fptp_csr_test SEQNAME=fptp_csr_seq <DUMP=1> <SEED=<seed number>>. [DUMP is an option. If VPD is required,DUMP=1 option is used] [SEED is an option.To rerun the failure test, SEED=<seed number> is used]
+4)  For tests run execute: “gmake -f Makefile.mk run TESTNAME=fptp_csr_test SEQNAME=fptp_csr_seq <SEED=<seed number>> [SEED is an option.To rerun the failure test, SEED=<seed number> is used]
 
 Note:
 Test run command will take 1-1.5 hrs of time. Once the test run starts, it will wait for the HSSI link up for both the ports to be ready. Once link is up, test flow starts. For dma base seq and qos usr seq, initial configuration needs to be done and then data traffic starts. 

@@ -45,9 +45,7 @@ SIMV_OPT += $(QUARTUS_INSTALL_DIR)/eda/sim_lib2/quartus_dpi.c
 
 
 ifdef DUMP
-    VLOG_OPT += -debug_access+all +define+VCS_DUMP
-    VCS_OPT += -debug_access+all
-    SIMV_OPT += -ucli -i $(VCDFILE)
+    VLOG_OPT += +define+VCS_DUMP
 endif
 
 ifdef COV
