@@ -1,4 +1,4 @@
-# Intel® Agilex™ 7 FPGA SoC 2x25G 1588PTP Multichannel QOS supported System Example Design - Software
+# Agilex&trade; 7 Multi-Channel 25GbE Precision Time Protocol System Example Design - Software
 
 ## Description
 The System Example Design software repo helps in building the required software pieces to run Linux 

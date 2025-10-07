@@ -1,9 +1,9 @@
-# Intel® Agilex™ 7 IEEE1588 PTP Multi-Channel QoS Support System Example Design Build Scripts
+# Agilex&trade; 7 Multi-Channel 25GbE Precision Time Protocol System Example Design - Hardware
 
 
 # Dependency
 
-- Intel® Quartus Prime (See Release Notes for the supported version)
+- Intelï¿½ Quartus Prime (See Release Notes for the supported version)
 
 # Build Steps
 
