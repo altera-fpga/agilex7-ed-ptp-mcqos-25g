@@ -31,7 +31,7 @@ Directory Structure used in this example design:
 
 ### Configuring the Board
 
-Please refer to https://altera-fpga.github.io/rel-25.1.1/embedded-designs/agilex-7/i-series/soc/gsrd/ug-gsrd-agx7i-soc/#running-the-gsrd to get details on how to setup the board. At the end of this setup, the system needs to be a HPS first boot system with its SD card programmed to boot the design after a power cycle. The link provides description to do the following
+Please refer to [Running the GSRD](https://altera-fpga.github.io/rel-25.1.1/embedded-designs/agilex-7/i-series/soc/gsrd/ug-gsrd-agx7i-soc/#running-the-gsrd) to get details on how to setup the board. At the end of this setup, the system needs to be a HPS first boot system with its SD card programmed to boot the design after a power cycle. The link provides description to do the following
 
 - Burn the HPS first jic file to the QSFP flash to setup HPS first boot system
 - Burn the sd card wic image to the bootable SD card.
