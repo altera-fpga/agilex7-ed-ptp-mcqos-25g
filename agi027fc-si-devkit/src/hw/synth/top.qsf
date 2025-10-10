@@ -418,6 +418,8 @@ set_global_assignment -name POWER_APPLY_THERMAL_MARGIN ADDITIONAL
 
 # SDC and TCL file Assignments
 # ==============================
+set_global_assignment -name SOURCE_FILE da_drc.dawf
+set_global_assignment -name SDC_FILE jtag.sdc
 set_global_assignment -name SDC_FILE hssi_ss_constraints.sdc
 set_global_assignment -name SDC_FILE ptp_bridge_ip.sdc
 set_global_assignment -name SDC_FILE ftile_ptp_ed.sdc
