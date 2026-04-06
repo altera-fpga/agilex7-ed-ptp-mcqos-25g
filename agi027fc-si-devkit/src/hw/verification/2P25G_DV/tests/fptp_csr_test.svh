@@ -2,7 +2,15 @@
 //# Copyright (C) 2025 Altera Corporation.
 //# SPDX-License-Identifier: MIT
 //########################################################################
-//# Default Read and R/W to DMA, PTP Bridge, TCAM, PKT CLIENT and HSSI Registers
+//# Description: CSR (Control and Status Register) test that extends
+//#              fptp_base_test. Disables the scoreboard (dis_sb=1) and
+//#              exercises default read checks and read/write register
+//#              tests on DMA, PTP Bridge, TCAM, Packet Client, and HSSI
+//#              registers via the fptp_csr_seq sequence.
+//# Purpose    : To verify that all CSR registers across the DUT
+//#              subsystems power up with correct reset values and
+//#              respond correctly to write followed by read-back
+//#              operations.
 //########################################################################
 
 `ifndef FPTP_CSR__TEST_SVH

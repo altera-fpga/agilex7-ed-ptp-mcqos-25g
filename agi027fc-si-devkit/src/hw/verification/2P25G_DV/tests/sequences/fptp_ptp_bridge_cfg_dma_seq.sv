@@ -2,7 +2,15 @@
 //# Copyright (C) 2025 Altera Corporation.
 //# SPDX-License-Identifier: MIT
 //########################################################################
-//# Basic DMA seq for configuring TCAM Rules (TCAM0 and TCAM1) for packets being sent.
+//# Description: PTP Bridge TCAM configuration sequence for DMA traffic.
+//#              Programs TCAM0 through TCAM5 entries (key, mask, and
+//#              result registers) using per-channel DA/SA MAC address
+//#              fields to route each DMA channel's ingress packets to
+//#              the correct RX DMA channel.
+//# Purpose    : To set up the PTP Bridge TCAM lookup tables so that
+//#              packets transmitted by the six DMA TX channels are
+//#              correctly identified and steered to their corresponding
+//#              RX DMA channels after HSSI loopback.
 //########################################################################
 class fptp_ptp_bridge_cfg_dma_seq extends fptp_base_seq;
     

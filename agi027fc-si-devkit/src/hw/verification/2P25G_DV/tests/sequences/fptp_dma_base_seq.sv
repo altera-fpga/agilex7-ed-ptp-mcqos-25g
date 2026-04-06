@@ -2,9 +2,16 @@
 //# Copyright (C) 2025 Altera Corporation.
 //# SPDX-License-Identifier: MIT
 //########################################################################
-//# Basic DMA Test sequence to send DMA traffic with less descriptors from all channels to HSSI. The packets 
-//# are reaches HSSI, gets looped back and routed back respective RX DMA channels
-//# based on the configuration in PTP Bridge (TCAM)
+//# Description: DMA base traffic sequence that orchestrates PTP Bridge
+//#              TCAM configuration for all six DMA channels and then
+//#              concurrently launches data-traffic configuration
+//#              (TX/RX DMA and Packet Client CSRs) alongside AXI slave
+//#              host-response handling. Uses distinct per-channel MAC
+//#              addresses and varied descriptor/packet lengths.
+//# Purpose    : To exercise the complete DMA data path (host → TX DMA
+//#              → HSSI loopback → RX DMA → host) and verify correct
+//#              per-channel packet routing through the PTP Bridge TCAM
+//#              lookup tables.
 //########################################################################
 class fptp_dma_base_seq extends uvm_sequence;
   `uvm_declare_p_sequencer(svt_axi_system_sequencer)

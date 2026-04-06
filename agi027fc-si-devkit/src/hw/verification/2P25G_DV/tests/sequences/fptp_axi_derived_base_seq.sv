@@ -2,7 +2,16 @@
 //# Copyright (C) 2025 Altera Corporation.
 //# SPDX-License-Identifier: MIT
 //########################################################################
-//# AXI derived sequences for Read and Write txns.
+//# Description: Low-level AXI master sequence that extends
+//#              svt_axi_master_base_sequence. Configures and issues
+//#              individual AXI read or write transactions using the SVT
+//#              AXI VIP framework, with INCR burst type and configurable
+//#              address, burst size, burst length, and data/strobe
+//#              fields.
+//# Purpose    : To provide the atomic AXI transaction driver used by
+//#              the fptp_base_seq helper tasks when performing
+//#              single-beat register accesses and multi-beat data
+//#              transfers on the AXI master port.
 //########################################################################
 
 `ifndef FPTP_AXI_MASTER_BASE_SEQ__SV

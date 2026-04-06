@@ -2,8 +2,16 @@
 //# Copyright (C) 2025 Altera Corporation.
 //# SPDX-License-Identifier: MIT
 //########################################################################
-//# DMA BASE Test with packets sent on all channels along with User traffic 
-//# with fixed length and desc
+//# Description: QoS user-traffic test that extends fptp_base_test.
+//#              Enables the scoreboard (dis_sb=0) and runs the
+//#              fptp_qos_usr_seq sequence, which sends DMA traffic on
+//#              all six channels concurrently with user (packet-client)
+//#              traffic using fixed packet lengths and descriptors.
+//# Purpose    : To validate Quality-of-Service (QoS) arbitration and
+//#              the user-traffic data path by simultaneously driving DMA
+//#              and packet-client traffic through HSSI, then verifying
+//#              that packets are correctly routed back to their
+//#              respective DMA and packet-client RX paths.
 //########################################################################
 
 `ifndef FPTP_QOS_USR__TEST_SVH

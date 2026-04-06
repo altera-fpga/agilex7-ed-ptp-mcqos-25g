@@ -2,7 +2,16 @@
 //# Copyright (C) 2025 Altera Corporation.
 //# SPDX-License-Identifier: MIT
 //########################################################################
-//#All user defined structs for TB are defined here.
+//# Description: SystemVerilog package that defines shared type
+//#              definitions for the FPTP testbench, including
+//#              enumerations for transaction direction (H2D/D2H), agent
+//#              type, agent port, address type, and packed structs for
+//#              Ethernet packet layout (eth_pkt), DMA MM control fields,
+//#              and DMA ST descriptor format (t_h2d_st_descriptor).
+//# Purpose    : To provide a common set of reusable data types and
+//#              structures that are imported and shared across multiple
+//#              sequences and testbench components, ensuring type
+//#              consistency throughout the verification environment.
 //########################################################################
 package axi_base_sequence_pkg; // package name
 

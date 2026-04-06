@@ -2,9 +2,15 @@
 //# Copyright (C) 2025 Altera Corporation.
 //# SPDX-License-Identifier: MIT
 //########################################################################
-//# CSR sequences to check default values on MSGDMA, PTP Bridge, TCAM,
-//# PKT CLI0, PKT CLI1 and HSSI Registers.
-//# Also does Write/Read on R/w Registers
+//# Description: CSR verification sequence that extends fptp_base_seq.
+//#              Performs default-value read checks and read/write
+//#              register tests on MSGDMA, PTP Bridge, TCAM, Packet
+//#              Client 0, Packet Client 1, and HSSI registers using
+//#              AXI master read and write transactions.
+//# Purpose    : To verify that all CSR registers power up with the
+//#              correct reset values and that read/write-accessible
+//#              registers respond correctly to write followed by
+//#              read-back operations.
 //########################################################################
 class fptp_csr_seq extends fptp_base_seq;
     

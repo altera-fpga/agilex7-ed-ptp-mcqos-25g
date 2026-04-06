@@ -2,7 +2,13 @@
 //# Copyright (C) 2025 Altera Corporation.
 //# SPDX-License-Identifier: MIT
 //########################################################################
-//#Simple Reset sequence used for TB
+//# Description: Reset control sequence that drives the DUT reset signal
+//#              through the fptp_reset_sequencer's reset modport.
+//#              Asserts reset low for 10 clock cycles, then deasserts
+//#              it high for 10 cycles to complete the reset sequence.
+//# Purpose    : To apply the initial power-on reset to the DUT at the
+//#              start of each simulation, ensuring all logic enters a
+//#              known state before test stimulus begins.
 //########################################################################
 `ifndef AXI_SIMPLE_RESET_SEQUENCE_SV
 `define AXI_SIMPLE_RESET_SEQUENCE_SV

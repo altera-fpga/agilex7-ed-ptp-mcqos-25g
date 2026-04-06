@@ -2,7 +2,14 @@
 //# Copyright (C) 2025 Altera Corporation.
 //# SPDX-License-Identifier: MIT
 //########################################################################
-//# Checks the Pkt client registers status for data integrity.
+//# Description: Verification checker sequence that polls Packet Client
+//#              0 and 1 control registers until traffic is enabled,
+//#              then reads their STAT_CHECKER_MISC status registers to
+//#              detect any data-mismatch errors reported by the
+//#              hardware checker logic.
+//# Purpose    : To validate the integrity of user traffic received by
+//#              both packet clients by checking hardware-generated
+//#              mismatch indicators after a traffic run completes.
 //########################################################################
 class fptp_user_traffic_check_seq extends fptp_base_seq;
     

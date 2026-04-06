@@ -2,7 +2,14 @@
 //# Copyright (C) 2025 Altera Corporation.
 //# SPDX-License-Identifier: MIT
 //########################################################################
-//# FPTP Base test
+//# Description: Base UVM test class for the FPTP testbench. Provides
+//#              common infrastructure including UVM environment creation,
+//#              AXI system configuration, reset sequencing, run-phase
+//#              sequence dispatch from the command-line (+seqname arg),
+//#              simulation timeout management, and pass/fail reporting.
+//# Purpose    : To serve as the parent class for all FPTP tests, handling
+//#              shared build, run, and final phase logic so that derived
+//#              tests only need to specialize their specific behavior.
 //########################################################################
 `ifndef FPTP_BASE_TEST_SVH
 `define FPTP_BASE_TEST_SVH

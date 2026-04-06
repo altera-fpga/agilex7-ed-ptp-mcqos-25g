@@ -2,11 +2,16 @@
 //# Copyright (C) 2025 Altera Corporation.
 //# SPDX-License-Identifier: MIT
 //########################################################################
-//#AXI Slave response sequence
-//#This class extends from the "svt_axi_slave_base_sequence" used to provide slave response 
-//#to the Slave[0] present in the System agent.
-//#This class acts as Host that will return descriptor/data to prefetcher/agent through AXI4 READ channel 
-//#based on the AXI4 packet received 
+//# Description: AXI slave-side sequence that models host memory by
+//#              responding to AXI read/write requests issued by the
+//#              DUT's DMA prefetcher. Generates TX descriptors and
+//#              Ethernet frame payloads for all six DMA channels and
+//#              returns them over the AXI read channel; also processes
+//#              write responses for RX DMA completions.
+//# Purpose    : To emulate host-side memory (DDR/PCIe) so the DUT DMA
+//#              engines can fetch TX descriptors and packet data, and
+//#              deposit received RX packets, enabling end-to-end DMA
+//#              traffic verification without real host hardware.
 //########################################################################
 `ifndef FPTP_AXI_SLAVE_HOST_REPSONSE_SEQ__SV
 `define FPTP_AXI_SLAVE_HOST_REPSONSE_SEQ__SV

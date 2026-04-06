@@ -2,8 +2,15 @@
 //# Copyright (C) 2025 Altera Corporation.
 //# SPDX-License-Identifier: MIT
 //########################################################################
-//#This is base sequence used to configure PKT CLIENTS,
-//#TXDMA and RX DMA for basic data flow.
+//# Description: Traffic configuration sequence that programs Packet
+//#              Client 0 and 1 (MAC addresses, packet count, packet
+//#              size, and control registers) and all six TX/RX DMA
+//#              prefetcher channels via AXI register writes. Channel
+//#              enable (ch_en) and user-traffic enable (usr_en) are
+//#              controlled by randomisable constraints.
+//# Purpose    : To configure the full data-path hardware (both DMA
+//#              channels and packet clients) so that end-to-end traffic
+//#              can flow in DMA and user-traffic test scenarios.
 //########################################################################
 class fptp_data_traffic_cfg_seq extends fptp_base_seq;
     

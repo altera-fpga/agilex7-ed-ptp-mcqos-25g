@@ -2,10 +2,17 @@
 //# Copyright (C) 2025 Altera Corporation.
 //# SPDX-License-Identifier: MIT
 //########################################################################
-//# DMA Test sequence to send DMA traffic with fixed descriptors and packet 
-//# length for all channels.Also User traffic are sent on both
-//# the packet clients. The packets reaches HSSI, gets looped back and routed back 
-//# respective RX DMA channels and PKT CLIENT based on the configuration in PTP Bridge (TCAM)
+//# Description: QoS user-traffic sequence that extends the DMA base
+//#              flow by additionally configuring TCAM rules for user
+//#              (packet-client) traffic. Runs DMA and user traffic
+//#              concurrently with fixed descriptors and packet lengths
+//#              across all six DMA channels and both packet clients,
+//#              then invokes fptp_user_traffic_check_seq to validate
+//#              data integrity.
+//# Purpose    : To verify QoS arbitration between DMA and user traffic
+//#              paths and confirm that both DMA and packet-client
+//#              packets are correctly routed and received without data
+//#              corruption after HSSI loopback.
 //########################################################################
 class fptp_qos_usr_seq extends uvm_sequence;
   `uvm_declare_p_sequencer(svt_axi_system_sequencer)

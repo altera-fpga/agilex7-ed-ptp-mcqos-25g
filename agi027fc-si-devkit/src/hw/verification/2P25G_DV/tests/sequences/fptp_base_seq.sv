@@ -2,7 +2,15 @@
 //# Copyright (C) 2025 Altera Corporation.
 //# SPDX-License-Identifier: MIT
 //########################################################################
-//# Base seq which consists of API sequences for Write/Read transactions
+//# Description: Base UVM sequence that provides reusable AXI master
+//#              read (axi_master_read) and write (axi_master_write)
+//#              task APIs. It uses the svt_axi_system_sequencer
+//#              p_sequencer and always targets master port 0 for all
+//#              AXI transactions.
+//# Purpose    : To abstract AXI bus read and write operations into
+//#              common helper tasks that all derived sequences can call
+//#              to access DUT registers and memory over the AXI
+//#              master interface.
 //########################################################################
 class fptp_base_seq extends uvm_sequence;
     `uvm_object_utils(fptp_base_seq)

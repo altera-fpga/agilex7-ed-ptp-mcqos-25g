@@ -2,8 +2,15 @@
 //# Copyright (C) 2025 Altera Corporation.
 //# SPDX-License-Identifier: MIT
 //########################################################################
-//########################################################################
-//# Basic DMA config seq for configuring TCAM Rules (TCAM0 and TCAM1) for USER packets
+//# Description: PTP Bridge TCAM configuration sequence for user
+//#              (packet-client) traffic. Programs TCAM0 and TCAM1
+//#              entries for the two user packet clients, including
+//#              optional ingress arbitration priority configuration
+//#              and MAC-address-based key, mask, and result register
+//#              writes.
+//# Purpose    : To set up the PTP Bridge TCAM rules that route user-
+//#              traffic packets from Packet Client 0 and Packet Client
+//#              1 to the correct ingress user ports after HSSI loopback.
 //########################################################################
 class fptp_ptp_bridge_cfg_usr_seq extends fptp_base_seq;
     

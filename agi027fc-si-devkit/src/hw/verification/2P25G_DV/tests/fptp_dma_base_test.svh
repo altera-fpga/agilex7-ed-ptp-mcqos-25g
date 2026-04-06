@@ -2,7 +2,14 @@
 //# Copyright (C) 2025 Altera Corporation.
 //# SPDX-License-Identifier: MIT
 //########################################################################
-//# DMA BASE Test with packets sent on all channels
+//# Description: DMA base test that extends fptp_base_test. Enables the
+//#              scoreboard (dis_sb=0) and drives the fptp_dma_base_seq
+//#              sequence to exercise DMA traffic across all six channels
+//#              with a small number of descriptors per channel.
+//# Purpose    : To verify the end-to-end DMA data path by sending
+//#              packets on all six DMA TX channels, looping them through
+//#              the HSSI interface, and confirming correct RX routing
+//#              based on the PTP Bridge / TCAM configuration.
 //########################################################################
 
 `ifndef FPTP_BMA_BASE__TEST_SVH
